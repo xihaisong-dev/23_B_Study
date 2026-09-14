@@ -11,5 +11,5 @@
       "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841"
     }
   ],
-  "blocked_reason": "尚未用竞赛官方来源核验题面副本"
+  "blocked_reason": "主办方公开页面确认 2023 B 题名称，但题目 ZIP 当年需登录竞赛系统下载；尚未取得官方 ZIP/MD5，不能把本地 DOCX 升格为 official"
 }

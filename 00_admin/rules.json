@@ -3,21 +3,22 @@
   "status": "BLOCKED",
   "competition": "huaweibei",
   "season": "2023",
-  "official_source": "待核验",
-  "retrieved_at": "2026-09-14T00:00:00+08:00",
+  "official_source": "https://cpipc.acge.org.cn/cw/contestNews/detail/4/2c90800c8a895b7a018a96d636512bc2?page=6",
+  "retrieved_at": "2026-09-14T23:40:00+08:00",
   "template": {
-    "status": "BLOCKED",
-    "source": "",
-    "sha256": ""
+    "status": "PASS",
+    "source": "https://cpipc.acge.org.cn/sysFile/downFile.do?fileId=5b73cf5683d944f4b6a53934bc26dfeb",
+    "path": "00_admin/official/2023/paper_template.doc",
+    "sha256": "64ad3f75fc490b880034f9583e44232b3820cc87b4c303fda43da42021d52f06"
   },
   "ai_policy": {
     "status": "BLOCKED",
-    "source": "",
-    "summary": ""
+    "source": "https://cpipc.acge.org.cn/cw/contestNews/detail/4/2c90800c8aa76ad0018ab22d6a401f82?page=6",
+    "summary": "2023 官方诚信倡议要求遵守学术规范并注明文献和程序来源，但未发现针对生成式 AI 的专项条款；不得把后续年份政策倒推为 2023 政策"
   },
   "submission_requirements": {
-    "status": "BLOCKED",
-    "source": "",
-    "summary": ""
+    "status": "PASS",
+    "source": "https://cpipc.acge.org.cn/cw/contestNews/detail/4/2c9080178aa76a67018ab56015b524fd?page=6",
+    "summary": "论文为 PDF；文件名为题号+队伍号；封面、摘要、正文顺序固定；封面外不得出现学校、姓名、队号等身份信息；先提交 PDF 的 MD5，再上传完全一致的 PDF；附件为可选"
   }
 }
