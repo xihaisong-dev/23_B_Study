@@ -1,6 +1,21 @@
 # 建模 Agent 交接
 
-## 当前交接：行二稀疏 DFT 分解的严格界与精确构造（问题 1–5 建模层）
+## 当前交接：`03_model/checks/` 来源审计与证书修订
+
+- 角色：M 建模 Agent
+- 状态：建模复算 `PASS`；正式门禁仍 `BLOCKED / NOT_RUN`
+- 工作树/分支：`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/modeling`，`agent/modeling`
+- 来源：`03_model/checks/` 最初由提交 `80ec0bd8365f76aa8e035680140516de8c05b23d` 加入，确属 V6 材料相关的建模核验，不是临时残留；本轮基线为 `5ba5736a0cf4afec7ee478348a7529d93e048e19`
+- 修订提交：`59924310c6a9e92a2522d4b43e7a337757f1094c`
+- 命令/run-id：`python -X utf8 03_model/checks/verify_row_bound.py`；run-id `N/A`（建模证书，不是正式实验）
+- 产物：`03_model/checks/README.md`、`verify_row_bound.py`、`row_bound_results.json`，以及一致性修订后的 `03_model/ROW_BOUND_THEORY.md`、`01_problem/PROBLEM_STATEMENT_AUDIT.md`、`02_retrieval/CANDIDATE_SPECS.md`
+- 验证：退出码 0；12/12 检查 `PASS`；JSON `status=PASS`、`failed_checks=[]`；JSON 记录的脚本 SHA-256 与当前脚本一致；`git diff --check` 与 pre-commit 边界检查通过；没有 `__pycache__` 或 `*.pyc`
+- 修订摘要：使用容差识别免费根，避免把近似 `±j` 误计入 `L`；不再对缩放后因子沿用未缩放 `L`；修正式 (5) 的 `A2` 转录并撤回秩亏结论；把比特反转吸收进首层后，非零精确 radix-2 构造为 `K=log2(N)`、`β=√N`，`N=2..64` 的 `L` 位置数为 `0,0,4,20,68,196`。
+- 限制：`L` 位置计数、正负共享和 `β` 是否计复杂度仍待语义裁决；式 (5) 只核对提取稿印刷顺序；V5/V6 仍缺因子、源码和日志。JSON 是 `formal_experiment=false` 的建模检查，不是正式结果。
+- 接口影响：旧提交 `80ec0bd` 与旧 handoff 中的 `K=t+1`、`β=1/√N`、`L=0,2,10,34,98,258`、式 (5) 秩亏/240 顺序枚举均已作废，不得引用。
+- 下一步/接收人：主 Agent 合并 `5992431`；正式候选、协议和结果仍须等待语义裁决与检索门禁。
+
+## 历史交接：行二稀疏 DFT 分解（已由 `5992431` 修订，以下旧数值不得引用）
 
 - 角色：M 建模 Agent
 - 状态：建模交付完成（可复算结论 `PASS`）；正式对擂协议仍 `BLOCKED / NOT_RUN`
