@@ -13,7 +13,9 @@
   "team_mode": "three-agent",
   "kb": {
     "root": "knowledge_base",
-    "status": "NOT_RUN"
+    "checked_at": "2026-09-14T14:00:00+08:00",
+    "status": "BLOCKED",
+    "reason": "工作区中未发现 knowledge_base 目录，三组本地检索门禁无法执行"
   },
   "quality": {
     "minimum_candidates": 3,
