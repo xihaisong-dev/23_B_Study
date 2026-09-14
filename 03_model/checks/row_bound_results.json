@@ -1,0 +1,507 @@
+{
+  "artifact_class": "modeling_check",
+  "assumptions": [
+    "F_N is Eq. (3)'s unitary DFT unless explicitly labeled raw",
+    "all factors are N x N and K counts every support-expanding factor",
+    "RMSE is Frobenius norm divided by N",
+    "beta is external and is not counted in L",
+    "L is a per-position count; plus/minus sharing is reported separately"
+  ],
+  "checks": {
+    "eq5_factors_full_rank": true,
+    "exact_radix2_L_formula": true,
+    "exact_radix2_all_sizes": true,
+    "exact_radix2_k_equals_t": true,
+    "exact_radix2_row_cap": true,
+    "kron_not_f32": true,
+    "kron_unitary": true,
+    "normalized_dft_unitary": true,
+    "rank_product_rule": true,
+    "scale_relation": true,
+    "support_propagation": true,
+    "zero_solution": true
+  },
+  "failed_checks": [],
+  "formal_experiment": false,
+  "inputs": {
+    "problem_docx_sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "user_v6_readme_sha256": "ba53f44660d951dbef5d0b1545e25e7449ca4f59e711aed83aba3b652a94fef8"
+  },
+  "schema_version": "1.0",
+  "script": "03_model/checks/verify_row_bound.py",
+  "script_sha256_before_output": "cdde90cfceff0186ada0dc107e10010d0f03c7724e86472619c70ddd206751fa",
+  "status": "PASS",
+  "t0_target_sanity": {
+    "F4_kron_F8": {
+      "is_F32_within_1e-12": false,
+      "max_abs_difference_vs_F32": 0.35355339059327373,
+      "shape": [
+        32,
+        32
+      ],
+      "unitary_residual": 7.014216182986e-16
+    },
+    "N4": {
+      "max_abs_raw_minus_sqrtN_normalized": 0.0,
+      "raw_to_normalized_scale": 2.0,
+      "unitary_residual": 1.2989340843532398e-16
+    },
+    "N8": {
+      "max_abs_raw_minus_sqrtN_normalized": 1.1102230246251565e-16,
+      "raw_to_normalized_scale": 2.8284271247461903,
+      "unitary_residual": 6.871046789485633e-16
+    }
+  },
+  "t1_t2_propagation": [
+    {
+      "k": 1,
+      "max_observed_product_rank": 14,
+      "max_observed_row_support": 2,
+      "n": 16,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "row_cap": 2,
+      "seed": 1001,
+      "support_bound": 2,
+      "support_rule_holds": true,
+      "trials": 20
+    },
+    {
+      "k": 2,
+      "max_observed_product_rank": 13,
+      "max_observed_row_support": 4,
+      "n": 16,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "row_cap": 2,
+      "seed": 1002,
+      "support_bound": 4,
+      "support_rule_holds": true,
+      "trials": 20
+    },
+    {
+      "k": 3,
+      "max_observed_product_rank": 12,
+      "max_observed_row_support": 8,
+      "n": 16,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "row_cap": 2,
+      "seed": 1003,
+      "support_bound": 8,
+      "support_rule_holds": true,
+      "trials": 20
+    },
+    {
+      "k": 4,
+      "max_observed_product_rank": 10,
+      "max_observed_row_support": 11,
+      "n": 16,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "row_cap": 2,
+      "seed": 1004,
+      "support_bound": 16,
+      "support_rule_holds": true,
+      "trials": 20
+    }
+  ],
+  "t3_exact_radix2": {
+    "N16": {
+      "C_q16_position_count": 320,
+      "K": 4,
+      "L_formula": "(log2(N)-3)*N+4",
+      "L_matches_formula": true,
+      "L_nontrivial_position_count": 20,
+      "L_shared_plus_minus_pair_count": 10,
+      "beta": 4.0,
+      "beta_counted_in_L": false,
+      "exact_within_1e-12": true,
+      "identity_max_abs_error": 1.512872083392593e-14,
+      "max_factor_row_support": 2,
+      "n": 16,
+      "rmse": 2.743330859549876e-15,
+      "t": 4
+    },
+    "N2": {
+      "C_q16_position_count": 0,
+      "K": 1,
+      "L_formula": "(log2(N)-3)*N+4",
+      "L_matches_formula": true,
+      "L_nontrivial_position_count": 0,
+      "L_shared_plus_minus_pair_count": 0,
+      "beta": 1.4142135623730951,
+      "beta_counted_in_L": false,
+      "exact_within_1e-12": true,
+      "identity_max_abs_error": 1.2246467991473532e-16,
+      "max_factor_row_support": 2,
+      "n": 2,
+      "rmse": 6.123233995736766e-17,
+      "t": 1
+    },
+    "N32": {
+      "C_q16_position_count": 1088,
+      "K": 5,
+      "L_formula": "(log2(N)-3)*N+4",
+      "L_matches_formula": true,
+      "L_nontrivial_position_count": 68,
+      "L_shared_plus_minus_pair_count": 34,
+      "beta": 5.656854249492381,
+      "beta_counted_in_L": false,
+      "exact_within_1e-12": true,
+      "identity_max_abs_error": 3.184642379788221e-14,
+      "max_factor_row_support": 2,
+      "n": 32,
+      "rmse": 5.521949062509861e-15,
+      "t": 5
+    },
+    "N4": {
+      "C_q16_position_count": 0,
+      "K": 2,
+      "L_formula": "(log2(N)-3)*N+4",
+      "L_matches_formula": true,
+      "L_nontrivial_position_count": 0,
+      "L_shared_plus_minus_pair_count": 0,
+      "beta": 2.0,
+      "beta_counted_in_L": false,
+      "exact_within_1e-12": true,
+      "identity_max_abs_error": 4.898587196589413e-16,
+      "max_factor_row_support": 2,
+      "n": 4,
+      "rmse": 1.984154588102292e-16,
+      "t": 2
+    },
+    "N64": {
+      "C_q16_position_count": 3136,
+      "K": 6,
+      "L_formula": "(log2(N)-3)*N+4",
+      "L_matches_formula": true,
+      "L_nontrivial_position_count": 196,
+      "L_shared_plus_minus_pair_count": 98,
+      "beta": 8.0,
+      "beta_counted_in_L": false,
+      "exact_within_1e-12": true,
+      "identity_max_abs_error": 6.390276306842964e-14,
+      "max_factor_row_support": 2,
+      "n": 64,
+      "rmse": 1.0551350384309121e-14,
+      "t": 6
+    },
+    "N8": {
+      "C_q16_position_count": 64,
+      "K": 3,
+      "L_formula": "(log2(N)-3)*N+4",
+      "L_matches_formula": true,
+      "L_nontrivial_position_count": 4,
+      "L_shared_plus_minus_pair_count": 2,
+      "beta": 2.8284271247461903,
+      "beta_counted_in_L": false,
+      "exact_within_1e-12": true,
+      "identity_max_abs_error": 4.004505348847205e-15,
+      "max_factor_row_support": 2,
+      "n": 8,
+      "rmse": 8.614449996970855e-16,
+      "t": 3
+    }
+  },
+  "t4_statement_eq5": {
+    "factor_ranks": {
+      "A1": 8,
+      "A2": 8,
+      "A3": 8,
+      "A4": 8,
+      "D": 8
+    },
+    "note": "Eq. (5) uses an approximation sign; this check is not an error allegation.",
+    "readings": {
+      "P_columns": {
+        "exact_normalized_within_1e-12": false,
+        "exact_raw_within_1e-12": false,
+        "max_abs_vs_normalized_F8": 1.6828864433426722,
+        "max_abs_vs_raw_F8": 2.2360679774997907,
+        "printed_product": "P A4 D A3 A2 A1",
+        "real_beta_least_squares_for_beta_F8": 2.3409902576697306,
+        "rmse_vs_beta_F8": 0.751645246567106,
+        "rmse_vs_normalized_F8": 0.8886801649539429,
+        "rmse_vs_raw_F8": 0.7711484384410626
+      },
+      "P_transpose": {
+        "exact_normalized_within_1e-12": false,
+        "exact_raw_within_1e-12": false,
+        "max_abs_vs_normalized_F8": 1.7677669529663689,
+        "max_abs_vs_raw_F8": 2.4142135623730954,
+        "printed_product": "P A4 D A3 A2 A1",
+        "real_beta_least_squares_for_beta_F8": 2.1213203435596406,
+        "rmse_vs_beta_F8": 0.8291561975888498,
+        "rmse_vs_normalized_F8": 0.9190592549504574,
+        "rmse_vs_raw_F8": 0.8660254037844386
+      }
+    },
+    "scope": "extracted matrices only; original DOCX was not visually re-transcribed"
+  },
+  "t5_support_bounds_beta_1": {
+    "N16": {
+      "K1": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 1,
+        "n": 16,
+        "rmse_lower_bound": 0.23385358667337133,
+        "support_cap": 2
+      },
+      "K2": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 2,
+        "n": 16,
+        "rmse_lower_bound": 0.21650635094610965,
+        "support_cap": 4
+      },
+      "K3": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 3,
+        "n": 16,
+        "rmse_lower_bound": 0.1767766952966369,
+        "support_cap": 8
+      },
+      "K4": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 4,
+        "n": 16,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 16
+      },
+      "K5": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 5,
+        "n": 16,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 16
+      },
+      "K6": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 6,
+        "n": 16,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 16
+      },
+      "K7": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 7,
+        "n": 16,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 16
+      }
+    },
+    "N32": {
+      "K1": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 1,
+        "n": 32,
+        "rmse_lower_bound": 0.1711632992203644,
+        "support_cap": 2
+      },
+      "K2": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 2,
+        "n": 32,
+        "rmse_lower_bound": 0.16535945694153692,
+        "support_cap": 4
+      },
+      "K3": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 3,
+        "n": 32,
+        "rmse_lower_bound": 0.15309310892394862,
+        "support_cap": 8
+      },
+      "K4": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 4,
+        "n": 32,
+        "rmse_lower_bound": 0.125,
+        "support_cap": 16
+      },
+      "K5": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 5,
+        "n": 32,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 32
+      },
+      "K6": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 6,
+        "n": 32,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 32
+      },
+      "K7": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 7,
+        "n": 32,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 32
+      }
+    },
+    "N64": {
+      "K1": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 1,
+        "n": 64,
+        "rmse_lower_bound": 0.12303137303143455,
+        "support_cap": 2
+      },
+      "K2": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 2,
+        "n": 64,
+        "rmse_lower_bound": 0.12103072956898178,
+        "support_cap": 4
+      },
+      "K3": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 3,
+        "n": 64,
+        "rmse_lower_bound": 0.11692679333668567,
+        "support_cap": 8
+      },
+      "K4": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 4,
+        "n": 64,
+        "rmse_lower_bound": 0.10825317547305482,
+        "support_cap": 16
+      },
+      "K5": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 5,
+        "n": 64,
+        "rmse_lower_bound": 0.08838834764831845,
+        "support_cap": 32
+      },
+      "K6": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 6,
+        "n": 64,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 64
+      },
+      "K7": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 7,
+        "n": 64,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 64
+      }
+    },
+    "N8": {
+      "K1": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 1,
+        "n": 8,
+        "rmse_lower_bound": 0.30618621784789724,
+        "support_cap": 2
+      },
+      "K2": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 2,
+        "n": 8,
+        "rmse_lower_bound": 0.25,
+        "support_cap": 4
+      },
+      "K3": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 3,
+        "n": 8,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 8
+      },
+      "K4": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 4,
+        "n": 8,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 8
+      },
+      "K5": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 5,
+        "n": 8,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 8
+      },
+      "K6": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 6,
+        "n": 8,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 8
+      },
+      "K7": {
+        "beta": 1.0,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+        "k": 7,
+        "n": 8,
+        "rmse_lower_bound": 0.0,
+        "support_cap": 8
+      }
+    }
+  },
+  "t6_scale_degeneracy": {
+    "note": "Arbitrary nonzero scaling need not preserve the discrete Pq constraint; the exact beta=0/zero-factor solution does.",
+    "reference_rmse_beta_1_identity_product": 0.46770717334674267,
+    "scaled_points_unrestricted_coefficients": [
+      {
+        "expected": 0.9354143466934853,
+        "linear_within_1e-12": true,
+        "rmse": 0.9354143466934853,
+        "scale": 2.0
+      },
+      {
+        "expected": 0.23385358667337133,
+        "linear_within_1e-12": true,
+        "rmse": 0.23385358667337133,
+        "scale": 0.5
+      },
+      {
+        "expected": 0.00046770717334674265,
+        "linear_within_1e-12": true,
+        "rmse": 0.00046770717334674244,
+        "scale": 0.001
+      }
+    ],
+    "zero_solution": {
+      "beta": 0.0,
+      "product": "zero matrix (obtainable by one zero factor)",
+      "rmse": 0.0,
+      "satisfies_row_2_sparse": true,
+      "zero_is_in_every_stated_Pq": true
+    }
+  }
+}
