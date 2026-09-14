@@ -9,6 +9,13 @@ case "$branch" in
   *) exit 0 ;;
 esac
 
+# Agent 分支可以合并已集成的 main，以读取其他泳道的正式交付。
+# 这里只放行 MERGE_HEAD 确实属于 main 历史的同步合并。
+merge_head="$(git rev-parse -q --verify MERGE_HEAD 2>/dev/null || true)"
+if [[ -n "$merge_head" ]] && git merge-base --is-ancestor "$merge_head" main; then
+  exit 0
+fi
+
 blocked=()
 while IFS= read -r -d '' path; do
   case "$role:$path" in
