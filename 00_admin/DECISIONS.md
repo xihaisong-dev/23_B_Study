@@ -22,3 +22,14 @@
 - 决策：保留原 DOCX 及 SHA-256，并用 Pandoc 生成公式可读的 Markdown 提取稿。
 - 原因：Codex 打包运行时未发现 LibreOffice，标准 DOCX 渲染器无法生成逐页 PNG。
 - 影响：不得声称完成页面级视觉核验；数学语义以原 DOCX 为准，提取稿只用于检索和建模。
+
+## D-004 接收并审计用户的 V6 初级建模
+
+- 时间：2026-09-14
+- 状态：OPEN / BLOCKING
+- 输入：`README_LATEST_V6.md`，SHA-256 `ba53f44660d951dbef5d0b1545e25e7449ca4f59e711aed83aba3b652a94fef8`。
+- 已核验：README 中 N=64、K=5 的支撑下界 `sqrt(32)/64=0.08838834764831845`、与所报 RMSE 的绝对差 `0.002104709106134403` 算术一致。
+- 阻塞结论：若 beta 无尺度约束，则 beta=0 与零因子构成 RMSE=0 的平凡解；README 的支撑下界还隐含 `|beta|=1`。此外，DFT 归一化、Q5 目标顺序、q/P_q/L 和 K 的计数口径均需裁决。
+- 证据缺口：下载目录仅发现 README，没有 V1–V6 源码、V5 因子 NPZ、运行配置、日志、随机种子或依赖锁文件，V5/V6 数值目前标记为“待工程复现”。
+- 工程动作：建立独立验证器规格与输入清单；因 `tournament_protocol` 尚未冻结，不开始正式候选实现、对擂或写入正式结果。
+- 待用户裁决：按 `00_admin/proposals/modeling/V6_SEMANTIC_DECISIONS.md` 选择 D1–D6 后，更新语义契约并进入候选协议冻结。
