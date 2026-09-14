@@ -1,0 +1,401 @@
+                                                   Efficient Matrix Multiplication: The Sparse
+                                                             Power-of-2 Factorization
+                                                                                  Ralf R. Müller∗ , Bernhard Gäde∗ , Ali Bereyhi∗
+                                                     ∗ Institute for Digital Communications, Friedrich-Alexander Universität Erlangen-Nürnberg, Germany
+
+                                                                         ralf.r.mueller@fau.de, bernhard.gaede@fau.de, ali.bereyhi@fau.de
+
+
+                                            Abstract—We present an algorithm to reduce the compu-             A. Additive Approximations
+arXiv:2002.04002v2 [cs.IT] 27 Feb 2020
+
+
+
+
+                                         tational effort for the multiplication of a given matrix with
+                                         an unknown column vector. The algorithm decomposes the
+                                                                                                                Consider an N ×K matrix M that shall be approximated
+                                         given matrix into a product of matrices whose entries are            by as few bits as possible. The standard approach is to
+                                         either zero or integer powers of two utilizing the principles        approximate M by a sum of matrices whose entries are only
+                                         of sparse recovery. While classical low resolution quantization      zeros and ones weighted by scalar factors that are powers
+                                         achieves an accuracy of 6 dB per bit, our method can achieve         of two [7], [8]
+                                         many times more than that for large matrices. Numerical and
+                                         analytical evidence suggests that the improvement actually                                         Q
+                                                                                                                                            X
+                                         grows unboundedly with matrix size. Due to sparsity, the                              M ≈ Asa =          2Q0 −q Bq              (1)
+                                         algorithm even allows for quantization levels below 1 bit per                                      q=1
+                                         matrix entry while achieving highly accurate approximations
+                                         for large matrices. Applications include, but are not limited        for Q0 ∈ Z and Bq ∈ {0, 1}N ×K . Measuring the error by
+                                         to, neural networks, as well as fully digital beam-forming for       the Frobenius norm ||M − Asa ||2 , the SNR grows by 6 dB
+                                         massive MIMO and millimeter wave applications.                       per bit of resolution Q. We will not consider other distortion
+                                                                                                              measures in the sequel.
+                                                                I. I NTRODUCTION                                 This approximation requires register shifts for multipli-
+                                                                                                              cations by powers of two and additions. The additions
+                                            In various applications, multiplications of a data vector         dominate complexity [7], [8]. Thus, the register shifts are
+                                         with a given large matrix have to be performed at very               neglected for sake of simplicity. The standard approach (1)
+                                         high rates; see [1]–[6] and the references there in for some         requires Q/2 additions per matrix element on average, as
+                                         examples. In order to reduce the power consumption of the            no additions are required for the zero entries which occur
+                                         circuitry, the matrices are often quantized to low levels of         with probability 12 .
+                                         bit resolution resulting in severe distortion by quantization           A minor improvement can be achieved, if one allows for
+                                         noise. It is well-known from standard textbooks that any             more flexibility in the summands. Let
+                                         additional bit increases the signal-to-noise1 ratio (SNR) by
+                                                                                                                                                Q
+                                         a factor of 4, i.e. 6 dB; see for example [7]–[9].                                                     X
+                                                                                                                                  M ≈ Aia =           Pq                 (2)
+                                            In Section II, we present an algorithm that performs much
+                                                                                                                                                q=1
+                                         better than 6 dB/bit for large matrices with “large” starting
+                                         at matrices with the greater of the two dimension being at           with Pq ∈ {0, ±2Z }N ×K . Since, the complexity of register
+                                         least 32. In Section III, we give numerical results on its           shifts are of minor importance, we can easily allow for them
+                                         performance. In Section IV, we give some intuition, why              once per matrix entry. Furthermore, addition and subtraction
+                                         the algorithm works. Section V conjectures the asymptotic            do not differ in complexity either, so matrix entries may be
+                                         scaling of the SNR based on the numerical results in                 negative, as well. For matrices with independent identically
+                                         Section III. Finally, Section VI outlines conclusions for            distributed (iid) Gaussian entries, this improved approach
+                                         various applications.                                                makes the SNR grow with approximately log 27 = 14.3 dB
+                                            We represent scalars, vectors and matrices with non-bold,         per bit of resolution Q. However, the probability of zero
+                                         bold lower case and bold upper case letters, respectively.           entries is zero. Thus, we need Q additions per entry of
+                                         The set of integers is denoted by Z.                                 Aia , twice as many as for Asa in the previous approach.
+                                                                                                              For a single addition per matrix entry, the SNR has, thus,
+                                                                 II. A LGORITHMS                              only improved from 12 dB to 14.3 dB. Not really a great
+                                                                                                              deal after all. In both cases, the SNR is independent of the
+                                            In the sequel, we will review two algorithms from liter-          size of the matrix.
+                                         ature, before introducing the algorithm we propose.                     Several algorithms in the literature work on additive
+                                                                                                              approximations based on powers of two. Some examples
+                                           1 Whenever we refer to noise, we always mean quantization noise.   can be followed in [10]–[12] and the references therein.
+                                                                    TABLE I: Multiplicative approximation of iid Gaussian random
+B. Multiplicative Approximation
+                                                                    matrices for various levels of resolution Q and sparsity equal to
+  In this work, we propose the multiplicative approximation         N in (4).
+                              Q                                          SNR [dB]     Q=1      Q=2       Q=3      Q=4      Q=5
+                              Y
+              M ≈ Am =              Fq = F1 F2 · · · FQ       (3)          2×4        14.2     20.6      24.8     27.2     28.6
+                                                                           3×8        14.2     25.1      32.0     36.3     39.1
+                              q=1
+                                                                          4 × 16      14.2     30.0      42.1     50.7     57.1
+                                                                          5 × 32      14.2     35.6      54.7     70.7     82.7
+with F1 ∈ {0, ±2Z }N ×K and Fq ∈ {0, ±2Z }K×K , q > 1.                    6 × 64      14.2     41.3      67.5     92.9      117
+Let K ≥ N without loss of generality1 . We first obtain F1                7 × 128     14.2     47.0      79.4      112      144
+by quantizing the magnitudes of the entries of M to the                   8 × 256     14.2     52.6      90.8      129      167
+                                                                          9 × 512     14.2     58.1       102      146      190
+nearest power of two while keeping the signs untouched.                 10 × 1024     14.2     63.5       113      162      212
+Thus, F1 = P1 . To find, the other factors, apply the                   11 × 2048     14.2     69.1       124      179      234
+following recursion: Approximately factorize the N × K                  12 × 4096     14.2     74.6       135      195      256
+                                                                        13 × 8192     14.2     80.1       146      212      278
+matrix M into M ≈ LR such that R is square and every                    14 × 16384    14.2     85.7       157      228      300
+column of it is a good solution to the following sparse
+recovery problem:
+            rk =         argmin             ||mk − Lρ||2      (4)   sparsification, the optimum aspect ratio of the submatrices
+                   ρ∈{0,±2Z }K :||ρ||0 =N                           is the less rectangular the further they are sparsified. In fact,
+We start the recursion with L = F1 and R = F2 . At the              it seems to scale in such a way that the relative number of
+q th recursion, we have                                             nonzero entries per matrix stays constant.
+                       q−1
+                       Y                                                             III. N UMERICAL R ESULTS
+                L=           Fi      ,      R = Fq .          (5)
+                                                                       The optimum solution to (4) is NP-hard. While there
+                       i=1
+                                                                    are many choices to approximate (4), we just exemplarily
+Since only KN of the K 2 entries of F2 to FQ are nonzero,           investigate the following decision-directed choice in this
+only Q additions per entry of M are required. If this               section: Find that component of ρ such that, if we set it
+approach is used to directly approximate a square matrix,           to a suitable integer power of two, the approximation error
+the performance is poor. As will become evident in Sec-             is reduced most. Fix that component to its optimal choice
+tion III, the algorithm works well if N scales logarithmically      and go on with the second best, third best, etc. until you
+in K. In practice, that does not pose a problem unless              have set N components of ρ.
+N < log2 K, as any large matrix can be split into smaller              We will restrict the numerical results to matrices M that
+submatrices which can be approximated independently of              are independent identically distributed (iid) zero Gaussian.
+each other. To approximate a 64 × 64 matrix, one would              We note, however, that we got very similar results for
+decompose it into 6 submatrices of size 6 × 64 and 4                matrices resulting from optimum linear beam-forming in
+submatrices of size 7×64. Then, each of the 10 submatrices          iid Rayleigh fading.
+is approximated by (3).                                                Table I shows the resulting SNRs for various matrix sizes
+   There is no reason to set the sparsity in (4) to exactly         and bits of resolution. The results are averaged over at least
+N other than convenience. In fact, the sparsity in (4) is a         106 random variables. It is observed that the multiplicative
+free parameter that can be used to trade performance against        approximation performs poor for small matrices, but perfor-
+complexity.                                                         mance greatly improves with matrix size. For matrices of
+   For Q = 1, the multiplicative and the improved additive          size 12 × 4096, any additional level of resolution improves
+approach are identical. Thus, we can only hope for improve-         the SNR by slightly more than 60 dB. Comparing at equal
+ments by the multiplicative approach for more than one bit          number of additions per matrix entry, this is five times the
+per matrix entry unless, we modify the proposed algorithm           performance of the standard additive approach. Performance
+in a sensible way. Such an improvement is possible by               can be boosted by further sparsification.
+further sparsification and outlined in the sequel: You may             To quantify the benefits of further sparsification, we first
+quantize F1 harder, setting small elements to zero instead          introduce the sparsification rate
+to the closest power of 2. You may also increase the
+                                                                                                  ||Fr ||0
+sparsity of F2 to FQ by demanding fewer nonzero elements                                     Rr =          .                  (6)
+than N . This can easily enforced tightening the zero norm                                          NK
+constraint in (4). The precise choice of these parameters           Without claiming optimality, we set Rq = R, ∀q in the
+are up to optimization and beyond the scope of this paper.          sequel to reduce the number of free parameters. Table II
+Numerical investigations have shown that in case of further         shows the effects of further sparsification for matrices with
+                                                                    1024 columns. Note from the table that one addition per
+  1 If K < N factorize the transpose of the matrix instead.         matrix entry only allows for 14 dB of SNR, while for
+TABLE II: Multiplicative approximation of iid Gaussian random                                      9
+matrices of size 10/R × 1024 for various sparsification rates R
+and number of factors Q ranging from 1 to 7.                                                       8
+
+     SNR [dB]      1      2      3     4         5         6          7                            7
+
+
+
+
+                                                                             information I [bit]
+      R=1          14     64    113   162       212       261        310                           6
+       R = 12      10     33     55    78       101       123        145
+                                                                                                   5
+       R = 13      6.7    21     35    49        63         78         92
+       R = 14      5.1    15     26    36        46         55         65                          4
+
+      R = 15       4.2    12     20    28        35         43         50                          3
+      R = 16       3.6    10     16    23        29         34         40                          2
+      R = 17       3.2    8.7    14    19        24         29         34
+                                                                                                   1
+      R = 18       2.9    7.6    12    16        21         25         29
+      R = 19       2.6    6.8    11    14        18         21         25                          0
+                                                                                                       0   10   20   30   40   50     60   70   80   90   100
+           1
+      R = 10       2.4    6.1   9.6    13        16         19         22                                                       K/N
+           1
+      R = 11       2.2    5.6   8.6    12        14         17         20   Fig. 1: Information I from (9) vs. aspect ratio. For comparison,
+           1                                                                the SNR improvements from Table I are shown by the markers.
+      R = 12       2.1    5.1   7.9    11        13         15         18
+
+
+TABLE III: Multiplicative approximation of iid Gaussian random              where H2 (·) denotes the binary entropy function, i.e.,
+matrices of various sizes for optimized sparsification rate vs.
+numbers of additions per matrix entry ranging from 14 to 3.                                                H2 (x) = −x log2 x − (1 − x) log2 (1 − x)      (8)
+
+        SNR [dB]         1      1     1
+                                            1         2          3          for x ∈ (0, 1), and the right hand side of (7) follows from
+                         4      3     2
+                                                                            Sterling’s approximation for the factorial [13]. Normalizing
+        K = 256          6.3    8.3   13    27        60          93
+        K = 1024         7.9    11    16    36        78         123        the information to the number of entries in the matrix to
+        K = 4096         10     13    21    45        98         152        approximate, we get
+        K = 16384        12     17    26    55        118        183
+                                                                                                  K2
+                                                                                                                  
+                                                                                       1                     K        N
+                                                                                          log2             ≈ H2            =: I.     (9)
+                                                                                     NK           N K        N        K
+
+R = 21 , we already get 33 dB, for R = 13 even 35 dB. The                   The information I is plotted against the aspect ratio K/N
+top SNR is reached for R = 41 giving 36 dB. For half an                     in Fig. 1. This information is compared against the SNR
+addition per matrix entry, we get 10 dB of SNR for R = 12 ,                 gains due to increments in Q in Table I. For that purpose,
+but already 15 dB of SNR for R = 14 . Sparsification can                    the following procedure was used: For any matrix size, the
+even help for multiple additions per matrix entry: Consider                 largest gap between two neighboring columns in Table I was
+two additions: Without sparsification, the SNR is 64 dB,                    divided by 6 dB/bit and marked by a cross in the figure.
+for R = 12 ; however, it becomes 78 dB at Q = 4. Table III                  The match is not perfect, but quite close. This leads us
+shows some results for optimized sparsification rate.                       to conjecture that the gains of multiplicative sparse matrix
+                                                                            approximations results from the information encoded in the
+                         IV. I NTUITION                                     location of nonzero entries. As (9) is strictly increasing
+                                                                            with the aspect ratio K/N , more rectangular matrices are
+   In this section, we try to provide some preliminary insight              preferred.
+why multiplicative approximation gives so good results for
+large matrices and why the aspect ratio of log2 K × K                       B. Geometric Approach
+works so well. However, we emphasize that we have just                         In the additive approximation (2), the residual error is
+started with these investigations and caution the reader that               bounded from above by one-third of the approximation
+the material in this section is not yet based on solid theory.              calculated in the previous stage. To see this, note that the
+                                                                            maximum error occurs, if the magnitude of the desired value
+A. Combinatorial Approach                                                   v is exactly in the middle of two adjacent powers of two a
+   The information encoded in a matrix approximation is                     and 2a. In this case, we have
+composed of two parts: the precise setting of the powers of                                                                  |v|
+                                                                                   |v| − a = 2a − |v|      ⇒       |v| − a =     .
+two and the positions were the nonzero entries take place.                                                                    3
+The larger the matrix, the more information is encoded in                   Assuming the residual error to be uniformly1 distributed, it
+these positions. For a K × K matrix with N K nonzero                        is easily concluded that the error has power v 2 /27. Thus,
+entries, this information is
+                                                                               1 Calculating the error exactly with respect to its true slightly non-
+                        K2
+                                       
+                                         N                                  uniform distribution, that arises from the Gaussianity of the source, leads
+                log2           ≈ K 2 H2                 (7)                 to deviations around 0.1 dB.
+                       NK                K
+                                 target vector                                                parameters 12 and N 2−1 . The corresponding density is given
+         best                                                                                 by [14]
+                scal                                                                                                     1 1
+
+
+
+
+                                                                               rro r
+                                                                                                                                      N −3
+                     ed   base                                                                               p%2 (r) = r− 2 (1 − r) 2 .               (13)
+                                                                                                                         Z
+
+
+
+
+                                                                           le e
+                                 vect
+                                      or
+
+
+
+
+                                                                          ang
+                                               dist
+                                                    a
+                                                                                              Here, Z = B( 12 , N 2−1 ) is a normalizing constant, also
+                                                          nce
+                                                              er   ro r                       known as partition function, with B(·, ·) denoting the Beta
+                                                                                              function.          √
+      Fig. 2: Decomposition of the approximation error.                                         Substituting % = r leads to the density
+                                                                                                                        2            N −3
+                                                                                                                p% (%) =    1 − %2 2                  (14)
+every additional summand improves the SNR by a factor of                                                                Z
+27.                                                                                           and the cumulative distribution function
+   In the multiplicative case, we approximate the N -                                                                   Z%
+dimensional target vector v by scaling the best suited one                                                            2              N −3
+                                                                                                           P% (%) =        (1 − ξ 2 ) 2 dξ.           (15)
+out of the K base vectors provided by the columns of L in                                                             Z
+                                                                                                                           0
+(4) with a power of two. We take the residual error vector
+as the new target vector and repeat the procedure for a total                                 The distribution of the maximum
+of N R times per matrix factor. Two types of errors are                                                                              K
+                                                                                                                 Pmax (%) = [P% (%)]                  (16)
+possible in this case, namely missing the target by direction
+and by distance. By the orthogonality principle, these two                                    is shown in the Appendix to converge to
+errors are orthogonal to each other, cf. Fig. 2. Denoting the                                                                (          √
+angle between the target vector v and the best base vector                                                                       0 % < 1 − 4−R
+                                                                                                  lim     lim     Pmax (%) =            √       .
+by α, the two errors become kvk |sin α| and kvk |cos α| a,                                       K→∞ N → 1 log2 K
+                                                                                                          R                      1 % > 1 − 4−R
+respectively, where a is assumed uniformly distributed on                                                                                      (17)
+[0; 31 ).                                                                                     under the scaling law (10). Thus, we find
+   In order to approximate the angle α, we assume a loga-
+rithmic relation between the number of rows and columns,                                            cos2 α = 1 − 4−R           ,   sin2 α = 4−R .     (18)
+i.e.                                                                                          Successive reductions of approximation errors multiplica-
+                             1
+                       N = log2 K.                       (10)                                 tively compound on top of previous reductions. Thus, we
+                            R                                                                 need to average with respect to the distance error in the
+We normalize all base vectors and the target vector without                                   logarithmic domain. For R = 1, the expected SNR becomes
+loss of generality to unit length. Now, they all lie on an                                                  1
+                                                                                                                                
+N -dimensional hypersphere, whereon we assume them to                                                       Z3                                √ !
+                                                                                                                   1 3 2                          3π
+                                                                                              γ = exp −3 ln         + a da = 3 exp 2 −
+                                                                                                                               
+be uniformly distributed. Without loss of generality, we set
+                                                                                                                   4 4                            3
+the target vector to be the first unit vector of the Carthesian                                             0
+coordinate system.                                                                                                                                    (19)
+   The uniform distribution on the hypersphere is canoni-                                     which is well approximated by 3.614. It hardly differs from
+                                                                                              18
+cally created by normalizing an iid Gaussian random vector                                     5 = 3.6 which arises from linear instead of logarithmic
+to unit norm. Let %k be the magnitude of the crosscorrelation                                 averaging over the distance error.
+coefficient between the target vector and the k-th base                                          Finally, the SNR per matrix factor becomes
+vector. Then, we have
+                                                                                                                           γN R                       (20)
+                            cos α = max %k .                                           (11)
+                                            k                                                 since the projection procedure is repeated for any of the
+                                                                                              N R nonzero entries of the rows of the right matrix factors.
+We can now construct the squared correlation coefficient %2k
+                                                                                              Note that the SNR grows unboundedly with matrix size N .
+out of N iid Gaussian random variables gn as
+                                                                                              Furthermore, the error in direction dominates over the error
+                                           g12                                                in distance. Thus, there is no point in going for multiple
+                                 %2k =     N
+                                                      .                                (12)   bits of resolution per matrix factor.
+                                           P
+                                                gn2
+                                         n=1                                                  C. Optimum Aspect Ratio
+In the numerator, only the first Gaussian random variable                                       The aspect ratio cannot become arbitrarily large. If the
+shows up due to the inner product with the first unit vector                                  number of rows N becomes too small, the probability that
+of the coordinate system. The ratio in (12) is known to                                       two columns become identical rises. In the compressive
+be distributed according to the beta distribution with shape                                  sensing interpretation of (4), identical columns mean to take
+the same measurement twice. This is clearly a waste of           networks need neither have precise weights nor be densely
+resources.                                                       connected, if they are sufficiently deep. Any quantization
+   Let p be the probability that two matrix entries quantized    errors at intermediate layers and any level of sparsity can
+to powers of two are identical. Then, the probability that       be compensated for by more layers and larger dimensions.
+two columns of F1 are identical is pN . Since there are
+K(K − 1)/2 different pairs of columns in total, we can                                             A PPENDIX
+use the union bound to show that the probability of having          In order to show the convergence of the cumulative
+at least two identical columns is smaller than                   distribution function of the maximum correlation coefficient
+                           K(K − 1)                              to the unit step function, recall the following limit holding
+                        pN             .                  (21)   for any positive x and r
+                                 2
+                                                                                               
+If we set a fixed threshold for that event to happen and solve                                     0        r<1
+                                                                                    x K 
+for N , we see that it scales logarithmically in K.                      lim 1 − r          =      exp(x) r = 1 .         (23)
+                                                                        K→∞         K
+                                                                                                   1        r>1
+                                                                                               
+D. Connection to Rate-Distortion Theory
+   The sparsification rate R has an interesting interpretation   The limiting behavior of Pmax (%) is, thus, decided by the
+by looking at the problem from a rate-distortion theory          scaling of 1 − P% (%) with respect to K. The critical scaling
+                                                                     1
+point of view. Consider a Gaussian source being lossy            is K  . Such a scaling implies a slope of −1 in doubly
+compressed to rate R. Following the quadratic Gaussian           logarithmic scale. Thus,
+source coding [15], the expression derived for the squared                            ∂
+angle error in (18), i.e., 4−R , gives the mean-squared                         lim        log2 [1 − P% (%)] = −1.                     (24)
+                                                                               N →∞ ∂(N R)
+distortion achieved for this compression rate. In other
+                                                                 Explicit calculation of the derivative yields
+words, by interpreting the columns of matrix L in (4) as
+entries of a Gaussian codebook and sparsification rate R                       R1             N −3           
+as its compression rate, the squared angle error in Fig. 2                          (1 − ξ 2 ) 2 log2 1 − ξ 2 dξ.
+                                                                               %
+corresponds to the distortion specified by the rate-distortion           lim                                               = −1        (25)
+                                                                       N →∞                 R1                N −3
+curve.                                                                                 2R        (1 − ξ 2 )     2    dξ.
+                                                                                            %
+                       V. O UTLOOK
+                                                                 and saddle point integration gives [16, Chapter 4]
+   For optimum aspect ratio, the numerical results suggest
+that the SNR scales as                                                             1
+                                                                                      log2 1 − %2 = −1.
+                                                                                                   
+                                                                                                                                       (26)
+                             (Q−1)R                                              2R
+                       RK 2
+                    
+                                                      (22)       This immediately leads to %2 = 1 − 4−R .
+                      log2 K
+Note that this does not only grow to infinity for large Q, but                                   R EFERENCES
+also for large K whenever Q > 1. Note that the number of          [1] N. Fatema, G. Hua, Y. Xiang, D. Peng, and I. Natgunanathan,
+additions per matrix entry is QR. Thus, for K growing large           “Massive MIMO linear precoding: A survey,” IEEE Systems Journal,
+                                                                      vol. 12, no. 4, pp. 3920–3931, December 2018.
+and R vanishing with 1/R = o(log K), the computational            [2] H. Yan, S. Ramesh, T. Gallagher, C. Ling, and D. Cabric, “Per-
+effort per matrix entry goes to zero while, at the same time,         formance, power, and area design trade-offs in millimeter-wave
+the SNR goes to infinity.                                             transmitter beamforming architectures,” IEEE Circuits and Systems
+                                                                      Magazine, vol. 19, no. 2, pp. 33–58, May 2019.
+                    VI. C ONCLUSIONS                              [3] P. Orponen, “Computational complexity of neural networks: a sur-
+                                                                      vey,” NeuroCOLT Technical Report Serie, October 1994.
+   Matrix multiplications can be implemented much more            [4] M. Takeda and J. W. Goodman, “Neural networks for computation:
+efficiently by multiplicative decompositions, if the matrix           number representations and programming complexity,” Applied Op-
+                                                                      tics, vol. 25, no. 18, pp. 3033–3046, September 1986.
+is sufficiently large. For applications in massive MIMO and       [5] J. S. Judd, Neural network design and the complexity of learning.
+millimeter wave communications, beamforming can eventu-               MIT press, USA, 1990.
+ally be implemented with even less than half an addition per      [6] M. Bianchini and F. Scarselli, “On the complexity of neural network
+                                                                      classifiers: A comparison between shallow and deep architectures,”
+matrix entry. However, these gains come at the expense of             IEEE Transactions on Neural Networks and Learning Systems,
+larger storage requirements for the sparse matrices. Neural           vol. 25, no. 8, pp. 1553–1565, August 2014.
+networks, however, may be hard wired after having been            [7] R. Zimmermann, “Computer arithmetic: Principles, architectures, and
+                                                                      VLSI design,” Integrated Systems Laboratory, ETH Zürich; available
+trained. In this case, no additional storage is required and          online at http:// www.iis.ee.ethz.ch/ ~zimmi/ publications/ comp_arith_
+the gains can be utilized in full. In field programmable              notes.pdf , 1997.
+gate array (FPGA) implementations even an update of the           [8] J. L. Hennessy and D. A. Patterson, Computer architecture: a
+                                                                      quantitative approach, 5th ed. Elsevier, MA, USA, 2011.
+factorized matrix is possible. Assuming that our findings         [9] A. V. Oppenheim, Discrete-Time Signal Processing: Pearson New
+generalize to nonlinear multidimensional functions, neural            International Edition. Pearson Education Limited, 2013.
+[10] B.-R. Horng, H. Samueli, and A. Wilson, “The design of two-channel
+     lattice-structure perfect-reconstruction filter banks using powers-of-
+     two coefficients,” IEEE Transactions on Circuits and Systems I:
+     Fundamental Theory and Applications, vol. 40, no. 7, pp. 497–499,
+     July 1993.
+[11] N. Boullis and A. Tisserand, “Some optimizations of hardware mul-
+     tiplication by constant matrices,” IEEE Transactions on Computers,
+     vol. 54, no. 10, pp. 1271–1282, October 2005.
+[12] L. Aksoy, P. Flores, and J. Monteiro, “A novel method for the ap-
+     proximation of multiplierless constant matrix vector multiplication,”
+     EURASIP Journal on Embedded Systems, vol. 2016, no. 1, p. 12,
+     May 2016.
+[13] D. Romik, “Stirling’s approximation for n!: The ultimate short
+     proof?” The American Mathematical Monthly, vol. 107, no. 6, pp.
+     556–557, June 2000.
+[14] G. Casella and R. L. Berger, Statistical inference, 2nd ed. Duxbury
+     Pacific Grove, CA, USA, 2002.
+[15] A. El Gamal and Y.-H. Kim, Network information theory. Cam-
+     bridge University Press, UK, 2011.
+[16] N. Merhav et al., “Statistical physics and information theory,” Foun-
+     dations and Trends® in Communications and Information Theory,
+     vol. 6, no. 1–2, pp. 1–212, 2010.
+
