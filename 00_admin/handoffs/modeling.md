@@ -12,7 +12,8 @@
   - 题面 DOCX SHA-256 `c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841`
   - 用户 README SHA-256 `ba53f44660d951dbef5d0b1545e25e7449ca4f59e711aed83aba3b652a94fef8`
   - `03_model/tournament_protocol.json` 本轮**未修改**，保持 `status = "NOT_RUN"`、`problems = []`
-- 内容提交哈希：见下方"提交"一节（handoff 自身提交哈希以推送后的 `git log` 为准）
+- 内容提交哈希：`80ec0bd8365f76aa8e035680140516de8c05b23d`（已推送到 `origin/agent/modeling`；上游同步提交 `4edcc47cc88681bb2c4d16ca922bc6c6aa87f81b` 由主 Agent 侧产生并已随本次推送一并上远端）
+- 前序交接提交：`3c586e0`（内容提交 `c3bd76de7c3288bd7695eb77997878fa0739a418`）
 - 命令与 run-id：
   - `cd 03_model/checks && python verify_row_bound.py`（退出码 0；纯标准库，无第三方依赖）
   - `git merge main`、`git diff --check`、pre-commit 边界检查
@@ -50,8 +51,20 @@
 | 秩传播规则随机复算 | `PASS`（无违例；同时更正了"行二稀疏蕴涵秩 ≤ 2^K"这一错误命题） |
 | 尺度退化复算 | `PASS`（残差按 `c` 线性缩放） |
 | `git diff --check` | `PASS`（无空白错误） |
-| 分支写入边界（pre-commit hook） | `PASS` |
+| 分支写入边界（pre-commit hook） | `PASS`（hook 实际执行通过；见下方"环境阻断"） |
+| 推送到 `origin/agent/modeling` | `PASS`（`4edcc47..80ec0bd`） |
+| `03_model/tournament_protocol.json` 未被改动 | `PASS`（`git diff 3c586e0 80ec0bd -- 03_model/tournament_protocol.json` 为空） |
+| `01_problem/original/` 未被改动 | `PASS`（同上 diff 路径为空） |
 | 题面规则冻结 / 检索 / 协议冻结 / 对擂 / 结果冻结 | `BLOCKED` / `NOT_RUN` / `NOT_RUN` / `NOT_RUN` / `NOT_RUN` |
+
+### 环境阻断（本轮遇到并已解决，需主 Agent 知晓）
+
+本会话的初始文件沙箱为 `workspace-write`，在其中：
+
+- `git commit` **无法执行 pre-commit hook**：hook 是 bash 脚本，Git for Windows 需要用 bash 解释器启动它，而受限沙箱不允许创建命名管道，bash 立即以 `fatal error - couldn't create signal pipe, Win32 error 5` 退出（`git commit` 随之返回 128）。
+- `git push`/`git fetch` 失败于 `schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS`，受限沙箱读不到 HTTPS 凭证。
+
+两次操作在获得更宽权限后成功（`commit_exit=0`、`push_exit=0`）。**未使用 `--no-verify`**：边界检查是真实执行的，不是被绕过的。当前会话的文件策略已放宽为 `danger-full-access` 且审批提示已关闭，后续交接应当可以直接提交与推送。
 
 ### 脚本自查（本轮修复的自身缺陷，留档以防误引）
 
