@@ -1,0 +1,475 @@
+{
+  "eq5_audit": {
+    "a1_rank": 8,
+    "a1_rank_of_replaced_row": 8,
+    "a2_rank": 7,
+    "a3_rank": 8,
+    "a4_rank": 8,
+    "best_error_over_all_orderings": 1.7677669529663689,
+    "conclusion": "Eq. (5) as extracted is not an exact identity for F_8 under any factor ordering or permutation convention: the best achievable maximum entry error over 240 readings is 1.7678, so Eq. (5) is an approximate (lossy) factorisation and must not be used as a ground-truth reference or as an exact radix-8 building block.",
+    "d_rank": 8,
+    "dft_rank": 8,
+    "exact_possible": false,
+    "orderings_tested": 240
+  },
+  "generated": [],
+  "propagation_checks": [
+    {
+      "k": 1,
+      "max_observed_rank_of_product": 13,
+      "max_observed_row_support": 2,
+      "n": 16,
+      "note": "rank(A_1...A_K) <= min_k rank(A_k) is checked per trial; row support gives min(N, 2^K) but no rank cap.",
+      "r": 2,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "support_cap": 2,
+      "support_holds": true,
+      "trials": 20
+    },
+    {
+      "k": 2,
+      "max_observed_rank_of_product": 13,
+      "max_observed_row_support": 4,
+      "n": 16,
+      "note": "rank(A_1...A_K) <= min_k rank(A_k) is checked per trial; row support gives min(N, 2^K) but no rank cap.",
+      "r": 2,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "support_cap": 4,
+      "support_holds": true,
+      "trials": 20
+    },
+    {
+      "k": 3,
+      "max_observed_rank_of_product": 11,
+      "max_observed_row_support": 8,
+      "n": 16,
+      "note": "rank(A_1...A_K) <= min_k rank(A_k) is checked per trial; row support gives min(N, 2^K) but no rank cap.",
+      "r": 2,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "support_cap": 8,
+      "support_holds": true,
+      "trials": 20
+    },
+    {
+      "k": 4,
+      "max_observed_rank_of_product": 9,
+      "max_observed_row_support": 11,
+      "n": 16,
+      "note": "rank(A_1...A_K) <= min_k rank(A_k) is checked per trial; row support gives min(N, 2^K) but no rank cap.",
+      "r": 2,
+      "rank_rule_holds": true,
+      "rank_rule_violations": 0,
+      "support_cap": 16,
+      "support_holds": true,
+      "trials": 20
+    }
+  ],
+  "script": "verify_row_bound.py",
+  "t0_target_sanity": {
+    "F4xF8": {
+      "columns_orthonormal": true,
+      "distinct_row_moduli": [
+        0.176776695297
+      ],
+      "is_F32": false,
+      "max_abs_difference_vs_F32": 0.35355339059327373,
+      "shape": [
+        32,
+        32
+      ],
+      "worst_column_orthonormality_residual": 7.014216182986e-16
+    },
+    "N4": {
+      "columns_orthonormal": true,
+      "entry_0_0": [
+        0.5,
+        -0.0
+      ],
+      "entry_0_1": [
+        0.5,
+        -0.0
+      ],
+      "entry_0_2": [
+        0.5,
+        -0.0
+      ],
+      "entry_1_1": [
+        3.061616997868383e-17,
+        -0.5
+      ],
+      "raw_vs_normalised_ratio": [
+        2.0
+      ],
+      "worst_column_orthonormality_residual": 1.2989340843532398e-16
+    },
+    "N8": {
+      "columns_orthonormal": true,
+      "entry_0_0": [
+        0.35355339059327373,
+        -0.0
+      ],
+      "entry_0_1": [
+        0.35355339059327373,
+        -0.0
+      ],
+      "entry_0_2": [
+        0.35355339059327373,
+        -0.0
+      ],
+      "entry_1_1": [
+        0.25,
+        -0.25
+      ],
+      "raw_vs_normalised_ratio": [
+        2.8284271247461903
+      ],
+      "worst_column_orthonormality_residual": 6.871046789485633e-16
+    }
+  },
+  "t3_exact_construction_summary": {
+    "N16": {
+      "C_q16": 544,
+      "K": 5,
+      "L": 34,
+      "beta": 0.25,
+      "rmse": 1.735054582904924e-16
+    },
+    "N2": {
+      "C_q16": 0,
+      "K": 2,
+      "L": 0,
+      "beta": 0.7071067811865475,
+      "rmse": 3.0616169978683824e-17
+    },
+    "N32": {
+      "C_q16": 1568,
+      "K": 6,
+      "L": 98,
+      "beta": 0.17677669529663687,
+      "rmse": 1.7283563893705444e-16
+    },
+    "N4": {
+      "C_q16": 32,
+      "K": 3,
+      "L": 2,
+      "beta": 0.5,
+      "rmse": 4.96038647025573e-17
+    },
+    "N64": {
+      "C_q16": 4128,
+      "K": 7,
+      "L": 258,
+      "beta": 0.125,
+      "rmse": 1.6532494382006242e-16
+    },
+    "N8": {
+      "C_q16": 160,
+      "K": 4,
+      "L": 10,
+      "beta": 0.35355339059327373,
+      "rmse": 1.0790396304513473e-16
+    }
+  },
+  "t4_exact_construction": {
+    "N16": {
+      "C_q16": 544,
+      "K": 5,
+      "L": 34,
+      "L_position_count_matches_formula": true,
+      "L_shared_negation": 34,
+      "beta": 0.25,
+      "exact": true,
+      "identity_max_abs_error": 9.45952333665428e-16,
+      "max_row_support": 2,
+      "n": 16,
+      "normalisation_divisor": 1.7411011265922482,
+      "rmse": 1.735054582904924e-16,
+      "t": 4
+    },
+    "N2": {
+      "C_q16": 0,
+      "K": 2,
+      "L": 0,
+      "L_position_count_matches_formula": true,
+      "L_shared_negation": 0,
+      "beta": 0.7071067811865475,
+      "exact": true,
+      "identity_max_abs_error": 6.123233995736765e-17,
+      "max_row_support": 2,
+      "n": 2,
+      "normalisation_divisor": 1.4142135623730951,
+      "rmse": 3.0616169978683824e-17,
+      "t": 1
+    },
+    "N32": {
+      "C_q16": 1568,
+      "K": 6,
+      "L": 98,
+      "L_position_count_matches_formula": true,
+      "L_shared_negation": 98,
+      "beta": 0.17677669529663687,
+      "exact": true,
+      "identity_max_abs_error": 9.933545269803417e-16,
+      "max_row_support": 2,
+      "n": 32,
+      "normalisation_divisor": 1.7817974362806785,
+      "rmse": 1.7283563893705444e-16,
+      "t": 5
+    },
+    "N4": {
+      "C_q16": 32,
+      "K": 3,
+      "L": 2,
+      "L_position_count_matches_formula": true,
+      "L_shared_negation": 2,
+      "beta": 0.5,
+      "exact": true,
+      "identity_max_abs_error": 1.2246467991473532e-16,
+      "max_row_support": 2,
+      "n": 4,
+      "normalisation_divisor": 1.5874010519681994,
+      "rmse": 4.96038647025573e-17,
+      "t": 2
+    },
+    "N64": {
+      "C_q16": 4128,
+      "K": 7,
+      "L": 258,
+      "L_position_count_matches_formula": true,
+      "L_shared_negation": 258,
+      "beta": 0.125,
+      "exact": true,
+      "identity_max_abs_error": 9.985891654538779e-16,
+      "max_row_support": 2,
+      "n": 64,
+      "normalisation_divisor": 1.8114473285278132,
+      "rmse": 1.6532494382006242e-16,
+      "t": 6
+    },
+    "N8": {
+      "C_q16": 160,
+      "K": 4,
+      "L": 10,
+      "L_position_count_matches_formula": true,
+      "L_shared_negation": 10,
+      "beta": 0.35355339059327373,
+      "exact": true,
+      "identity_max_abs_error": 5.005631686059007e-16,
+      "max_row_support": 2,
+      "n": 8,
+      "normalisation_divisor": 1.6817928305074292,
+      "rmse": 1.0790396304513473e-16,
+      "t": 3
+    }
+  },
+  "t5_support_bounds": {
+    "N16": {
+      "K1": {
+        "cap_for_threshold": 13.44,
+        "k": 1,
+        "rmse_lb_beta_1": 0.23385358667337133,
+        "support_cap": 2
+      },
+      "K2": {
+        "cap_for_threshold": 13.44,
+        "k": 2,
+        "rmse_lb_beta_1": 0.21650635094610965,
+        "support_cap": 4
+      },
+      "K3": {
+        "cap_for_threshold": 13.44,
+        "k": 3,
+        "rmse_lb_beta_1": 0.1767766952966369,
+        "support_cap": 8
+      },
+      "K4": {
+        "cap_for_threshold": 13.44,
+        "k": 4,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 16
+      },
+      "K5": {
+        "cap_for_threshold": 13.44,
+        "k": 5,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 16
+      },
+      "K6": {
+        "cap_for_threshold": 13.44,
+        "k": 6,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 16
+      },
+      "K7": {
+        "cap_for_threshold": 13.44,
+        "k": 7,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 16
+      }
+    },
+    "N32": {
+      "K1": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 1,
+        "rmse_lb_beta_1": 0.1711632992203644,
+        "support_cap": 2
+      },
+      "K2": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 2,
+        "rmse_lb_beta_1": 0.16535945694153692,
+        "support_cap": 4
+      },
+      "K3": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 3,
+        "rmse_lb_beta_1": 0.15309310892394862,
+        "support_cap": 8
+      },
+      "K4": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 4,
+        "rmse_lb_beta_1": 0.125,
+        "support_cap": 16
+      },
+      "K5": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 5,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 32
+      },
+      "K6": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 6,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 32
+      },
+      "K7": {
+        "cap_for_threshold": 21.759999999999998,
+        "k": 7,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 32
+      }
+    },
+    "N64": {
+      "K1": {
+        "cap_for_threshold": 23.04,
+        "k": 1,
+        "rmse_lb_beta_1": 0.12303137303143455,
+        "support_cap": 2
+      },
+      "K2": {
+        "cap_for_threshold": 23.04,
+        "k": 2,
+        "rmse_lb_beta_1": 0.12103072956898178,
+        "support_cap": 4
+      },
+      "K3": {
+        "cap_for_threshold": 23.04,
+        "k": 3,
+        "rmse_lb_beta_1": 0.11692679333668567,
+        "support_cap": 8
+      },
+      "K4": {
+        "cap_for_threshold": 23.04,
+        "k": 4,
+        "rmse_lb_beta_1": 0.10825317547305482,
+        "support_cap": 16
+      },
+      "K5": {
+        "cap_for_threshold": 23.04,
+        "k": 5,
+        "rmse_lb_beta_1": 0.08838834764831845,
+        "support_cap": 32
+      },
+      "K6": {
+        "cap_for_threshold": 23.04,
+        "k": 6,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 64
+      },
+      "K7": {
+        "cap_for_threshold": 23.04,
+        "k": 7,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 64
+      }
+    },
+    "N8": {
+      "K1": {
+        "cap_for_threshold": 7.36,
+        "k": 1,
+        "rmse_lb_beta_1": 0.30618621784789724,
+        "support_cap": 2
+      },
+      "K2": {
+        "cap_for_threshold": 7.36,
+        "k": 2,
+        "rmse_lb_beta_1": 0.25,
+        "support_cap": 4
+      },
+      "K3": {
+        "cap_for_threshold": 7.36,
+        "k": 3,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 8
+      },
+      "K4": {
+        "cap_for_threshold": 7.36,
+        "k": 4,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 8
+      },
+      "K5": {
+        "cap_for_threshold": 7.36,
+        "k": 5,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 8
+      },
+      "K6": {
+        "cap_for_threshold": 7.36,
+        "k": 6,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 8
+      },
+      "K7": {
+        "cap_for_threshold": 7.36,
+        "k": 7,
+        "rmse_lb_beta_1": 0.0,
+        "support_cap": 8
+      }
+    }
+  },
+  "t6_scale_degeneracy": {
+    "identity_residual_max": 5.005631686059007e-16,
+    "note": "scaling the whole factorisation by c and beta by c rescales product and target together, so the residual scales linearly with c: the free scale in Eq. (6) is unconstrained, which is why any K* or C* statement is conditional on an explicit beta normalisation convention.",
+    "points": [
+      {
+        "K": 4,
+        "beta": 0.7071067811865475,
+        "c": 2.0,
+        "equals_c_times_reference": true,
+        "residual": 2.1580792609026945e-16
+      },
+      {
+        "K": 4,
+        "beta": 0.17677669529663687,
+        "c": 0.5,
+        "equals_c_times_reference": true,
+        "residual": 5.395198152256736e-17
+      },
+      {
+        "K": 4,
+        "beta": 0.00035355339059327376,
+        "c": 0.001,
+        "equals_c_times_reference": true,
+        "residual": 1.0967535452350967e-19
+      }
+    ],
+    "reference_beta": 0.35355339059327373,
+    "reference_residual": 1.0790396304513473e-16
+  }
+}
