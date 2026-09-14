@@ -1,0 +1,1144 @@
+                                         IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                         1
+
+
+
+
+                                                 Flexible Multi-layer Sparse Approximations of
+                                                           Matrices and Applications
+                                                                                     Luc Le Magoarou, Rémi Gribonval, Fellow, IEEE
+
+
+
+
+                                            Abstract—The computational cost of many signal processing                    algorithm given in [7], this multi-layer sparse factorization is
+                                         and machine learning techniques is often dominated by the                       actually the natural representation of any fast linear transform.
+                                         cost of applying certain linear operators to high-dimensional
+                                         vectors. This paper introduces an algorithm aimed at reducing
+arXiv:1506.07300v2 [cs.LG] 29 Mar 2016
+
+
+
+
+                                         the complexity of applying linear operators in high dimension
+                                         by approximately factorizing the corresponding matrix into
+                                         few sparse factors. The approach relies on recent advances
+                                         in non-convex optimization. It is first explained and analyzed
+                                         in details and then demonstrated experimentally on various
+                                         problems including dictionary learning for image denoising, and                 Fig. 1. The Hadamard matrix of size n × n with n = 32 (left) and
+                                         the approximation of large matrices arising in inverse problems.                its factorization. The matrix is totally dense so that the naive storage and
+                                                                                                                         multiplication cost O(n2 = 1024). On the other hand, we show the
+                                                                                                                         factorization of the matrix into log2 (n) = 5 factors, each having 2n = 64
+                                           Index Terms—Sparse representations, fast algorithms, dictio-                  non-zero entries, so that the storage and multiplication in the factorized form
+                                         nary learning, low complexity, image denoising, inverse problems.               cost O(2n log2 (n) = 320).
+
+                                                                                                                            For example each step of the butterfly radix-2 FFT can be
+                                                                I. I NTRODUCTION                                         seen as the multiplication by a sparse matrix having only two
+                                                                                                                         non-zero entries per row and per column. This fact is further
+                                              PARSITY has been at the heart of a plethora of signal
+                                         S    processing and data analysis techniques over the last two
+                                         decades. These techniques usually impose that the objects
+                                                                                                                         illustrated in the case of the Hadamard transform on Figure 1.
+                                                                                                                         For other examples, see e.g. [1, Appendix A].
+                                         of interest be sparse in a certain domain. They owe their                          Inspired by these widely used transforms, our objective is
+                                         success to the fact that sparse objects are easier to manipulate                to find approximations of operators of interest encountered
+                                         and more prone to interpretation than dense ones especially                     in concrete applications, as products of sparse matrices as in
+                                         in high dimension. However, to efficiently manipulate high-                     (1). Such approximations will be called Flexible Approximate
+                                         dimensional data, it is not sufficient to rely on sparse objects:               MUlti-layer Sparse Transforms (FAµST).
+                                         efficient operators are also needed to manipulate these objects.                   As a primary example of potential application of such
+                                            The n-dimensional Discrete Fourier Transform (DFT) is                        approximations, consider linear inverse problems, where data
+                                         certainly the most well known linear operator with an efficient                 and model parameters are linked through a linear operator.
+                                         implementation: the Fast Fourier Transform (FFT) [3], allows                    State of the art algorithms addressing such problems with
+                                         to apply the operator in O(n log n) arithmetic operations                       sparse regularization [8]–[12] are known to heavily rely on
+                                         instead of O(n2 ) in its dense form. Similar complexity savings                 matrix-vector products involving both this operator and its
+                                         have been achieved for other widely used operators such as                      adjoint. As illustrated in Section V on a biomedical inverse
+                                         the Hadamard transform [4], the Discrete Cosine Transform                       problem, replacing the operator by an accurate FAµST has
+                                         (DCT) [5] or the Discrete Wavelet Transform (DWT) [6]. For                      the potential to substantially accelerate these methods.
+                                         all these fast linear transforms, the matrix A corresponding                       To choose a regularizer for inverse problems, dictionary
+                                         to the dense form of the operator admits a multi-layer sparse                   learning is a common method used to learn the domain in
+                                         expression,                                                                     which some training data admits a sparse representation [13].
+                                                                         YJ                                              Its applicability is however also somewhat limited by the need
+                                                                    A=       Sj ,                      (1)               to compute many matrix-vector products involving the learned
+                                                                              j=1                                        dictionary and its adjoint, which are in general dense matrices.
+                                         corresponding to a multi-layer factorization1 into a small num-                 We will see that recent approaches to learn fast dictionaries
+                                         ber J of sparse factors Sj . Following the definition of a linear               [14], [15] can be seen as special cases of the FAµST dictionary
+                                                                                                                         learning approach developed in Section VI, where the learned
+                                           Luc Le Magoarou (luc.le-magoarou@inria.fr) and Rémi Gribon-                  dictionaries are constrained to be FAµST.
+                                         val (remi.gribonval@inria.fr) are both with Inria, Rennes, France,
+                                         PANAMA team. This work was supported in part by the European Research
+                                                                                                                            Beyond the above considered examples, any task where
+                                         Council, PLEASE project (ERC-StG- 2011-277906). Parts of this work have         it is required to apply a linear operator in high dimension
+                                         been presented at the conferences ICASSP 2015 [1] and EUSIPCO 2015 [2].         would obviously benefit from a FAµST corresponding to the
+                                         Copyright (c) 2014 IEEE. Personal use of this material is permitted. However,
+                                         permission to use this material for any other purposes must be obtained from
+                                                                                                                         considered operator. For example, in the emerging area of
+                                         the IEEE by sending a request to pubs-permissions@ieee.org.                     signal processing on graphs [16], novel definitions of usual
+                                           1 The product being taken from right to left:
+                                                                                         QJ
+                                                                                           j=1 Sj = SJ · · · S1          operators such as the Fourier or wavelet transforms have been
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                             2
+
+
+
+introduced. They have no known general sparse forms, and                         to trade-off data fidelity and sparsity of the factors.
+consequently no associated fast algorithms. Finding multi-
+layer sparse approximations of these usual operators on graphs
+                                                                                 B. Expected benefits of FAµSTs
+would certainly boost the dissemination and impact of graph
+signal processing techniques.                                                       A multi-layer sparse approximation of an operator A brings
+Objective. The quest for multi-layer sparse approximations of                    several benefits, provided the relative complexity of the fac-
+large linear operators, which is the core objective of this paper,               torized form is small with respect to the dimensions of A.
+actually amounts to a matrix factorization problem, where the                    For the sake of conciseness, let us introduce sj = kSj k0
+matrix A corresponding to the dense form of the operator is                      the totalPamount of non-zero entries in the jth factor, and
+                                                                                           J
+to be decomposed into the product of sparse factors Sj , so as                   stot = j=1 sj the total number of non-zero entries in the
+to satisfy an approximate form of (1).                                           whole factorization.
+Contributions. This paper substantially extends the prelimi-
+                                                                                 Definition II.1. The Relative Complexity (abbreviated RC) is
+nary work started in [1], [2] and [17], both on the theoretical
+                                                                                 the ratio between the total number of non-zero entries in the
+and experimental sides, with the following contributions:
+                                                                                 FAµST and the number of non-zero entries of A:
+   • A general framework for multi-layer sparse approxima-
+     tion (MSA) is introduced, that allows to incorporate                                                        stot
+                                                                                                         RC :=        .                    (3)
+     various constraints on the sought sparse form;                                                             kAk0
+   • Recent advances in non-convex optimization [18] are
+                                                                                 It is also interesting to introduce the Relative Complexity Gain
+     exploited to tackle the resulting non-convex optimization                   (RCG), which is simply the inverse of the Relative Complexity
+     problem with local convergence guarantees;                                  (RCG = 1/RC).
+   • A heuristic hierarchical factorization algorithm leveraging
+     these optimization techniques is proposed, that achieves                       The aforementioned condition for the factorized form to be
+     factorizations empirically stable to initialization;                        beneficial writes: RC  1 or equivalently RCG  1.
+   • The versatility of the framework is illustrated with ex-                       FAµSTs reduce computational costs in all aspects of their
+     tensive experiments on two showcase applications, linear                    manipulation, namely a lower Storage cost, a higher Speed of
+     inverse problems and dictionary learning, demonstrating                     multiplication and an improved Statistical significance.
+     its practical benefits.                                                        1) Storage cost: Using the Coordinate list (COO) storage
+   The remaining of the paper is organized as follows. The                       paradigm [19], one can store a FAµST using O(stot ) floats and
+problem is formulated, related to prior art and the expected                     integers. Indeed each non-zero entry (float) in the factorization
+benefits of FAµSTs are systematically explained in Section II.                   can be located using three integers (one for the factor, one for
+A general optimization framework for the induced matrix fac-                     the row and one for the column), which makes stot floats and
+torization problem is introduced in Section III and Section IV,                  3stot integers to store. One needs also J + 1 supplementary
+and as a first illustration we demonstrate that it is possible to                integers to denote the size of the factors a1 to aJ+1 . In
+reverse-engineer the Hadamard transform. Several applications                    summary the storage gain is of the order of RCG.
+and experiments on various tasks, illustrating the versatility of                   2) Speed of multiplication: Applying the FAµST or its
+the proposed approach are performed in sections V and VI.                        transpose to a vector v ∈ Rn can be easily seen to require
+                                                                                 at most O(stot ) floating point operations (flops), instead of
+                II. P ROBLEM FORMULATION                                         O(mn) for a classical dense operator of same dimension, so
+Notation. Throughout this paper, matrices are denoted by bold                    the computational gain is, like the storage gain, of the order
+upper-case letters: A; vectors by bold lower-case letters: a;                    of RCG.
+the ith column of a matrix A by: ai ; and sets by calligraphic                      3) Statistical significance: Another interesting though less
+symbols: A. The standard vectorization operator is denoted                       obvious benefit of FAµSTs over dense operators arises when
+by vec(·). The `0 -norm is denoted by k·k0 (it counts the                        the operator has to be estimated from training data as in dictio-
+number of non-zero entries), k·kF denotes the Frobenius                          nary learning. In this case the reduced number of parameters to
+norm, and k·k2 the spectral norm. By abuse of notations,                         learn –O(stot ) compared to O(mn) for dense operators– leads
+kAk0 = kvec(A)k0 . The identity matrix is denoted Id.                            to better statistical properties. More specifically, the sample
+                                                                                 complexity is reduced [20], and better generalization proper-
+A. Objective
+                                                                                 ties are expected. The sample complexity gain is of the order
+   The goal of this paper is to introduce a method to get                        of RCG, as will be shown in the case of dictionary learning.
+a FAµST associated to an operator of interest. Consider a                        The impact of these gains will be illustrated experimentally in
+linear operator corresponding to the matrix A ∈ Rm×n . The                       section VI on image denoising with learned dictionaries.
+objective is to find sparse factors Sj ∈ Raj+1 ×aj , j ∈ {1 . . . J}
+                                                  QJ
+with a1 = n and aJ+1 = m such that A ≈ j=1 Sj . This
+naturally leads to an optimization problem of the form:                          C. Related work
+                            J                       J                               Similar matrix factorization problems have been studied in
+                            Y          2            X
+    Minimize           A−         Sj       +              gj (Sj )     ,         several domains. Some are very classical tools from numerical
+      S1 ,...,SJ                                                           (2)
+                            j=1                     j=1                          linear algebra, such as the truncated SVD, while other emerged
+                                                                                 more recently in signal processing and machine learning.
+                   |        {z         }            |     {z     }
+                       Data fidelity           Sparsity-inducing penalty
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                            3
+
+
+
+   1) The truncated SVD: To reduce the computational com-                       the authors propose the sparse-KSVD algorithm (KSVDS) to
+plexity of a linear operator, the most classical approach is                    learn a dictionary whose atoms are sparse linear combinations
+perhaps to compute a low-rank approximations with the trun-                     of atoms of a so-called base dictionary Dbase . The base dic-
+cated SVD. Figure 2 compares the approximation-complexity                       tionary should be associated with a fast algorithm (in practice,
+trade-offs achieved via a low-rank approximation (truncated                     this means that it is a FAµST) so that the whole learned
+SVD) and via a multi-layer sparse approximation, on a forward                   dictionary is itself a FAµST. It can be seen as having the
+operator associated to an MEG inverse problem. The truncated                    J −1 leftmost factors fixed in (2), their product being precisely
+SVD and four FAµSTs computed using different configura-                         Dbase , while the first factor S1 is the sparse representation of
+tions (more details in Section V - Figure 8) are compared in                    the dictionary over the base dictionary, i.e., D = Dbase S1 .
+terms of relative operator norm error: kA − Âk2 /kAk2 . It is                     A limitation of the sparse-KSVD formulation is that the
+readily observed that the FAµSTs achieve significantly better                   learned dictionary is highly biased toward the base dictionary,
+complexity/error trade-offs.                                                    which decreases adaptability to the training data. In [15], the
+                  1
+                                                                                authors propose to learn a dictionary in which each atom is
+                 0.9                                                            the composition of several circular convolutions using sparse
+                 0.8
+                 0.7
+                                                                                kernels with known supports, so that the dictionary is a sparse
+Relative error
+
+
+
+
+                 0.6                                                            operator that is fast to manipulate. This problem can be seen
+                 0.5
+                                                                                as (2), with the penalties gj s associated to the J − 1 leftmost
+                 0.4
+                 0.3
+                             SVD                                                factors imposing sparse circulant matrices with prescribed
+                 0.2
+                            FAµST                                               supports. This formulation is powerful, as demonstrated in
+                 0.1
+                  0                                                             [15], but limited in nature to the case where the dictionary is
+                       10           5            3.33          2.5   2   1.67
+                                    Relative Complexity Gain (RCG)              well approximated by a product of sparse circulant matrices,
+Fig. 2. Comparison between four multi-layer sparse approximations corre-        and requires knowledge of the supports of the sparse factors.
+ponding to different configurations and the truncated SVD. A 204 × 8193
+matrix associated to an MEG inverse problem is used for this example.
+                                                                                   5) Inverse problems: In the context of sparse regularization
+                                                                                of linear inverse problems, one is given a signal y and a
+   2) Local low-rank approximations: Given the limitations of                   measurement matrix M and wishes to compute a sparse
+global low-rank approximation by truncated SVD illustrated in                   code γ such that y ≈ Mγ, see e.g. [26]. Most modern
+Figure 2, the numerical linear algebra community has devel-                     sparse solvers rely on some form of iterative thresholding and
+oped local approximations of operators by low-rank patches.                     heavily rely on matrix-vector products with the measurement
+This general operator compression paradigm encompasses                          matrix and its transpose. Imposing –and adjusting– a FAµST
+several methods introduced in the last three decades, including                 structure to approximate these matrices as proposed here
+the Fast Multipole Method (FMM) [21], H-matrices [22] and                       has the potential to further accelerate these methods through
+others [23]. All the difficulty of these methods resides in                     fast matrix-vector multiplications. This is also likely to bring
+the choice of the patches, which is done according to the                       additional speedups to recent approaches accelerating iterative
+regularity of the subsumed continuous kernel. This can be                       sparse solvers through learning [27]–[29].
+seen as approximating the operator by a FAµST, where the
+                                                                                   6) Statistics – factor analysis: A related problem is to
+support of each factor is determined analytically. The approach
+                                                                                approximately diagonalize a covariance matrix by a unitary
+proposed in this paper is data-driven rather than analytic.
+                                                                                matrix in factorized form (1), which can be addressed greedily
+   3) Wavelet-based compression: This operator compression
+                                                                                [30], [31] using a fixed number of elementary Givens rotations.
+paradigm, introduced in [24], is based on the use of orthogonal
+                                                                                Here we consider a richer family of sparse factors and leverage
+wavelets in the column domain (associated to a matrix Φ1 ),
+                                                                                recent non-convex optimization techniques.
+and in the row domain (associated to a matrix Φ2 ) of the
+matrix A to approximate. By orthogonality of the matrices                          7) Machine learning: Similar models were explored with
+Φ1 and Φ2 , we have A = Φ1 ΦT1 AΦ2 ΦT2 . The wavelet-based                      various points of view in machine learning. For example,
+compression scheme relies on the fact that B , ΦT1 AΦ2                          sparse multi-factor NMF [32] can be seen as solving prob-
+is compressible (provided appropriate wavelets are chosen                       lem (2) with the Kullback-Leibler divergence as data fidelity
+relative to the subsumed kernel). This implies B ≈ B̂ where                     term and all factors Sj s constrained to be non-negative. Opti-
+B̂ is sparse so that A ≈ Â = Φ1 B̂ΦT2 . Fast multiplication by                 mization relies on multiplicative updates, while the approach
+Â is possible as soon as B̂ is sparse enough and the wavelet                   proposed here relies on proximal iterations.
+transforms Φ1 and Φ2 have fast implementations. This can be                        8) Deep learning: In the context of deep neural networks,
+seen as approximating A by a FAµST.                                             identifiability guarantees on the network structure have been
+   4) Dictionary learning: Given a collection of training vec-                  established with a generative model where consecutive net-
+tors y` , 1 ≤ ` ≤ L gathered as the columns of a matrix Y, the                  work layers are sparsely connected at random, and non-
+objective of dictionary learning [13], [25] is to approximate                   linearities are neglected [33], [34]. The network structure in
+Y by the product of a dictionary D and a coefficients matrix                    these studies matches the factorized structure (1), with each
+Γ with sparse columns, Y ≈ DΓ.                                                  of the leftmost factors representing a layer of the network and
+   To learn dictionaries with improved computational effi-                      the last one being its input. Apart from its hierarchical flavor,
+ciency, two main lines of work have begun to explore ap-                        the identification algorithm in [33], [34] has little in common
+proaches related to multi-layer sparse approximation. In [14],                  with the proximal method proposed here.
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                           4
+
+
+
+   9) Signal processing on graphs: Similar matrix factoriza-                            Besides the few examples given above, many more choices
+tions problems arise in this domain, with the objective of                           of penalties beyond indicator functions of constraint sets can
+defining wavelets on graphs. First, in [35] the authors propose                      be envisioned in the algorithmic framework described below.
+to approximately diagonalize part of the graph Laplacian                             Their choice is merely driven by the application of interest,
+operator using elementary rotations. More precisely, the basis                       as long as they are endowed with easy to compute projections
+in which the Laplacian is expressed is greedily changed,                             onto the constraint sets (in fact, efficient proximal operators),
+requiring that at each step the change is made by a sparse                           and satisfy some technical assumptions (detailed below) that
+elementary rotation (so that the wavelet transform is multi-                         are very often met in practice. We leave the full exploration
+layer sparse), and variables are decorrelated. The Laplacian                         of this rich field and its possible applications to further work.
+ends up being diagonal in all the dimensions corresponding to
+the wavelets and dense in a small part corresponding to the                          B. Algorithm overview
+scaling function (the algorithm ends up being very similar                              Problem (4) is highly non-convex, and the sparsity-inducing
+to the one proposed in [31]). Second, in [36] the authors                            penalties are typically non-smooth. Stemming on recent ad-
+propose to define data adaptive wavelets by factorizing some                         vances in non-convex optimization, it is nevertheless possible
+training data matrix made of signals on the graph of interest.                       to propose an algorithm with convergence guarantees to a
+The constraint they impose to the wavelet operator results                           stationary point of the problem. In [18], the authors consider
+in a multi-layer sparse structure, where each sparse factor is                       cost functions depending on N blocks of variables of the form:
+further constrained to be a lifted wavelet building block. The
+                                                                                                                                           N
+optimization algorithm they propose relies on deep learning                                                                                X
+                                                                                            Φ(x1 , . . . , xN ) := H(x1 , . . . , xN ) +         fj (xj ),   (5)
+techniques, more precisely layer-wise training of stacked auto-
+                                                                                                                                           j=1
+encoders [37].
+                                                                                     where the function H is smooth, and the penalties fj s are
+                    III. O PTIMIZATION FRAMEWORK                                     proper and lower semi-continuous (the exact assumptions are
+                                                                                     given below). It is to be stressed that no convexity of any kind
+A. Objective function                                                                is assumed. Here, we assume for simplicity that the penalties
+   In this paper, the penalties gj (·) appearing in the general                      fj s are indicator functions of constraint sets Tj . To handle
+form of the optimization problem (2) are chosen as indicator                         this objective function, the authors propose an algorithm called
+functions δEj (·) of constraint sets of interest Ej . To avoid                       Proximal Alternating Linearized Minimization (PALM) [18],
+the scaling ambiguities arising naturally when the constraint                        that updates alternatively each block of variable by a proximal
+sets are (positively) homogeneous2 , it is common [15], [32]                         (or projected in our case) gradient step. The structure of the
+to normalize the factors and introduce a multiplicative scalar                       PALM algorithm is given in Figure 3, where PTj (·) is the
+λ in the data fidelity term. For that, let us introduce the sets                     projection operator onto the set Tj and cij defines the step size
+of normalized factors Nj = {S ∈ Raj+1 ×aj : kSkF = 1},                               and depends on the Lipschitz constant of the gradient of H.
+and impose the following form for the constraints sets: Ej =
+Nj ∩ Sj , where Sj imposes sparsity explicitly or implicitly.                        PALM (summary)
+This results in the following optimization problem:                                    1: for i ∈ {1 · · · N iter} do
+                                                                   J         2
+                                                                                       2:   for j ∈ {1 · · · N } do
+                                                    1
+                                                                                                                                                           
+                                                                                               Set xi+1                   1           i+1
+                                                                   Q                                                  i                         i        i
+    Minimize          Ψ(S1 , . . . , SJ , λ) :=     2   A−λ             Sj             3:           j      =  P T j
+                                                                                                                    x j −  i
+                                                                                                                          cj
+                                                                                                                             ∇ x j
+                                                                                                                                   H x1   . . .xj . . .x N
+     λ,S1 ,...,SJ                                                 j=1        F
+                                                        J
+                                                        P                              4:   end for
+                                                    +         δEj (Sj ).               5: end for
+                                                        j=1
+                                                              (4)                    Fig. 3. PALM algorithm (summary).
+   As will be made clear below, the used minimization al-                                The following conditions are sufficient (not necessary) to
+gorithm relies on projections onto the constraint sets Ej : the                      ensure that each bounded sequence generated by PALM con-
+choice of the “sparsity-inducing” part of the constraint sets Sj                     verges to a stationary point of its objective [18, Theorem 3.1]
+is quite free provided that the projection operator onto these                       (the sequence converges, which implies convergence of the
+sets is known.                                                                       value of the cost function):
+   A comon choice is to limit the total number of non-zero                              (i) The fj s are proper and lower semi-continuous.
+entries in the factors to sj . The constraint sets then take                           (ii) H is smooth.
+the form Ej = {S ∈ Raj+1 ×aj : kSk0 ≤ sj , kSkF = 1}.                                 (iii) Φ is semi-algebraic [18, Definition 5.1].
+Another natural choice is to limit to kj the number of non-                           (iv) ∇xj H is globally Lipschitz for all j, with Lipschitz
+zero entries per row or column in the factors, which gives for                              moduli Lj (x1 . . .xj−1 , xj+1 . . .xN ).
+example in the case of the columns Ej = {S ∈ Raj+1 ×aj :                               (v) ∀i, j, cij > Lj (xi+1       i+1     i       i
+                                                                                                              1 . . .xj−1 , xj+1 . . .xN ) (the inequality
+ksi k0 ≤ kj ∀i, kSkF = 1}. Other possible constraint sets                                   need not be strict for convex fj ).
+can be chosen to further impose non-negativity, a circulant
+structure, a prescribed support, etc., see for example [15].                         C. Algorithm details
+  2 This is the case of many standard constraint sets. In particular all unions of     PALM can be instantiated for the purpose of handling the
+subspaces, such as the sets of sparse or low-rank matrices, are homogeneous.         objective of (4). It is quite straightforward to see that there is
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                             5
+
+
+                                                                                                                                           2    2
+a match between (4) and (5) by taking N = J + 1, xj = Sj                    step size is chosen by taking cij = (1 + α).(λi )2 kRk2 . kLk2
+for j ∈ {1 . . . J}, xM +1 = λ, H as the data fidelity term,                with α = 10−3 . Such a determination of the step size is
+fj (·) = δEj (.) for j ∈ {1 . . . J} and fJ+1 (·) = δEJ+1 (·) =             computationally costly, and alternatives could be considered
+δR (·) = 0 (there is no constraint on λ). This match allows to              in applications (a decreasing step size rule for example).
+apply PALM to compute multi-layer sparse approximations,                       4) Summary: An explicit version of the algorithm, called
+with guaranteed convergence to a stationary point.                          PALM for Multi-layer Sparse Approximation (palm4MSA), is
+   1) Projection operator: PALM relies on projections onto                  given in Figure 4, in which the factors are updated alternatively
+the constraint sets for each factor at each iteration, so the               by a projected gradient step (line 6) with a step-size controlled
+projection operator should be simple and easy to compute.                   by the Lipschitz modulus of the gradient (line 5). We can solve
+For example, in the case where the Ej s are sets of sparse nor-             for λ directly at each iteration (line 9) because of the absence
+malized matrices, namely Ej = {S ∈ Raj ×aj+1 : kvec(S)k0 ≤                  of constraint on it (thanks to the second part of the convergence
+sj , kSkF = 1} for j ∈ {1 . . . J}, then the projection operator            condition (v) of PALM).
+PEj (·) simply keeps the sj greatest entries (in absolute value)
+of its argument, sets all the other entries to zero, and then               PALM for Multi-layer Sparse Approximation (palm4MSA)
+normalizes its argument so that it has unit norm (the proof is               Input: Operator A; desired number of factors J; constraint
+given in Appendix A). Regarding EJ+1 = R, the projection                         sets Ej , j ∈ {1 . . . J}; initialization {S0j }Jj=1 , λ0 ; stop-
+operator is the identity mapping. The projection operators for                   ping criterion (e.g., number of iterations N ).
+other forms of sparsity constraints that could be interesting in              1: for i = 0 to N − 1 do
+concrete applications are also given in Appendix A: Proposi-                  2:    for j = Q1 to J do
+                                                                                               J
+tion A.1 covers the following examples:                                       3:      L ← `=j+1 Si`
+                                                                                             Qj−1 i+1
+   • Global sparsity constraints.                                             4:      R ← `=1 S`
+                                                                                                             2       2
+   • Row or column sparsity constraints.                                      5:      Set cij > (λi )2 kRk2 . kLk2                          
+   • constrained support.                                                     6:      Si+1
+                                                                                       j    ← PEj Sij − c1i λi LT (λLSij R − A)RT
+                                                                                                          j
+   • Triangular matrices constraints.
+                                                                              7:    end for
+   • Diagonal matrices constraints.                                                      QJ
+                                                                              8:    Â ← j=1 Si+1
+                                                                                                j
+Proposition A.2 covers in addition:                                                                T
+                                                                                                  Â)
+                                                                              9:  λi+1 ← Tr(A
+                                                                                           Tr(ÂT Â)
+   • Circulant, Toeplitz or Hankel matrices with fixed support
+                                                                            10: end for
+      or prescribed sparsity.                                               Output: The estimated factorization:
+   • Matrices that are constant by row or column.
+                                                                                λN ,{SN  J                         J
+                                                                                      j }j=1 = palm4MSA(A, J, {Ej }j=1 , . . . )
+   • More general classes of piece-wise constant matrices with
+      possible sparsity constraints.                                        Fig. 4. PALM algorithm for multi-layer sparse approximation.
+   2) Gradient and Lipschitz modulus: To specify the itera-
+                                                                                         IV. H IERARCHICAL FACTORIZATION
+tions of PALM specialized to the multi-layer sparse approxi-
+mation problem, let us fix the iteration i and                                 The algorithm presented in Figure 4 factorizes an input
+                                                QJthe factor j, and         matrix corresponding to an operator of interest into J sparse
+denote Sij the factor being updated, L := `=j+1 Si` what is
+                       Qj−1 i+1                                             factors and converges to a stationary point of the problem
+             Q R := `=1 S` what is on its right (with the
+on its left and
+                                                                            stated in (4). In practice, one is only interested in the stationary
+convention `∈∅ S` = Id). These notations give, when up-
+                                                                            points where the data fitting term of the cost function is small,
+dating the jth factor Sij : H(Si+1          i+1    i            i    i
+                               1 , . . . , Sj−1 , Sj , . . . , SJ , λ ) =   however as for any generic non-convex optimization algorithm
+H(L, Sij , R, λi ) = 21 kA − λi LSij Rk2F . The gradient of this
+                                                                            there is no general convergence guarantee to such a stationary
+smooth part of the objective with respect to the jth factor
+                                                                            point. This fact is illustrated by a very simple experiment
+reads:
+                                                                            where the algorithm palm4MSA is applied toQ       an input operator
+                                                                                                                                N
+       ∇Sij H(L, Sij , R, λi ) = λi LT (λi LSij R − A)RT ,                  A ∈ Rn×n with a known sparse form A = j=1 Sj , such as
+                                                                            the Hadamard transform (in that case N = log2 n). The naive
+which Lipschitz modulus with respect to           Sij F is                  approach consists in setting directly J = N in palm4MSA,
+           i         i 2    2     2
+Lj (L, R, λ ) = (λ ) kRk2 . kLk2 (as shown in Appendix                      and setting the constraints so as to reflect the actual sparsity of
+B). Once all the J factors are updated,Q let us now turn                    the true factors (as depicted in Figure 1). This simple strategy
+                                           J    i+1
+to the update of λ. Denoting Â =          j=1 Sj    brings:                performs quite poorly in practice for most initializations, and
+     i+1         i+1   i   1        i  2
+ H(S1 , . . . , SJ , λ ) = 2 kA − λ ÂkF , and the gradient                 the attained local minimum is very often not satisfactory (the
+with respect to λi reads:                                                   data fidelity part of the objective function is large).
+
+   ∇λi H(Si+1          i+1  i     i     T          T
+          1 , . . . , SJ , λ ) = λ Tr(Â Â) − Tr(A Â).                    A. Parallel with deep learning
+  3) Default initialization, and choice of the step size: Except              Similar issues were faced in the neural network community,
+when specified otherwise, the default initialization is with                where it was found difficult to optimize the weights of neural
+λ0 = 1, S01 = 0, and S0j = Id for j ≥ 2, with the                           networks comprising many hidden layers (called deep neural
+convention that for rectangular matrices the identity has ones              networks, see [38] for a survey on the topic). Until recently,
+on the main diagonal and zeroes elsewhere. In practice the                  deep networks were often neglected in favor of shallower
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                          6
+
+
+
+architectures. However in the last decade, it was proposed [39]               Hierarchical factorization
+to optimize the network not as one big block, but one layer at                Input: Operator A; desired number of factors J; constraint
+a time, and then globally optimizing the whole network using                       sets Ẽ` and E` , ` ∈ {1 . . . J − 1}.
+gradient descent. This heuristic was shown experimentally to                    1: T0 ← A
+work well on various tasks [37]. More precisely, what was                       2: for ` = 1 to J − 1 do
+proposed is to perform first a pre-training of the layers (each                 3:    Factorize the residual T`−1 into 2 factors:
+being fed the features produced by the one just below, and                            λ0 ,{F2 , F1 } = palm4MSA(T`−1 , 2, {Ẽ` , E` },
+the lowermost being fed the data), in order to initialize the                         init=default)
+weights in a good region to perform then a global fine tuning                   4:    T` ← λ0 F2 and S` ← F1
+of all layers by simple gradient descent.                                       5:    Global
+                                                                                              optimization:
+                                                                                      λ, T` , {Sj }`j=1      = palm4MSA(A, ` + 1,
+                                                                                                 `
+                                                                                       Ẽ` , {Ej }j=1 ,init=current)
+B. Proposed hierarchical algorithm                                              6: end for
+                                                                                7: SJ ← TJ−1
+   We noticed experimentally that taking fewer factors (J
+small) and allowing more non-zero entries per factor led to                   Output: The estimated factorization: λ,{Sj }Jj=1 .
+better approximations. This suggested to adopt a hierarchical                 Fig. 5. Hierarchical factorization algorithm.
+strategy reminiscent of pre-training of deep networks, in order
+to iterativelyQcompute only factorization with 2 factors. Indeed,                In greedy layerwise training of deep neural networks, the
+                N                                                             factorizations in two (line 3) would correspond to the pre-
+when A = j=1 Sj is the product of N sparse factors, it is
+                                                         QN                   training and the global optimization (line 5) to the fine tuning.
+also the product A = T1 S1 of 2 factors with T1 = j=2 Sj ,
+so that S1 is sparser than T1 .                                               Remark The hierarchical strategy can also be applied the
+   1) Optimization strategy: The proposed hierarchical strat-                 other way around (starting from the left), just by transposing
+egy consists in iteratively factorizing the input matrix A into 2             the input. We only present here the version that starts from
+factors, one being sparse (corresponding to S1 ), and the other               the right because the induced notations are simpler. It is also
+less sparse (corresponding to T1 ). The process is repeated on                worth being noted that stopping criteria other than the total
+the less sparse factor T1 until the desired number J of factors               number of factors can be set. For example, we could imagine
+is attained. At each step, a global optimization of all the factors           to keep factorizing the residual until the approximation error
+introduced so far can be performed in order to fit the product                at the global optimization step starts rising or exceeds some
+to the original operator A.                                                   pre-defined threshold.
+   2) Choice of sparsity constraint: A natural question is
+that of how to tune the sparsity of theQfactors and residuals                 C. Illustration: reverse-engineering the Hadamard transform
+                                             J
+along the process. Denoting T` =             j=`+1 Sj , a simple
+calculation shows that if we expect each Sj to have roughly                      As a first illustration of the proposed approach, we tested
+O(k) non-zero entries per row, then T` cannot have more                       the hierarchical factorization algorithm of Figure 5 when A is
+than O(k J−(`+1) ) non-zero entries per row. This suggests to                 the dense square matrix associated to the Hadamard transform
+decrease exponentially the number of non-zero entries in T`                   in dimension n = 2N . The algorithm was run with J = N
+                                                                                                                          2
+
+with ` and to keep constant O(k) the number of non-zero                       factors, Ẽ` = {T ∈ Rn×n , kTk0 ≤ n2` , kTkF = 1}, and
+entries per row in Sj . This choice of the sparsity constraints               E` = {S ∈ Rn×n , kSk0 ≤ 2n, kSkF = 1}.
+is further studied with experiments in Section V.                                In stark contrast with the direct application of palm4MSA
+   3) Implementation details: The proposed hierarchical strat-                with J = N , an exact factorization is achieved. Indeed, the
+egy3 is summarized in the algorithm given in Figure 5, where                  first step reached an exact factorization A = T1 S1 inde-
+the constraint sets related to the two factors need to be                     pendently of the initialization. With the default initialization
+specified for each step: Ẽ` denotes the constraint set related               (Section III-C3), the residual T1 was observed to be still
+to the left factor T` , and E` the one for the right factor S` at             exactly factorizable. All steps (` > 1) indeed also yielded exact
+the `th factorization. Roughly we can say that line 3 of the                  factorizations T`−1 = T` S` , provided the default initialization
+algorithm is here to yield complexity savings. Line 5 is here                 was used at each step ` ∈ {1, . . . , J − 1}.
+to improve data fidelity: this global optimization step with                     Figure 6 illustrates the result of the proposed hierarchical
+palm4MSA is initialized with the current values of T` and                     strategy in dimension n = 32. The obtained factorization is
+{Sj }`j=1 . The hierarchical strategy uses palm4MSA J − 1                     exact and as good as the reference one (cf Figure 1) in terms
+times with an increasing number of factors, and with a good                   of complexity savings. The running time of the factorization
+initialization provided by the factorization in two factors. This             algorithm is less than a second. Factorization of the Hadamard
+makes its cost roughly J − 1 times greater than the cost of the               matrix in dimension up to n = 1024 showed identical
+basic palm4MSA with J factors.                                                behaviour, with running times O(n2 ) up to ten minutes.
+
+   3 A toolbox implementing all the algorithms and experiments performed in               V. ACCELERATING INVERSE PROBLEMS
+this paper is available at http://faust.gforge.inria.fr
+All experiments were performed in Matlab on an laptop with an intel(R)          A natural application of FAµSTs is linear inverse problems,
+core(TM) i7-3667U @ 2.00GHz (two cores).                                      where a high-dimensional vector γ needs to be retrieved from
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                              7
+
+
+
+
+                                                                                  Fig. 7. Factorization setting: each factor is represented with its total sparsity.
+
+                                                                                  other factors Sj , j ∈ {2, . . . , J} were set square, with global
+                                                                                  sparsity s, i.e. E` = {S ∈ R204×204 , kSk0 ≤ s, kSkF = 1}.
+                                                                                     The “residual” at each step T` , ` ∈ {1, . . . , J − 1} was also
+Fig. 6. Hierarchical factorization of the Hadamard matrix of size 32 × 32.        set square, with global sparsity geometrically decreasing with
+The matrix is iteratively factorized in 2 factors, until we have J = 5 factors,
+each having s = 64 non-zero entries.                                              `, controlled by two parameters ρ and P . This corresponds
+                                                                                  to the constraint sets4 Ẽ` = {T ∈ R204×204 , kTk0 ≤
+some observed data y ≈ Mγ. As already evoked in Sec-                              P ρ`−1 , kTkF = 1} for ` ∈ {1, . . . , J − 1}. The controlling
+tion II-B, iterative proximal algorithms can be expected to be                    parameters are set to:
+significantly sped up if M is well approximated with a FAµST
+                                                                                     • Number of factors: J ∈ {2, . . . , 10}.
+of low relative complexity, for example using the proposed
+                                                                                     • Sparsity      of    the      rightmost    factor:    k       ∈
+hierarchical factorization algorithm applied to A = M.
+                                                                                       {5, 10, 15, 20, 25, 30}.
+   In practice, one needs to specify the total number of factors
+                                                                                     • Sparsity of the other factors: s ∈ {2m, 4m, 8m}.
+J and the constraint sets Ẽ` , E` . A preliminary study on
+                                                                                     • Rate of decrease of the residual sparsity: ρ = 0.8.
+synthetic data was carried out in our technical report [1],
+                                                                                  The parameter P controlling the global sparsity in the residual
+showing that a flexible trade-off between relative complexity
+                                                                                  was found to have only limited influence, and was set to P =
+and adaptation to the input matrix can be achieved. Here we
+                                                                                  1.4 × m2 . Other values for ρ were tested, leading to slightly
+leverage the rule of thumb presented in Section III-C to deepen
+                                                                                  different but qualitatively similar complexity/accuracy trade-
+the investigation of this question for a matrix M arising in a
+                                                                                  offs not shown here. The factorization setting is summarized
+real-world biomedical linear inverse problem.
+                                                                                  in Figure 7, where the sparsity of each factor is explicitly
+                                                                                  given.
+A. Factorization compromise: MEG operator                                            2) Results: Factorizations were computed for 127 parame-
+   In this experiment, we explore the use of FAµST in the con-                    ter settings. The computation time for each factorization was
+text of functional brain imaging using magnetoencephalogra-                       around (J − 1) × 10 minutes. Figure 8 displays the trade-
+phy (MEG) and electroencephalography (EEG) signals. Source                        off between speed (the RCG measure (3)) and approximation
+imaging with MEG and EEG delivers insights into the active                        error:                                QJ
+brain at a millisecond time scale in a non-invasive way. To                                                   M − λ j=1 Sj 2
+achieve this, one needs to solve the bioelectromagnetic inverse                                     RE :=                          ,              (6)
+                                                                                                                      kMk2
+problem. It is a high dimensional ill-posed regression problem
+                                                                                  of each obtained FAµST. We observe that:
+requiring proper regularization. As it is natural to assume that
+                                                                                    • The overall relative complexity of the obtained fac-
+a limited set of brain foci are active during a cognitive task,
+sparse focal source configurations are commonly promoted                               torization is essentially controlled by the parameter k.
+using convex sparse priors [40], [41]. The bottleneck in the                           This seems natural, since k controls the sparsity of the
+optimization algorithms are the dot products with the forward                          rightmost factor which is way larger than the other ones.
+                                                                                    • The trade-off between complexity and approximation for
+matrix and its transpose.
+   The objective of this experiment is to observe achievable                           a given k is mainly driven by the number of factors J:
+trade-offs between relative complexity and accuracy. To this                           higher values of J lead to lower relative complexities, but
+end, we consider an MEG gain matrix M ∈ R204×8193                                      a too large J leads to a higher relative error. Taking J = 2
+(m = 204 and n = 8193), computed using the MNE software                                (black dots) never yields the best compromise, hence the
+[42] implementing a Boundary Element Method (BEM). In                                  relevance of truly multi-layer sparse approximations.
+this setting, sensors and sources are not on a regular spatial                      • For a fixed k, one can distinguish nearby trade-off curves
+
+grid. Note that in this configuration, one cannot easily rely                          corresponding to different sparsity levels s of the inter-
+on classical operator compression methods presented in sec-                            mediate factors. The parameter s actually controls the
+tions II-C2, that rely on the analytic expression of the kernel                        horizontal spacing between two consecutive points on the
+underlying M, or on those presented in section II-C3, that rely                        same curve: a higher s allows to take a higher J without
+on some regularity of the input and output domains to define                           increasing the error, but in turn leads to a higher relative
+wavelets. Hence, in order to observe the complexity/accuracy                           complexity for a given number J of factors.
+trade-offs, M was factorized into J sparse factors using the                      In summary, one can distinguish as expected a trade-off
+hierarchical factorization algorithm of Figure 5.                                 between relative complexity and approximation error. The
+   1) Settings: The rightmost factor S1 was of the size of M,                        4 Compared to a preliminary version of this experiment [17] where the
+but with k-sparse columns, corresponding to the constraint                        residual was normalized columnwise at the first step, here it is normalized
+set E1 = {S ∈ R204×8193 , ksi k0 ≤ k, kSkF = 1}. All                              globally. This leads to slightly better results.
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                                      8
+
+
+
+                                0.12          k=5                                                                                                               s/m = 2
+                                                                                                                                                                s/m = 4
+                                                                                                                                                                s/m = 8
+                                 0.1
+
+
+                                       c 25
+ Relative operator norm error
+
+
+
+
+                                       M
+                                0.08
+
+
+
+
+                                0.06                           k = 10
+                                                                                      k = 15
+                                0.04                                                                               k = 20             k = 25                k = 30
+
+                                                    c 16
+                                                    M
+                                0.02
+                                                                               c 11
+                                                                               M                         c8
+                                                                                                         M                       c7
+                                                                                                                                 M              c6
+                                                                                                                                                M
+                                  0
+                                              25       16.67            12.5                   10                        8.33         7.14           6.25
+                                                                                        Relative Complexity Gain (RCG)
+
+Fig. 8. Results of the factorization of an m × n = 204 × 8193 MEG matrix. The shape of the symbols denotes the number of factors J (• : J = 2,
+# : J = 3, ∗ : J = 4,  : J = 5,                       9
+                                      : J = 6, × : J = 7, M: J = 8,  : J = 9, B: J = 10), and the color the value of the parameter s.
+
+configuration exhibiting the lowest relative error for each value                                       Three configurations were considered when generating the
+of k is highlighted on Figure 8, this gives M c 25 , M
+                                                     c 16 , M
+                                                            c 11 ,                                   location of the sources, in term of distance d (in centimeters)
+M
+c8, M  c7, M c 6 , where the subscript indicates the achieved                                        between the sources. For each configuration, 500 vectors y =
+RCG (rounded to the closest integer). For example, M     c 6 can                                     Mγ were generated, and OMP was run using each matrix. The
+multiply vectors with 6 times less flops than M (saving 84%                                          distance between each actual source and the closest retrieved
+of computation), and M c 25 can multiply vectors with 25 times                                       source was measured. Figure 9 displays the statistics of this
+less flops than M (96% savings). These six matrices are those                                        distance for all scenarios:
+appearing on Figure 2 to compare FAµSTs to the truncated                                                • As expected, localization is better when the sources are
+SVD. They will next be used to solve an inverse problem and                                               more separated, independently of the choice of matrix.
+compared to results obtained with M.                                                                    • Most importantly, the performance is almost as good
+
+Remark Slightly smaller approximation errors can be ob-                                                   when using FAµSTs M    c6, Mc7, Mc 8 and M c 11 than when
+tained by imposing a global sparsity constraint to the rightmost                                          using the actual matrix M, although the FAµSTs are
+factor, i.e., E1 = {S ∈ R204×8193 , kSk0 ≤ kn, kSkF = 1}.                                                 way more computationally efficient (6 to 11 times less
+This is shown on Figure 8 by the points linked by a dashed                                                computations). For example, in the case of well separated
+line to the six matrices outlined above. However, such a global                                           sources (d > 8), the FAµSTs allow to retrieve exactly
+sparsity constraint also allows the appearance of null columns                                            the sought sources more than 75% of the time, which is
+in the approximations of M, which is undesirable for the                                                  almost as good as when using the actual matrix M.
+                                                                                                        • The performance with the two other FAµSTs M      c 16 and
+application considered next.
+                                                                                                          M25 is a bit poorer, but they are even more computa-
+                                                                                                          c
+                                                                                                          tionally efficient matrix (16 and 25 times less computa-
+B. Source localization experiment                                                                         tions). For example, in the case of well separated sources
+   We now assess the impact of replacing the MEG gain                                                     (d > 8), they allow to retrieve exactly the sought sources
+matrix M ∈ R204×8193 by a FAµST approximation for brain                                                   more than 50% of the time.
+source localization. For this synthetic experiment, two brain                                        These observations confirm it is possible to slighlty trade-off
+sources chosen located uniformly at random were activated                                            localization performance for substantial computational gains,
+with gaussian random weights, giving a 2-sparse vector γ ∈                                           and that FAµSTs can be used to speed up inverse problems
+R8193 , whose support encodes the localization of the sources.                                       without a large precision loss.
+Observing y := Mγ, the objective is to estimate (the support
+of) γ. The experiment then amounts to solving the inverse                                                                VI. L EARNING FAST DICTIONARIES
+problem to get γ̂ from the measurements y = Mγ ∈ R204 ,
+                                                                                                        Multi-layer sparse approximations of operators are par-
+using either M or a FAµST M   c during the recovery process.
+                                                                                                     ticularly suited for choosing efficient dictionaries for data
+   Three recovery methods were tested: Orthogonal Matching
+                                                                                                     processing tasks.
+Pursuit (OMP) [10] (choosing 2 atoms), `1 -regularized least
+squares (l1 ls) [43] and Iterative Hard Thresholding (IHT)
+[11]). They yielded qualitatively similar results, and for the                                       A. Analytic vs. learned dictionaries
+sake of conciseness we present here only the results for OMP.                                           Classically, there are two paths to choose a dictionary for
+   The matrices used for the recovery are the actual matrix                                          sparse signal representations [13].
+M and its FAµST approximations M          c 16 , M
+                                   c 25 , M             c8, M
+                                                 c 11 , M   c7                                          Historically, the only way to come up with a dictionary
+and Mc 6 . The expected computational gain of using a FAµST                                          was to analyze mathematically the data and derive a “simple”
+instead of M is of the order of RCG, since the computational                                         formula to construct the dictionary. Dictionaries designed this
+cost of OMP is dominated by products with MT .                                                       way are called analytic dictionaries [13] (e.g., associated
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                                9
+
+Distance between true and estimated sources (cm)
+                                                   4.5
+                                                             Median
+                                                    4
+                                                             µ
+                                                   3.5       25%−75%
+                                                             9%−91%
+                                                    3
+                                                                   1<d<5                           5<d<8                                     d>8
+                                                   2.5
+
+                                                    2
+
+                                                   1.5
+
+                                                    1
+
+                                                   0.5
+
+                                                    0
+
+                                                         M      c7 M
+                                                             c6 M
+                                                             M        c 11 M
+                                                                   c8 M    c 16 M
+                                                                                c 25     M   c6 M
+                                                                                             M     c8 M
+                                                                                                c7 M       c 16 M
+                                                                                                      c 11 M    c 25          M    c6 M
+                                                                                                                                      c7 M
+                                                                                                                                   M        c 11 M
+                                                                                                                                         c8 M    c 16 M
+                                                                                                                                                      c 25
+Fig. 9. Localization performance (distance between actual and retrieved source) obtained with various matrices, for different distances between actual sources.
+
+to Fourier, wavelets and Hadamard transforms). Due to the                                            structure of the dictionary. The approach described below uses
+relative simplicity of analytic dictionaries, they usually have a                                    a batch method for dictionary update, but the approach is a
+known sparse form such as the Fast Fourier Transform (FFT)                                           priori also compatible with stochastic gradient descent in the
+[3] or the Discrete Wavelet Transform (DWT) [6].                                                     dictionary update for even more efficiency.
+   On the other hand, the development of modern computers                                               In practice we propose to slightly modify the hierarchical
+allowed the surfacing of automatic methods that learn a                                              factorization algorithm of Figure 5. The idea is to take a
+dictionary directly from the data [44]–[46]. Given some raw                                          dictionary D learned on some training data Y (with any
+data Y ∈ Rm×L , the principle of dictionary learning is to                                           classical dictionary learning method, such as K-SVD [45]) and
+approximate Y by the product of a dictionary D ∈ Rm×n                                                to hierarchically factorize it, taking into account and jointly
+and a coefficient matrix Γ ∈ Rn×L with sparse columns:                                               updating the coefficients matrix Γ.
+                                                                                                        The resulting hierarchical factorization algorithm adapted to
+                                                                       Y ≈ DΓ.
+                                                                                                     dictionary learning is given in Figure 11. The only differences
+Such learned dictionaries are usually well adapted to the data                                       with the hierarchical factorization algorithm given previously
+at hand. However, being in general dense matrices with no                                            is that the coefficients matrix is taken into account (but kept
+apparent structure, they do not lead to fast algorithms and are                                      fixed) in the global optimization step, and that an update of
+costly to store. We typically have L  max(m, n) (for sample                                         the coefficients by sparse coding is added after this global
+complexity reasons), which implies to be very careful about                                          optimization step, in order to keep the error with respect to
+the computational efficiency of learning in that case.                                               the data matrix low. This sparse coding step can actually be
+                                                                                                     done by any algorithm (OMP, IHT, ISTA...), denoted by the
+                                                                                                     general sparseCoding algorithm in Figure 11.
+B. The best of both worlds
+  Can one design dictionaries as well adapted to the data                                            Remark As noted in section IV-B3, the dictionary factoriza-
+as learned dictionaries, while as fast to manipulate and as                                          tion is presented here starting from the right. It could as well
+cheap to store as analytic ones? This question has begun to be                                       be performed starting from the left.
+explored recently [14], [15], and actually amounts to learning
+of dictionary that are FAµSTs. More precisely, given Y, the
+                                                                                                     C. Image denoising experiment
+objective is to learn a dictionary being a FAµST (as in (1)):
+                                                                                                        In order to illustrate the advantages of FAµST dictionaries
+                                                                            J
+                                                                            Y                        over classical dense ones, an image denoising experiment
+                                                                       D=         Sj .
+                                                                                                     is performed here. The experimental scenario for this task
+                                                                            j=1
+                                                                                                     follows a simplified dictionary based image denoising work-
+   This can be done by inserting a dictionary factorization step                                     flow. First, L = 10000 patches yi of size 8 × 8 (dimension
+into the traditional structure of dictionary learning algorithms                                     m = 64) are randomly picked from an input 512 × 512
+[13], as illustrated on Figure 10. A consequence is that the                                         noisy image (with various noise levels, of variance σ ∈
+coefficients update can be sped up by exploiting the FAµST                                           {10, 15, 20, 30, 50}), and a dictionary is learned on these
+                                                                                                     patches. Then the learned dictionary is used to denoise the
+                                                                                                     entire input image by computing the sparse representation of
+                                                                                                     all its patches in the dictionary using OMP, allowing each
+                                                                                                     patch to use 5 dictionary atoms. The image is reconstructed
+                                                                                                     by averaging the overlapping patches.
+Fig. 10. Classical dictionary learning algorithm structure (in roman). In italic,
+                                                                                                     Experimental settings. Several configurations were tested.
+the added dictionary factorization step, specific to the approach presented here.                    The number of atoms n was taken in {128, 256, 512}. Inspired
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                     10
+
+
+
+Hierarchical factorization for dictionary learning                       structure, we leave the implementation and careful benchmark-
+Input: Data matrix Y; Initial dictionary D and coefficients              ing of the resulting denoising systems to future work.
+     Γ (e.g., from K-SVD); desired number of factors J;                     As a last baseline, we used the above denoising scheme
+     constraint sets Ẽ` and E` , ` ∈ {1 . . . J − 1}.                   with an overcomplete DCT of 128, 256 or 512 atoms.
+  1: T0 ← D, Γ0 ← Γ                                                      Results. The experiment is done on the standard image
+  2: for ` = 1 to J − 1 do                                               database taken from [49] (12 standard grey 512×512 images).
+  3:   Dictionary factorization: factorize the residual T`−1             In Figure 12 are shown the results for three images: the one
+       into 2 factors                                                    for which FAµST dictionaries perform worst (“Mandrill”), the
+       λ0 ,{F2 , F1 } = palm4MSA(T`−1 , 2, {Ẽ` , E` },                  one for which they perform best (“WomanDarkHair”) and the
+       init=default)                                                     typical behaviour (“Pirate”). Several comments are in order:
+       T` ← λ0 F2 and S` ← F1                                               • First of all, it is clear that with the considered simple
+  4:   Dictionary
+                      update: global optimization                            denoising workflow, FAµST dictionaries perform better
+       λ, T` , {Sj }`j=1 , Γ`−1 = palm4MSA(Y, ` + 2,                          than DDL at strong noise levels, namely σ = 30
+       
+         Ẽ` , {Ej }`j=1 , {Γ`−1 } , init=current)                            and σ = 50. This can be explained by the fact that
+  5:   Coefficients update:               Q`                                  when training patches are very noisy, DDL is prone to
+       Γ` = sparseCoding(Y, T` j=1 Sj )                                       overfitting (learning the noise), whereas the structure of
+  6: end for                                                                  FAµSTs seems to prevent it. On the other hand, for low
+  7: SJ ← TJ−1                                                                noise levels, we pay the lack of adaptivity of FAµSTs
+Output: The estimated factorization: λ,{Sj }Jj=1 .                            compared to DDL. Indeed, especially for very textured
+                                                                              images (“Mandrill” typically), the dictionary must be very
+Fig. 11. Hierarchical factorization algorithm for dictionary learning.
+                                                                              flexible in order to fit such complex training patches, so
+                                                                              DDL performs better. FAµST dictionaries also perform
+by usual fast transforms, a number of factors J close to the                  better than DCT dictionaries at high noise levels.
+logarithm of the signal dimension m = 64 was chosen, here                   • Second, it seems that sparser FAµSTs (with fewer pa-
+J = 4. The sizes of the factors were: SJ , . . . , S2 ∈ Rm×m ,                rameters) perform better than denser ones for high noise
+S1 ∈ Rm×n , and Γ ∈ Rn×L . The algorithm of Figure 11 was                     levels. This can be explained by the fact that they are
+used, with the initial dictionary learning being done by K-SVD                less prone to overfitting because of their lower number of
+[45] and sparseCoding being OMP, allowing each patch to                       parameters, implying fewer degrees of freedom. However,
+use 5 dictionary atoms. Regarding the constraint sets, we took                this is not true for low noise levels or with too few
+them exactly like in section V-A, taking s/m ∈ {2, 3, 6, 12},                 parameters, since in that case the loss of adaptivity with
+ρ ∈ {0.4, 0.5, 0.7, 0.9}, P = 642 and k = s/m. For each                       respect to the training patches is too important.
+dictionary size n, this amounts to a total of sixteen different
+configurations leading to different relative complexity values.          D. Sample complexity of FAµSTs
+The stopping criterion for palm4MSA was a number of
+                                                                            The good performance of FAµST dictionaries compared
+iterations Ni = 50. Note that the usage of OMP here and at the
+                                                                         to dense ones observed above may be surprising, since the
+denoising stage is a bit abusive since the dictionary does not
+                                                                         more constrained structure of such dictionaries (compared
+have unit-norm columns (the factors are normalized instead),
+                                                                         to dense dictionaries) may bar them from providing good
+but it was used anyway, resulting in a sort of weighted OMP,
+                                                                         approximations of the considered patches. A possible element
+where some atoms have more weight than others.
+                                                                         of explanation stems from the notion of sample complexity:
+Baselines. The proposed method was compared to Dense                     as evoked in section II-B, the statistical significance of learned
+Dictionary Learning (DDL). K-SVD is used here to perform                 multi-layer sparse operators is expected to be improved com-
+DDL, but other algorithms have been tested (such as online               pared to that of dense operators, thanks to a reduced sample
+dictionary learning [46]), leading to similar qualitative results.       complexity.
+In order to assess the generalization performance and to be                 In the context of dictionary learning, the sample complexity
+as close as possible to the matrix factorization framework               indicates how many training samples L should be taken in
+studied theoretically in [20], DDL is performed following the            order for the empirical risk to be (with high probability)
+same denoising workflow than our method (dictionary learned              uniformly close to its expectation [50], [51]. In [20], a general
+on 10000 noisy patches used to denoise the whole image,                  bound on the deviation between the empirical risk and its
+allowing five atoms per patch). The implementation described             expectation is provided, which is proportional to the covering
+in [47] was used, running 50 iterations (empirically sufficient          dimension of the dictionary class.
+to ensure convergence).                                                     For dense dictionaries the covering dimension is known
+   Note that better denoising performance can be obtained                to be O(mn) [20], [50], [51]. For FAµST dictionaries we
+by inserting dictionary learning into a more sophisticated               establish in Appendix C the following theorem.
+denoising workflows, see e.g. [48]. State of the art denoising
+                                                                         Theorem VI.1. For multi-layer sparse operators, the covering
+algorithms indeed often rely on clever averaging procedure
+                                                                         dimension is bounded by stot .
+called “aggregation”. Our purpose here is primarily to illustrate
+the potential of the proposed FAµST structure for denoising.               A consequence is that for the same number of training
+While such workflows are fully compatible with the FAµST                 samples L, a better generalization performance is expected
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                                                         11
+
+
+
+                      5
+                                  128 atoms
+                                                        5
+                                                                     Mandrill
+                                                                    256 atoms
+                                                                                             5
+                                                                                                         512 atoms            experiments demonstrating that the proposed method has bet-
+                      4                                 4                                    4                                ter generalization performance than dense dictionary learning
+                      3                                 3                                    3
+                                                                                                                              with an impact at low SNR.
+∆PSNR wrt DDL (dB)
+
+
+
+
+                      2                                 2                                    2
+
+                      1                                 1                                    1
+                                                                                                                                 In the future, several developments are expected. On the
+                      0                                 0                                    0
+
+                     −1                                −1                                   −1                                theoretical side, we envision bounds on the trade-off between
+                     −2                                −2                                   −2
+
+                     −3
+                                         FAµST, σ=10
+                                         FAµST, σ=15   −3
+                                                                                DCT, σ=10
+                                                                                DCT, σ=15   −3
+                                                                                                                              approximation quality and relative complexity. On the experi-
+                                                                                DCT, σ=20
+                     −4
+                                         FAµST, σ=20
+                                         FAµST, σ=30
+                                                       −4
+                                                                                DCT, σ=30
+                                                                                            −4                                mental side, new applications for FAµSTs are to be explored.
+                     −5                                −5                                   −5
+                                         FAµST, σ=50                            DCT, σ=50
+                     −6                                −6                                   −6                                For example, signal processing on graphs is a relatively new
+                      0    2000 4000 6000 8000 10000    0    2000 4000 6000 8000 10000       0    2000 4000 6000 8000 10000
+                             Number
+                                 128ofatoms
+                                       parameters              Number    parameters
+                                                                   256ofatoms
+                                                                WomanDarkHair                           512ofatoms
+                                                                                                    Number    parameters      discipline where computationally efficient operators can be
+                     10                                10                                   10
+                                                                                                                              envisioned using learned FAµST dictionaries, or a FAµST
+                                                                                                                              approximation of graph Fourier transforms. Moreover, the
+∆PSNR wrt DDL (dB)
+
+
+
+
+                      8                                 8                                    8
+
+
+
+                      6                                 6                                    6
+                                                                                                                              factorization cost being quite high, one could envision ways
+                                                                                                                              to approximate matrices by FAµSTs without accessing the
+                      4                                 4                                    4
+                                                                                                                              whole matrix, in order to reduce this cost. For example, one
+                      2                                 2                                    2
+                                                                                                                              could imagine to have observations of the form (xi , yi =
+                      0                                 0                                    0                                Axi ) and try to minimize a data fitting term of the form
+                                                                                                                              Pn            QJ          2
+                                                                                                                                 i=1 yi −
+                      0    2000 4000 6000 8000 10000    0    2000 4000 6000 8000 10000       0    2000 4000 6000 8000 10000
+                             Number
+                                 128   parameters
+                                    ofatoms                    Number
+                                                                   256   parameters
+                                                                      ofatoms
+                                                                     Pirate                         Number
+                                                                                                        512ofatoms
+                                                                                                              parameters
+                                                                                                                                              j=1 Sj xi 2 .
+                      6                                 6                                    6
+
+                      5                                 5                                    5
+                                                                                                                                                        A PPENDIX A
+∆PSNR wrt DDL (dB)
+
+
+
+
+                      4                                 4                                    4
+
+                      3                                 3                                    3                                                    P ROJECTION OPERATORS
+                      2                                 2                                    2
+
+                      1                                 1                                    1
+                                                                                                                                In this appendix are given the projection operators onto
+                      0                                 0                                    0                                several constraint sets of interest for practical applications.
+                     −1                                −1                                   −1
+
+                     −2                                −2                                   −2
+
+                     −3
+                       0   2000 4000 6000 8000 10000
+                                                       −3
+                                                         0   2000 4000 6000 8000 10000
+                                                                                            −3
+                                                                                              0   2000 4000 6000 8000 10000
+                                                                                                                              A. General sparsity constraint
+                             Number of parameters              Number of parameters                 Number of parameters
+
+Fig. 12. Denoising results. The relative performance of FAµST dictionaries                                                       Sparsity is the most obvious constraint to put on the
+compared to DDL, and the DCT compared to DDL is given for several noise                                                       factors for operator sparse approximations. Consider first the
+levels σ, for various values of stot on the horizontal axis.                                                                  following general sparsity constraint set:
+from FAµST dictionaries compared to dense ones, the gain
+                                                                                                                              E := {S ∈ Rp×q : kSHi k0 ≤ si ∀i ∈ {1, . . . , K}, kSkF = 1},
+being of the order of RCG. This fact is likely to explain the
+empirical success of FAµSTs compared to dense dictionaries                                                                    where {H1 , . . . , HK } forms a partition of the index set, si ∈
+observed in section VI-C at low SNR. Of course, when stot be-                                                                 N, ∀i ∈ {1, . . . , K}, and ST is the matrix whose entries match
+comes to small, the limited approximation capacity of FAµST                                                                   those of S on T and are set to zero elsewhere. Given some
+dictionaries imposes a trade-off between approximation and                                                                    matrix U ∈ Rp×q , we wish to compute its projection onto the
+                                                                                                                                                                    2
+generalization.                                                                                                               set E: PE (U) ∈ arg min{kS − UkF : S ∈ E}.
+                                                                                                                                                   S
+
+                                    VII. C ONCLUSION AND FUTURE WORK                                                          Proposition A.1. Projection operator formula.
+   In this paper, a novel multi-layer matrix factorization frame-                                                                                                  UI
+work was introduced, which allows to approximate a given                                                                                               PE (U) =
+                                                                                                                                                                  kUI kF
+linear operator by the composition of several ones. The
+underlying factorization algorithm stems on recent advances                                                                   where I is the index set corresponding to the union of the si
+in non-convex optimization and has convergence guarantees.                                                                    entries of UHi with largest absolute value, ∀i ∈ {1, . . . , K}.
+The proposed approach consists in hierarchically factorizing                                                                  Proof. Let S be an element of E and J its support. We have
+the input matrix in the hope of attaining better local minima,                                                                         2                  2
+                                                                                                                              kS − UkF = 1 + kUkF − 2hvec(UJ ), vec(S)i.For a given
+as is done for example in deep learning. The factorization                                                                    support, the matrix S ∈ E maximizing hvec(UJ ), vec(S)i
+algorithm that is used is pretty general and is able to take                                                                  is S = UJq  / kUJ kF . For this matrix, hvec(UJ ), vec(S)i =
+into account various constraints. One practical constraint of                                                                               PK                 2
+                                                                                                                              kUJ kF =        i=1 kUJ ∩Hi kF which is maximized if J ∩Hi
+interest is sparsity (of various forms), which has several
+                                                                                                                              corresponds to the si entries with largest absolute value of U
+interesting properties. Indeed, multi-layer sparsely factorized
+                                                                                                                              within Hi , ∀i ∈ {1, . . . , K}.
+linear operators have several advantages over classical dense
+ones, such as an increased speed of manipulation, a lighter
+storage footpring, and a higher statistical significance when                                                                 B. Sparse and piecewise constant constraints
+estimated on training data.                                                                                                      Given K pairwise disjoint sets Ci indexing matrix entries,
+   The interest and versatility of the proposed factorization ap-                                                             consider now the constraint set corresponding to unit norm
+proach was demonstrated with various experiments, including                                                                   matrices that are constant over each index set Ci , zero outside
+a source localization one where the proposed method performs                                                                  these sets, with no more than s non-zero areas. In other words:
+well with a greatly reduced computational cost compared                                                                       Ec := {S ∈ Rp×q : ∃ã = (ãi )K  i=1 , kãk0 ≤ s, SCi = ãi ∀i ∈
+to previous techniques. We performed also image denoising                                                                     {1, . . . , K}, SS Ci = 0, and kSkF = 1}.
+                                                                                                                                              i
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                 12
+
+
+
+  Define ũ := (ũi )K
+                                           P
+                         i=1 with ũi :=      (m,n)∈Ci umn , and           ρ1 (x, y) = kx − ykF in Dspfac we get that the mapping Φ
+denote J˜ ⊂ {1, . . . , K} the support of ã.                              is a contraction (by induction). We can conclude that:
+                                                                                                    YJ aj aj+1               s
+Proposition A.2. The projection of U onto Ec is obtained                                                                    2J j
+                                                                pwith              N (Dspfac , ) ≤                    1+          ,
+J˜ the collection of s indices   i yielding  the highest |ũi |/ |Ci |,                              j=1     sj              
+             qP                                                                                                 p               √         n
+                                      ˜                                    wrt the ρ1 metric. Using np ≤ np! and n! ≥ 2πn ne
+                           2
+                                                                                                         
+ãi := ũi /      ˜ |Ci |ũ ) if i ∈ J , ãi := 0 otherwise.
+                i∈J        i
+                                                                                                     QJ                                 sj
+                                                                           yields N (Dspfac , ) ≤         √1       e               2J
+                                                                                                                    sj aj aj+1 (1 +  )      .
+Proof. Let S be an element of Ec , and J˜ ⊂ {1, . . . , K}                                            j=1           2πsj
+                                                                                        e.a .a
+be the support of the associated ã. We proceed as for the                 Defining Cj = j j+1    √.(2J+1) , we have N (Dspfac , ) ≤ ( C )h ,
+                                                                                           sj . 2sj 2πsj
+previous proposition and notice
+P                                   P that hvec(U), vec(S)i =                       PJ
+                                                                           with h = j=1 sj and C = maxCj . We thus have d(Dspfac ) ≤
+   i∈J  ˜ hvec(U C i
+                     ), vec(S)ip =     i∈J˜ ũi ãi = hũJ
+                                                         ˜ , ãi. By the
+                                                         p                                               j
+                                                                                PJ
+changes of variable b̃i = |Ci |.ãi and ṽi = ũi / |Ci | we get           h = j=1 sj = stot .
+hũJ˜ , ãi = hṽJ˜ , b̃i with b̃ := (b̃i )K            ˜
+                                           i=1 . Given J , maximizing
+this scalar product under the constraint 1 = kSkF = kb̃k2                                      ACKNOWLEDGMENT
+yields b̃∗ := ṽJ˜ /kṽJ˜ k2 , and hṽJ˜ , b̃∗ i = kṽJ˜ k2 . Max-            The authors wish to thank François Malgouyres and Olivier
+imizing over J˜ is achieved by selecting the s entries of                  Chabiron for discussions that helped in producing this work.
+ṽ := (ṽ)K  i=1 with largest absolute value (Proposition A.1).
+                                                                           The authors also express their gratitude to Alexandre Gramfort
+Going back to the original variables gives the result.                     for providing the MEG data and contributing to [17]. Finally,
+                                                                           the authors thank the reviewers for their valuable comments.
+                            A PPENDIX B                                                                 R EFERENCES
+                       L IPSCHITZ MODULUS                                   [1] L. Le Magoarou and R. Gribonval, “Learning computationally efficient
+                                                                                dictionaries and their implementation as fast transforms,” CoRR, vol.
+  To estimate the Lipschitz modulus of the gradient of the                      abs/1406.5388, 2014.
+smooth part of the objective we write:                                      [2] L. Le Magoarou and R. Gribonval, “Chasing butterflies: In search
+                                                                                of efficient dictionaries,” in Acoustics, Speech and Signal Processing
+           ∇Sij H(L, S1 , R, λi ) − ∇Sij H(L, S2 , R, λi ))                     (ICASSP), 2015 IEEE International Conference on, April 2015.
+                                                                 F          [3] J. Cooley and J. Tukey, “An algorithm for the machine calculation of
+    = (λi )2 LT L(S1 − S2 )RRT F                                                complex Fourier series,” Mathematics of Computation, vol. 19, no. 90,
+                2      2                                                        pp. 297–301, 1965.
+    ≤ (λi )2 kRk2 . kLk2 kS1 − S2 kF .                                      [4] J. Shanks, “Computation of the fast walsh-fourier transform,” Comput-
+                                                                                ers, IEEE Transactions on, vol. C-18, no. 5, pp. 457–459, May 1969.
+                                                                            [5] W.-H. Chen, C. Smith, and S. Fralick, “A fast computational algorithm
+                          A PPENDIX C                                           for the discrete cosine transform,” Communications, IEEE Transactions
+                      C OVERING DIMENSION                                       on, vol. 25, no. 9, pp. 1004–1009, Sep 1977.
+                                                                            [6] S. Mallat, “A theory for multiresolution signal decomposition: the
+   The covering number N (A, ) of a set A is the minimum                       wavelet representation,” Pattern Analysis and Machine Intelligence,
+number of balls of radius  needed to cover it. The precise                     IEEE Transactions on, vol. 11, no. 7, pp. 674–693, Jul 1989.
+                                                                            [7] J. Morgenstern, “The linear complexity of computation,” J. ACM,
+definition of covering numbers is given in [20]. The upper-                     vol. 22, no. 2, pp. 184–194, Apr. 1975.
+box counting dimension of the set, loosely referred to as the               [8] S. Mallat and Z. Zhang, “Matching pursuits with time-frequency dictio-
+                                                      N (A,)
+covering dimension in the text is d(A) = lim→0 loglog  1/ .
+                                                                                naries,” Signal Processing, IEEE Transactions on, vol. 41, no. 12, pp.
+                                                                                3397–3415, Dec 1993.
+We are interested in the covering dimension of the set of                   [9] I. Daubechies, M. Defrise, and C. De Mol, “An iterative thresholding
+FAµSTs Dspfac . We begin with the elementary sets Ej = {A ∈                     algorithm for linear inverse problems with a sparsity constraint,”
+                                                                                Communications on Pure and Applied Mathematics, vol. 57, no. 11,
+Raj ×aj+1 : kAk0 ≤ sj , kAkF = 1}. These sets can be seen                       pp. 1413–1457, 2004.
+as sets of sparse normalized vectors of size aj × aj+1 . This              [10] J. Tropp and A. Gilbert, “Signal recovery from random measurements
+leads following [20] (with the Frobenius norm) to:                              via orthogonal matching pursuit,” Information Theory, IEEE Transac-
+                                                                                tions on, vol. 53, no. 12, pp. 4655–4666, Dec 2007.
+                                         s                             [11] T. Blumensath and M. E. Davies, “Iterative thresholding for sparse
+                           aj aj+1        2 j
+             N (Ej , ) ≤            1+         .                               approximations,” Journal of Fourier Analysis and Applications, vol. 14,
+                              sj                                               no. 5-6, pp. 629–654, 2008.
+                                                                           [12] A. Beck and M. Teboulle, “A fast iterative shrinkage-thresholding
+Defining M := E1Q× . . . × EJ and using [20, lemma 16]                         algorithm for linear inverse problems,” SIAM Journal on Imaging
+                        J
+gives N (M, ) ≤ j=1 aj asjj+1 (1 + 2 )sj (wrt to the max                      Science, vol. 2, no. 1, pp. 183–202, Mar. 2009.
+                                                                           [13] R. Rubinstein, A. Bruckstein, and M. Elad, “Dictionaries for Sparse
+metric
+PJ      over the index j using the Frobenius norm). Using                       Representation Modeling,” Proceedings of the IEEE, vol. 98, no. 6, pp.
+   j=1 kx j − yj kF ≤ Jmax kxj − yj kF gives N (M, ) ≤                         1045 –1057, 2010.
+                             j                                             [14] R. Rubinstein, M. Zibulevsky, and M. Elad, “Double sparsity: Learning
+QJ      aj aj+1
+                      2J sj
+  j=1      sj     (1 +   )    wrt to the metric defined by                     sparse dictionaries for sparse signal approximation,” Signal Processing,
+            PJ                                                                  IEEE Transactions on, vol. 58, no. 3, pp. 1553–1564, March 2010.
+ρ(x, y) = j=1 kxj − yj kF . Defining the mapping:                          [15] O. Chabiron, F. Malgouyres, J.-Y. Tourneret, and N. Dobigeon, “Toward
+                                                                                fast transform learning,” International Journal of Computer Vision,
+        Φ : M := E1 × . . . × EJ           → Dspfac                             114(2-3), 195–216, 2015.
+            (D1 , D2 , . . . , DJ )       7→ DJ . . . D2 D1 ,              [16] D. I. Shuman, S. K. Narang, P. Frossard, A. Ortega, and P. Van-
+                                                                                dergheynst, “The emerging field of signal processing on graphs: Ex-
+                                                                                tending high-dimensional data analysis to networks and other irregular
+where Dspfac is the set of FAµSTs of interest, and using the                    domains,” Signal Processing Magazine, IEEE, vol. 30, no. 3, pp. 83–98,
+                              PJ
+distance measures ρ(x, y) =     j=1 kxj − yj kF in M and                        2013.
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING                                                                                                          13
+
+
+
+[17] L. Le Magoarou, R. Gribonval, and A. Gramfort, “FAµST: speeding up          [44] K. Engan, S. Aase, and J. Hakon Husoy, “Method of optimal directions
+     linear transforms for tractable inverse problems,” in EUSIPCO , Nice,            for frame design,” in Acoustics, Speech, and Signal Processing, 1999.
+     France, Aug. 2015.                                                               Proceedings., 1999 IEEE International Conference on, vol. 5, 1999, pp.
+[18] J. Bolte, S. Sabach, and M. Teboulle, “Proximal Alternating Linearized           2443–2446 vol.5.
+     Minimization for nonconvex and nonsmooth problems,” Mathematical            [45] M. Aharon, M. Elad, and A. Bruckstein, “K-SVD: An algorithm for
+     Programming, pp. 1–36, 2013.                                                     designing overcomplete dictionaries for sparse representation,” Signal
+[19] E. Jones, T. Oliphant, P. Peterson et al., “SciPy: Open source scientific        Processing, IEEE Transactions on, vol. 54, no. 11, pp. 4311–4322, Nov
+     tools for Python,” 2001–.                                                        2006.
+[20] R. Gribonval, R. Jenatton, F. Bach, M. Kleinsteuber, and M. Seibert,        [46] J. Mairal, F. Bach, J. Ponce, and G. Sapiro, “Online learning for
+     “Sample complexity of dictionary learning and other matrix factoriza-            matrix factorization and sparse coding,” Journal of Machine Learning
+     tions,” Information Theory, IEEE Transactions on, vol. 61, no. 6, pp.            Research, vol. 11, no. 1, pp. 19–60, Jan. 2010.
+     3469–3486, June 2015.                                                       [47] R. Rubinstein, M. Zibulevsky, and M. Elad, “Efficient Implementation
+[21] V. Rokhlin, “Rapid solution of integral equations of classical potential         of the K-SVD Algorithm using Batch Orthogonal Matching Pursuit,”
+     theory,” Journal of Computational Physics, vol. 60, no. 2, pp. 187 –             Tech. Rep., 2008.
+     207, 1985.                                                                  [48] M. Elad and M. Aharon, “Image denoising via sparse and redundant
+[22] W. Hackbusch, “A Sparse Matrix Arithmetic Based on H-matrices. Part              representations over learned dictionaries,” Image Processing, IEEE
+     I: Introduction to H-matrices,” Computing, vol. 62, no. 2, pp. 89–108,           Transactions on, vol. 15, no. 12, pp. 3736–3745, Dec 2006.
+     May 1999.                                                                   [49] “http://www.imageprocessingplace.com/.”
+[23] E. Candès, L. Demanet, and L. Ying, “Fast computation of fourier           [50] D. Vainsencher, S. Mannor, and A. M. Bruckstein, “The sample
+     integral operators,” SIAM Journal on Scientific Computing, vol. 29,              complexity of dictionary learning,” The Journal of Machine Learning
+     no. 6, pp. 2464–2493, 2007.                                                      Research, vol. 12, pp. 3259–3281, 2011.
+[24] G. Beylkin, R. Coifman, and V. Rokhlin, “Fast wavelet transforms            [51] A. Maurer and M. Pontil, “K-Dimensional Coding Schemes in Hilbert
+     and numerical algorithms i,” Communications on pure and applied                  Spaces,” Information Theory, IEEE Transactions on, vol. 56, no. 11, pp.
+     mathematics, vol. 44, no. 2, pp. 141–183, 1991.                                  5839–5846, Nov 2010.
+[25] I. Tosic and P. Frossard, “Dictionary learning,” Signal Processing
+     Magazine, IEEE, vol. 28, no. 2, pp. 27–38, March 2011.
+[26] A. M. Bruckstein, D. L. Donoho, and M. Elad, “From Sparse Solutions
+     of Systems of Equations to Sparse Modeling of Signals and Images,”
+     SIAM Review, vol. 51, no. 1, pp. 34–81, Feb. 2009.
+[27] K. Gregor and Y. LeCun, “Learning fast approximations of sparse
+     coding,” in Proceedings of the 27th Annual International Conference
+     on Machine Learning, ser. ICML ’10, 2010, pp. 399–406.
+[28] P. Sprechmann, A. M. Bronstein, and G. Sapiro, “Learning efficient
+     sparse and low rank models,” Pattern Analysis and Machine Intelligence,
+     IEEE Transactions on, vol. 37, no. 9, pp. 1821–1833, 2015.
+[29] A. Makhzani and B. Frey, “k-sparse autoencoders,” CoRR, vol.
+     abs/1312.5663, 2013.
+                                                                                                           Luc Le Magoarou is a PhD student at Inria (Rennes,
+[30] A. B. Lee, B. Nadler, and L. Wasserman, “Treelets - an adaptive multi-
+                                                                                                           France). He received the M.Sc. in electrical en-
+     scale basis for sparse unordered data,” The Annals of Applied Statistics,
+                                                                                                           gineering from the National Institute of Applied
+     vol. 2, no. 2, pp. 435–471, July 2008.
+                                                                                                           Sciences (INSA), Rennes, France, in 2013. His main
+[31] G. Cao, L. Bachega, and C. Bouman, “The sparse matrix transform for
+                                                                                                           research interests lie in signal processing and ma-
+     covariance estimation and analysis of high dimensional signals,” Image
+                                                                                                           chine learning, with an emphasis on computationally
+     Processing, IEEE Transactions on, vol. 20, no. 3, pp. 625–640, 2011.
+                                                                                                           efficient methods and matrix factorization.
+[32] S. Lyu and X. Wang, “On algorithms for sparse multi-factor NMF,”
+     in Advances in Neural Information Processing Systems 26, 2013, pp.
+     602–610.
+[33] B. Neyshabur and R. Panigrahy, “Sparse matrix factorization,” CoRR,
+     vol. abs/1311.3315, 2013.
+[34] S. Arora, A. Bhaskara, R. Ge, and T. Ma, “Provable bounds for learning
+     some deep representations,” CoRR, vol. abs/1310.6343, 2013.
+[35] V. G. Risi Kondor, Nedelina Teneva, “Multiresolution matrix factoriza-
+     tion,” JMLR, vol. 32 (1), pp. 1620–1628, 2014.
+[36] R. Rustamov and L. Guibas, “Wavelets on graphs via deep learning,”
+     in Advances in Neural Information Processing Systems 26. Curran
+     Associates, Inc., 2013, pp. 998–1006.
+[37] Y. Bengio, P. Lamblin, D. Popovici, and H. Larochelle, “Greedy layer-
+     wise training of deep networks,” Advances in neural information pro-
+     cessing systems, vol. 19, p. 153, 2007.
+[38] Y. Bengio, “Learning deep architectures for ai,” Found. Trends Mach.
+     Learn., vol. 2, no. 1, pp. 1–127, Jan. 2009.                                                          Rémi Gribonval (FM’14) is a Senior Researcher
+[39] G. E. Hinton and R. R. Salakhutdinov, “Reducing the dimensionality of                                 with Inria (Rennes, France), and the scientific leader
+     data with neural networks,” Science, vol. 313, no. 5786, pp. 504–507,                                 of the PANAMA research group on sparse audio
+     2006.                                                                                                 processing. A former student at École Normale
+[40] S. Haufe, V. V. Nikulin, A. Ziehe, K.-R. Müller, and G. Nolte,                                       Supérieure (Paris, France), he received the Ph. D.
+     “Combining sparsity and rotational invariance in EEG/MEG source                                       degree in applied mathematics from Université de
+     reconstruction,” NeuroImage, vol. 42, no. 2, pp. 726–738, August 2008.                                Paris-IX Dauphine (Paris, France) in 1999, and his
+[41] A. Gramfort, M. Kowalski, and M. S. Hämäläinen, “Mixed-norm                                        Habilitation à Diriger des Recherches in applied
+     estimates for the M/EEG inverse problem using accelerated gradient                                    mathematics from Université de Rennes I (Rennes,
+     methods,” Phys. Med. Biol., vol. 57, no. 7, pp. 1937–1961, Apr. 2012.                                 France) in 2007. His research focuses on mathemati-
+[42] A. Gramfort, M. Luessi, E. Larson, D. A. Engemann, D. Strohmeier,                                     cal signal processing, machine learning, approxima-
+     C. Brodbeck, L. Parkkonen, and M. S. Hämäläinen, “MNE software           tion theory and statistics, with an emphasis on sparse approximation, audio
+     for processing MEG and EEG data ,” NeuroImage, vol. 86, no. 0, pp.          source separation, dictionary learning and compressed sensing. He founded
+     446 – 460, 2014.                                                            the series of international workshops SPARS on Signal Processing with
+[43] S.-J. Kim, K. Koh, M. Lustig, S. Boyd, and D. Gorinevsky, “An interior-     Adaptive/Sparse Representations. In 2011, he was awarded the Blaise Pascal
+     point method for large-scale l1-regularized least squares,” Selected        Award in Applied Mathematics and Scientific Engineering from the SMAI by
+     Topics in Signal Processing, IEEE Journal of, vol. 1, no. 4, pp. 606–617,   the French National Academy of Sciences, and a starting investigator grant
+     Dec 2007.                                                                   from the European Research Council.
+
