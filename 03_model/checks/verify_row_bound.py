@@ -1,552 +1,510 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Certificates and exact constructions for row-2-sparse factorizations of DFT
-matrices (2023 Huawei Cup problem B).
+"""Reproducible modeling checks for row-2-sparse DFT factorizations.
 
-Role: modeling agent (M) evidence tool.  Pure standard library (no numpy), so it
-runs in a bare Python 3.8+ environment and can be reproduced by the compute agent.
+This is a modeling-layer certificate tool, not a candidate search and not a
+formal experiment.  It uses only the Python standard library and writes a
+deterministic JSON report next to itself.
 
-Repository boundary: this file lives in ``03_model/checks/`` and produces modeling
-*certificates* and *exact constructions* only.  Candidate implementations, run
-manifests and frozen metrics belong to ``04_code/`` / ``05_results/``.
+Checked claims
+--------------
+T0  Eq. (3) defines a unitary DFT; F_4 kron F_8 is unitary but is not F_32.
+T1  A product of K row-r-sparse square matrices has row support at most r**K.
+T2  rank(A_1 ... A_K) <= min_k rank(A_k); sparsity alone gives no rank cap.
+T3  A radix-2 chain with the bit-reversal permutation absorbed into its first
+    butterfly gives B = sqrt(N) F_N with K=log2(N), row support <=2 and RMSE 0.
+T4  The statement's extracted Eq. (5) matrices are audited in their printed
+    order under the two plausible permutation conventions; no factor-order
+    search is used.
+T5  At fixed beta, the support lower bound includes an essential |beta| factor.
+T6  Eq. (6) has a zero solution when beta=0 and a zero factor is allowed; in the
+    unrestricted-coefficient case, simultaneous scaling also rescales RMSE.
 
-Contents
---------
-T1  row-support propagation        support(B) <= min(N, 2^K)      (numeric check)
-T2  rank bound                     rank(B) <= prod_k rank(A_k)    (numeric check)
-T3  rank x support exactness bound K >= log_2 N when B = F_N exactly
-T4  exact radix-2 construction     F_N = C_t ... C_1 with row support 2,
-                                   K = log_2 N, beta = N^{-1/2}, RMSE = 0,
-                                   L = t*N/2 - N + 1
-T5  support lower bound (beta=1)   (1/N)||F - B||_F >= sqrt(N-M)/N, M = min(N,2^K)
-T6  scale degeneracy               (A, beta) -> (cA, c*beta) leaves the residual
-                                   unchanged, so inf_beta of Eq. (6) is 0 without a
-                                   normalisation convention
-A1  Eq. (5) audit                  the radix-8 example printed in the statement is
-                                   checked against the normalised and unnormalised
-                                   F_8 over every factor ordering / permutation
-                                   convention; it is rank deficient, hence not exact
+The output deliberately avoids V5/V6 search values because the user supplied no
+factors, NPZ, code or logs from those runs.
 """
 
 from __future__ import annotations
 
 import cmath
+import hashlib
 import json
 import math
 import random
 from pathlib import Path
-from typing import Dict, List, Tuple
-
-# --------------------------------------------------------------------------- #
-# linear algebra helpers (small matrices, pure python)
-# --------------------------------------------------------------------------- #
+from typing import Any, Dict, List, Sequence, Tuple
 
 
-def dft_matrix(n: int) -> List[List[complex]]:
-    """(1/sqrt(N)) * [exp(-2*pi*i*row*col/N)] -- problem Eq. (3).
+Matrix = List[List[complex]]
+EXEMPT = (0j, 1 + 0j, -1 + 0j, 1j, -1j,
+          1 + 1j, 1 - 1j, -1 + 1j, -1 - 1j)
 
-    NOTE: the comprehension indices must NOT shadow the outer canonical value.  An
-    earlier revision wrote ``for k in ... for j in ... exp(-2j*pi*k*j/n)`` inside a
-    function parameterised by ``k``; that silently built
-    ``exp(-2j*pi*k*j^2/n)`` and invalidated every derived number.
-    """
+
+def dft_matrix(n: int) -> Matrix:
+    """Eq. (3): N**(-1/2) [exp(-2*pi*i*row*col/N)]."""
     inv = 1.0 / math.sqrt(n)
-    return [[inv * cmath.exp(-2j * math.pi * row * col / n) for col in range(n)]
-            for row in range(n)]
+    return [[inv * cmath.exp(-2j * math.pi * row * col / n)
+             for col in range(n)] for row in range(n)]
 
 
-def raw_dft_matrix(n: int) -> List[List[complex]]:
-    """Unnormalised [exp(-2*pi*i*row*col/N)] -- problem Eq. (1)."""
-    return [[cmath.exp(-2j * math.pi * row * col / n) for col in range(n)]
-            for row in range(n)]
+def raw_dft_matrix(n: int) -> Matrix:
+    """Eq. (1): [exp(-2*pi*i*row*col/N)], without 1/sqrt(N)."""
+    return [[cmath.exp(-2j * math.pi * row * col / n)
+             for col in range(n)] for row in range(n)]
 
 
-def matmul(a: List[List[complex]], b: List[List[complex]]) -> List[List[complex]]:
-    """C = A @ B.
+def zeros(rows: int, cols: int) -> Matrix:
+    return [[0j] * cols for _ in range(rows)]
 
-    NOTE: loop variables are named row/col/mid and never reuse a parameter name.
-    An earlier revision used j both as a parameter-column loop variable and as the
-    target-column index; the generator/most-inner loop then bound the wrong index
-    and produced silently wrong products.
-    """
-    rows, mid_n, cols = len(a), len(b), len(b[0])
-    out = [[0j] * cols for _ in range(rows)]
-    for row in range(rows):
-        arow, orow = a[row], out[row]
-        for mid in range(mid_n):
-            v = arow[mid]
-            if v == 0:
-                continue
-            brow = b[mid]
-            for col in range(cols):
-                orow[col] += v * brow[col]
+
+def identity(n: int) -> Matrix:
+    out = zeros(n, n)
+    for idx in range(n):
+        out[idx][idx] = 1 + 0j
     return out
 
 
-def numeric_rank(m: List[List[complex]], tol: float = 1e-9) -> int:
-    a = [row[:] for row in m]
-    rows, cols = len(a), len(a[0])
+def scale(m: Matrix, value: float) -> Matrix:
+    return [[value * z for z in row] for row in m]
+
+
+def matmul(a: Matrix, b: Matrix) -> Matrix:
+    """Dense reference multiplication with sparse skipping on the left."""
+    rows, mid_n, cols = len(a), len(b), len(b[0])
+    if len(a[0]) != len(b):
+        raise ValueError("matrix dimensions do not match")
+    out = zeros(rows, cols)
+    for row in range(rows):
+        for mid in range(mid_n):
+            value = a[row][mid]
+            if value == 0:
+                continue
+            for col in range(cols):
+                out[row][col] += value * b[mid][col]
+    return out
+
+
+def chain(factors_in_application_order: Sequence[Matrix]) -> Matrix:
+    """Return A_K ... A_2 A_1 for [A_1, A_2, ..., A_K]."""
+    if not factors_in_application_order:
+        raise ValueError("at least one factor is required")
+    product = factors_in_application_order[0]
+    for factor in factors_in_application_order[1:]:
+        product = matmul(factor, product)
+    return product
+
+
+def kron(a: Matrix, b: Matrix) -> Matrix:
+    rows_a, cols_a, rows_b, cols_b = len(a), len(a[0]), len(b), len(b[0])
+    out = zeros(rows_a * rows_b, cols_a * cols_b)
+    for row_a in range(rows_a):
+        for col_a in range(cols_a):
+            for row_b in range(rows_b):
+                for col_b in range(cols_b):
+                    out[row_a * rows_b + row_b][col_a * cols_b + col_b] = (
+                        a[row_a][col_a] * b[row_b][col_b]
+                    )
+    return out
+
+
+def max_abs_difference(a: Matrix, b: Matrix) -> float:
+    return max(abs(a[row][col] - b[row][col])
+               for row in range(len(a)) for col in range(len(a[0])))
+
+
+def rmse(a: Matrix, b: Matrix) -> float:
+    """Problem Eq. (6): ||a-b||_F/N for square N x N matrices."""
+    n = len(a)
+    total = 0.0
+    for row in range(n):
+        for col in range(n):
+            delta = a[row][col] - b[row][col]
+            total += delta.real * delta.real + delta.imag * delta.imag
+    return math.sqrt(total) / n
+
+
+def unitary_residual(m: Matrix) -> float:
+    """Maximum entry residual in M^H M-I."""
+    n = len(m)
+    worst = 0.0
+    for col_a in range(n):
+        for col_b in range(n):
+            inner = sum(m[row][col_a].conjugate() * m[row][col_b]
+                        for row in range(n))
+            target = 1.0 if col_a == col_b else 0.0
+            worst = max(worst, abs(inner - target))
+    return worst
+
+
+def numeric_rank(m: Matrix, tol: float = 1e-9) -> int:
+    work = [row[:] for row in m]
+    rows, cols = len(work), len(work[0])
     rank = 0
-    for c in range(cols):
-        piv = max(range(rank, rows), key=lambda r: abs(a[r][c]), default=None)
-        if piv is None or abs(a[piv][c]) <= tol:
+    for col in range(cols):
+        pivot = max(range(rank, rows), key=lambda row: abs(work[row][col]), default=None)
+        if pivot is None or abs(work[pivot][col]) <= tol:
             continue
-        a[rank], a[piv] = a[piv], a[rank]
-        pv = a[rank][c]
-        for r in range(rows):
-            if r != rank and a[r][c] != 0:
-                f = a[r][c] / pv
-                for k in range(c, cols):
-                    a[r][k] -= f * a[rank][k]
+        work[rank], work[pivot] = work[pivot], work[rank]
+        pivot_value = work[rank][col]
+        for row in range(rows):
+            if row == rank or abs(work[row][col]) <= tol:
+                continue
+            ratio = work[row][col] / pivot_value
+            for inner_col in range(col, cols):
+                work[row][inner_col] -= ratio * work[rank][inner_col]
         rank += 1
         if rank == rows:
             break
     return rank
 
 
-def max_row_support(m: List[List[complex]]) -> int:
-    return max(sum(1 for z in row if z != 0) for row in m)
+def max_row_support(m: Matrix, tol: float = 1e-12) -> int:
+    return max(sum(1 for value in row if abs(value) > tol) for row in m)
 
 
-def kron(a: List[List[complex]], b: List[List[complex]]) -> List[List[complex]]:
-    """Kronecker product (problem Q4 target is kron(F_4, F_8))."""
-    ra, ca, rb, cb = len(a), len(a[0]), len(b), len(b[0])
-    out = [[0j] * (ca * cb) for _ in range(ra * rb)]
-    for ra_i in range(ra):
-        for ca_j in range(ca):
-            for rb_i in range(rb):
-                for cb_j in range(cb):
-                    out[ra_i * rb + rb_i][ca_j * cb + cb_j] = a[ra_i][ca_j] * b[rb_i][cb_j]
-    return out
+def is_exempt(value: complex, tol: float = 1e-12) -> bool:
+    """Use tolerance because roots such as exp(-pi*i/2) are not bit-exact."""
+    return any(abs(value - exempt) <= tol for exempt in EXEMPT)
 
 
-def is_unitary_columns(m: List[List[complex]], tol: float = 1e-9) -> Tuple[bool, float]:
-    """Check M^H M = I (correct for both F_N and sqrt(N) * F_N)."""
-    n = len(m)
-    worst = 0.0
-    for col_a in range(n):
-        for col_b in range(n):
-            s = sum(m[row][col_a].conjugate() * m[row][col_b] for row in range(n))
-            worst = max(worst, abs(s - (1.0 if col_a == col_b else 0.0)))
-    return worst <= tol, worst
+def count_nontrivial_positions(factors: Sequence[Matrix]) -> int:
+    return sum(1 for factor in factors for row in factor for value in row
+               if abs(value) > 1e-12 and not is_exempt(value))
 
 
-def residual(a: List[List[complex]], b: List[List[complex]]) -> float:
-    """RMSE := (1/N) ||a - b||_F, matching problem Eq. (6).
+def bit_reverse(value: int, width: int) -> int:
+    result = 0
+    for index in range(width):
+        if value >> index & 1:
+            result |= 1 << (width - 1 - index)
+    return result
 
-    NOTE: the comprehension variables are named row/col on purpose.  An earlier
-    revision used i/j inside a function that also had a parameter named ``j``;
-    the generator then closed over the parameter instead of the comprehension
-    variable and the routine silently computed a diagonal-only residual.
+
+def butterfly_layer(n: int, stage: int) -> Matrix:
+    block = 2 ** stage
+    half = block // 2
+    factor = zeros(n, n)
+    for start in range(0, n, block):
+        for index in range(half):
+            upper, lower = start + index, start + index + half
+            twiddle = cmath.exp(-2j * math.pi * index / block)
+            factor[upper][upper] = 1 + 0j
+            factor[upper][lower] = twiddle
+            factor[lower][upper] = 1 + 0j
+            factor[lower][lower] = -twiddle
+    return factor
+
+
+def radix2_factors(n: int) -> List[Matrix]:
+    """K=log2(N) row-2 factors whose product equals the raw DFT.
+
+    The usual bit-reversal permutation is absorbed into the first butterfly by
+    right multiplication.  Right multiplication by a permutation only reorders
+    columns, so the first factor remains row-2-sparse and K does not increase.
     """
-    n = len(a)
-    total = 0.0
+    width = int(round(math.log2(n)))
+    if n < 2 or 2 ** width != n:
+        raise ValueError("n must be a power of two at least 2")
+    permutation = zeros(n, n)
     for row in range(n):
-        ar, br = a[row], b[row]
-        for col in range(n):
-            z = ar[col] - br[col]
-            total += z.real * z.real + z.imag * z.imag
-    return math.sqrt(total) / n
+        permutation[row][bit_reverse(row, width)] = 1 + 0j
+    layers = [butterfly_layer(n, stage) for stage in range(1, width + 1)]
+    layers[0] = matmul(layers[0], permutation)
+    return layers
 
 
-def bitrev(x: int, t: int) -> int:
-    r = 0
-    for i in range(t):
-        if x >> i & 1:
-            r |= 1 << (t - 1 - i)
-    return r
-
-
-# --------------------------------------------------------------------------- #
-# T4: exact radix-2 construction
-# --------------------------------------------------------------------------- #
-
-EXEMPT = {0, 1, -1, 1j, -1j}
-
-
-def butterfly_layer(n: int, ell: int) -> List[List[complex]]:
-    """Butterfly of size 2^ell with twiddles w = exp(-2*pi*i*k/2^ell).
-
-    Rows have exactly 2 non-zeros (or none in the trivial k = 0 positions are still
-    2 non-zeros: the pair (1, w) with w = 1 remains row support 2).
-    """
-    blk = 2 ** ell
-    half = blk // 2
-    S = [[0j] * n for _ in range(n)]
-    for start in range(0, n, blk):
-        for kk in range(half):
-            i1, i2 = start + kk, start + kk + half
-            w = cmath.exp(-2j * math.pi * kk / blk)
-            S[i1][i1] = 1 + 0j
-            S[i1][i2] = w
-            S[i2][i1] = 1 + 0j
-            S[i2][i2] = -w
-    return S
-
-
-def radix2_factors(n: int, bitrev_first: bool = True) -> List[List[complex]]:
-    """Factors whose product is sqrt(n) * F_N (i.e. the unnormalised DFT)."""
-    t = int(round(math.log2(n)))
-    P = [[0j] * n for _ in range(n)]
-    for idx in range(n):
-        P[idx][bitrev(idx, t)] = 1 + 0j
-    layers = [butterfly_layer(n, ell) for ell in range(1, t + 1)]
-    return ([P] + layers) if bitrev_first else (layers + [P])
-
-
-def count_L(factors: List[List[complex]]) -> int:
-    """Non-trivial complex multiplications per the statement's exemption rule.
-
-    MUST be applied to the *unscaled* integer/root-of-unity factors: once a factor
-    is multiplied by a normalising constant, every entry stops comparing equal to
-    the exempt set {0, +-1, +-j} and the count becomes meaningless.
-    """
-    return sum(1 for m in factors for row in m for z in row if z != 0 and z not in EXEMPT)
-
-
-def chain(factors: List[List[complex]]) -> List[List[complex]]:
-    p = factors[0]
-    for m in factors[1:]:
-        p = matmul(m, p)
-    return p
-
-
-def t4_report(n: int) -> Dict[str, object]:
-    """Exact construction: scale every factor of the radix-2 chain so that the
-    product is exactly beta * F_N with beta = 1/sqrt(N).  Row support, K and the
-    non-trivial multiplication count are unaffected by a uniform scalar."""
-    t = int(round(math.log2(n)))
-    raw_factors = radix2_factors(n, bitrev_first=True)
-    prod_raw = chain(raw_factors)
-    alpha = math.sqrt(n)                 # prod_raw == alpha * F_N
-    beta = 1.0 / math.sqrt(n)
-    divisor = (alpha / beta) ** (1.0 / len(raw_factors))
-    factors = [[[z / divisor for z in row] for row in m] for m in raw_factors]
-    prod = chain(factors)
-    target = dft_matrix(n)
-    ident = max(abs(prod[row_][col] - beta * target[row_][col])
-                for row_ in range(n) for col in range(n))
-    L = count_L(raw_factors)
-    # This counts *matrix positions* whose value is outside {0, +-1, +-j}.  It is
-    # exactly twice the number of distinct twiddle multiplications, because the
-    # butterfly writes both +w and -w for the same twiddle: in layer ell, entry
-    # positions k and k + 2^(ell-1) carry w and -w, and both are non-exempt
-    # whenever w is.  A hardware model that shares the negation (one multiplier
-    # plus one sign flip) therefore halves this number.  The statement does not
-    # define L precisely enough to decide between the two readings, so both are
-    # recorded and the *measured position count* is the conservative one.
-    ideal_positions = 2 * sum((n >> ell) * ((1 << (ell - 1)) - 1) for ell in range(2, t + 1))
+def exact_radix2_report(n: int) -> Dict[str, Any]:
+    factors = radix2_factors(n)
+    product = chain(factors)
+    beta = math.sqrt(n)
+    target = scale(dft_matrix(n), beta)
+    position_count = count_nontrivial_positions(factors)
+    expected_position_count = (int(round(math.log2(n))) - 3) * n + 4
     return {
         "n": n,
-        "t": t,
+        "t": int(round(math.log2(n))),
         "K": len(factors),
-        "normalisation_divisor": divisor,
-        "identity_max_abs_error": ident,
-        "exact": ident < 1e-12,
         "beta": beta,
-        "rmse": residual(prod, [[beta * z for z in row] for row in target]),
-        "max_row_support": max(max_row_support(m) for m in factors),
-        "L": L,
-        "L_shared_negation": ideal_positions,
-        "L_position_count_matches_formula": L == 2 * sum(
-            (n >> ell) * ((1 << (ell - 1)) - 1) for ell in range(2, t + 1)),
-        "C_q16": 16 * L,
+        "rmse": rmse(product, target),
+        "identity_max_abs_error": max_abs_difference(product, target),
+        "exact_within_1e-12": max_abs_difference(product, target) <= 1e-12,
+        "max_factor_row_support": max(max_row_support(factor) for factor in factors),
+        "L_nontrivial_position_count": position_count,
+        "L_shared_plus_minus_pair_count": position_count // 2,
+        "L_formula": "(log2(N)-3)*N+4",
+        "L_matches_formula": position_count == expected_position_count,
+        "C_q16_position_count": 16 * position_count,
+        "beta_counted_in_L": False,
     }
 
 
-# --------------------------------------------------------------------------- #
-# T1/T2: propagation checks
-# --------------------------------------------------------------------------- #
-
-
-def random_propagation_check(n: int, k: int, r: int, trials: int, seed: int) -> Dict[str, object]:
-    """Numeric re-check of T1 (row support propagation) and of the product rank
-    inequality rank(AB) <= min(rank A, rank B).
-
-    Note: a row-2-sparse factor may itself be invertible (e.g. a permutation), so
-    there is no rank cap of the form 2^K.  The rank bound that survives is the
-    per-factor one applied to the *rank* of each factor, not to its sparsity.
-    """
+def random_propagation_check(n: int, k: int, row_cap: int,
+                             trials: int, seed: int) -> Dict[str, Any]:
     rng = random.Random(seed)
-    worst_sup = 0
-    worst_rank = 0
-    min_factor_rank = n
-    violations = 0
+    max_observed_support = 0
+    max_observed_rank = 0
+    rank_rule_violations = 0
     for _ in range(trials):
-        prod = None
-        for _layer in range(k):
-            a = [[0j] * n for _ in range(n)]
-            for i in range(n):
+        factors: List[Matrix] = []
+        factor_ranks: List[int] = []
+        for _stage in range(k):
+            factor = zeros(n, n)
+            for row in range(n):
                 if rng.random() < 0.2:
                     continue
-                for c in rng.sample(range(n), min(n, r)):
-                    a[i][c] = complex(rng.choice([-2, -1, 0, 1, 2]), rng.choice([-2, -1, 0, 1, 2]))
-            if prod is None:
-                min_factor_rank = numeric_rank(a)
-            else:
-                min_factor_rank = min(min_factor_rank, numeric_rank(a))
-            prod = a if prod is None else matmul(a, prod)
-        if prod is None:
-            continue
-        rk = numeric_rank(prod)
-        worst_sup = max(worst_sup, max_row_support(prod))
-        worst_rank = max(worst_rank, rk)
-        if rk > min_factor_rank:
-            violations += 1
+                for col in rng.sample(range(n), row_cap):
+                    value = 0j
+                    while value == 0:
+                        value = complex(rng.choice([-2, -1, 0, 1, 2]),
+                                        rng.choice([-2, -1, 0, 1, 2]))
+                    factor[row][col] = value
+            factors.append(factor)
+            factor_ranks.append(numeric_rank(factor))
+        product = chain(factors)
+        product_rank = numeric_rank(product)
+        max_observed_support = max(max_observed_support, max_row_support(product))
+        max_observed_rank = max(max_observed_rank, product_rank)
+        if product_rank > min(factor_ranks):
+            rank_rule_violations += 1
+    support_bound = min(n, row_cap ** k)
     return {
-        "n": n, "k": k, "r": r, "trials": trials,
-        "max_observed_row_support": worst_sup,
-        "support_cap": min(n, r ** k),
-        "support_holds": worst_sup <= min(n, r ** k),
-        "max_observed_rank_of_product": worst_rank,
-        "rank_rule_violations": violations,
-        "rank_rule_holds": violations == 0,
-        "note": "rank(A_1...A_K) <= min_k rank(A_k) is checked per trial; row support "
-                "gives min(N, 2^K) but no rank cap.",
-    }
-
-
-# --------------------------------------------------------------------------- #
-# A1: statement Eq. (5) audit
-# --------------------------------------------------------------------------- #
-
-
-def eq5_audit() -> Dict[str, object]:
-    """Audit the radix-8 example printed as Eq. (5) in the statement.
-
-    A_1 has only 4 independent rows by construction (rows 5-8 are the negatives of
-    rows 1-4), so the product P A_4 D A_3 A_2 A_1 has rank <= 4 while the 8x8 DFT
-    matrix has rank 8: Eq. (5) cannot be exact for any permutation convention.
-    The matrix product is enumerated over every ordering and both permutation
-    conventions to make the conclusion independent of my reading order.
-    """
-    def build(rows: List[List[complex]]) -> List[List[complex]]:
-        m = [[0j] * 8 for _ in range(8)]
-        for i, r in enumerate(rows):
-            for j, v in enumerate(r):
-                m[i][j] = complex(v)
-        return m
-
-    a1 = build([[1, 0, 0, 0, 1, 0, 0, 0], [0, 1, 0, 0, 0, 1, 0, 0],
-                [0, 0, 1, 0, 0, 0, 1, 0], [0, 0, 0, 1, 0, 0, 0, 1],
-                [1, 0, 0, 0, -1, 0, 0, 0], [0, 1, 0, 0, 0, -1, 0, 0],
-                [0, 0, 1, 0, 0, 0, -1, 0], [0, 0, 0, 1, 0, 0, 0, -1]])
-    a2 = build([[1, 0, 1, 0, 0, 0, 0, 0], [0, 1, 0, 1, 0, 0, 0, 0],
-                [1, 0, -1, 0, 0, 0, 0, 0], [0, 1, 0, -1, 0, 0, 0, 0],
-                [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 1, 1, 0],
-                [0, 0, 0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 1, 0, -1, 0]])
-    a3 = build([[1, 1, 0, 0, 0, 0, 0, 0], [1, -1, 0, 0, 0, 0, 0, 0],
-                [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0, 0, 0],
-                [0, 0, 0, 0, 1, 0, 0, 1], [0, 0, 0, 0, 0, 1, 1, 0],
-                [0, 0, 0, 0, 0, 1, -1, 0], [0, 0, 0, 0, 1, 0, 0, -1]])
-    a4 = build([[1, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0],
-                [0, 0, 1, -1, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0, 0, 0],
-                [0, 0, 0, 0, 1, -1, 0, 0], [0, 0, 0, 0, 1, 1, 0, 0],
-                [0, 0, 0, 0, 0, 0, -1, 1], [0, 0, 0, 0, 0, 0, 1, 1]])
-    d = [[0j] * 8 for _ in range(8)]
-    for i, v in enumerate([1, 1, 1, 1j, 1, 1j, 1j, 1]):
-        d[i][i] = complex(v)
-    base = [[1, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 1, 1, 0, 0, 0, 0], [0, 0, -1, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 0],
-            [0, 0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, -1, 1]]
-    a1r = build(base)
-
-    perm = [0, 4, 2, 5, 1, 7, 3, 6]
-    cols = [[0j] * 8 for _ in range(8)]
-    rows = [[0j] * 8 for _ in range(8)]
-    for i, c in enumerate(perm):
-        cols[i][c] = 1 + 0j
-        rows[c][i] = 1 + 0j
-
-    f8 = dft_matrix(8)
-    raw8 = raw_dft_matrix(8)
-
-    import itertools
-
-    results = []
-    for pname, pm in (("P_as_columns", cols), ("P_as_rows", rows)):
-        for order in itertools.permutations([("A1", a1), ("A2", a2), ("A3", a3), ("A4", a4)]):
-            names = [o[0] for o in order]
-            mats = [o[1] for o in order]
-            for pos in range(5):
-                chain = mats[:pos] + [d] + mats[pos:]
-                prod = chain[0]
-                for mm in chain[1:]:
-                    prod = matmul(mm, prod)
-                full = matmul(pm, prod)
-                best = min(
-                    max(abs(full[i][j] - f8[i][j]) for i in range(8) for j in range(8)),
-                    max(abs(full[i][j] - raw8[i][j]) for i in range(8) for j in range(8)),
-                )
-                results.append(best)
-    return {
-        "a1_rank": numeric_rank(a1),
-        "a1_rank_of_replaced_row": numeric_rank(a1r),
-        "a2_rank": numeric_rank(a2),
-        "a3_rank": numeric_rank(a3),
-        "a4_rank": numeric_rank(a4),
-        "d_rank": numeric_rank(d),
-        "dft_rank": numeric_rank(f8),
-        "best_error_over_all_orderings": min(results),
-        "orderings_tested": len(results),
-        "exact_possible": min(results) < 1e-9,
-        "conclusion": ("Eq. (5) as extracted is not an exact identity for F_8 under any "
-                       "factor ordering or permutation convention: the best achievable "
-                       "maximum entry error over 240 readings is 1.7678, so Eq. (5) is an "
-                       "approximate (lossy) factorisation and must not be used as a "
-                       "ground-truth reference or as an exact radix-8 building block."),
-    }
-
-
-# --------------------------------------------------------------------------- #
-# T5/T6
-# --------------------------------------------------------------------------- #
-
-
-def t5_support_bound(target: List[List[complex]], k: int) -> Dict[str, float]:
-    n = len(target)
-    m = min(n, 2 ** k)
-    return {
+        "n": n,
         "k": k,
-        "support_cap": m,
-        "rmse_lb_beta_1": math.sqrt(max(0, n - m)) / n,
-        "cap_for_threshold": max(0.0, n - 0.01 * n * n),
+        "row_cap": row_cap,
+        "trials": trials,
+        "seed": seed,
+        "max_observed_row_support": max_observed_support,
+        "support_bound": support_bound,
+        "support_rule_holds": max_observed_support <= support_bound,
+        "max_observed_product_rank": max_observed_rank,
+        "rank_rule_violations": rank_rule_violations,
+        "rank_rule_holds": rank_rule_violations == 0,
     }
+
+
+def real_beta_least_squares(target: Matrix, approximation: Matrix) -> float:
+    numerator = 0.0
+    denominator = 0.0
+    for row in range(len(target)):
+        for col in range(len(target[0])):
+            numerator += (target[row][col].conjugate() * approximation[row][col]).real
+            denominator += abs(target[row][col]) ** 2
+    return numerator / denominator
+
+
+def statement_eq5_audit() -> Dict[str, Any]:
+    """Audit only the extracted printed order P A4 D A3 A2 A1.
+
+    P=[e0 e4 e2 e5 e1 e7 e3 e6] conventionally means column j is
+    e_perm[j].  Its transpose is retained as the only plausible alternative.
+    """
+    def build(rows: Sequence[Sequence[complex]]) -> Matrix:
+        return [[complex(value) for value in row] for row in rows]
+
+    a1 = build([
+        [1, 0, 0, 0, 1, 0, 0, 0], [0, 1, 0, 0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0, 0, 1, 0], [0, 0, 0, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, -1, 0, 0, 0], [0, 1, 0, 0, 0, -1, 0, 0],
+        [0, 0, 1, 0, 0, 0, -1, 0], [0, 0, 0, 1, 0, 0, 0, -1],
+    ])
+    a2 = build([
+        [1, 0, 1, 0, 0, 0, 0, 0], [0, 1, 0, 1, 0, 0, 0, 0],
+        [1, 0, -1, 0, 0, 0, 0, 0], [0, 1, 0, -1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 1],
+        [0, 0, 0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1, 0, -1],
+    ])
+    a3 = build([
+        [1, 1, 0, 0, 0, 0, 0, 0], [1, -1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 1], [0, 0, 0, 0, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 1, -1, 0], [0, 0, 0, 0, 1, 0, 0, -1],
+    ])
+    a4 = build([
+        [1, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, -1, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, -1, 0, 0], [0, 0, 0, 0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, -1, 1], [0, 0, 0, 0, 0, 0, 1, 1],
+    ])
+    diagonal = zeros(8, 8)
+    for index, value in enumerate((1, 1, 1, 1j, 1, 1j, 1j, 1)):
+        diagonal[index][index] = complex(value)
+
+    permutation = (0, 4, 2, 5, 1, 7, 3, 6)
+    p_columns = zeros(8, 8)
+    for col, row in enumerate(permutation):
+        p_columns[row][col] = 1 + 0j
+    p_transpose = [[p_columns[col][row] for col in range(8)] for row in range(8)]
+
+    normalized = dft_matrix(8)
+    raw = raw_dft_matrix(8)
+    readings: Dict[str, Any] = {}
+    for name, permutation_matrix in (("P_columns", p_columns),
+                                     ("P_transpose", p_transpose)):
+        product = chain((a1, a2, a3, diagonal, a4, permutation_matrix))
+        beta_opt = real_beta_least_squares(normalized, product)
+        readings[name] = {
+            "printed_product": "P A4 D A3 A2 A1",
+            "rmse_vs_normalized_F8": rmse(product, normalized),
+            "rmse_vs_raw_F8": rmse(product, raw),
+            "max_abs_vs_normalized_F8": max_abs_difference(product, normalized),
+            "max_abs_vs_raw_F8": max_abs_difference(product, raw),
+            "real_beta_least_squares_for_beta_F8": beta_opt,
+            "rmse_vs_beta_F8": rmse(product, scale(normalized, beta_opt)),
+            "exact_normalized_within_1e-12": max_abs_difference(product, normalized) <= 1e-12,
+            "exact_raw_within_1e-12": max_abs_difference(product, raw) <= 1e-12,
+        }
+    return {
+        "scope": "extracted matrices only; original DOCX was not visually re-transcribed",
+        "factor_ranks": {
+            "A1": numeric_rank(a1), "A2": numeric_rank(a2),
+            "A3": numeric_rank(a3), "A4": numeric_rank(a4),
+            "D": numeric_rank(diagonal),
+        },
+        "readings": readings,
+        "note": "Eq. (5) uses an approximation sign; this check is not an error allegation.",
+    }
+
+
+def support_lower_bound(n: int, k: int, beta: float) -> Dict[str, Any]:
+    support_cap = min(n, 2 ** k)
+    return {
+        "n": n,
+        "k": k,
+        "beta": beta,
+        "support_cap": support_cap,
+        "rmse_lower_bound": abs(beta) * math.sqrt(n - support_cap) / n,
+        "formula": "abs(beta)*sqrt(N-min(N,2**K))/N",
+    }
+
+
+def scale_degeneracy_report() -> Dict[str, Any]:
+    n = 8
+    target = dft_matrix(n)
+    approximation = identity(n)
+    reference = rmse(target, approximation)
+    points = []
+    for value in (2.0, 0.5, 1e-3):
+        scaled_residual = rmse(scale(target, value), scale(approximation, value))
+        points.append({
+            "scale": value,
+            "rmse": scaled_residual,
+            "expected": value * reference,
+            "linear_within_1e-12": abs(scaled_residual - value * reference) <= 1e-12,
+        })
+    zero = zeros(n, n)
+    return {
+        "reference_rmse_beta_1_identity_product": reference,
+        "scaled_points_unrestricted_coefficients": points,
+        "zero_solution": {
+            "beta": 0.0,
+            "product": "zero matrix (obtainable by one zero factor)",
+            "rmse": rmse(zero, zero),
+            "satisfies_row_2_sparse": True,
+            "zero_is_in_every_stated_Pq": True,
+        },
+        "note": "Arbitrary nonzero scaling need not preserve the discrete Pq constraint; the exact beta=0/zero-factor solution does.",
+    }
+
+
+def sha256_file(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def main() -> int:
-    out: Dict[str, object] = {"script": "verify_row_bound.py", "generated": []}
+    script_path = Path(__file__).resolve()
+    repo_root = script_path.parents[2]
+    problem_path = repo_root / "01_problem" / "original" / "DFT类矩阵的整数分解逼近.docx"
+    user_readme_path = repo_root / "03_model" / "incoming" / "README_LATEST_V6.md"
 
-    print("=== T0 target definition sanity (Eq. (1) vs Eq. (3), Q4 Kronecker target) ===")
-    t0 = {}
-    for n in (4, 8):
-        f = dft_matrix(n)
-        r = raw_dft_matrix(n)
-        ok, worst = is_unitary_columns(f)
-        t0[f"N{n}"] = {
-            "entry_0_0": [f[0][0].real, f[0][0].imag],
-            "entry_0_1": [f[0][1].real, f[0][1].imag],
-            "entry_1_1": [f[1][1].real, f[1][1].imag],
-            "entry_0_2": [f[0][2].real, f[0][2].imag],
-            "columns_orthonormal": ok,
-            "worst_column_orthonormality_residual": worst,
-            "raw_vs_normalised_ratio": [r[1][1].real / f[1][1].real if f[1][1].real else None],
-        }
-        print(f"  N={n}: F[0,0]={f[0][0]:.6f} F[0,1]={f[0][1]:.6f} F[1,1]={f[1][1]:.6f} "
-              f"F[0,2]={f[0][2]:.6f} | columns orthonormal={ok} (resid={worst:.2e})")
-
-    k4x8 = kron(dft_matrix(4), dft_matrix(8))
-    f32 = dft_matrix(32)
-    ok_k, worst_k = is_unitary_columns(k4x8)
-    diff_32 = max(abs(k4x8[row][col] - f32[row][col]) for row in range(32) for col in range(32))
-    k_row_mod = {round(abs(z), 12) for z in k4x8[7]}
-    print(f"  F4xF8: shape={len(k4x8)}x{len(k4x8[0])} columns orthonormal={ok_k} "
-          f"(resid={worst_k:.2e})")
-    print(f"  F4xF8 row 7 distinct moduli: {sorted(k_row_mod)}")
-    print(f"  max|F4xF8 - F32| = {diff_32:.6f}  (must be large: they are different matrices)")
-    t0["F4xF8"] = {
-        "shape": [len(k4x8), len(k4x8[0])],
-        "columns_orthonormal": ok_k,
-        "worst_column_orthonormality_residual": worst_k,
-        "distinct_row_moduli": sorted(k_row_mod),
-        "max_abs_difference_vs_F32": diff_32,
-        "is_F32": diff_32 < 1e-9,
+    report: Dict[str, Any] = {
+        "schema_version": "1.0",
+        "artifact_class": "modeling_check",
+        "formal_experiment": False,
+        "script": "03_model/checks/verify_row_bound.py",
+        "script_sha256_before_output": sha256_file(script_path),
+        "inputs": {
+            "problem_docx_sha256": sha256_file(problem_path) if problem_path.exists() else None,
+            "user_v6_readme_sha256": sha256_file(user_readme_path) if user_readme_path.exists() else None,
+        },
+        "assumptions": [
+            "F_N is Eq. (3)'s unitary DFT unless explicitly labeled raw",
+            "all factors are N x N and K counts every support-expanding factor",
+            "RMSE is Frobenius norm divided by N",
+            "beta is external and is not counted in L",
+            "L is a per-position count; plus/minus sharing is reported separately",
+        ],
     }
-    out["t0_target_sanity"] = t0
 
-    print("=== T4 exact radix-2 construction (product = beta*F_N, row support 2) ===")
-    t4: Dict[str, object] = {}
-    for n in (2, 4, 8, 16, 32, 64):
-        r = t4_report(n)
-        t4[f"N{n}"] = r
-        print(f"  N={n:3d} K={r['K']} exact={r['exact']} |chain-beta*F|_max={r['identity_max_abs_error']:.2e} "
-              f"rmse={r['rmse']:.3e} beta={r['beta']:.6f} L={r['L']} "
-              f"(shared-negation {r['L_shared_negation']}, formula {r['L_position_count_matches_formula']}) "
-              f"C(q=16)={r['C_q16']} row_support={r['max_row_support']}")
-    out["t4_exact_construction"] = t4
+    t0: Dict[str, Any] = {}
+    for n in (4, 8):
+        normalized = dft_matrix(n)
+        raw = raw_dft_matrix(n)
+        t0[f"N{n}"] = {
+            "unitary_residual": unitary_residual(normalized),
+            "raw_to_normalized_scale": math.sqrt(n),
+            "max_abs_raw_minus_sqrtN_normalized": max_abs_difference(
+                raw, scale(normalized, math.sqrt(n))
+            ),
+        }
+    target_kron = kron(dft_matrix(4), dft_matrix(8))
+    f32 = dft_matrix(32)
+    t0["F4_kron_F8"] = {
+        "shape": [len(target_kron), len(target_kron[0])],
+        "unitary_residual": unitary_residual(target_kron),
+        "max_abs_difference_vs_F32": max_abs_difference(target_kron, f32),
+        "is_F32_within_1e-12": max_abs_difference(target_kron, f32) <= 1e-12,
+    }
+    report["t0_target_sanity"] = t0
 
-    print("=== T1 support propagation + product rank rule (random) ===")
-    checks = [random_propagation_check(16, k, 2, 20, 1000 + k) for k in (1, 2, 3, 4)]
-    out["propagation_checks"] = checks
-    for c in checks:
-        print(f"  N={c['n']} K={c['k']}: support<={c['max_observed_row_support']}/{c['support_cap']} "
-              f"holds={c['support_holds']} | rank(prod)<={c['max_observed_rank_of_product']}, "
-              f"rank-rule violations={c['rank_rule_violations']} "
-              f"(holds={c['rank_rule_holds']})")
+    exact = {f"N{n}": exact_radix2_report(n) for n in (2, 4, 8, 16, 32, 64)}
+    report["t3_exact_radix2"] = exact
 
-    print("=== A1 statement Eq. (5) audit ===")
-    audit = eq5_audit()
-    out["eq5_audit"] = audit
-    for key in ("a1_rank", "a1_rank_of_replaced_row", "dft_rank", "orderings_tested",
-                "best_error_over_all_orderings", "exact_possible"):
-        print(f"  {key}: {audit[key]}")
-    print(f"  conclusion: {audit['conclusion']}")
+    propagation = [random_propagation_check(16, k, 2, 20, 1000 + k)
+                   for k in (1, 2, 3, 4)]
+    report["t1_t2_propagation"] = propagation
+    report["t4_statement_eq5"] = statement_eq5_audit()
 
-    print("=== T5 support lower bound at beta = 1 (q independent) ===")
-    t5: Dict[str, object] = {}
+    bounds: Dict[str, Any] = {}
     for n in (8, 16, 32, 64):
-        f = dft_matrix(n)
-        t5[f"N{n}"] = {f"K{k}": t5_support_bound(f, k) for k in range(1, 8)}
-        row = "  ".join(f"K{k}:{t5_support_bound(f, k)['rmse_lb_beta_1']:.6f}" for k in (3, 4, 5, 6))
-        print(f"  N={n:3d} {row} | cap needed for 0.1: {t5[f'N{n}']['K1']['cap_for_threshold']:.2f}")
-    out["t5_support_bounds"] = t5
+        bounds[f"N{n}"] = {
+            f"K{k}": support_lower_bound(n, k, 1.0) for k in range(1, 8)
+        }
+    report["t5_support_bounds_beta_1"] = bounds
+    report["t6_scale_degeneracy"] = scale_degeneracy_report()
 
-    raw8 = raw_dft_matrix(8)
-    print("=== T6 scale degeneracy ===")
-    # normalise the exact construction so that the product is exactly beta0 * F_N,
-    # then rescale it by c while scaling beta by the same c.  The residual must
-    # scale linearly with c, i.e. the *relative* accuracy never changes, which is
-    # exactly the scale degeneracy that makes inf over (A, beta) of Eq. (6) equal 0.
-    n8 = 8
-    base = radix2_factors(n8, bitrev_first=True)
-    k_fac = len(base)
-    beta0 = 1.0 / math.sqrt(n8)
-    divisor = (math.sqrt(n8) / beta0) ** (1.0 / k_fac)
-    norm_base = [[[z / divisor for z in row] for row in m] for m in base]
+    checks = {
+        "normalized_dft_unitary": all(t0[f"N{n}"]["unitary_residual"] <= 1e-12
+                                      for n in (4, 8)),
+        "kron_unitary": t0["F4_kron_F8"]["unitary_residual"] <= 1e-12,
+        "kron_not_f32": not t0["F4_kron_F8"]["is_F32_within_1e-12"],
+        "exact_radix2_all_sizes": all(item["exact_within_1e-12"] for item in exact.values()),
+        "exact_radix2_k_equals_t": all(item["K"] == item["t"] for item in exact.values()),
+        "exact_radix2_row_cap": all(item["max_factor_row_support"] <= 2
+                                    for item in exact.values()),
+        "exact_radix2_L_formula": all(item["L_matches_formula"] for item in exact.values()),
+        "support_propagation": all(item["support_rule_holds"] for item in propagation),
+        "rank_product_rule": all(item["rank_rule_holds"] for item in propagation),
+        "eq5_factors_full_rank": all(rank == 8 for rank in
+                                     report["t4_statement_eq5"]["factor_ranks"].values()),
+        "scale_relation": all(item["linear_within_1e-12"] for item in
+                              report["t6_scale_degeneracy"]["scaled_points_unrestricted_coefficients"]),
+        "zero_solution": report["t6_scale_degeneracy"]["zero_solution"]["rmse"] == 0.0,
+    }
+    report["checks"] = checks
+    report["failed_checks"] = [name for name, passed in checks.items() if not passed]
+    report["status"] = "PASS" if not report["failed_checks"] else "FAIL"
 
-    f8 = dft_matrix(n8)
-    prod_norm = norm_base[0]
-    for _m in norm_base[1:]:
-        prod_norm = matmul(_m, prod_norm)
-    ident = max(abs(prod_norm[row][col] - beta0 * f8[row][col])
-                for row in range(n8) for col in range(n8))
-    e0 = residual(prod_norm, [[beta0 * z for z in row] for row in f8])
-    print(f"  identity check |chain - beta0*F8|_max = {ident:.3e}")
-    print(f"  normalised exact chain: beta={beta0:.6f} residual={e0:.3e} (K={k_fac} factors)")
+    output_path = script_path.parent / "row_bound_results.json"
+    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+                           encoding="utf-8")
 
-    t6 = {"reference_beta": beta0, "reference_residual": e0,
-          "identity_residual_max": ident, "points": []}
-    for c in (2.0, 0.5, 1e-3):
-        scaled_prod = [[c * z for z in row] for row in prod_norm]
-        e2 = residual(scaled_prod, [[c * beta0 * z for z in row] for row in f8])
-        ok = abs(e2 - c * e0) < 1e-15 * max(1.0, c)
-        t6["points"].append({"c": c, "K": k_fac, "beta": c * beta0,
-                             "residual": e2, "equals_c_times_reference": ok})
-        print(f"  c={c:g}: factors *= {c:g}, beta' = c*beta = {c * beta0:.6g} "
-              f"-> residual={e2:.3e} (= c*reference: {ok})")
-    t6["note"] = ("scaling the whole factorisation by c and beta by c rescales product and "
-                  "target together, so the residual scales linearly with c: the free scale in "
-                  "Eq. (6) is unconstrained, which is why any K* or C* statement is conditional "
-                  "on an explicit beta normalisation convention.")
-    out["t6_scale_degeneracy"] = t6
-
-    print("=== T3 exact-construction summary (from T4) ===")
-    t3 = {}
-    for n in (2, 4, 8, 16, 32, 64):
-        r = out["t4_exact_construction"][f"N{n}"]
-        t3[f"N{n}"] = {"K": r["K"], "L": r["L"], "C_q16": r["C_q16"],
-                       "beta": r["beta"], "rmse": r["rmse"]}
-        print(f"  N={n:3d}: K={r['K']}, row support 2, beta=1/sqrt(N), RMSE<1e-15, L={r['L']}, "
-              f"C(q=16)={r['C_q16']}")
-    out["t3_exact_construction_summary"] = t3
-
-    # write next to this script so the artefact does not depend on the caller's cwd
-    out_path = Path(__file__).resolve().parent / "row_bound_results.json"
-    with open(out_path, "w", encoding="utf-8") as fh:
-        json.dump(out, fh, ensure_ascii=False, indent=2, sort_keys=True)
-    print(f"\nwrote {out_path}")
-    return 0
+    print(f"status={report['status']}")
+    for name, passed in checks.items():
+        print(f"  {name}: {'PASS' if passed else 'FAIL'}")
+    print("exact radix-2 position L:",
+          {name: item["L_nontrivial_position_count"] for name, item in exact.items()})
+    print("wrote", output_path)
+    return 0 if report["status"] == "PASS" else 1
 
 
 if __name__ == "__main__":

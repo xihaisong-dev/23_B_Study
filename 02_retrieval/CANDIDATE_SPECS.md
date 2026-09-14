@@ -17,7 +17,7 @@
   "N": 64,
   "target": {"kind": "dft|kron", "definition": "式(3)单位化|F4xF8",
              "sha256_of_matrix_bytes": "string"},
-  "q": 1, "K": 5, "beta": 0.125,
+  "q": 16, "K": 6, "beta": 8.0,
   "factors": [{"layer": 1, "row_support_max": 2, "nonzeros": 32,
                "entries_sha256": "string"}],
   "constraint1_row_support_max": 2,
@@ -25,7 +25,7 @@
   "constraint2_violations": 0,
   "rmse": 0.0,
   "rmse_recompute_independent": 0.0,
-  "L": 258, "C": 4128,
+  "L": 196, "C": 3136,
   "seed": 17, "budget": "string", "wall_clock_s": 0.0,
   "feasible": true,
   "optimality_claim": "exact|lower_bound|best_found|heuristic"
@@ -41,14 +41,14 @@
 
 ## 2. 候选清单（至少 3 个；`minimum_candidates` 的门槛值由 `00_admin/workflow.json` 的集成者字段裁定，本文件不复制该字段）
 
-### C1 `exact-radix2-chain`（可证明最优，问题 1 的基准）
+### C1 `exact-radix2-chain`（问题 1 的非零精确基准）
 
 - 来源：本题建模结论，`03_model/ROW_BOUND_THEORY.md` 第 3 节（已数值复算精确）。
-- 构造：比特反转排列 + `t` 个 radix-2 蝶形层，每个因子整体除以常数使乘积等于 `βF_N`，`β = 1/√N`，`K = t+1`，`RMSE = 0`。
-- 实测（`N ≤ 64`）：`K = 2..7`，`L = 0, 2, 10, 34, 98, 258`（保守位置计数），`C(q=16) = 0, 32, 160, 544, 1568, 4128`。
-- 适用范围：问题 1 的精确上界（`RMSE = 0`）与问题 2–5 的**可行性基准**（把扭因子四舍五入到 `P_q` 后仍可用作初值）。
+- 构造：把比特反转排列吸收到第一个 radix-2 蝶形层，得到 `K=t=log2(N)` 个行二稀疏因子，乘积等于 `√N F_N`；取 `β=√N`，`RMSE=0`。支持下界同时证明任何 `β≠0` 的非零精确分解都有 `K≥t`。
+- 实测（`N≤64`）：`K=1..6`，`L=0,0,4,20,68,196`（位置计数），`C(q=16)=0,0,64,320,1088,3136`。
+- 适用范围：问题 1 的非零精确基准。问题 2–5 可借用其拓扑作搜索初值，但原始扭因子不满足离散集合，不能直接称为可行解。
 - 已知限制：扭因子层含非豁免系数，故 `L > 0`；`q = 1` 时需要把扭因子离散化，误差需重新计算。
-- **精确性证据**：`N ≤ 64` 的每个尺寸都给出逐元素复算（`max|chain − βF_N| ≤ 1.0e-15`），并给出 `K`、`L`、`C`；见 `03_model/checks/row_bound_results.json` 的 `t4_exact_construction`。
+- **精确性证据**：`N≤64` 的每个尺寸都给出逐元素复算（浮点最大误差 `≤6.4e-14`），并给出 `K`、`L`、`C`；见 `03_model/checks/row_bound_results.json` 的 `t3_exact_radix2`。
 
 ### C2 `support-optimal-discrete`（问题 2/3 的主候选）
 
