@@ -1,0 +1,10 @@
+{
+  "schema_version": "3.0",
+  "status": "NOT_RUN",
+  "kb": {
+    "root": "knowledge_base",
+    "checked_at": "",
+    "status": "NOT_RUN"
+  },
+  "problems": []
+}

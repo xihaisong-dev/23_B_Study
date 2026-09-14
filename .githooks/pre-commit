@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+branch="$(git branch --show-current)"
+case "$branch" in
+  agent/modeling) role="modeling" ;;
+  agent/compute) role="compute" ;;
+  agent/paper) role="paper" ;;
+  *) exit 0 ;;
+esac
+
+blocked=()
+while IFS= read -r -d '' path; do
+  case "$role:$path" in
+    modeling:01_problem/original/*)
+      blocked+=("$path (原始输入只读)") ;;
+    modeling:01_problem/*|modeling:02_retrieval/*|modeling:03_model/*|modeling:00_admin/handoffs/modeling.md|modeling:00_admin/proposals/modeling/*)
+      ;;
+    compute:04_code/*|compute:05_results/*|compute:00_admin/handoffs/compute.md|compute:00_admin/proposals/compute/*)
+      ;;
+    paper:06_paper/*|paper:07_review/*|paper:00_admin/handoffs/paper.md|paper:00_admin/proposals/paper/*)
+      ;;
+    *) blocked+=("$path") ;;
+  esac
+done < <(git diff --cached --name-only --diff-filter=ACMR -z)
+
+if ((${#blocked[@]})); then
+  echo "提交被拒绝：分支 $branch 暂存了越权路径：" >&2
+  printf '  - %s\n' "${blocked[@]}" >&2
+  echo "请撤销这些暂存项，或在 00_admin/proposals/$role/ 提交跨区变更提案。" >&2
+  exit 1
+fi

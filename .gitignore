@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Experiment caches and local scratch
+.cache/
+tmp/
+scratch/
+
+# LaTeX build products
+06_paper/*.aux
+06_paper/*.bbl
+06_paper/*.blg
+06_paper/*.fdb_latexmk
+06_paper/*.fls
+06_paper/*.log
+06_paper/*.out
+06_paper/*.synctex.gz
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

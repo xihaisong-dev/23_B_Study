@@ -1,0 +1,28 @@
+{
+  "schema_version": "3.0",
+  "status": "PASS",
+  "authority_order": [
+    "2023 年官方竞赛通知与官方题面（待核验）",
+    "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "适用的 AGENTS.md",
+    "00_admin/DECISIONS.md 中已签署决策"
+  ],
+  "top_level_questions": ["q1", "q2", "q3", "q4", "q5"],
+  "scoring_or_objectives": [
+    "q1：约束1下优化矩阵因子与实缩放 beta，最小化 RMSE，并以 q=16 计算硬件复杂度",
+    "q2：q=3、约束2下，对 N=2^t 且 t=1..5 优化 RMSE 与硬件复杂度",
+    "q3：q=3、约束1和2同时成立时，对 N=2^t 且 t=1..5 优化 RMSE 与硬件复杂度",
+    "q4：对 F4 与 F8 的 Kronecker 积，在约束1和2下优化 RMSE 与硬件复杂度",
+    "q5：约束1和2下满足 RMSE<=0.1，并联合选择 q、K、矩阵因子与 beta，使硬件复杂度尽量低"
+  ],
+  "units": [
+    "RMSE 为按 N 归一的 Frobenius 范数误差，无量纲",
+    "硬件复杂度 C=q*L，其中 L 为题面定义的非平凡复乘次数"
+  ],
+  "assumptions": [
+    "DFT 矩阵采用题面给出的 1/sqrt(N) 归一化",
+    "beta 为实值缩放因子",
+    "0、正负1、正负j、正负1正负j 的乘法不计入 L"
+  ],
+  "unresolved_conflicts": []
+}

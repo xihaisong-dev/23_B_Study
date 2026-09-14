@@ -1,0 +1,15 @@
+{
+  "schema_version": "3.0",
+  "status": "BLOCKED",
+  "files": [
+    {
+      "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+      "role": "problem",
+      "data_class": "third_party_copy",
+      "provenance_status": "UNVERIFIED",
+      "source": "用户于 2026-09-14 提供的本地微信临时文件；文档自称 2023 年中国研究生数学建模竞赛 B 题",
+      "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841"
+    }
+  ],
+  "blocked_reason": "尚未用竞赛官方来源核验题面副本"
+}

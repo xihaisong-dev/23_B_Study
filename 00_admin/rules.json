@@ -1,0 +1,23 @@
+{
+  "schema_version": "3.0",
+  "status": "BLOCKED",
+  "competition": "huaweibei",
+  "season": "2023",
+  "official_source": "待核验",
+  "retrieved_at": "2026-09-14T00:00:00+08:00",
+  "template": {
+    "status": "BLOCKED",
+    "source": "",
+    "sha256": ""
+  },
+  "ai_policy": {
+    "status": "BLOCKED",
+    "source": "",
+    "summary": ""
+  },
+  "submission_requirements": {
+    "status": "BLOCKED",
+    "source": "",
+    "summary": ""
+  }
+}
