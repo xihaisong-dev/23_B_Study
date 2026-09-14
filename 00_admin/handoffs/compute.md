@@ -35,3 +35,25 @@
 - 关键数学阻塞：不含 beta 的 `sqrt(N-2^K)/N` support 下界只在 `|beta|=1` 时精确成立，或在对全部可行解有 `|beta|>=1` 的权威统一约束时作为较弱下界；若 beta 可自由取 0，则正的 support 统一下界不成立。
 - 接口影响：无现有代码/协议变更。新规格建议安全 NPZ schema、独立验证 API、beta/q/L 失败关闭和输入交付包；须由总控核对冻结协议后才能实施。
 - 下一步与接收人：总控/集成者审核并合并本提交，收集 `V6_REQUIRED_INPUTS.md` 中 P0/P1 材料，交由建模 Agent 冻结 beta 域、字母表和 `l_semantics`。只有 freeze 校验 PASS 后才能返回计算 Agent 实现。
+
+## D-005 接口对齐与 freeze 失败交接
+
+- 角色/分支/工作树：E 计算 Agent；`agent/compute`；`worktrees/compute`。
+- 同步：本轮开始时 `git merge --no-edit main` 已是最新；工作期间 `main` 追加 D-006 题面交叉核验后，再合并 `ac894208d23b93765c1b6212fa7767fd9c7c1628`，同步合并提交为 `8fc571e365d23a5d31c4a13a87aebcd87ef621d3`。
+- 内容提交：`94eb06c2e5c41c3b23901181b9f9bd5968077fa0`。
+- 输入版本与哈希：
+  - `00_admin/DECISIONS.md` SHA-256 `4d34a5ce8e48161dff0dfb39fcbf506cbb084f0409ef7e56473652b489031679`；D-005 固定 beta/DFT/RMSE/q/K/L/排列口径并授权从头复现，D-006 仅提供题面内容交叉佐证。
+  - `00_admin/semantic_contract.json` SHA-256 `bdbe1b5a454e1ba56d47201ff942f94844165e5550755cc4195af50da6f0cb62`。
+  - `00_admin/input_manifest.json` SHA-256 `ff1d0a58ba424a53885980d0a91a734d984336c6c53f04bfea0ef9b191337875`；内容交叉佐证 PASS，但官方 ZIP/MD5 仍缺失，总状态仍 `BLOCKED`。
+  - `03_model/tournament_protocol.json` SHA-256 `167635df24be6afdf40042345f2cd38995d03d5cde98047f29fc831bea302398`；状态 `NOT_RUN`、`problems` 为空。
+- 门禁命令：`python -X utf8 C:\Users\Lenovo\.codex\skills\1start-mathmodel\scripts\workflow_guard.py verify-freeze --workspace . --stage tournament_protocol`。
+- 门禁结果：`FAIL`，退出码 1，`checked_at=2026-09-14T15:49:55+00:00`，唯一错误为缺少 `00_admin/freezes/tournament_protocol.json`。依 `3coding-visual` 已停止正式实现和 runs。
+- L0 环境预检：Python `3.14.6` AVAILABLE；pytest `9.1.1` AVAILABLE；NumPy MISSING；SciPy MISSING。未安装任何依赖，未执行矩阵/候选测试。
+- 命令与 run-id：除 freeze 验证外，仅执行 Git 同步/提交、文本审计、环境版本可用性检查、SHA-256 和 `git diff --check`；无候选或正式运行，run-id 为 `NOT_RUN`。
+- 产物：
+  - `04_code/V6_VALIDATOR_SPEC.md`，SHA-256 `f9a7764e1698e17f58f6a2180f301284133b00ff4999690e12c6119df3898e01`；已按 D-005 替换可变 beta 接口，增加冻结配置、固定 beta=1、操作流 NPZ、run-id/validation-id、K/排列和对齐测试。
+  - `00_admin/proposals/compute/V6_REQUIRED_INPUTS.md`，SHA-256 `abefce2cf0120a3afd3634c854f4527980d8366f1bfe7f811a6ba237bb761a39`；已将旧 V1–V6 包降为历史声称复现输入，不再作为从头实现前置。
+- 测试：文档 `git diff --check` PASS；D-005 覆盖字段自检 PASS；pre-commit 边界检查 PASS。未运行 pytest，因为本轮无代码且 NumPy/SciPy 未安装。
+- 结果边界：未创建/修改任何 `05_results/` 产物，未生成或声称任何候选 RMSE、改善、胜者或最优性数值。
+- 接口影响：未改机器协议或现有代码。未来验证器以 D-005 为配置契约，只接受 beta=1；NPZ 用 factor/permutation operation stream 精确复原乘积，只有纯排列不计 K/L。
+- 下一步与接收人：总控/建模 Agent 需完成候选、种子、预算、容差和失败规则，生成并验证 `tournament_protocol` freeze；总控同时需批准 Python 兼容范围和锁定依赖。只有 verify-freeze PASS 后才返回计算 Agent 开始正式实现。
