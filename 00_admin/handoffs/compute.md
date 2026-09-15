@@ -1,5 +1,42 @@
 # 计算 Agent 交接
 
+## 当前交接：L2 挑战者对擂执行完毕（隔离分支）
+
+- 角色：E 计算 Agent
+- 状态：对擂已执行（1230 runs）；结论为**挑战者在多数问题上未优于基线**，见下文；正式结果冻结仍由集成者执行
+- 工作树 / 分支：`worktrees/compute-tournament` / `agent/compute-tournament`（从 `origin/agent/compute` 新建的**隔离**工作树，不改动并发会话正在使用的 `worktrees/compute` 与 `worktrees/compute-challengers`）
+- 内容提交：`e50965b`（框架）、`4cbe36a`（设计记录）、`0854b83`（约束违规修复）、`90c2971`（对擂结果与报告）
+- 基线提交：`origin/agent/compute` = `6d1d2691bc3fb3728d6ba5c6ec3733d906007455`
+- 输入版本与哈希：
+  - `03_model/tournament_protocol.json` SHA-256 `c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`
+  - `00_admin/freezes/tournament_protocol.json` SHA-256 `b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48`
+  - 代码树 SHA-256 `c063379367cf248dc02668c13d6fa594628f33eaf451724fd956bc1edd52160a`
+- 命令与 run-id：
+  - `python -X utf8 04_code/scripts/run_challengers.py`（仓库根执行，门禁放行后才运行）
+  - run-id 形如 `<UTC>__<问题>__<候选>__s<种子>__p<协议哈希8>__c<代码哈希8>`
+- 产物路径：
+  - `04_code/src/dft_integer_approx/challenger_core.py`、`challengers.py`、`formal_challenger_runner.py`
+  - `04_code/scripts/run_challengers.py`、`04_code/CHALLENGER_NOTES.md`
+  - `05_results/TOURNAMENT_REPORT.md`、`05_results/challenger_runs.json`
+  - `05_results/runs/`：**1480** 个 run 目录（250 个基线保持原样 + 1230 个新增挑战者）
+- 测试与门禁：
+  - 门禁 `PASS`；单测 61/61 `OK`；`git diff --check` `PASS`；分支边界检查 `PASS`（全部改动落在 `04_code/` 与 `05_results/`）
+  - 每个 run 都做独立复算：目标哈希、因子哈希、`L`/`C` 一致、`RMSE` 差 ≤ `1e-10`；约束 1/2 逐项检查
+  - 状态分布：`PASS 438`、`INFEASIBLE 792`、`CONSTRAINT_FAIL 0`；墙钟 343 秒
+- 结果摘要（与 `origin/agent/compute` 基线在同一 `(N,K,q)` 上比较）：
+  - q1：6/6 **打平**（`RMSE ≤ 1.4e-15` 且 `L` 完全相同；该问题已有精确解，无改进空间）
+  - q2：5/5 **打平**（整数格 `P_3` 与 `1/sqrt(N)` 量级目标使多因子无益）
+  - q3：**更差 3/5**（0.353553→0.587086、0.250000→0.306186、0.176777→0.197328）
+  - q4：**更好 1/1**（0.718391→0.188418，L 均为 0）——仅单实例，不作一般结论
+  - q5：两侧均**无 `RMSE ≤ 0.1` 可行解**（基线最好 0.125、挑战者最好 0.127178），赢家为 `null`
+  - **不主张任何改进**；论文引用须按 `best_found`/「无可行解」表述
+- 本轮修复的自身缺陷：首次全量出现 714 个 `CONSTRAINT_FAIL`，源于 `_solve_row_support` 与 `continuous_factor_update` 在「格点投影塌缩为 0」时**回退返回未投影连续解**，把非格点值写入因子。已改为塌缩为 0（调用方只接受目标下降的更新，故合规且不退化），含非法因子的首批产物整体删除后从头重跑（提交 `0854b83`）。
+- 已知限制：q3/q5 的搜索策略需重做（当前"解析支撑 + 块下降"不如基线的固定顺序坐标轮）；协议分段预算未强制中止；L3/L4 未实现；q2–q5 在 `K ≥ log2(N)` 后不存在已证明下界。
+- 接口影响：仅新增文件，未修改冻结的 `03_model/` 与 `05_results/runs/` 中的基线产物；`05_results/runs/` 为纯新增（staged deletions = 0）。
+- 下一步与接收人：主 Agent 审核并决定集成方式（建议：先取 `challengers.py`/`challenger_core.py` 与 `TOURNAMENT_REPORT.md`，挑战者搜索策略重做后再跑正式 L3/L4）；论文 Agent 只能引用 q1 精确值、q2/q3/q4 的 `best_found` 与 q5 的「无可行解」。
+
+## 历史交接：启动计划
+
 - 角色：E 计算 Agent
 - 状态：启动计划已完成；正式对擂 `NOT_RUN`
 - 工作树：`worktrees/compute`
