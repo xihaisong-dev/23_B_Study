@@ -1,6 +1,7 @@
 """Candidate contract and gate-first runner tests (fake candidates only)."""
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -17,9 +18,6 @@ from dft_integer_approx.candidate_api import (  # noqa: E402
 )
 from dft_integer_approx.protocol_gate import ProtocolNotFrozenError  # noqa: E402
 from dft_integer_approx.runner import run_candidate  # noqa: E402
-
-REPO_ROOT = str(Path(__file__).resolve().parents[2])
-
 
 class TestOutputValidation(unittest.TestCase):
     def test_success_requires_factors_and_beta(self):
@@ -65,12 +63,13 @@ class TestFakeCandidates(unittest.TestCase):
 
 class TestGateFirstRunner(unittest.TestCase):
     def test_refuses_unfrozen(self):
-        with self.assertRaises(ProtocolNotFrozenError):
-            run_candidate(
-                FakeCandidate((t.dft_matrix(2),)),
-                CandidateContext("q1", "fake", 0, "run-0", "."),
-                workspace=REPO_ROOT,
-            )
+        with tempfile.TemporaryDirectory() as workspace:
+            with self.assertRaises(ProtocolNotFrozenError):
+                run_candidate(
+                    FakeCandidate((t.dft_matrix(2),)),
+                    CandidateContext("q1", "fake", 0, "run-0", workspace),
+                    workspace=workspace,
+                )
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
-# 候选模型规格与对擂接口（草案）
+# 候选模型规格与对擂接口
 
 - 角色：M 建模 Agent（`agent/modeling`）
-- 状态：**`PROPOSED`（未冻结）**。冻结前置条件见第 5 节；在冻结前，计算 Agent 不得据此开展正式对擂。
+- 状态：**`PASS / FROZEN`**。机器依据为 `00_admin/freezes/tournament_protocol.json`；计算 Agent 可据此实现候选并开展 L0--L4，任何协议改动必须走替换冻结流程。
 - 依据：D-005、`00_admin/semantic_contract.json`、`03_model/ROW_BOUND_THEORY.md` 与 `02_retrieval/EVIDENCE_MATRIX.md`。D-005 已取代本文历史版本中的自由 `β` 口径。
 - 目的：把"五个问题要比较哪些候选"写成可执行规格，使计算 Agent 能在协议冻结后立即实现，而无需再猜题意。
 
@@ -90,12 +90,10 @@
 4. **独立性**：`rmse` 与 `rmse_recompute_independent` 必须来自不同代码路径。
 5. **冻结**：候选结果只能由计算 Agent 写入 `05_results/`，建模 Agent 不写正式结果。
 
-## 5. 冻结前置条件（`BLOCKED` 项）
+## 5. 冻结状态
 
-`03_model/tournament_protocol.json` 已按 D-005 填为 `PROPOSED/BLOCKED` 草案；在以下条件全部满足前不得改为 `PASS` 或冻结：
+1. `rules-problem`、`retrieval` 与 `protocol` 门禁均已由主 Agent 运行并记录为 `PASS`。
+2. D-005/D-007 的 `β`、q5 目标、DFT/RMSE、`P_q/L`、`K` 和因子顺序与 `semantic_contract.json` 保持一致。
+3. `00_admin/freezes/tournament_protocol.json` 已递归绑定 problem 冻结和本协议输入；计算前仍须运行 `verify-freeze --stage tournament_protocol`，出现任何哈希漂移立即停止。
 
-1. `00_admin/rules.json` 不再为 `BLOCKED`（官方题面/规则核验）；
-2. D-005 已裁决 `β`、q5 目标、DFT/RMSE、`P_q/L` 与 `K`；这些内容必须持续与 `00_admin/semantic_contract.json` 一致；
-3. `02_retrieval/` 的本地知识库检索与候选规格已齐备，但正式检索门禁仍继承第 1 项规则阻断。
-
-在这五项完成前，本文件是**草案**，不得作为冻结协议使用。
+本文件是冻结协议的人类接口说明；机器权威内容以已冻结的 `03_model/tournament_protocol.json` 为准。

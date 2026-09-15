@@ -2,7 +2,7 @@
 
 ## 1. 失败关闭原则
 
-本计划定义未来验收动作，不是验收报告。当前总状态为 `BLOCKED`：工作流仍处于 `INIT`；D-010 已核验 practice 题面输入，官方模板和提交要求也已核验，但 2023 生成式 AI 专项条款未找到，模型结果未冻结，论文尚未生成。任何强制项为 `FAIL`、`BLOCKED`、`NOT_RUN`、`UNKNOWN` 或阻断性 `WARN` 时，总状态必须为 `FAIL`，不得声称“验收通过”“提交就绪”。
+本计划定义未来验收动作，不是验收报告。当前总状态为 `BLOCKED`：工作流已到 `PROTOCOL_FROZEN`；practice 题面、2025 AI 代理规则、官方模板、提交要求、检索与协议已核验，但模型结果未生成/冻结，论文尚未生成。任何强制项为 `FAIL`、`BLOCKED`、`NOT_RUN`、`UNKNOWN` 或阻断性 `WARN` 时，总状态必须为 `FAIL`，不得声称“验收通过”“提交就绪”。
 
 验收只审查同一组已冻结输入和同一个最终 PDF。论文或上游结果发生实质修改后，必须重新冻结并重跑受影响检查；不得沿用旧 PASS。
 
@@ -14,7 +14,7 @@
 python -X utf8 <1start-mathmodel>/scripts/workflow_guard.py check --workspace . --gate model-results
 ```
 
-本轮重新执行的退出码为 1，状态为 `FAIL`。practice 题面输入、官方模板和提交要求不再是错误项；当前阻断项包括：`rules` 总状态与 AI policy 非 PASS、problem/tournament protocol/model results 冻结缺失，以及协议、指标与对擂结果未通过或无正式记录。因此当前不运行论文编译、逐页检查或最终硬验收，也不创建伪造的 PASS 记录。
+practice 题面规则、检索和对擂协议门禁现为 `PASS`，problem 与 tournament protocol 冻结也已验证。当前阻断项缩小为：正式候选尚未运行、对擂指标与胜者未形成、`model_results` 冻结缺失。因此当前不运行论文最终编译、逐页检查或硬验收，也不创建伪造的 PASS 记录。
 
 ### 2.1 官方材料哈希与视觉复核
 
@@ -32,7 +32,7 @@ python -X utf8 <1start-mathmodel>/scripts/workflow_guard.py check --workspace . 
 | 顺序 | 检查 | 主要输出 | PASS 条件 | 当前状态 |
 | --- | --- | --- | --- | --- |
 | 1 | 上游与冻结一致性 | 读取 gates/freezes | `model-results` 门禁 PASS，冻结清单无漂移 | `BLOCKED` |
-| 2 | 官方规则与输入来源 | 规则/输入核验记录 | 当届模板、AI、提交规则和正式输入来源均 PASS | `BLOCKED`：模板/提交已 PASS，AI/题面仍阻断 |
+| 2 | practice 规则与输入来源 | 规则/输入核验记录 | 题面、AI 代理、模板和提交规则均 PASS | `PASS`：D-010/D-011，保留年份与来源边界 |
 | 3 | 数值谱系 | `numeric_claims.json` | 每个关键数字能到达冻结 JSON Pointer 与 run manifest，舍入一致 | `NOT_RUN` |
 | 4 | 引用真实性 | `text_gate.json` 及人工记录 | 引用键闭合、来源可核验、无虚假/未读引用 | `NOT_RUN` |
 | 5 | 关键复现 | `reproducibility.json` | 在规定环境重跑成功且与冻结指标一致 | `NOT_RUN` |
@@ -128,7 +128,7 @@ python -X utf8 <6verity>/scripts/paper_check.py text --workspace .
 ## 9.1 2023 生成式 AI 条款限制
 
 - 已核验材料要求遵守学术规范、不得抄袭或买卖论文，并注明引用文献与程序来源。
-- 截至本轮复核，没有在 2023 官方材料中找到针对生成式 AI 的专项条款；`rules.json.ai_policy.status` 因此保持 `BLOCKED`。
+- 没有在 2023 官方材料中找到生成式 AI 专项条款；D-011 经用户授权采用 2025 官方 AI 规定作为 practice 代理规则，`rules.json.ai_policy.status` 为 `PASS`，但最终论文必须明确披露其年份边界。
 - 不得引用后续年份规定并声称其适用于 2023。仓库 `AI_USE_LOG.md` 是审慎治理证据，不冒充 2023 官方专项格式。
 - 若最终仍无法取得更明确的 2023 规则，应在验收报告中保留限制并由队长作人工合规判断；不得把“未找到禁止条款”解释成官方明确允许。
 

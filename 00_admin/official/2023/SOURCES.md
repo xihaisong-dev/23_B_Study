@@ -17,5 +17,5 @@
 ## practice 题面授权与仍未核验项
 
 - 官方题目 ZIP 当年通过登录后的竞赛系统提供，公开公告没有题面附件；本地 DOCX 尚无官方 ZIP/MD5 可比对。用户已通过 D-010 授权 `xihaisong-dev/MathModel` 固定镜像作为本仓库 practice 权威题面，输入清单因此为 PASS，但文件仍不标记为 official。
-- 2023 公告要求注明文献和程序来源，但目前没有找到生成式 AI 专项条款。后续年份政策不能倒推为 2023 规则。
+- 2023 公告要求注明文献和程序来源，但目前没有找到生成式 AI 专项条款。D-011 经用户授权把 2025 官方 AI 规定作为 practice 代理规则；该代理不倒推为 2023 当届规则，证据见 `00_admin/official/2025/SOURCES.md`。
 - `submission_manual.txt` 是从官方 PDF 机械提取的检索副本，以 PDF 为准。

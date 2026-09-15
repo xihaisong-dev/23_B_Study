@@ -1,15 +1,11 @@
 {
   "schema_version": "3.0",
-  "status": "BLOCKED",
-  "proposal_status": "PROPOSED",
-  "frozen": false,
+  "status": "PASS",
+  "proposal_status": "APPROVED",
+  "frozen": true,
   "minimum_candidates": 3,
   "semantic_decision": "D-005",
-  "blocked_by": [
-    "00_admin/rules.json status is BLOCKED",
-    "2023 competition-specific AI policy is not verified",
-    "00_admin/freezes/problem.json is missing"
-  ],
+  "blocked_by": [],
   "shared_contract": {
     "beta": 1,
     "target_dft": "F_N=N^(-1/2)[exp(-j*2*pi*k*n/N)] with zero-based indices",

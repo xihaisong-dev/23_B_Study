@@ -1,0 +1,31 @@
+{
+  "schema_version": "3.0",
+  "stage": "tournament_protocol",
+  "status": "PASS",
+  "created_at": "2026-09-15T01:48:07+00:00",
+  "actor": "main-integrator",
+  "change_request": null,
+  "dependencies": [
+    {
+      "stage": "problem",
+      "manifest_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1"
+    }
+  ],
+  "files": [
+    {
+      "path": "02_retrieval/retrieval_manifest.json",
+      "size": 14474,
+      "sha256": "edc84da94a60e3e08fa27ed36c27a2435c287eb01979010d051033094fbd5320"
+    },
+    {
+      "path": "03_model/ANALYSIS_MODELING_REPORT.md",
+      "size": 7956,
+      "sha256": "1b5428a271ff55eeda5a8d70d440f73e77bf04ed625bbfd2bfc607e602c1a605"
+    },
+    {
+      "path": "03_model/tournament_protocol.json",
+      "size": 34087,
+      "sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592"
+    }
+  ]
+}

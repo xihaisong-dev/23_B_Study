@@ -1,13 +1,8 @@
 {
   "schema_version": "3.0",
   "gate": "protocol",
-  "status": "FAIL",
-  "checked_at": "2026-09-15T01:37:27+00:00",
-  "errors": [
-    "rules status is not PASS",
-    "rules.ai_policy is not PASS",
-    "missing required file: 00_admin/freezes/problem.json",
-    "tournament protocol status is not PASS"
-  ],
+  "status": "PASS",
+  "checked_at": "2026-09-15T01:51:48+00:00",
+  "errors": [],
   "warnings": []
 }

@@ -1,23 +1,23 @@
-# 对擂协议冻结包（未被授权冻结）
+# 对擂协议冻结包（已完成）
 
 ## 状态
 
-- 提案状态：`PROPOSED / BLOCKED`
+- 提案状态：`PASS / FROZEN`
 - 依据：`02_retrieval/CANDIDATE_SPECS.md`（候选规格草案）、`03_model/ROW_BOUND_THEORY.md`（可证明结论）、`01_problem/PROBLEM_STATEMENT_AUDIT.md`（待裁决语义）
-- 目标文件：`03_model/tournament_protocol.json`（当前为 `status = "BLOCKED"`、`proposal_status = "PROPOSED"`，含 5 个问题、每题 3 个候选）
+- 目标文件：`03_model/tournament_protocol.json`（当前为 `status = "PASS"`、`proposal_status = "APPROVED"`，含 5 个问题、每题 3 个候选）
 
-## 为什么本轮没有冻结协议
+## 冻结结果
 
 `AGENTS.md` 要求"正式流程必须依次满足题面规则冻结、检索、协议冻结、候选对擂、结果冻结、论文冻结和最终验收"。当前：
 
 | 前置门禁 | 状态 | 阻断原因 |
 | --- | --- | --- |
-| 题面规则冻结 | `BLOCKED` | practice 题面输入、模板和提交要求已 PASS；`00_admin/rules.json.ai_policy` 仍未核验 |
+| 题面规则冻结 | `PASS` | D-010 practice 题面与 D-011 AI 代理规则已冻结 |
 | 检索 | `PASS` | `02_retrieval/retrieval_manifest.json` 已含五问三组检索和证据条目 |
 | 语义裁决 D1–D5 | `PASS` | D-005 与 D-007 已落盘 |
-| 候选规格 | `PROPOSED` | 五问各 3 个候选，等待规则门禁和协议冻结 |
+| 候选规格 | `PASS` | 五问各 3 个候选，已由协议冻结固定 |
 
-建模 Agent 无权替集成者裁决语义，也无权自行把门禁置为通过，因此本文件是**冻结包的准备件**，不是冻结协议。
+主 Agent 已运行 `rules-problem`、`retrieval`、`protocol` 与两级 `verify-freeze`，均为 `PASS`。机器权威冻结为 `00_admin/freezes/tournament_protocol.json`。
 
 ## 冻结包的必需内容（供主 Agent 落盘时使用）
 

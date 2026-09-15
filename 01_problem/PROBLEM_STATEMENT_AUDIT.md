@@ -6,7 +6,7 @@
   及其提取稿 `01_problem/extracted/problem.md`。
 - 与 `01_problem/PROBLEM_BRIEF.md` 的关系：该简报是题意骨架；本文补充**可复算的数学核查结果**与其中若干条目的**状态更新**。不修改原始题面。
 - 复算工具：`03_model/checks/verify_row_bound.py`（纯标准库，退出码 0），结果 `03_model/checks/row_bound_results.json`。
-- 声明：本文所有数学“判定”针对提取稿与只读副本；D-010 已将其核验为 `practice` 权威题面，但不代表主办方服务器来源已证明，`00_admin/rules.json` 仍因 AI 规则缺口为 `BLOCKED`。
+- 声明：本文所有数学“判定”针对提取稿与只读副本；D-010 已将其核验为 `practice` 权威题面，D-011 已采用 2025 AI 代理规则。`problem` 冻结为 `PASS`，但不代表主办方服务器来源已证明或 2025 条款在 2023 当届生效。
 
 ## A1 题面式 (5) 的 radix-8 近似例子（修订后的有限复算）
 
@@ -93,4 +93,5 @@
 | `F_4⊗F_8` 与 `F_32` 区分 | `A5` 已数值确认 |
 | `β` 口径 / `P_q` / `L` / `q` 域 | `PASS`（D-005） |
 | practice 题面来源 | `PASS`（D-010；不声称 official） |
-| 当届规则核验 | `BLOCKED`（`00_admin/rules.json` 的 AI policy） |
+| practice 规则核验 | `PASS`（D-011；2025 AI 规定作为代理规则） |
+| problem 冻结 | `PASS`（`00_admin/freezes/problem.json`） |

@@ -86,3 +86,19 @@
 - 裁决：`xihaisong-dev/MathModel` 固定提交 `cd5be91735ebf11d5ee52eb170e86a6d07131977` 中的 B 题 DOCX 作为本仓库 `practice` profile 的权威题面；当前只读副本与其逐字节一致，因此 `input_manifest.json` 置为 `PASS`、`provenance_status` 置为 `VERIFIED`。
 - 事实边界：`data_class` 继续保留 `third_party_copy`，不伪装为 `official`；本裁决只适用于练习复现，不构成主办方服务器来源或官方 ZIP/MD5 的证明。
 - 影响：解除题面输入来源阻塞；2023 生成式 AI 专项规则仍未核验，`rules.json` 和 `rules-problem` 门禁继续阻断，暂不创建 `problem` 冻结。
+
+## D-011 采用 2025 官方 AI 规定作为 practice 代理规则
+
+- 时间：2026-09-15
+- 用户授权：明确确认按练习口径采用“2025 官方诚信倡议＋如实标注文献、程序和 AI 辅助情况”作为本项目 AI 规则。
+- 官方证据：2025 开赛公告及其附件《“华为杯”第二十二届中国研究生数学建模竞赛人工智能工具及输出使用规定（2025）》；附件 SHA-256 为 `6441795b250bed6d15f936e4088cb7086f0e9d8f09df016f7be186cf2b7d8779`，2 页均已渲染核验。
+- 采用规则：AI 仅作辅助，不替代独立思考和核心创新；使用者须理解输出并以自身语言表述；模型、公式、数据分析、文字和程序中的 AI 辅助及来源必须如实标注；程序须在文件前记录工具名称、版本/型号、开发机构/公司和版本发布日期；保留提示输入、后处理策略及人工复核证据。
+- 年份边界：该规定是 2025 官方规则，不倒推为 2023 当届规则；它只作为本仓库 `practice` profile 的代理约束。因此 `rules.json.ai_policy` 可在本项目置为 `PASS`，但最终论文必须披露这一代理口径。
+
+## D-012 题面与对擂协议冻结
+
+- 时间：2026-09-15
+- 前置：D-010 的 practice 权威题面、D-011 的 practice AI 代理规则、D-005/D-007 的语义与接口、检索清单和每题 3 个候选均已完成。
+- 题面冻结：`00_admin/freezes/problem.json` 固定 `rules.json`、`input_manifest.json`、`semantic_contract.json` 与 `PROBLEM_BRIEF.md`；`verify-freeze problem` 与 `rules-problem` 门禁均为 `PASS`。
+- 协议冻结：`00_admin/freezes/tournament_protocol.json` 递归绑定 problem 冻结，并固定检索清单、分析建模报告和 `tournament_protocol.json`；`protocol` 门禁、`verify-freeze tournament_protocol` 与计算端 `validate_protocol.py` 均为 `PASS`。
+- 状态推进：`workflow.json.phase` 更新为 `PROTOCOL_FROZEN`。计算 Agent 可以开始真实候选映射与 L0--L4，但任何代码、结果和论文仍须经过后续对擂、结果冻结与验收，不能因本次冻结提前宣称完成。

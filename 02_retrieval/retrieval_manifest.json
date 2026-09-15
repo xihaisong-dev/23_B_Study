@@ -4,8 +4,8 @@
   "scope": "local_knowledge_base_only",
   "checked_at": "2026-09-14T23:53:29+08:00",
   "gate_dependency": {
-    "rules_problem": "FAIL",
-    "reason": "本地知识库检索覆盖已完成，但官方题面 ZIP/哈希与 2023 年 AI 专项政策仍未核验；本清单 PASS 不代表上游规则门禁 PASS。"
+    "rules_problem": "PASS",
+    "reason": "D-010 已授权并核验 practice 权威题面，D-011 已授权 2025 官方 AI 规定作为 practice 代理规则；problem freeze 与机器门禁由 00_admin/freezes/problem.json 和 00_admin/gates/rules-problem.json 单独证明。"
   },
   "kb": {
     "root": "knowledge_base",

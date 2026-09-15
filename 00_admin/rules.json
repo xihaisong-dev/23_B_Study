@@ -1,10 +1,10 @@
 {
   "schema_version": "3.0",
-  "status": "BLOCKED",
+  "status": "PASS",
   "competition": "huaweibei",
   "season": "2023",
   "official_source": "https://cpipc.acge.org.cn/cw/contestNews/detail/4/2c90800c8a895b7a018a96d636512bc2?page=6",
-  "retrieved_at": "2026-09-14T23:40:00+08:00",
+  "retrieved_at": "2026-09-15T09:46:08+08:00",
   "template": {
     "status": "PASS",
     "source": "https://cpipc.acge.org.cn/sysFile/downFile.do?fileId=5b73cf5683d944f4b6a53934bc26dfeb",
@@ -12,9 +12,17 @@
     "sha256": "64ad3f75fc490b880034f9583e44232b3820cc87b4c303fda43da42021d52f06"
   },
   "ai_policy": {
-    "status": "BLOCKED",
-    "source": "https://cpipc.acge.org.cn/cw/contestNews/detail/4/2c90800c8aa76ad0018ab22d6a401f82?page=6",
-    "summary": "2023 官方诚信倡议要求遵守学术规范并注明文献和程序来源，但未发现针对生成式 AI 的专项条款；不得把后续年份政策倒推为 2023 政策"
+    "status": "PASS",
+    "basis": "practice_proxy_authorized_by_user",
+    "source_season": "2025",
+    "applies_to": "2023 practice reproduction only",
+    "source": "https://cpipc.acge.org.cn/cw/contestNews/detail/4/2c90801b9914a68201994b1403512e96?page=1",
+    "attachment_source": "https://cpipc.acge.org.cn/sysFile/downFile.do?fileId=e3edba52b87c4bf7922f737c35c14b74",
+    "path": "00_admin/official/2025/ai_tool_output_policy.pdf",
+    "sha256": "6441795b250bed6d15f936e4088cb7086f0e9d8f09df016f7be186cf2b7d8779",
+    "visual_qa": "PASS: 2/2 A4 pages rendered and inspected on 2026-09-15",
+    "summary": "按 D-011 将 2025 官方 AI 规定用作 2023 practice 代理规则：AI 只能辅助，不得代替独立思考和核心创新；输出须先理解并用团队自身语言表达；模型、公式、数据分析与程序中的 AI 辅助及可靠来源必须标注；程序前注明 AI 工具名称、版本/型号、开发机构/公司和版本发布日期；如赛题要求还应披露输入与后处理策略。",
+    "historical_boundary": "2023 官方诚信倡议仅明确文献和程序来源标注，未发现生成式 AI 专项条款；本 PASS 不声称 2025 条款在 2023 当届生效"
   },
   "submission_requirements": {
     "status": "PASS",

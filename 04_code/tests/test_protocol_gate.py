@@ -73,12 +73,10 @@ def _write_workspace(protocol_status="PASS", problems=True, with_freeze=True):
 
 
 class TestGateAgainstRepo(unittest.TestCase):
-    def test_current_repo_refuses(self):
+    def test_current_repo_accepts_verified_freeze(self):
         result = g.check_frozen(REPO_ROOT)
-        self.assertFalse(result.allowed)
-        joined = " ".join(result.reasons)
-        self.assertIn("expected 'PASS'", joined)
-        self.assertIn("freeze", joined)
+        self.assertTrue(result.allowed, msg=result.reasons)
+        self.assertEqual(result.reasons, [])
 
 
 class TestGateOnTempWorkspaces(unittest.TestCase):

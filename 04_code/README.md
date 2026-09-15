@@ -1,12 +1,12 @@
-# 04_code — 计算端骨架（协议冻结前）
+# 04_code — 计算端骨架（协议已冻结）
 
-计算 Agent 在对擂协议冻结前可搭建的工程骨架：目标构造、RMSE/约束/复杂度计数的纯函数、候选插件契约、谱系与失败关闭门禁。**不实现或挑选任何候选，不产生正式实验数值。**
+当前已具备目标构造、RMSE/约束/复杂度计数的纯函数、候选插件契约、谱系与失败关闭门禁。对擂协议已冻结，计算 Agent 可开始映射冻结候选；正式运行必须保留完整 run manifest，失败运行不得删除。
 
 ## 状态
 
-- `03_model/tournament_protocol.json`：`NOT_RUN`（`problems` 为空），冻结文件 `00_admin/freezes/tournament_protocol.json` 缺失。
-- 因此 `scripts/validate_protocol.py` 与 `scripts/run_tournament.py` 均**失败关闭**（退出码 1），拒绝正式对擂。
-- 冻结前测试输出写入系统临时目录，**不写 `05_results/`**。
+- `03_model/tournament_protocol.json`：`PASS / APPROVED`，含 5 个问题、每题 3 个候选。
+- `00_admin/freezes/tournament_protocol.json` 已验证；`scripts/validate_protocol.py` 退出码为 0。
+- `scripts/run_tournament.py` 当前仍因真实候选映射尚未实现而退出 1；截至协议冻结时没有写入 `05_results/`。
 
 ## 环境
 

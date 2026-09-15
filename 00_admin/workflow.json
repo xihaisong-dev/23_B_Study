@@ -1,7 +1,7 @@
 {
   "schema_version": "3.0",
   "profile": "practice",
-  "phase": "INIT",
+  "phase": "PROTOCOL_FROZEN",
   "competition": {
     "name": "huaweibei",
     "season": "2023"
@@ -15,7 +15,7 @@
     "root": "knowledge_base",
     "checked_at": "2026-09-14T23:40:00+08:00",
     "status": "PASS",
-    "reason": "已建立四篇原始论文的本地 PDF 知识库，其中三篇具有可检索文本；检索清单仍需由建模 Agent 生成"
+    "reason": "已建立四篇原始论文的本地 PDF 知识库，其中三篇具有可检索文本；五问三组检索清单与证据矩阵已通过并随对擂协议冻结"
   },
   "quality": {
     "minimum_candidates": 3,

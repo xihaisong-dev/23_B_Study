@@ -1,9 +1,9 @@
-# 分析建模报告（D-005 后的对擂准备稿）
+# 分析建模报告（冻结版输入）
 
-- 状态：`DRAFT / BLOCKED`，未冻结、未运行正式实验。
-- 语义版本：D-005；固定 `beta=1`，单位化 DFT，`RMSE=||F-B||_F/N`。
+- 状态：`PASS / READY_FOR_FREEZE`，尚未运行正式实验。
+- 语义版本：D-005、D-007、D-010、D-011；固定 `beta=1`，单位化 DFT，`RMSE=||F-B||_F/N`。
 - 检索证据：`02_retrieval/retrieval_manifest.json`、`02_retrieval/EVIDENCE_MATRIX.md`。
-- 阻断：官方题面 ZIP/哈希、2023 年 AI 专项政策与 problem freeze 缺失，使 `rules-problem`、`retrieval`、`protocol` 三道正式门禁均不能 PASS。
+- 适用边界：题面与 AI 规则按用户授权的 `practice` 口径核验；不声称获得 2023 官方题面 ZIP/MD5，也不声称 2025 AI 规定在 2023 当届生效。
 
 ## 1. 统一数学对象
 
@@ -102,4 +102,4 @@ B=A_1A_2\cdots A_K,
 
 目前只完成问题、证据和协议设计，没有正式对擂结果。可复核的数学事实是支持传播下界与 radix-2 结构可达性；固定 `beta=1` 后的正式 `L/C` 仍需从头计算。V4–V6 的 `q=1、K=5、RMSE≈0.0905` 及其他数值全部保持 `UNVERIFIED`。
 
-本地检索清单可自洽通过其字段检查，但正式 `retrieval` 与 `protocol` 门禁继承 `rules-problem` 的失败。只有补齐官方来源、形成 problem freeze，并由主 Agent重新运行门禁后，才允许把协议改为 `PASS` 并冻结。
+本地检索清单、候选规格与统一对擂协议已完成结构审计。D-010/D-011 解除 practice 来源与 AI 规则阻塞后，由主 Agent 依次生成并验证 `problem` 与 `tournament_protocol` 冻结；冻结通过才允许计算 Agent 映射真实候选和运行 L0--L4。
