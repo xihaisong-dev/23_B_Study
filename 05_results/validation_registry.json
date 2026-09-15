@@ -1,0 +1,2116 @@
+{
+  "schema_version": "3.0",
+  "status": "BLOCKED",
+  "execution_status": "NOT_RUN",
+  "parent_requirement": "complete frozen L2 batch run ids",
+  "L3": {
+    "status": "NOT_RUN",
+    "config_count": 50,
+    "config_sha256": "195da6bc317181d4cfb3d4378905bbac2200f621f8596bb5fe14688b324fc399",
+    "configs": [
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 16
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 16
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 1017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "seed",
+          "name": "alternate_seed",
+          "effective_seed": 1017
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 2017,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "initialization_order",
+          "name": "reverse",
+          "order": "reverse",
+          "effective_seed": 2017
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "floating_tolerance",
+          "name": "tight",
+          "tolerance": 1e-12
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "multiplication_association",
+          "name": "right_associated",
+          "association": "right"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 1,
+        "q": 1,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L3",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "boundary_K_q",
+          "name": "registered_boundary",
+          "K": 1,
+          "q": 1
+        }
+      }
+    ],
+    "summary": [
+      "best",
+      "median",
+      "worst"
+    ]
+  },
+  "L4": {
+    "status": "NOT_RUN",
+    "config_count": 40,
+    "config_sha256": "1d6db23d6481a2d1298a7d6e8f0ddfd3c51db4a30bc090bc73a13a99b0701a3b",
+    "configs": [
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ]
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ]
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ]
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "support_mode": "fixed_butterfly"
+        }
+      }
+    ]
+  },
+  "command": "python 04_code/scripts/run_tournament.py --execute-full --level <L3|L4> --resume"
+}

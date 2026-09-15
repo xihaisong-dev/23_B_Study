@@ -1,12 +1,12 @@
 # 04_code — 计算端骨架（协议已冻结）
 
-当前已具备目标构造、RMSE/约束/复杂度计数的纯函数、候选插件契约、谱系与失败关闭门禁。对擂协议已冻结，计算 Agent 可开始映射冻结候选；正式运行必须保留完整 run manifest，失败运行不得删除。
+当前已具备目标构造、RMSE/约束/复杂度计数、全部冻结候选、统一搜索预算、批次谱系、稳定分片/续跑和失败关闭聚合器。正式运行必须保留完整 run manifest，失败运行不得删除。
 
 ## 状态
 
 - `03_model/tournament_protocol.json`：`PASS / APPROVED`，含 5 个问题、每题 3 个候选。
 - `00_admin/freezes/tournament_protocol.json` 已验证；`scripts/validate_protocol.py` 退出码为 0。
-- `scripts/run_tournament.py` 当前仍因真实候选映射尚未实现而退出 1；截至协议冻结时没有写入 `05_results/`。
+- `scripts/run_tournament.py` 支持 L2/L3/L4 dry-run、非正式 smoke、问题/候选过滤、稳定 shard 与 resume；正式 1442-run 尚未执行。
 
 ## 环境
 
@@ -34,12 +34,13 @@ python -X utf8 04_code/scripts/run_baselines.py
 
 `run_baselines.py` 只执行冻结协议登记的 q1--q5 确定性 baseline。每个 `(problem,N,K,q,candidate,seed)` 使用全新 run-id，因子以稀疏 JSON 保存并由独立路径重新加载复算。该里程碑把 `metrics.json` 与 `tournament.json` 保持为 `BLOCKED`，直到挑战者、稳健性和消融全部完成；不会提前选择最终胜者。
 
-## 失败关闭门禁
+## 统一 runner
 
 ```bash
-cd 04_code
-python scripts/validate_protocol.py     # 当前应打印 reasons 并以退出码 1 拒绝
-python scripts/run_tournament.py        # 当前应拒绝
+python 04_code/scripts/validate_protocol.py
+python 04_code/scripts/run_tournament.py --dry-run --level L2
+python 04_code/scripts/run_tournament.py --smoke --level L2
+python 04_code/scripts/run_tournament.py --dry-run --level L2 --shard-index 0 --shard-count 3
 ```
 
 放行条件（全部满足才 `allowed=True`）：
@@ -65,15 +66,18 @@ python scripts/run_tournament.py        # 当前应拒绝
 | `candidate_api` | 候选 `Protocol`、结构化 `FailureRecord`、fake 候选 |
 | `provenance` | run-id、环境摘要、最小 manifest |
 | `protocol_gate` | 失败关闭门禁 |
-| `runner` | 门禁优先的候选执行唯一入口 |
+| `search_budget` | 循环内 wall/sweep/patience/tolerance 停止与轨迹 |
+| `formal_tournament_runner` | 批次、分片、续跑、manifest 与独立复算 |
+| `aggregation` | 1442 tuple 双射、冻结排序、fallback 与 q5 frontier |
+| `validation_runs` | L3/L4 parent/variant 子运行预登记与统计 |
 
 ## 口径（D-005）
 
 - `beta` 固定为 1，不计入 `L`；`RMSE = ||F_N - P||_F / N`。
 - 免计数集合精确为 `{0, ±1, ±j, ±1±j}`；近似值不四舍五入进免计数集合。
 - `P_q = {0, ±2^r : r < q}` 作用于实部与虚部（笛卡尔积）；`q` 只读协议。
-- `product` 采用题面式 (6) 的左起优先顺序 `A1 A2 ... AK`；建模层 `03_model/checks/verify_row_bound.py` 使用相反的应用顺序 `chain`，作为独立复算路径保留。
+- `product` 按存储乘积顺序计算 `A1@A2@...@AK`；对列向量实际由 `AK` 先作用。纯排列右乘并单独记录。
 
-## 尚未实现（冻结后）
+## 尚未执行
 
-- NPZ 安全加载（需锁定 NumPy）、真实候选映射、L0–L4 执行、`05_results/runs/<run-id>/` 不可覆盖写入与汇总器。
+- 正式 1442-run L2、L3 稳健性和 L4 消融均未运行；总状态必须保持 `BLOCKED`。

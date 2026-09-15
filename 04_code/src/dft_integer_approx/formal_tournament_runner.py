@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import platform
 import sys
 import time
@@ -21,6 +22,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence
 
 from .baselines import (
+    apply_permutation_right,
     approximate_matrix,
     exact_q1_baseline,
     kron_quantized_butterfly_baseline,
@@ -39,8 +41,9 @@ from .l0_validation import run_l0_checks, support_rmse_lower_bound
 from .metrics import max_abs_difference, rmse
 from .protocol_gate import check_frozen
 from .provenance import generate_run_id
+from .search_budget import SearchBudget
 from .serialization import canonical_matrix_sha256
-from .targets import dft_matrix, kron
+from .targets import dft_matrix, kron, matmul
 
 
 BASELINES = {
@@ -155,7 +158,8 @@ def _budget(n: int, kind: str) -> tuple[int, Optional[int]]:
 
 
 def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
-             smoke: bool) -> Dict[str, Any]:
+             smoke: bool, batch_plan: Optional[Sequence[Dict[str, Any]]] = None,
+             resume: bool = False, validation_level: str = "L2") -> Dict[str, Any]:
     workspace = workspace.resolve()
     gate = check_frozen(str(workspace))
     if not gate.allowed:
@@ -165,17 +169,55 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
     freeze_sha = sha256_file(workspace / "00_admin/freezes/tournament_protocol.json")
     problem_freeze_sha = sha256_file(workspace / "00_admin/freezes/problem.json")
     code_sha = _tree_sha256(workspace / "04_code")
-    batch_sha = _json_sha256(list(plan))
-    batch_id = ("smoke" if smoke else "l2") + "-" + batch_sha[:16]
+    canonical_plan = list(batch_plan if batch_plan is not None else plan)
+    batch_sha = _json_sha256(canonical_plan)
+    input_manifest_path = workspace / "00_admin/input_manifest.json"
+    input_manifest_sha = sha256_file(input_manifest_path)
+    input_manifest = json.loads(input_manifest_path.read_text(encoding="utf-8"))
+    problem_record = input_manifest["files"][0]
+    problem_path = workspace / problem_record["path"]
+    problem_input_sha = sha256_file(problem_path)
+    if problem_input_sha != problem_record["sha256"]:
+        raise RuntimeError("problem input hash differs from input_manifest")
+    batch_id = batch_identity(protocol_sha, code_sha, batch_sha, smoke=smoke,
+                              validation_level=validation_level)
+    batch_dir = workspace / "05_results/batches" / batch_id
+    plan_payload = {"schema_version": "3.0", "batch_id": batch_id,
+                    "validation_level": validation_level,
+                    "formal": not smoke, "tuple_count": len(canonical_plan),
+                    "tuples": canonical_plan}
+    config_payload = {"schema_version": "3.0", "batch_id": batch_id,
+                      "validation_level": validation_level, "formal": not smoke,
+                      "protocol_sha256": protocol_sha,
+                      "protocol_freeze_sha256": freeze_sha,
+                      "problem_freeze_sha256": problem_freeze_sha,
+                      "code_tree_sha256": code_sha,
+                      "input_manifest_sha256": input_manifest_sha,
+                      "problem_input_sha256": problem_input_sha,
+                      "data_class": problem_record["data_class"],
+                      "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+                      "plan_content_sha256": batch_sha,
+                      "stop_rule": {"patience": 50, "tolerance": 1e-10,
+                                    "deadline": "monotonic in-loop",
+                                    "sweep_cap": "per frozen N segment"}}
+    batch_dir.mkdir(parents=True, exist_ok=True)
+    plan_path, config_path = batch_dir / "plan.json", batch_dir / "config.json"
+    _write_or_verify_json(plan_path, plan_payload)
+    _write_or_verify_json(config_path, config_payload)
+    plan_artifact = _artifact_record(plan_path, workspace)
+    config_artifact = _artifact_record(config_path, workspace)
     l0 = run_l0_checks(workspace)
     _atomic_json(workspace / "05_results/l0_checks.json", l0)
     if l0["status"] != "PASS":
         raise RuntimeError("L0 checks failed; refusing tournament runs")
     root = workspace / "05_results" / ("smoke_runs" if smoke else "runs")
+    completed = _completed_tuple_hashes(root, batch_id) if resume else set()
+    selected = [item for item in plan if tuple_sha256(item) not in completed]
     results = [_run_case(workspace, root, item, protocol_sha, freeze_sha,
                          problem_freeze_sha, code_sha, batch_id, batch_sha,
-                         command, smoke)
-               for item in plan]
+                         plan_artifact, config_artifact, input_manifest_sha,
+                         problem_record, command, smoke, validation_level)
+               for item in selected]
     counts: Dict[str, int] = {}
     for item in results:
         counts[item["status"]] = counts.get(item["status"], 0) + 1
@@ -185,11 +227,21 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
         "formal": not smoke, "winner_id": None,
         "protocol_sha256": protocol_sha, "protocol_freeze_sha256": freeze_sha,
         "batch_id": batch_id, "batch_config_sha256": batch_sha,
+        "batch_plan_count": len(canonical_plan), "selected_count": len(plan),
+        "resume_skipped_count": len(plan) - len(selected),
         "run_count": len(results), "status_counts": counts, "runs": results,
+        "batch_artifacts": {"plan": plan_artifact, "config": config_artifact},
         "blocking_reason": "No winner until the complete frozen L2 grid and required L3/L4 evidence pass review.",
     }
-    name = "smoke_summary.json" if smoke else "l2_summary.json"
-    _atomic_json(workspace / "05_results" / name, summary)
+    if smoke:
+        _atomic_json(workspace / "05_results/smoke_summary.json", summary)
+    else:
+        # Shards must never race to overwrite a purported whole-batch summary.
+        # The strict aggregator is the sole writer of l2_summary.json.
+        execution_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+        execution_path = (workspace / "05_results/batches" / batch_id /
+                          "executions" / f"{execution_id}-{_json_sha256(plan)[:8]}.json")
+        _atomic_json(execution_path, summary)
     _atomic_json(workspace / "05_results/validation_plan.json",
                  validation_framework(protocol_sha, l0, smoke_complete=smoke))
     return summary
@@ -197,7 +249,10 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
 
 def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: str,
               freeze_sha: str, problem_freeze_sha: str, code_sha: str,
-              batch_id: str, batch_sha: str, command: str, smoke: bool) -> Dict[str, Any]:
+              batch_id: str, batch_sha: str, plan_artifact: Dict[str, Any],
+              config_artifact: Dict[str, Any], input_manifest_sha: str,
+              problem_record: Dict[str, Any], command: str, smoke: bool,
+              validation_level: str) -> Dict[str, Any]:
     pid, cid = case["problem"], case["candidate_id"]
     n, k, q, seed = case["N"], case["K"], case["q"], case["seed"]
     config_sha = _json_sha256(case)
@@ -220,6 +275,9 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
         for factor in solution.factors:
             check_finite_square(factor)
         approximation = approximate_matrix(solution.factors, solution.permutation)
+        right_associated = apply_permutation_right(
+            _right_associated_product(solution.factors), solution.permutation)
+        association_delta = max_abs_difference(approximation, right_associated)
         search_rmse = rmse(target, approximation)
         row_cap = None if pid == "q2" else 2
         row_errors, alphabet_errors = [], []
@@ -246,7 +304,8 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
                         and factor_hashes == independent["factor_sha256s"]
                         and l_value == independent["L"] and c_value == independent["C"])
         exact_ok = pid != "q1" or cid not in BASELINES or max_abs_difference(target, approximation) <= 1e-10
-        legal = not row_errors and not alphabet_errors and bound_ok and recompute_ok and exact_ok
+        legal = (not row_errors and not alphabet_errors and bound_ok and recompute_ok
+                 and exact_ok and association_delta <= 1e-10)
         if not legal:
             status = "CONSTRAINT_FAIL"
             failure = {"stage": "independent verification", "error_type": status,
@@ -266,12 +325,14 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
                     "support_lower_bound": {"status": "NOT_APPLICABLE" if bound is None else ("PASS" if bound_ok else "FAIL"), "value": bound},
                     "target_hash_match": target_hash == independent["target_sha256"],
                     "factor_hash_match": factor_hashes == independent["factor_sha256s"],
-                    "independent_metric_match": recompute_ok, "q1_exact_check": exact_ok}}
+                    "independent_metric_match": recompute_ok, "q1_exact_check": exact_ok,
+                    "association_max_delta": association_delta}}
     except Exception as exc:
         failure = {"stage": "candidate execution", "error_type": type(exc).__name__, "message": str(exc)}
         _write_text_lf(stderr_path, f"{type(exc).__name__}: {exc}\n")
     elapsed = time.perf_counter() - clock
-    if elapsed > case["budget"]["wall_clock_s"]:
+    internal_stop = values.get("diagnostics", {}).get("stop_reason")
+    if elapsed > case["budget"]["wall_clock_s"] or internal_stop == "wall_deadline":
         status = "TIMEOUT"
         failure = {"stage": "budget", "error_type": status,
                    "message": "candidate exceeded frozen wall-clock cap"}
@@ -294,8 +355,19 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
         "problem_freeze_sha256": problem_freeze_sha, "code_tree_sha256": code_sha,
         "batch_id": batch_id, "batch_config_sha256": batch_sha,
         "run_config_sha256": config_sha,
+        "tuple_sha256": tuple_sha256(case), "validation_level": validation_level,
+        "parent_run_id": case.get("parent_run_id"), "variant": case.get("variant"),
+        "batch_artifacts": {"plan": plan_artifact, "config": config_artifact},
+        "input_manifest_sha256": input_manifest_sha,
+        "problem_input": {"path": problem_record["path"],
+                          "sha256": problem_record["sha256"],
+                          "data_class": problem_record["data_class"],
+                          "provenance_status": problem_record.get("provenance_status")},
+        "data_class": problem_record["data_class"],
+        "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
         "command": command, "environment": {"python": sys.version,
-            "implementation": platform.python_implementation(), "platform": platform.platform()},
+            "implementation": platform.python_implementation(), "platform": platform.platform(),
+            "dependencies": {"third_party": [], "standard_library_only": True}},
         "artifacts": {"factors": _artifact_record(factor_path, workspace) if factor_path.exists() else None,
                       "stdout": _artifact_record(stdout_path, workspace),
                       "stderr": _artifact_record(stderr_path, workspace)},
@@ -310,7 +382,15 @@ def _solution(case: Dict[str, Any], target: Any, smoke: bool):
     pid, cid = case["problem"], case["candidate_id"]
     n, k, q, seed = case["N"], case["K"], case["q"], case["seed"]
     if cid not in BASELINES:
-        return challenger_solution(cid, target, n, k, q, seed, smoke=smoke)
+        if smoke:
+            budget = SearchBudget.frozen(n, smoke=True)
+        else:
+            tolerance = float(case.get("variant", {}).get("tolerance", 1e-10))
+            budget = SearchBudget(float(case["budget"]["wall_clock_s"]),
+                                  int(case["budget"]["sweep_cap"]),
+                                  patience=50, tolerance=tolerance)
+        return challenger_solution(cid, target, n, k, q, seed, smoke=smoke,
+                                   budget=budget)
     if pid == "q1":
         return exact_q1_baseline(n)
     if pid == "q2":
@@ -339,3 +419,74 @@ def _json_sha256(value: Any) -> str:
     encoded = json.dumps(value, ensure_ascii=False, sort_keys=True,
                          separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
+
+
+def tuple_sha256(case: Dict[str, Any]) -> str:
+    identity = {key: case.get(key) for key in
+                ("problem", "candidate_id", "N", "K", "q", "seed",
+                 "validation_level", "parent_run_id", "variant")}
+    return _json_sha256(identity)
+
+
+def shard_plan(plan: Sequence[Dict[str, Any]], shard_index: int,
+               shard_count: int) -> List[Dict[str, Any]]:
+    if shard_count < 1 or not 0 <= shard_index < shard_count:
+        raise ValueError("require shard_count>=1 and 0<=shard_index<shard_count")
+    return [case for case in plan
+            if int(tuple_sha256(case), 16) % shard_count == shard_index]
+
+
+def batch_identity(protocol_sha: str, code_sha: str, plan_sha: str, *,
+                   smoke: bool, validation_level: str) -> str:
+    prefix = validation_level.lower() + ("-smoke" if smoke else "")
+    stable = f"{prefix}-{protocol_sha[:8]}-{code_sha[:8]}-{plan_sha[:8]}"
+    if not smoke:
+        return stable
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    return f"{stable}-{stamp}"
+
+
+def _write_or_verify_json(path: Path, payload: Dict[str, Any]) -> None:
+    if path.exists():
+        existing = json.loads(path.read_text(encoding="utf-8"))
+        if existing != payload:
+            raise RuntimeError(f"existing batch artifact differs: {path}")
+        return
+    # Unique temporary names make simultaneous shard startup safe.  Replacing
+    # the same target is harmless because every shard carries identical bytes.
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f"{path.name}.{os.getpid()}.{time.time_ns()}.tmp")
+    try:
+        tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8", newline="\n")
+        if path.exists():
+            existing = json.loads(path.read_text(encoding="utf-8"))
+            if existing != payload:
+                raise RuntimeError(f"existing batch artifact differs: {path}")
+        else:
+            os.replace(tmp, path)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+def _completed_tuple_hashes(root: Path, batch_id: str) -> set[str]:
+    completed: set[str] = set()
+    if not root.exists():
+        return completed
+    for path in root.glob("*/run_manifest.json"):
+        try:
+            manifest = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if manifest.get("batch_id") == batch_id and manifest.get("tuple_sha256"):
+            completed.add(manifest["tuple_sha256"])
+    return completed
+
+
+def _right_associated_product(factors: Sequence[Any]):
+    if not factors:
+        raise ValueError("empty factor chain")
+    result = [row[:] for row in factors[-1]]
+    for factor in reversed(factors[:-1]):
+        result = matmul(factor, result)
+    return result

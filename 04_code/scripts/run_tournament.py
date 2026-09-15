@@ -13,7 +13,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from dft_integer_approx.formal_tournament_runner import build_plan, run_plan  # noqa: E402
+from dft_integer_approx.formal_tournament_runner import (  # noqa: E402
+    _json_sha256,
+    build_plan,
+    run_plan,
+    shard_plan,
+)
 from dft_integer_approx.protocol_gate import check_frozen  # noqa: E402
 
 
@@ -22,6 +27,9 @@ def main() -> int:
     parser.add_argument("--level", choices=("L2", "L3", "L4"), default="L2")
     parser.add_argument("--problem", action="append", dest="problems")
     parser.add_argument("--candidate", action="append", dest="candidates")
+    parser.add_argument("--shard-index", type=int, default=0)
+    parser.add_argument("--shard-count", type=int, default=1)
+    parser.add_argument("--resume", action="store_true")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--dry-run", action="store_true")
     mode.add_argument("--smoke", action="store_true")
@@ -35,19 +43,31 @@ def main() -> int:
     if not gate.allowed:
         print("Refusing to run the tournament (protocol not frozen).")
         return 1
-    if args.level != "L2":
-        print(f"{args.level} execution is framework-only until formal L2 completes.")
-        return 1
     protocol = json.loads((workspace / "03_model/tournament_protocol.json").read_text(encoding="utf-8"))
-    plan = build_plan(protocol, smoke=args.smoke, problems=args.problems,
-                      candidates=args.candidates)
+    if args.level == "L2":
+        canonical_plan = build_plan(protocol, smoke=args.smoke)
+        plan = build_plan(protocol, smoke=args.smoke, problems=args.problems,
+                          candidates=args.candidates)
+    else:
+        from dft_integer_approx.validation_runs import build_validation_plan
+        canonical_plan = build_validation_plan(protocol, args.level, smoke=args.smoke)
+        plan = [case for case in canonical_plan
+                if (not args.problems or case["problem"] in args.problems)
+                and (not args.candidates or case["candidate_id"] in args.candidates)]
+    plan = shard_plan(plan, args.shard_index, args.shard_count)
     if args.dry_run:
         print(json.dumps({"schema_version": "3.0", "level": args.level,
                           "mode": "dry-run", "run_count": len(plan),
+                          "canonical_batch_run_count": len(canonical_plan),
+                          "canonical_plan_sha256": _json_sha256(canonical_plan),
+                          "shard_index": args.shard_index,
+                          "shard_count": args.shard_count,
                           "plan": plan}, ensure_ascii=False, indent=2))
         return 0
     command = " ".join(sys.argv)
-    summary = run_plan(workspace, plan, command=command, smoke=args.smoke)
+    summary = run_plan(workspace, plan, command=command, smoke=args.smoke,
+                       batch_plan=canonical_plan, resume=args.resume,
+                       validation_level=args.level)
     print(json.dumps({"status": summary["status"], "phase_status": summary["phase_status"],
                       "run_count": summary["run_count"],
                       "status_counts": summary["status_counts"]}, ensure_ascii=False, indent=2))

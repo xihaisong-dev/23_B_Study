@@ -23,12 +23,13 @@
 
 ## 正式批次前的阻塞项
 
-当前非 smoke 路径仍是固定 pass 的参考实现，diagnostics 明确标注
-`fixed_pass_reference_pending_frozen_budget_control`。在正式 1442-run 前必须：
+当前已用统一 `SearchBudget/StopState` 在搜索循环内执行 wall deadline、sweep cap、50-sweep patience 与 `1e-10` 改善阈值，并记录完整 sweep/proposal 摘要；beam、best-two、单行/多行 reconnect、cross-block reconnect 与 permutation swap 均实际构造候选并按目标接受。runner 固定批次 plan/config，支持稳定 tuple hash 的 shard/resume；严格聚合器只有在 1442 tuple 双射闭合后才会输出 L2 汇总。
 
-1. 把冻结 wall-clock、sweep cap 与 patience 传入各搜索循环，并在循环内截止，不只事后判 TIMEOUT；
-2. 将协议声明的 beam / 多行 reconnect / best-two support 等操作变成真实候选状态搜索，而不是仅在 diagnostics 中记录参数；
-3. 实现并执行真实 L3 稳健性轴与 L4 消融，生成完整汇总后再选择 winner；
-4. 由独立审阅者复核 runner、manifest 谱系与完整 1442 tuple，再授权正式批次。
+在正式 1442-run 前仍必须：
+
+1. 独立审阅者复核预算、候选实现、批次谱系、分片互斥和续跑行为；
+2. 完成一次受控的多 shard 扩展 MVT，确认 N=32/64 性能不会使正式批次失控；
+3. 正式 L2 完成后再执行预登记的 L3/L4 子运行；当前 L3/L4 仍为 `NOT_RUN`，消融 adapter 尚需在执行前复核；
+4. 只有 L2/L3/L4 均闭合后才能生成最终 winner 与 model-results freeze。
 
 因此本里程碑的 smoke 数值只能证明接口、约束、持久化和独立复算链路可工作，不能用于论文中的模型优胜结论。

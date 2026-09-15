@@ -7,14 +7,14 @@
 """Stochastic challenger constructions for the frozen protocol.
 
 Companion to :mod:`dft_integer_approx.baselines`.  Baselines are deterministic; the
-nine challengers registered in the frozen protocol are stochastic (seeds 17/43/71)
+ten challengers registered in the frozen protocol are stochastic (seeds 17/43/71)
 and this module implements them against the *same* conventions the baseline runner
 uses:
 
 ``BaselineSolution``
-    ``factors`` are stored in application order (``A_1`` acts first); the effective
+    ``factors`` are stored in product order; the effective
     matrix is ``approximate_matrix(factors, permutation)`` = ``A_1 ... A_K @ P``,
-    i.e. ``product(factors)`` followed by a right-applied permutation.  Challengers
+    so for column vectors ``A_K`` acts first.  ``product(factors)`` is followed by a right-applied permutation.  Challengers
     that do not need an external permutation return the identity mapping.
 ``masks``
     per-factor, per-row list of the columns that participate in updates.  The
@@ -62,6 +62,7 @@ from .baselines import (
     quantize_complex,
 )
 from .constraints import alphabet_pq
+from .search_budget import SearchBudget, StopState
 from .targets import Matrix, dft_matrix, identity, kron, matmul, product, zeros
 
 # --------------------------------------------------------------------------- #
@@ -132,6 +133,10 @@ def _enforce_row_cap(m: Matrix, cap: Optional[int]) -> Matrix:
 
 def _masks_from_factors(factors: Sequence[Matrix]) -> List[List[List[int]]]:
     return [[[c for c, z in enumerate(row) if z != 0] for row in factor] for factor in factors]
+
+
+def _copy_factors(factors: Sequence[Matrix]) -> List[Matrix]:
+    return [[row[:] for row in factor] for factor in factors]
 
 
 def _gauss_jordan(m: Matrix) -> Optional[Matrix]:
@@ -400,7 +405,9 @@ def continuous_factor_update(target: Matrix, factors: List[Matrix], index: int,
 def _polish(target: Matrix, factors: List[Matrix], q: Optional[int],
             row_cap: Optional[int], sweeps: int,
             permutation: Optional[Sequence[int]] = None,
-            rng: Optional[random.Random] = None) -> Dict[str, object]:
+            rng: Optional[random.Random] = None,
+            state: Optional[StopState] = None,
+            phase: str = "block_polish") -> Dict[str, object]:
     """Block-coordinate descent that only ever accepts objective improvements.
 
     A single-factor exact update is computed *with* the row cap, so it is the exact
@@ -418,11 +425,17 @@ def _polish(target: Matrix, factors: List[Matrix], q: Optional[int],
     accepted = 0
     rejected = 0
     for _ in range(sweeps):
+        if state is not None and state.should_stop():
+            break
         improved = False
+        evaluated_sweep = 0
+        accepted_sweep = 0
         order = list(range(len(factors)))
         if rng is not None:
             rng.shuffle(order)
         for i in order:
+            if state is not None and state.should_stop():
+                break
             if row_cap is not None:
                 candidate = sparse_support_update(target, factors, i, q, row_cap,
                                                   permutation)
@@ -430,17 +443,32 @@ def _polish(target: Matrix, factors: List[Matrix], q: Optional[int],
                 candidate = exact_factor_update(target, factors, i, q, None,
                                                 permutation)
             if candidate == factors[i]:
+                if state is not None:
+                    state.record_proposal(kind="factor_update", accepted=False,
+                                          reason="unchanged", detail={"factor": i, "phase": phase})
                 continue
+            evaluated_sweep += 1
             incumbent = factors[i]
             factors[i] = candidate
             if _objective(target, factors, permutation) < before - 1e-15:
                 before = _objective(target, factors, permutation)
                 accepted += 1
+                accepted_sweep += 1
                 improved = True
+                if state is not None:
+                    state.record_proposal(kind="factor_update", accepted=True,
+                                          reason="objective_improved", detail={"factor": i, "phase": phase})
             else:
                 factors[i] = incumbent
                 rejected += 1
-        if not improved:
+                if state is not None:
+                    state.record_proposal(kind="factor_update", accepted=False,
+                                          reason="no_improvement", detail={"factor": i, "phase": phase})
+        if state is not None:
+            state.finish_sweep(_objective(target, factors, permutation), len(target),
+                               phase=phase, evaluated=evaluated_sweep,
+                               accepted=accepted_sweep)
+        elif not improved:
             break
     return {"S0_start": start_objective, "accepted_updates": accepted,
             "rejected_updates": rejected,
@@ -452,7 +480,9 @@ def support_swap_sweep(target: Matrix, factors: List[Matrix], q: Optional[int],
                        permutation: Optional[Sequence[int]] = None,
                        rng: Optional[random.Random] = None,
                        max_rows: Optional[int] = None,
-                       max_additions: Optional[int] = None) -> int:
+                       max_additions: Optional[int] = None,
+                       state: Optional[StopState] = None,
+                       phase: str = "single_row_support_swap") -> int:
     """Single-position support swaps; accept at most one best legal swap per row."""
     n = len(target)
     allowed = _lattice(q)
@@ -460,7 +490,11 @@ def support_swap_sweep(target: Matrix, factors: List[Matrix], q: Optional[int],
               else [1 + 0j])
     accepted = 0
     for _ in range(passes):
+        if state is not None and state.should_stop():
+            break
         improved = False
+        evaluated_rows = 0
+        accepted_rows = 0
         factor_order = list(range(len(factors)))
         if rng is not None:
             rng.shuffle(factor_order)
@@ -472,11 +506,14 @@ def support_swap_sweep(target: Matrix, factors: List[Matrix], q: Optional[int],
             if max_rows is not None:
                 row_order = row_order[:max_rows]
             for r in row_order:
+                if state is not None and state.should_stop():
+                    break
                 row = factor[r]
                 occupied = [c for c in range(n) if row[c] != 0]
                 if not occupied or len(occupied) > row_cap:
                     continue
                 original = row[:]
+                evaluated_rows += 1
                 base = _objective(target, factors, permutation)
                 best_obj = base
                 best_row: Optional[List[complex]] = None
@@ -502,10 +539,169 @@ def support_swap_sweep(target: Matrix, factors: List[Matrix], q: Optional[int],
                 factor[r] = best_row if best_row is not None else original
                 if best_row is not None:
                     accepted += 1
+                    accepted_rows += 1
                     improved = True
-        if not improved:
+                    if state is not None:
+                        state.record_proposal(kind="support_swap", accepted=True,
+                                              reason="objective_improved",
+                                              detail={"factor": factor_index, "row": r, "phase": phase})
+                elif state is not None:
+                    state.record_proposal(kind="support_swap", accepted=False,
+                                          reason="no_improvement",
+                                          detail={"factor": factor_index, "row": r, "phase": phase})
+        if state is not None:
+            state.finish_sweep(_objective(target, factors, permutation), n, phase=phase,
+                               evaluated=evaluated_rows, accepted=accepted_rows)
+        elif not improved:
             break
     return accepted
+
+
+def beam_reconnect_sweep(target: Matrix, factors: List[Matrix], q: Optional[int],
+                         row_cap: int, permutation: Sequence[int],
+                         rng: random.Random, state: StopState, *,
+                         beam_width: int, row_group_sizes: Sequence[int],
+                         cross_block_size: Optional[int] = None,
+                         phase: str = "beam_reconnect") -> Dict[str, int]:
+    """Evaluate and retain a true beam of multi-row, multi-layer reconnect states."""
+    n = len(target)
+    base = _objective(target, factors, permutation)
+    candidates: List[Tuple[float, List[Matrix], int]] = []
+    evaluated = 0
+    nonzero_values = ([complex(a, b) for a in _lattice(q) for b in _lattice(q)
+                       if complex(a, b) != 0] if q is not None
+                      else [1 + 0j, -1 + 0j, 1j, -1j])
+    for group_size in row_group_sizes:
+        if state.should_stop():
+            break
+        for beam_index in range(beam_width):
+            if state.should_stop():
+                break
+            trial = _copy_factors(factors)
+            changed = 0
+            for move in range(group_size):
+                factor_index = (beam_index + move) % len(trial)
+                row_index = rng.randrange(n)
+                row = trial[factor_index][row_index]
+                occupied = [column for column, value in enumerate(row) if value != 0]
+                if not occupied:
+                    continue
+                drop = occupied[(beam_index + move) % len(occupied)]
+                additions = [column for column in range(n) if row[column] == 0]
+                if cross_block_size:
+                    source_block = drop // cross_block_size
+                    cross = [column for column in additions
+                             if column // cross_block_size != source_block]
+                    additions = cross or additions
+                if not additions:
+                    continue
+                add = additions[rng.randrange(len(additions))]
+                value = row[drop] if row[drop] in nonzero_values else rng.choice(nonzero_values)
+                row[drop] = 0j
+                row[add] = value
+                changed += 1
+            if changed == 0:
+                state.record_proposal(kind="beam_state", accepted=False,
+                                      reason="no_legal_move",
+                                      detail={"phase": phase, "rows": group_size})
+                continue
+            objective = _objective(target, trial, permutation)
+            evaluated += 1
+            candidates.append((objective, trial, group_size))
+            state.record_proposal(kind="beam_state", accepted=False,
+                                  reason="evaluated",
+                                  detail={"phase": phase, "rows": group_size,
+                                          "beam_index": beam_index,
+                                          "objective": objective})
+    candidates.sort(key=lambda item: item[0])
+    retained = candidates[:beam_width]
+    accepted = 0
+    if retained and retained[0][0] < base - 1e-15:
+        factors[:] = retained[0][1]
+        accepted = 1
+        state.record_proposal(kind="beam_state", accepted=True,
+                              reason="best_retained_improved",
+                              detail={"phase": phase, "rows": retained[0][2],
+                                      "retained": len(retained)})
+    elif retained:
+        state.failure_reasons["beam_no_improvement"] = state.failure_reasons.get("beam_no_improvement", 0) + 1
+    state.finish_sweep(_objective(target, factors, permutation), n, phase=phase,
+                       evaluated=evaluated, accepted=accepted)
+    return {"evaluated": evaluated, "retained": len(retained), "accepted": accepted}
+
+
+def optimise_permutation(target: Matrix, factors: Sequence[Matrix],
+                         permutation: List[int], rng: random.Random,
+                         state: StopState, proposals: int,
+                         phase: str = "permutation_optimisation") -> Dict[str, int]:
+    """Evaluate pair swaps of the separate pure permutation and accept improvements."""
+    accepted = 0
+    evaluated = 0
+    incumbent = _objective(target, factors, permutation)
+    n = len(permutation)
+    for _ in range(proposals):
+        if state.should_stop():
+            break
+        a, b = rng.sample(range(n), 2)
+        permutation[a], permutation[b] = permutation[b], permutation[a]
+        objective = _objective(target, factors, permutation)
+        evaluated += 1
+        if objective < incumbent - 1e-15:
+            incumbent = objective
+            accepted += 1
+            state.record_proposal(kind="permutation_swap", accepted=True,
+                                  reason="objective_improved", detail={"a": a, "b": b})
+        else:
+            permutation[a], permutation[b] = permutation[b], permutation[a]
+            state.record_proposal(kind="permutation_swap", accepted=False,
+                                  reason="no_improvement", detail={"a": a, "b": b})
+    state.finish_sweep(incumbent, n, phase=phase, evaluated=evaluated, accepted=accepted)
+    return {"evaluated": evaluated, "accepted": accepted}
+
+
+def right_factor_beam_sweep(target: Matrix, factors: List[Matrix], q: int,
+                            permutation: Sequence[int], rng: random.Random,
+                            state: StopState, *, beam_width: int = 8,
+                            phase: str = "recursive_right_factor_beam") -> Dict[str, int]:
+    """Build a beam of right-factor Pq projections with residual left refits."""
+    base = _objective(target, factors, permutation)
+    retained: List[Tuple[float, List[Matrix], int]] = []
+    order = list(reversed(range(len(factors))))
+    while len(order) < beam_width:
+        order.extend(reversed(range(len(factors))))
+    rng.shuffle(order)
+    for beam_index, factor_index in enumerate(order[:beam_width]):
+        if state.should_stop():
+            break
+        trial = _copy_factors(factors)
+        # Recursive SP2-style step: choose a right factor, then refit the
+        # immediately preceding residual factor on the exact Pq lattice.
+        trial[factor_index] = continuous_factor_update(target, trial, factor_index,
+                                                       q, None, permutation)
+        if factor_index > 0:
+            trial[factor_index - 1] = continuous_factor_update(
+                target, trial, factor_index - 1, q, None, permutation)
+        objective = _objective(target, trial, permutation)
+        retained.append((objective, trial, factor_index))
+        state.record_proposal(kind="right_factor_beam", accepted=False,
+                              reason="evaluated",
+                              detail={"beam_index": beam_index,
+                                      "right_factor": factor_index,
+                                      "objective": objective})
+    retained.sort(key=lambda item: item[0])
+    retained = retained[:beam_width]
+    accepted = 0
+    if retained and retained[0][0] < base - 1e-15:
+        factors[:] = retained[0][1]
+        accepted = 1
+        state.record_proposal(kind="right_factor_beam", accepted=True,
+                              reason="best_retained_improved",
+                              detail={"right_factor": retained[0][2]})
+    elif retained:
+        state.failure_reasons["beam_no_improvement"] = state.failure_reasons.get("beam_no_improvement", 0) + 1
+    state.finish_sweep(_objective(target, factors, permutation), len(target),
+                       phase=phase, evaluated=len(retained), accepted=accepted)
+    return {"evaluated": len(retained), "retained": len(retained), "accepted": accepted}
 
 
 # --------------------------------------------------------------------------- #
@@ -605,53 +801,88 @@ def _smoke_limits(smoke: bool) -> Tuple[Optional[int], Optional[int]]:
 
 
 def _execution_scope(smoke: bool) -> str:
-    return "smoke_minimum_viability" if smoke else "fixed_pass_reference_pending_frozen_budget_control"
+    return "smoke_minimum_viability" if smoke else "frozen_budget_search"
+
+
+def _new_state(n: int, smoke: bool,
+               budget: Optional[SearchBudget]) -> StopState:
+    return (budget or SearchBudget.frozen(n, smoke=smoke)).start()
+
+
+def _remaining_sweeps(state: StopState) -> int:
+    return max(0, state.budget.sweep_cap - state.sweeps)
+
+
+def _candidate_diagnostics(strategy: str, method: str, seed: int,
+                           seed_trace: str, smoke: bool, state: StopState,
+                           **extra: object) -> Dict[str, object]:
+    return {"strategy": strategy, "protocol_method": method, "seed": seed,
+            "seed_trace": seed_trace, "smoke": smoke,
+            "execution_scope": _execution_scope(smoke), **state.diagnostics(), **extra}
 
 
 def challenger_q1_palm_row2(n: int, k: int, seed: int,
-                            smoke: bool = False) -> BaselineSolution:
+                            smoke: bool = False,
+                            budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q1-c1-palm-row2``: block-coordinate (PALM-style) updates on row-2 support."""
     target = dft_matrix(n)
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors = _exact_chain_start(n, k)
     perm = bit_reversal_permutation(n)
     if factors is None:
-        factors = _random_start(n, k, None, 2, rng)
-        perm = list(range(n))
-    info = _polish(target, factors, None, 2, sweeps=1 if smoke else 4,
-                   permutation=perm, rng=rng)
+        hierarchical = _butterfly_start(n, None, 2, k)
+        if hierarchical is None:
+            factors, perm = _random_start(n, k, None, 2, rng), list(range(n))
+        else:
+            factors, perm = hierarchical
+    _polish(target, factors, None, 2, sweeps=_remaining_sweeps(state),
+            permutation=perm, rng=rng, state=state, phase="palm_best2_global_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "palm_row2", "protocol_method": "hierarchical_projected_alternating",
-                             "seed": seed, "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke), **info})
+                            _candidate_diagnostics(
+                                "palm_row2", "hierarchical_projected_alternating",
+                                seed, seed_trace, smoke, state,
+                                initialization="hierarchical_butterfly",
+                                best2_projection=True, global_polish=True))
 
 
 def challenger_q1_structure_reconnect(n: int, k: int, seed: int,
-                                      smoke: bool = False) -> BaselineSolution:
+                                      smoke: bool = False,
+                                      budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q1-c2-structure-reconnect``: butterfly init + support reconnection."""
     target = dft_matrix(n)
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors = _exact_chain_start(n, k)
     perm = bit_reversal_permutation(n)
     if factors is None:
         factors = _random_start(n, k, None, 2, rng)
         perm = list(range(n))
-    _polish(target, factors, None, 2, sweeps=1 if smoke else 2,
-            permutation=perm, rng=rng)
-    max_rows, max_additions = _smoke_limits(smoke)
-    swaps = support_swap_sweep(target, factors, None, 2, passes=1,
-                               permutation=perm, rng=rng, max_rows=max_rows,
-                               max_additions=max_additions)
-    info = _polish(target, factors, None, 2, sweeps=1 if smoke else 2,
-                   permutation=perm, rng=rng)
+    _polish(target, factors, None, 2, sweeps=1, permutation=perm, rng=rng,
+            state=state, phase="coefficient_polish")
+    reconnect_trace = []
+    for rate in (0.05, 0.1, 0.2):
+        if state.should_stop():
+            break
+        rows = max(1, math.ceil(rate * n * k))
+        reconnect_trace.append({"rate": rate, **beam_reconnect_sweep(
+            target, factors, None, 2, perm, rng, state, beam_width=8,
+            row_group_sizes=(rows,), phase=f"reconnect_rate_{rate}")})
+        if not state.should_stop():
+            optimise_permutation(target, factors, perm, rng, state,
+                                 proposals=max(1, math.ceil(rate * n)))
+    if not state.should_stop():
+        _polish(target, factors, None, 2, sweeps=_remaining_sweeps(state),
+                permutation=perm, rng=rng, state=state, phase="global_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "structure_reconnect", "seed": seed,
-                             "protocol_method": "butterfly_large_neighborhood_reconnect",
-                             "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke),
-                             "support_swaps": swaps, **info})
+                            _candidate_diagnostics(
+                                "structure_reconnect", "butterfly_large_neighborhood_reconnect",
+                                seed, seed_trace, smoke, state,
+                                reconnect_rates=[0.05, 0.1, 0.2],
+                                reconnect_trace=reconnect_trace,
+                                permutation_optimisation=True))
 
 
 def _lattice_start(target: Matrix, n: int, k: int, q: int,
@@ -665,122 +896,134 @@ def _lattice_start(target: Matrix, n: int, k: int, q: int,
 
 
 def challenger_q2_sp2_recursive(target: Matrix, n: int, k: int, q: int,
-                                seed: int, smoke: bool = False) -> BaselineSolution:
+                                seed: int, smoke: bool = False,
+                                budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q2-c1-sp2-recursive``: greedy right-factor proposals then discrete polish."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors, perm = _lattice_start(target, n, k, q, None)
-    if k > 1:
-        update_order = list(reversed(range(k)))
-        rng.shuffle(update_order)
-        for index in update_order[:1 if smoke else len(update_order)]:
-            candidate = continuous_factor_update(target, factors, index, q, None, perm)
-            before = _objective(target, factors, perm)
-            incumbent = factors[index]
-            factors[index] = candidate
-            if _objective(target, factors, perm) >= before - 1e-15:
-                factors[index] = incumbent
-    info = _polish(target, factors, q, None, sweeps=1 if smoke else 3,
-                   permutation=perm, rng=rng)
+    beam = right_factor_beam_sweep(target, factors, q, perm, rng, state,
+                                   beam_width=8)
+    if not state.should_stop():
+        _polish(target, factors, q, None, sweeps=_remaining_sweeps(state),
+                permutation=perm, rng=rng, state=state, phase="discrete_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "sp2_recursive", "protocol_method": "recursive_right_factor_greedy",
-                             "greedy_beam": 8, "seed": seed, "seed_trace": seed_trace,
-                             "smoke": smoke, "execution_scope": _execution_scope(smoke), **info})
+                            _candidate_diagnostics(
+                                "sp2_recursive", "recursive_right_factor_greedy",
+                                seed, seed_trace, smoke, state,
+                                greedy_beam=8, right_factor_beam=beam,
+                                residual_left_projection=True))
 
 
 def challenger_q2_relax_project(target: Matrix, n: int, k: int, q: int,
-                                seed: int, smoke: bool = False) -> BaselineSolution:
+                                seed: int, smoke: bool = False,
+                                budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q2-c2-relax-project-polish``: continuous relax, exact projection, polish."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
-    factors, perm = _lattice_start(target, n, k, q, None)
-    for _ in range(1 if smoke else 2):
-        order = list(range(k))
-        rng.shuffle(order)
-        for i in order:
-            candidate = continuous_factor_update(target, factors, i, q, None, perm)
-            before = _objective(target, factors, perm)
-            incumbent = factors[i]
-            factors[i] = candidate
-            if _objective(target, factors, perm) >= before - 1e-15:
-                factors[i] = incumbent
-    info = _polish(target, factors, q, None, sweeps=1 if smoke else 3,
-                   permutation=perm, rng=rng)
+    state = _new_state(n, smoke, budget)
+    continuous = _butterfly_start(n, None, None, k)
+    factors, perm = (continuous if continuous is not None
+                     else (_random_start(n, k, None, None, rng), list(range(n))))
+    _polish(target, factors, None, None, sweeps=1, permutation=perm, rng=rng,
+            state=state, phase="continuous_fit")
+    pre_projection_rmse = math.sqrt(_objective(target, factors, perm)) / n
+    factors[:] = [[[quantize_complex(value, q) for value in row]
+                   for row in factor] for factor in factors]
+    post_projection_rmse = math.sqrt(_objective(target, factors, perm)) / n
+    state.finish_sweep(_objective(target, factors, perm), n,
+                       phase="exact_Pq_projection", evaluated=1, accepted=1)
+    if not state.should_stop():
+        _polish(target, factors, q, None, sweeps=_remaining_sweeps(state),
+                permutation=perm, rng=rng, state=state, phase="discrete_block_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "relax_project_polish", "protocol_method": "continuous_relax_project_discrete_polish",
-                             "seed": seed, "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke), **info})
+                            _candidate_diagnostics(
+                                "relax_project_polish", "continuous_relax_project_discrete_polish",
+                                seed, seed_trace, smoke, state,
+                                pre_projection_rmse=pre_projection_rmse,
+                                post_projection_rmse=post_projection_rmse,
+                                exact_projection=True))
 
 
 def challenger_q3_discrete_coordinate(target: Matrix, n: int, k: int, q: int,
-                                      seed: int, smoke: bool = False) -> BaselineSolution:
+                                      seed: int, smoke: bool = False,
+                                      budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q3-c1-discrete-coordinate``: exact discrete updates with support swaps."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors, perm = _lattice_start(target, n, k, q, 2)
-    max_rows, max_additions = _smoke_limits(smoke)
-    for _ in range(1 if smoke else 2):
-        _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                permutation=perm, rng=rng)
+    while not state.should_stop():
+        _polish(target, factors, q, 2, sweeps=1, permutation=perm, rng=rng,
+                state=state, phase="coefficient_sweep")
+        if state.should_stop():
+            break
         support_swap_sweep(target, factors, q, 2, passes=1, permutation=perm,
-                           rng=rng, max_rows=max_rows, max_additions=max_additions)
-    info = _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                   permutation=perm, rng=rng)
+                           rng=rng, state=state, phase="N_times_K_single_row_swaps")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "discrete_coordinate", "protocol_method": "exact_discrete_coordinate_support_swap",
-                             "seed": seed, "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke), **info})
+                            _candidate_diagnostics(
+                                "discrete_coordinate", "exact_discrete_coordinate_support_swap",
+                                seed, seed_trace, smoke, state,
+                                support_swap_rows_per_sweep=n * k))
 
 
 def challenger_q3_hierarchical_reconnect(target: Matrix, n: int, k: int, q: int,
-                                         seed: int, smoke: bool = False) -> BaselineSolution:
+                                         seed: int, smoke: bool = False,
+                                         budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q3-c2-hierarchical-reconnect``: butterfly init, polish, reconnect."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors, perm = _lattice_start(target, n, k, q, 2)
-    _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-            permutation=perm, rng=rng)
-    max_rows, max_additions = _smoke_limits(smoke)
-    swaps = support_swap_sweep(target, factors, q, 2, passes=1 if smoke else 2,
-                               permutation=perm, rng=rng, max_rows=max_rows,
-                               max_additions=max_additions)
-    info = _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                   permutation=perm, rng=rng)
+    _polish(target, factors, q, 2, sweeps=1, permutation=perm, rng=rng,
+            state=state, phase="hierarchical_global_polish")
+    beam = beam_reconnect_sweep(target, factors, q, 2, perm, rng, state,
+                                beam_width=16, row_group_sizes=(1, 2, 4))
+    if not state.should_stop():
+        _polish(target, factors, q, 2, sweeps=_remaining_sweeps(state),
+                permutation=perm, rng=rng, state=state, phase="post_beam_global_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "hierarchical_reconnect", "seed": seed,
-                             "protocol_method": "hierarchical_beam_reconnect",
-                             "beam_width": 16, "reconnect_rows": [1, 2, 4],
-                             "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke),
-                             "support_swaps": swaps, **info})
+                            _candidate_diagnostics(
+                                "hierarchical_reconnect", "hierarchical_beam_reconnect",
+                                seed, seed_trace, smoke, state,
+                                initialization="hierarchical_butterfly",
+                                beam_width=16, reconnect_rows=[1, 2, 4],
+                                beam_trace=beam))
 
 
 def challenger_q4_generic_discrete(target: Matrix, n: int, k: int, q: int,
-                                   seed: int, smoke: bool = False) -> BaselineSolution:
+                                   seed: int, smoke: bool = False,
+                                   budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q4-c1-generic-discrete``: generic row-2 discrete search on the Kron target."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     perm = list(range(n))
     factors = _random_start(n, k, q, 2, rng)
     max_rows, max_additions = _smoke_limits(smoke)
-    for _ in range(1 if smoke else 2):
-        _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                permutation=perm, rng=rng)
+    while not state.should_stop():
+        _polish(target, factors, q, 2, sweeps=1, permutation=perm, rng=rng,
+                state=state, phase="generic_P3_coefficient_move")
+        if state.should_stop():
+            break
         support_swap_sweep(target, factors, q, 2, passes=1, permutation=perm,
-                           rng=rng, max_rows=max_rows, max_additions=max_additions)
-    info = _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                   permutation=perm, rng=rng)
+                           rng=rng, max_rows=max_rows, max_additions=max_additions,
+                           state=state, phase="generic_row2_support_move")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "generic_discrete", "protocol_method": "generic_row2_coordinate_support",
-                             "seed": seed, "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke), **info})
+                            _candidate_diagnostics(
+                                "generic_discrete", "generic_row2_coordinate_support",
+                                seed, seed_trace, smoke, state,
+                                move_trace_complete=True))
 
 
 def challenger_q4_kron_reconnect(target: Matrix, n: int, k: int, q: int,
-                                 seed: int, smoke: bool = False) -> BaselineSolution:
+                                 seed: int, smoke: bool = False,
+                                 budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q4-c2-kron-reconnect``: Kronecker-aware init + cross-block reconnection."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     base = kron_quantized_butterfly_baseline(q)
     factors = [[row[:] for row in factor] for factor in base.factors]
     perm = base.permutation[:]
@@ -788,64 +1031,80 @@ def challenger_q4_kron_reconnect(target: Matrix, n: int, k: int, q: int,
         factors = factors[:k]
     while len(factors) < k:
         factors.append(identity(n))
-    _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-            permutation=perm, rng=rng)
-    max_rows, max_additions = _smoke_limits(smoke)
-    swaps = support_swap_sweep(target, factors, q, 2, passes=1 if smoke else 2,
-                               permutation=perm, rng=rng, max_rows=max_rows,
-                               max_additions=max_additions)
-    info = _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                   permutation=perm, rng=rng)
+    _polish(target, factors, q, 2, sweeps=1, permutation=perm, rng=rng,
+            state=state, phase="kron_global_polish")
+    beam = beam_reconnect_sweep(target, factors, q, 2, perm, rng, state,
+                                beam_width=16, row_group_sizes=(1, 2, 4),
+                                cross_block_size=8, phase="cross_block_beam")
+    if not state.should_stop():
+        _polish(target, factors, q, 2, sweeps=_remaining_sweeps(state),
+                permutation=perm, rng=rng, state=state, phase="post_cross_block_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "kron_reconnect", "seed": seed,
-                             "protocol_method": "kron_initialised_cross_block_reconnect",
-                             "beam_width": 16, "reconnect_rows": [1, 2, 4],
-                             "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke),
-                             "support_swaps": swaps, **info})
+                            _candidate_diagnostics(
+                                "kron_reconnect", "kron_initialised_cross_block_reconnect",
+                                seed, seed_trace, smoke, state,
+                                beam_width=16, reconnect_rows=[1, 2, 4],
+                                cross_block_size=8, beam_trace=beam))
 
 
 def challenger_q5_lexicographic_grid(target: Matrix, n: int, k: int, q: int,
-                                     seed: int, smoke: bool = False) -> BaselineSolution:
+                                     seed: int, smoke: bool = False,
+                                     budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q5-c1-lexicographic-grid``: feasibility-first discrete search at fixed (q,K)."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors, perm = _lattice_start(target, n, k, q, 2)
     max_rows, max_additions = _smoke_limits(smoke)
-    for _ in range(1 if smoke else 3):
-        _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                permutation=perm, rng=rng)
+    while not state.should_stop():
+        _polish(target, factors, q, 2, sweeps=1, permutation=perm, rng=rng,
+                state=state, phase="hierarchical_grid_coefficient")
+        if state.should_stop():
+            break
         support_swap_sweep(target, factors, q, 2, passes=1, permutation=perm,
-                           rng=rng, max_rows=max_rows, max_additions=max_additions)
-    info = _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-                   permutation=perm, rng=rng)
+                           rng=rng, max_rows=max_rows, max_additions=max_additions,
+                           state=state, phase="hierarchical_grid_support")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "lexicographic_grid", "protocol_method": "hierarchical_grid_coordinate_support",
-                             "seed": seed, "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke), **info})
+                            _candidate_diagnostics(
+                                "lexicographic_grid", "hierarchical_grid_coordinate_support",
+                                seed, seed_trace, smoke, state,
+                                outer_grid_owned_by_runner=True,
+                                rank_key=["feasible", "C", "K", "rmse"],
+                                q_in_tie_break=False))
 
 
 def challenger_q5_large_neighborhood(target: Matrix, n: int, k: int, q: int,
-                                     seed: int, smoke: bool = False) -> BaselineSolution:
+                                     seed: int, smoke: bool = False,
+                                     budget: Optional[SearchBudget] = None) -> BaselineSolution:
     """``q5-c2-large-neighborhood``: multi-pass reconnect + polish."""
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
+    state = _new_state(n, smoke, budget)
     factors, perm = _lattice_start(target, n, k, q, 2)
-    _polish(target, factors, q, 2, sweeps=1 if smoke else 2,
-            permutation=perm, rng=rng)
-    max_rows, max_additions = _smoke_limits(smoke)
-    swaps = support_swap_sweep(target, factors, q, 2, passes=1 if smoke else 3,
-                               permutation=perm, rng=rng, max_rows=max_rows,
-                               max_additions=max_additions)
-    info = _polish(target, factors, q, 2, sweeps=1 if smoke else 3,
-                   permutation=perm, rng=rng)
+    from .l0_validation import support_rmse_lower_bound
+    lower_bound = support_rmse_lower_bound(n, k)
+    pruned = lower_bound > 0.1
+    if pruned:
+        state.failure_reasons["safe_support_bound_above_feasibility"] = 1
+        state.stop_reason = "safe_lower_bound_prune"
+        beam = {"evaluated": 0, "retained": 0, "accepted": 0}
+    else:
+        _polish(target, factors, q, 2, sweeps=1, permutation=perm, rng=rng,
+                state=state, phase="pre_large_neighborhood_polish")
+        beam = beam_reconnect_sweep(target, factors, q, 2, perm, rng, state,
+                                    beam_width=32, row_group_sizes=(1, 2, 4, 8),
+                                    phase="large_neighborhood_beam")
+        if not state.should_stop():
+            _polish(target, factors, q, 2, sweeps=_remaining_sweeps(state),
+                    permutation=perm, rng=rng, state=state,
+                    phase="post_large_neighborhood_polish")
     return BaselineSolution(factors, perm, _masks_from_factors(factors),
-                            {"strategy": "large_neighborhood", "seed": seed,
-                             "protocol_method": "beam_ranked_multirow_large_neighborhood",
-                             "beam_width": 32, "reconnect_rows": [1, 2, 4, 8],
-                             "seed_trace": seed_trace, "smoke": smoke,
-                             "execution_scope": _execution_scope(smoke),
-                             "support_swaps": swaps, **info})
+                            _candidate_diagnostics(
+                                "large_neighborhood", "beam_ranked_multirow_large_neighborhood",
+                                seed, seed_trace, smoke, state,
+                                beam_width=32, reconnect_rows=[1, 2, 4, 8],
+                                conservative_support_lower_bound=lower_bound,
+                                safely_pruned=pruned, beam_trace=beam))
 
 
 # --------------------------------------------------------------------------- #
@@ -872,25 +1131,26 @@ def registered_challenger_ids() -> List[str]:
 
 def challenger_solution(candidate_id: str, target: Matrix, n: int, k: int,
                         q: Optional[int], seed: int,
-                        smoke: bool = False) -> BaselineSolution:
+                        smoke: bool = False,
+                        budget: Optional[SearchBudget] = None) -> BaselineSolution:
     pid = _CHALLENGERS.get(candidate_id)
     if pid is None:
         raise KeyError(f"unregistered challenger {candidate_id!r}")
     if candidate_id.startswith("q1-"):
         return (challenger_q1_palm_row2 if candidate_id.endswith("palm-row2")
-                else challenger_q1_structure_reconnect)(n, k, seed, smoke)
+                else challenger_q1_structure_reconnect)(n, k, seed, smoke, budget)
     if pid == "q2":
         fn = (challenger_q2_sp2_recursive if "sp2" in candidate_id
               else challenger_q2_relax_project)
-        return fn(target, n, k, int(q), seed, smoke)
+        return fn(target, n, k, int(q), seed, smoke, budget)
     if pid == "q3":
         fn = (challenger_q3_discrete_coordinate if "discrete-coordinate" in candidate_id
               else challenger_q3_hierarchical_reconnect)
-        return fn(target, n, k, int(q), seed, smoke)
+        return fn(target, n, k, int(q), seed, smoke, budget)
     if pid == "q4":
         fn = (challenger_q4_generic_discrete if "generic" in candidate_id
               else challenger_q4_kron_reconnect)
-        return fn(target, n, k, int(q), seed, smoke)
+        return fn(target, n, k, int(q), seed, smoke, budget)
     fn = (challenger_q5_lexicographic_grid if "lexicographic" in candidate_id
           else challenger_q5_large_neighborhood)
-    return fn(target, n, k, int(q), seed, smoke)
+    return fn(target, n, k, int(q), seed, smoke, budget)

@@ -21,6 +21,7 @@ from dft_integer_approx.challengers import (  # noqa: E402
 from dft_integer_approx.constraints import check_alphabet, check_row_sparse  # noqa: E402
 from dft_integer_approx.hardware import count_nontrivial_positions  # noqa: E402
 from dft_integer_approx.metrics import rmse  # noqa: E402
+from dft_integer_approx.search_budget import SearchBudget  # noqa: E402
 from dft_integer_approx.targets import dft_matrix, identity, kron, zeros  # noqa: E402
 
 
@@ -86,6 +87,82 @@ class TestChallengers(unittest.TestCase):
         support_swap_sweep(target, factors, None, 2, permutation=permutation,
                            max_rows=4, max_additions=4)
         self.assertLessEqual(_objective(target, factors, permutation), before + 1e-15)
+
+    def test_q1c2_n8k3_executes_all_reconnect_rates_and_permutation_moves(self):
+        solution = challenger_solution("q1-c2-structure-reconnect", dft_matrix(8),
+                                       8, 3, 16, 17, smoke=True)
+        diagnostics = solution.diagnostics
+        self.assertEqual([item["rate"] for item in diagnostics["reconnect_trace"]],
+                         [0.05, 0.1, 0.2])
+        kinds = {item["kind"] for item in diagnostics["proposal_trace"]}
+        self.assertIn("beam_state", kinds)
+        self.assertIn("permutation_swap", kinds)
+        self.assertGreater(diagnostics["evaluated_proposals"], 0)
+
+    def test_q2c1_beam8_and_q2c2_projection_metrics_are_real(self):
+        target = dft_matrix(4)
+        c1 = challenger_solution("q2-c1-sp2-recursive", target, 4, 2, 3, 17,
+                                 smoke=True)
+        self.assertEqual(c1.diagnostics["right_factor_beam"]["evaluated"], 8)
+        self.assertTrue(any(event["kind"] == "right_factor_beam"
+                            for event in c1.diagnostics["proposal_trace"]))
+        c2 = challenger_solution("q2-c2-relax-project-polish", target, 4, 2, 3,
+                                 17, smoke=True)
+        self.assertTrue(math.isfinite(c2.diagnostics["pre_projection_rmse"]))
+        self.assertTrue(math.isfinite(c2.diagnostics["post_projection_rmse"]))
+        self.assertTrue(all(check_alphabet(factor, 3)[0] for factor in c2.factors))
+
+    def test_q3_exact_single_row_and_beam_mvt(self):
+        target = dft_matrix(8)
+        c1 = challenger_solution("q3-c1-discrete-coordinate", target, 8, 3, 3,
+                                 17, smoke=True)
+        support_sweeps = [event for event in c1.diagnostics["improvement_trace"]
+                          if event["phase"] == "N_times_K_single_row_swaps"]
+        self.assertTrue(support_sweeps)
+        self.assertEqual(support_sweeps[0]["evaluated"], 8 * 3)
+        c2 = challenger_solution("q3-c2-hierarchical-reconnect", target, 8, 3,
+                                 3, 17, smoke=True)
+        self.assertEqual(c2.diagnostics["beam_trace"]["evaluated"], 16 * 3)
+        self.assertEqual(c2.diagnostics["beam_trace"]["retained"], 16)
+
+    def test_q5c2_n8_q1_k3_has_real_large_neighborhood_trace(self):
+        solution = challenger_solution("q5-c2-large-neighborhood", dft_matrix(8),
+                                       8, 3, 1, 17, smoke=True)
+        self.assertFalse(solution.diagnostics["safely_pruned"])
+        self.assertEqual(solution.diagnostics["beam_trace"]["evaluated"], 32 * 4)
+        self.assertTrue(solution.diagnostics["proposal_trace"])
+        self.assertTrue(all(check_alphabet(factor, 1)[0] for factor in solution.factors))
+
+    def test_q5c1_executes_q1_q2_by_two_k_grid_cells(self):
+        target = dft_matrix(4)
+        cells = []
+        for q in (1, 2):
+            for k in (1, 2):
+                solution = challenger_solution("q5-c1-lexicographic-grid", target,
+                                               4, k, q, 17, smoke=True)
+                self.assertGreater(solution.diagnostics["evaluated_proposals"], 0)
+                self.assertTrue(solution.diagnostics["proposal_trace"])
+                self.assertTrue(all(check_alphabet(factor, q)[0]
+                                    for factor in solution.factors))
+                cells.append((q, k, solution))
+        self.assertEqual({(q, k) for q, k, _solution in cells},
+                         {(1, 1), (1, 2), (2, 1), (2, 2)})
+
+
+class TestSearchBudget(unittest.TestCase):
+    def test_deadline_sweep_cap_patience_and_trace(self):
+        now = [0.0]
+        state = SearchBudget(5.0, 10, patience=2, tolerance=1e-10).start(lambda: now[0])
+        state.finish_sweep(1.0, 1, phase="x", evaluated=2, accepted=1)
+        state.finish_sweep(1.0, 1, phase="x", evaluated=2, accepted=0)
+        state.finish_sweep(1.0, 1, phase="x", evaluated=2, accepted=0)
+        self.assertTrue(state.should_stop())
+        self.assertEqual(state.stop_reason, "patience")
+        self.assertEqual(state.evaluated_proposals, 6)
+        deadline = SearchBudget(1.0, 10).start(lambda: now[0])
+        now[0] = 2.0
+        self.assertTrue(deadline.should_stop())
+        self.assertEqual(deadline.stop_reason, "wall_deadline")
 
 
 if __name__ == "__main__":

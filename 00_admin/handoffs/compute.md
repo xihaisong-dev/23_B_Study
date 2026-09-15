@@ -152,3 +152,15 @@
 - 验证：`unittest` 70/70 PASS；完整 L2 dry-run 为 1442 个互异 tuple；最新 smoke 15 个候选为 12 PASS + 3 q5 INFEASIBLE，0 CRASH/CONSTRAINT_FAIL；历史 smoke 失败 run 均保留。
 - 状态边界：`05_results/smoke_summary.json` 与 `validation_plan.json` 均为 `BLOCKED`、winner null；正式 L2 1442-run、L3、L4 均未运行。
 - 正式批次前阻塞：非 smoke 搜索仍是固定 pass 参考实现，尚未把 wall-clock/sweep/patience 注入循环，也未真实实现全部 beam/多行 reconnect 操作；须独立复核并在下一提交闭合后才可启动正式批次。
+
+## Formal-readiness 代码与证据里程碑
+
+- 分支/工作树：`agent/compute-challengers`；`worktrees/compute-challengers`。本节对应提交见本分支最新提交；没有执行正式 1442-run。
+- 搜索闭合：统一 `SearchBudget`/`StopState` 已在候选搜索循环内执行 wall deadline、冻结 sweep cap、patience=50、tol=1e-10，并持久化 stop reason、sweep、improvement 和 proposal/evaluated/accepted/failure traces。
+- 十候选：q1–q5 的 c1/c2 均接入真实更新路径；包含 q1 best2/PALM/reconnect/permutation、q2 beam8/连续投影、q3 单行 N*K/beam16 多行、q4 P3 row2/跨块 beam16、q5 完整外层网格/beam32 与保守剪枝。因子按 `A1...AK` 存储；列向量计算时 `AK` 先作用。
+- 批次谱系：正式 L2 计划固定为 1442 个 tuple；`batches/<batch-id>/plan.json` 与 `config.json` 绑定规范哈希、题面与 input manifest 哈希、依赖、数据类别和 target generation。稳定 tuple hash 支持互斥 shard 与同批次 resume；筛选不改变正式 batch id。分片 runner 仅写 execution 记录，严格聚合器才可写完整 L2 汇总。
+- 聚合器：已实现 1442 双射、重复/缺失失败关闭、冻结 tie/fallback 和 q5 frontier；q5 无可行解时 winner 保持 null，不能伪造 PASS。本轮只做缺失/重复的临时目录单测，未正式聚合。
+- L3/L4：已预登记 L3 50 个配置、L4 40 个配置及 parent/variant/best-median-worst 数据接口，registry 状态保持 `NOT_RUN/BLOCKED`。
+- 验证：83/83 unittest PASS；Python compile PASS；本地协议门禁与冻结验证 PASS；L2 dry-run 1442，三 shard 覆盖测试 PASS；L3/L4 dry-run 分别 50/40。最新 L2 smoke 为 15 个候选、12 PASS + 3 q5 INFEASIBLE、0 CRASH/CONSTRAINT_FAIL，batch id `l2-smoke-c253df79-597e8620-fee24ed4-20260915T040404663380Z`，代码树 SHA-256 `597e862073969e75c5b6d786a44d4e46904df2dfce63c0a001cf543da3acab19`；15 个 run manifest 与因子产物均存在，历史 runs 未删。
+- 状态边界：winner 仍为 null，`05_results/smoke_summary.json`、`validation_plan.json`、`validation_registry.json` 均保持 BLOCKED/NOT_RUN 语义；不得据此写正式结果。
+- **正式运行前阻断**：L4 的四类 ablation 目前只完成计划/runner/谱系接口，`disable` 适配器尚未真正改变挑战者算法路径；必须实现并增加效果测试。正式 1442-run 还需独立复核十候选忠实度、搜索预算、分片并发和聚合器后才可启动。
