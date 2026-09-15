@@ -1,6 +1,26 @@
 # 建模 Agent 交接
 
-## 当前交接：`03_model/checks/` 来源审计与证书修订
+## 当前交接：D-005 后对擂准备稿（协议草案 + 检索清单 + 分析报告）
+
+- 角色：M 建模 Agent
+- 状态：产物已提交；正式门禁仍 `BLOCKED`（协议 `PROPOSED`，未冻结）
+- 工作树/分支：`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/modeling`，`agent/modeling`
+- 语义依据：`00_admin/DECISIONS.md` D-005（固定 `β=1` 且不计入 `L`；Q5 先 `RMSE≤0.1` 再按 `(C,K,RMSE)` 字典序、`q` 非平局目标；式 (3) 单位化 DFT；`q∈Z≥1`、`P_q={0,±2^r}`、`L` 为逐层作用向量的非平凡乘法位置数且不共享；所有扩张支撑的 `N×N` 层计入 `K`、纯排列单列）与 D-006（题面文本交叉核验）
+- 基线：`4d245919f2d835a25efe0fbd5909eac1334f137f`（已含 `main` = `ac89420`）
+- 命令/run-id：仅执行文件读取、KB 路径解析检查、JSON 结构检查、`git diff --check` 与 pre-commit 边界检查；**未运行任何候选或评分命令**，run-id `NOT_RUN`
+- 产物路径：
+  - `03_model/tournament_protocol.json`（34,222 bytes）：`status=BLOCKED`、`proposal_status=PROPOSED`、`frozen=false`；`blocked_by` 列明四条；五问各 3 个候选（1 基线 + 2 挑战者），含实例网格、种子策略 17/43/71、分段预算 60/300/900/1800 s、统一平局与失败/回退规则、L0–L4 验证层级
+  - `02_retrieval/retrieval_manifest.json`（14,398 bytes）：顶层 `status=PASS`、`kb=PASS`，五问各 3 篇文献
+  - `02_retrieval/EVIDENCE_MATRIX.md`（4,938 bytes）
+  - `02_retrieval/CANDIDATE_SPECS.md`（一致性更新）
+  - `03_model/ANALYSIS_MODELING_REPORT.md`（7,915 bytes）：`DRAFT / BLOCKED`
+- 验证：5 个路径全部落在建模授权范围内；`retrieval_manifest.json` 引用的所有 `knowledge_base/` 路径均可解析；JSON 均可解析；草案已吸收 `5992431` 的修正（明确要求"缩放后的 `L` 必须重新计，不能沿用未缩放链数字"），未残留已作废的 `K=t+1`/`β=1/√N` 归属声明
+- 限制：本轮**未核验** `knowledge_base/` 论文与 `PROBLEM_STATEMENT_AUDIT.md` 中文献引用的语义一致性（仅验证路径与结构）；协议未冻结，不得作为对擂依据；`blocked_by` 中的四项阻断（`rules.json` 的 AI 政策、`input_manifest` 官方来源、`freezes/problem.json` 缺失、`rules.json` 顶层 `BLOCKED`）本轮未被解除
+- 接口影响：计算 Agent 仍不得开始正式对擂；`04_code/` 只允许做冻结前的脚手架（见 `agent/compute` 的 `e1f4194`）
+- 更正说明：本文件旧"当前交接"段落曾写"`L` 计数、正负共享、`β` 是否计复杂度仍待语义裁决"，该表述已被 D-005 取代——`β=1` 且不计入 `L`、`L` 按位置计数且不共享已由 D-005 固定；仅"物理乘法器共享口径"仍作为需重算 `C` 的前提记录在 `ROW_BOUND_THEORY.md` 第 3 节
+- 下一步/接收人：主 Agent 审核并集成本提交；解阻 `rules.json`/`input_manifest`/`problem freeze` 后，由建模 Agent 冻结 `03_model/tournament_protocol.json`，之后计算 Agent 方可进入 L1–L4
+
+## 历史交接：`03_model/checks/` 来源审计与证书修订
 
 - 角色：M 建模 Agent
 - 状态：建模复算 `PASS`；正式门禁仍 `BLOCKED / NOT_RUN`

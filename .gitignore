@@ -9,6 +9,9 @@ __pycache__/
 tmp/
 scratch/
 
+# Local-only third-party award papers; do not treat as formal evidence
+02_retrieval/sources/
+
 # LaTeX build products
 06_paper/*.aux
 06_paper/*.bbl

@@ -2,7 +2,7 @@
 
 - 角色：M 建模 Agent（`agent/modeling`）
 - 状态：**`PROPOSED`（未冻结）**。冻结前置条件见第 5 节；在冻结前，计算 Agent 不得据此开展正式对擂。
-- 依据：`03_model/ROW_BOUND_THEORY.md`（本文的可证明结论）、`01_problem/PROBLEM_STATEMENT_AUDIT.md`（待裁决语义）。
+- 依据：D-005、`00_admin/semantic_contract.json`、`03_model/ROW_BOUND_THEORY.md` 与 `02_retrieval/EVIDENCE_MATRIX.md`。D-005 已取代本文历史版本中的自由 `β` 口径。
 - 目的：把"五个问题要比较哪些候选"写成可执行规格，使计算 Agent 能在协议冻结后立即实现，而无需再猜题意。
 
 ## 1. 共享输出契约（每个候选、每个尺寸、每次运行都必须给出）
@@ -17,7 +17,7 @@
   "N": 64,
   "target": {"kind": "dft|kron", "definition": "式(3)单位化|F4xF8",
              "sha256_of_matrix_bytes": "string"},
-  "q": 16, "K": 6, "beta": 8.0,
+  "q": 16, "K": 6, "beta": 1.0,
   "factors": [{"layer": 1, "row_support_max": 2, "nonzeros": 32,
                "entries_sha256": "string"}],
   "constraint1_row_support_max": 2,
@@ -34,21 +34,22 @@
 
 硬性要求：
 
-1. `rmse_recompute_independent` 必须由**与搜索代码无关**的复算路径产生（本仓库可用 `03_model/checks/verify_row_bound.py` 中的 `dft_matrix/residual` 作为独立参照）。
-2. 未计算的量写 `null`，不得写 0。
-3. `optimality_claim` 必须逐条命名；"最小误差"在无证明时只能写 `best_found`，并同时给出可用的下界（若存在）。
-4. 每个候选都要报告**约束 1/2 的逐元素检查结果**，不能只报 `feasible: true`。
+1. 因子按 `[A1,...,AK]` 存储，乘积固定为 `A1 @ A2 @ ... @ AK`；对列向量作用时 `AK` 最先作用。搜索代码与独立复算不得采用相反顺序。
+2. `rmse_recompute_independent` 必须由**与搜索代码无关**的复算路径产生（本仓库可用 `03_model/checks/verify_row_bound.py` 中的 `dft_matrix/residual` 作为独立参照）。
+3. 未计算的量写 `null`，不得写 0。
+4. `optimality_claim` 必须逐条命名；"最小误差"在无证明时只能写 `best_found`，并同时给出可用的下界（若存在）。
+5. 每个候选都要报告**约束 1/2 的逐元素检查结果**，不能只报 `feasible: true`。
 
 ## 2. 候选清单（至少 3 个；`minimum_candidates` 的门槛值由 `00_admin/workflow.json` 的集成者字段裁定，本文件不复制该字段）
 
 ### C1 `exact-radix2-chain`（问题 1 的非零精确基准）
 
 - 来源：本题建模结论，`03_model/ROW_BOUND_THEORY.md` 第 3 节（已数值复算精确）。
-- 构造：把比特反转排列吸收到第一个 radix-2 蝶形层，得到 `K=t=log2(N)` 个行二稀疏因子，乘积等于 `√N F_N`；取 `β=√N`，`RMSE=0`。支持下界同时证明任何 `β≠0` 的非零精确分解都有 `K≥t`。
-- 实测（`N≤64`）：`K=1..6`，`L=0,0,4,20,68,196`（位置计数），`C(q=16)=0,0,64,320,1088,3136`。
+- 构造：把比特反转排列吸收到第一个 radix-2 蝶形层，得到 `K=t=log2(N)` 个行二稀疏因子。历史证书的未缩放乘积为 `√N F_N`；D-005 固定 `β=1`，因此正式基线必须把 `1/√N` 吸收到某个计入 `K` 的因子，使乘积等于 `F_N`，并对**缩放后的全部因子重新计数** `L`。支持下界只证明非零精确分解须有 `K≥t`。
+- 已有证书（仅结构/精确性）：`N≤64` 的未缩放链为 `K=1..6` 且精确。历史 `L=0,0,4,20,68,196` 是未缩放链的位置计数，**不得**作为 D-005 固定 `β=1` 基线的复杂度；正式 `L,C` 等计算 Agent 从头复算后再填。
 - 适用范围：问题 1 的非零精确基准。问题 2–5 可借用其拓扑作搜索初值，但原始扭因子不满足离散集合，不能直接称为可行解。
 - 已知限制：扭因子层含非豁免系数，故 `L > 0`；`q = 1` 时需要把扭因子离散化，误差需重新计算。
-- **精确性证据**：`N≤64` 的每个尺寸都给出逐元素复算（浮点最大误差 `≤6.4e-14`），并给出 `K`、`L`、`C`；见 `03_model/checks/row_bound_results.json` 的 `t3_exact_radix2`。
+- **精确性证据**：`N≤64` 的每个尺寸都给出未缩放链的逐元素复算（浮点最大误差 `≤6.4e-14`）；见 `03_model/checks/row_bound_results.json` 的 `t3_exact_radix2`。固定 `β=1` 版本需由计算 Agent 独立复算缩放链及其 `L,C`。
 
 ### C2 `support-optimal-discrete`（问题 2/3 的主候选）
 
@@ -91,15 +92,10 @@
 
 ## 5. 冻结前置条件（`BLOCKED` 项）
 
-`03_model/tournament_protocol.json` 在以下条件全部满足前保持 `NOT_RUN`：
+`03_model/tournament_protocol.json` 已按 D-005 填为 `PROPOSED/BLOCKED` 草案；在以下条件全部满足前不得改为 `PASS` 或冻结：
 
 1. `00_admin/rules.json` 不再为 `BLOCKED`（官方题面/规则核验）；
-2. `00_admin/DECISIONS.md` 已裁决 `V6_SEMANTIC_DECISIONS.md` 的 D1–D5，特别是：
-   - **D1** `β` 归一化（本轮证明它是 `K*`/`C*` 是否有定义的前提，见审计 A7）；
-   - **D2** 问题 5 的目标顺序与平局规则；
-   - **D3** 采用式 (3) 还是式 (1) 归一化（影响阈值 `0.1` 的绝对含义，见审计 A6）；
-   - **D4** `L` 的计数口径与 `q` 的整数域（见审计 A3/A4，直接改变 `C`）；
-   - **D5** 计入 `K` 的层类别；
-3. `02_retrieval/` 的检索门禁与候选规格齐备（见 `02_retrieval/retrieval_manifest.json` 与 `02_retrieval/CANDIDATE_SPECS.md`）。
+2. D-005 已裁决 `β`、q5 目标、DFT/RMSE、`P_q/L` 与 `K`；这些内容必须持续与 `00_admin/semantic_contract.json` 一致；
+3. `02_retrieval/` 的本地知识库检索与候选规格已齐备，但正式检索门禁仍继承第 1 项规则阻断。
 
 在这五项完成前，本文件是**草案**，不得作为冻结协议使用。

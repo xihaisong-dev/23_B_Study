@@ -1,10 +1,112 @@
 {
   "schema_version": "3.0",
-  "status": "NOT_RUN",
+  "status": "PASS",
+  "scope": "local_knowledge_base_only",
+  "checked_at": "2026-09-14T23:53:29+08:00",
+  "gate_dependency": {
+    "rules_problem": "FAIL",
+    "reason": "本地知识库检索覆盖已完成，但官方题面 ZIP/哈希与 2023 年 AI 专项政策仍未核验；本清单 PASS 不代表上游规则门禁 PASS。"
+  },
   "kb": {
     "root": "knowledge_base",
-    "checked_at": "",
-    "status": "NOT_RUN"
+    "checked_at": "2026-09-14T23:53:29+08:00",
+    "status": "PASS",
+    "readme": "knowledge_base/README.md",
+    "documents_checked": [
+      {
+        "id": "KB-SP2-2020",
+        "document": "Muller, Gade and Bereyhi, Efficient Matrix Multiplication: The Sparse Power-of-2 Factorization",
+        "text": "knowledge_base/papers/muller_sparse_power_of_2_2020.txt",
+        "pdf": "knowledge_base/papers/muller_sparse_power_of_2_2020.pdf",
+        "pdf_sha256": "a02d6794d3be302b42708df120e60a254f131b33c8f0b6812ab93d5cf412278d",
+        "pdf_pages_reviewed": [2, 6],
+        "note": "全文机械提取稿可检索；方法、NP-hard 声明与实验限制已回查 PDF。"
+      },
+      {
+        "id": "KB-MLSA-2016",
+        "document": "Le Magoarou and Gribonval, Flexible Multi-layer Sparse Approximations of Matrices and Applications",
+        "text": "knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt",
+        "pdf": "knowledge_base/papers/le_magoarou_multilayer_sparse_2016.pdf",
+        "pdf_sha256": "92cb10524d7dd1d447460d805d852b731c5bb1b54d8254b43ce8eda81bb68c40",
+        "pdf_pages_reviewed": [3, 4, 5, 13],
+        "note": "全文机械提取稿可检索；目标、尺度处理、PALM、分层初始化及局部最优风险已回查 PDF。"
+      },
+      {
+        "id": "KB-BFLY-2019",
+        "document": "Dao et al., Learning Fast Algorithms for Linear Transforms Using Butterfly Factorizations",
+        "text": "knowledge_base/papers/dao_butterfly_2019.txt",
+        "pdf": "knowledge_base/papers/dao_butterfly_2019.pdf",
+        "pdf_sha256": "eb245fa1bb8073ab830def648538e0eb2389ba54e5fe059c2f63f9fbf7970d1d",
+        "pdf_pages_reviewed": [3, 5, 7, 8],
+        "note": "全文机械提取稿可检索；DFT 蝶形分解、参数化、表达性及等稀疏预算实验已回查 PDF。"
+      }
+    ]
   },
-  "problems": []
+  "problems": [
+    {
+      "id": "q1",
+      "queries": [
+        {"group": "domain", "query": "unitary DFT radix-2 butterfly factorization bit-reversal sparse matrix product", "refs": ["KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L166-L223", "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L335-L372"]},
+        {"group": "method", "query": "multi-layer sparse matrix approximation Frobenius PALM hierarchical initialization row sparsity", "refs": ["KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L136-L152", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L268-L365", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L378-L467"]},
+        {"group": "validation", "query": "butterfly factorization equal sparsity budget RMSE unitary scaling early stopping", "refs": ["KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L381-L454", "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125"]}
+      ],
+      "evidence": [
+        {"ref": "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L166-L223; PDF pp.3-4", "document": "Dao et al. 2019", "role": "domain", "abstraction": "Cooley-Tukey 递归可写成稀疏蝶形因子乘积与比特反转排列，Butterfly 参数族能够表示 FFT。", "applies_to": "q1 的结构基线与 K 层拓扑初始化", "risk": "论文采用连续复系数与特定 Butterfly 参数化，不能直接给出本题固定 beta=1 下的 L 或最优性。"},
+        {"ref": "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L268-L365; PDF pp.4-5", "document": "Le Magoarou and Gribonval 2016", "role": "method", "abstraction": "多层稀疏逼近可用投影交替梯度求解，并用分层二因子分解初始化后全局润色。", "applies_to": "q1 连续系数挑战者及统一优化框架", "risk": "收敛保证仅到驻点；约束集和尺度规范与 D-005 不同，需在 beta=1 下重写投影。"},
+        {"ref": "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125; PDF p.2", "document": "Muller, Gade and Bereyhi 2020", "role": "validation", "abstraction": "稀疏乘积优化通常为 NP-hard，论文算法是贪心近似并明确不声称最优。", "applies_to": "q1 挑战者的 best_found 口径、失败留档和下界并列", "risk": "论文测试为随机高斯矩阵，不能把其数值性能迁移到 DFT。"}
+      ]
+    },
+    {
+      "id": "q2",
+      "queries": [
+        {"group": "domain", "query": "matrix product factors signed powers of two multiplierless constant multiplication", "refs": ["KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L65-L102"]},
+        {"group": "method", "query": "recursive sparse recovery greedy power-of-two factorization projected alternating optimization", "refs": ["KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L73-L102", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L268-L365"]},
+        {"group": "validation", "query": "power-of-two matrix factorization NP-hard random matrix validation no optimality claim", "refs": ["KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125", "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L419-L454"]}
+      ],
+      "evidence": [
+        {"ref": "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L65-L102; PDF p.2", "document": "Muller, Gade and Bereyhi 2020", "role": "domain_method", "abstraction": "目标矩阵可近似为多个稀疏因子乘积，因子非零值限制为有符号二次幂，并递归求右因子。", "applies_to": "q2 的 P3 离散系数基线与递归挑战者", "risk": "该文是实数/矩形设置且复杂度口径不同；本题复系数必须按实虚部 P3 与 D-005 的 L 重算。"},
+        {"ref": "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L136-L152,L268-L365; PDF pp.3-5", "document": "Le Magoarou and Gribonval 2016", "role": "method", "abstraction": "Frobenius 目标配合可投影约束集，为先连续松弛再离散投影和润色提供通用框架。", "applies_to": "q2 的连续松弛与精确 P3 投影挑战者", "risk": "论文没有有限字母表全局最优保证；投影后必须重新验证误差与元素合法性。"},
+        {"ref": "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L419-L454; PDF p.8", "document": "Dao et al. 2019", "role": "validation", "abstraction": "矩阵分解比较应保持总稀疏预算一致，报告 RMSE、优化器、调参与停止规则。", "applies_to": "q2 候选的同预算、同种子与独立 RMSE 复算", "risk": "论文稀疏预算不是本题 C=qL；这里只采用实验公平性原则。"}
+      ]
+    },
+    {
+      "id": "q3",
+      "queries": [
+        {"group": "domain", "query": "row sparse multilayer factorization finite signed power-of-two complex coefficients", "refs": ["KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L268-L365", "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L65-L102"]},
+        {"group": "method", "query": "hierarchical sparse factorization discrete projection support reconnection butterfly initialization", "refs": ["KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L378-L467", "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L240-L372"]},
+        {"group": "validation", "query": "nonconvex local minima stationary point multiple seeds ablation support and coefficients", "refs": ["KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L299-L369", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L927-L952", "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125"]}
+      ],
+      "evidence": [
+        {"ref": "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L268-L365; PDF pp.4-5", "document": "Le Magoarou and Gribonval 2016", "role": "method", "abstraction": "投影交替更新可编码稀疏约束，分层初始化缓解直接多因子非凸优化的坏局部点。", "applies_to": "q3 同时施加行二稀疏与 P3 的混合优化", "risk": "文中是连续约束集；本题离散集合导致不可微，需用精确投影和离散邻域搜索。"},
+        {"ref": "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L65-L125; PDF p.2", "document": "Muller, Gade and Bereyhi 2020", "role": "domain_validation", "abstraction": "二次幂有限系数与稀疏乘积可联合建模，但求解为 NP-hard 且启发式结果不等于最优。", "applies_to": "q3 P3 字母表、best_found 声明和超时失败规则", "risk": "论文未施加每行最多两个非零，也未采用复数免费集合计数。"},
+        {"ref": "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L240-L372; PDF pp.5-7", "document": "Dao et al. 2019", "role": "initialization", "abstraction": "Butterfly 拓扑与可学习排列提供低维结构化初始化，且该参数族包含 FFT。", "applies_to": "q3 基线拓扑及支持重连挑战者", "risk": "固定 Butterfly 拓扑可能排除更优行二稀疏图；必须加入结构重连对照。"}
+      ]
+    },
+    {
+      "id": "q4",
+      "queries": [
+        {"group": "domain", "query": "Kronecker structured transform sparse multilayer factorization F4 tensor F8", "refs": ["KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L144-L223", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L136-L152"]},
+        {"group": "method", "query": "Kronecker-aware initialization butterfly product then hierarchical sparse projection", "refs": ["KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L166-L223", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L378-L467"]},
+        {"group": "validation", "query": "structured transform recovery Frobenius RMSE exact target reconstruction independent check", "refs": ["KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L381-L454", "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125"]}
+      ],
+      "evidence": [
+        {"ref": "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L144-L223; PDF p.3", "document": "Dao et al. 2019", "role": "domain_initialization", "abstraction": "递归 DFT 因子可作为两个 Kronecker 分量分别建模后再组合的结构先验。", "applies_to": "q4 的 F4 与 F8 分量化初始化", "risk": "论文不直接研究 F4⊗F8 在本题离散行二约束下的分解；不得把 F4⊗F8 误当 F32。"},
+        {"ref": "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L136-L152,L378-L467; PDF pp.3,5", "document": "Le Magoarou and Gribonval 2016", "role": "method", "abstraction": "通用矩阵可用多层稀疏乘积逼近，分层求解后全局润色。", "applies_to": "q4 的通用挑战者和 Kronecker-aware 挑战者", "risk": "通用框架不保留 Kronecker 结构也不保证全局最优，需要与直接目标矩阵复算。"},
+        {"ref": "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125; PDF p.2", "document": "Muller, Gade and Bereyhi 2020", "role": "validation", "abstraction": "启发式矩阵乘积分解必须保留最优性限制并用独立重构检查。", "applies_to": "q4 固定 N=32 的失败留档、候选对照和 best_found 口径", "risk": "随机矩阵结果不能用作 q4 数值基准。"}
+      ]
+    },
+    {
+      "id": "q5",
+      "queries": [
+        {"group": "domain", "query": "multiplierless power-of-two sparse factor chain error complexity tradeoff", "refs": ["KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L65-L125", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L513-L545"]},
+        {"group": "method", "query": "epsilon constrained lexicographic sparse factor search hierarchy discrete coefficients", "refs": ["KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L378-L467", "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L73-L102"]},
+        {"group": "validation", "query": "RMSE threshold unitary transform multiple random seeds equal budget failure reporting ablation", "refs": ["KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L419-L454", "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L94-L125", "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L927-L952"]}
+      ],
+      "evidence": [
+        {"ref": "KB-SP2-2020::knowledge_base/papers/muller_sparse_power_of_2_2020.txt#L65-L125; PDF p.2", "document": "Muller, Gade and Bereyhi 2020", "role": "domain_method", "abstraction": "稀疏二次幂因子提供误差与实现代价的可调折衷，递归贪心可作挑战者。", "applies_to": "q5 的 q/K 网格与离散系数搜索", "risk": "论文代价指标不等于 D-005 的 C=qL；q=1 免费集合必须按本题逐位置重算。"},
+        {"ref": "KB-MLSA-2016::knowledge_base/papers/le_magoarou_multilayer_sparse_2016.txt#L378-L467,L927-L952; PDF pp.5,12", "document": "Le Magoarou and Gribonval 2016", "role": "method_validation", "abstraction": "层次初始化加全局润色通常优于直接多层求解，但非凸局部点要求多种子与消融。", "applies_to": "q5 的 baseline、层次挑战者、结构重连挑战者公平对擂", "risk": "经验改进不是最优性证书；任何 C/K 最优声称必须有穷举或可验证下界。"},
+        {"ref": "KB-BFLY-2019::knowledge_base/papers/dao_butterfly_2019.txt#L419-L454; PDF p.8", "document": "Dao et al. 2019", "role": "validation", "abstraction": "在相同稀疏预算下比较并明确 RMSE、随机初始化、停止阈值，是可复现实验的最低要求。", "applies_to": "q5 的统一预算、RMSE<=0.1 可行性与独立复算", "risk": "论文阈值 1e-4 和本题 0.1 不同，不能移植；这里只采用报告规范。"}
+      ]
+    }
+  ]
 }
