@@ -1,0 +1,894 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T045950893538Z__q2__q2-c1-sp2-recursive__s17__pc253df79__ce215f316",
+  "problem_id": "q2",
+  "problem": "q2",
+  "candidate_id": "q2-c1-sp2-recursive",
+  "kind": "challenger",
+  "N": 4,
+  "K": 2,
+  "q": 3,
+  "beta": 1,
+  "seed": 17,
+  "budget": {
+    "wall_clock_s": 20,
+    "sweep_cap": 8,
+    "source": "smoke minimum-viability budget"
+  },
+  "wall_clock_s": 0.08295179999549873,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "factor_sha256s": [
+    "f58755eb751959259fe208ac85b8fd53b6a3fe23717dd188746efb65e0f00312",
+    "12124b1073024dd7c25f553775107e624c20aeda7e3f717d453b92c63d235f17"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "NOT_APPLICABLE",
+      "value": null
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.5,
+  "rmse_recompute_independent": 0.5,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "strategy": "sp2_recursive",
+    "protocol_method": "recursive_right_factor_greedy",
+    "seed": 17,
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": true,
+    "execution_scope": "smoke_minimum_viability",
+    "search_budget": {
+      "wall_clock_s": 20.0,
+      "sweep_cap": 8,
+      "patience": 8,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "sweep_cap",
+    "sweeps": 8,
+    "stale_sweeps": 7,
+    "evaluated_proposals": 84,
+    "accepted_proposals": 0,
+    "rejected_proposals": 84,
+    "failure_reasons": {
+      "no_improvement": 12
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "recursive_right_factor_depth_1",
+        "rmse": 0.5,
+        "improvement": null,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "recursive_right_factor_depth_0",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 64,
+        "accepted": 0
+      },
+      {
+        "sweep": 3,
+        "phase": "discrete_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "discrete_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 5,
+        "phase": "discrete_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 6,
+        "phase": "discrete_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "discrete_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "discrete_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 4.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 10.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 44.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 4.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 6.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 24.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 24.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 36.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 4.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 16.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 8.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 36.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 44.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 20.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 44.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 14.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 4.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 14.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 12.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 10.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 24.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 68.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 36.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 68.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 44.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 96.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 88.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 44.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 54.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 72.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 54.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 42.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 4.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 24.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 44.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 36.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 21.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 12.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 9.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 36.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 6.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 40.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 10.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 8.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 48.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 38.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 42.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 80.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 6.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 225.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 142.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 12.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 12.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 38.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 16.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 81.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 38.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 156.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 40.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 415.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 106.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 40.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 70.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 298.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 8.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 16.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 52.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 12.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 48.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 348.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 48.0
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 48.0
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      }
+    ],
+    "greedy_beam": 8,
+    "right_factor_beam": [
+      {
+        "depth": 1,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "depth": 0,
+        "evaluated": 64,
+        "retained": 8,
+        "accepted": 0
+      }
+    ],
+    "recursive_depths": 2,
+    "residual_left_projection": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T04:59:50+00:00",
+  "finished_at": "2026-09-15T04:59:50+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "e215f316edbb8a20074cf51d72cbaaf53fa4f3b29b4df33310e023606054f32e",
+  "batch_id": "l2-smoke-c253df79-e215f316-a3cabc03-20260915T045950739712Z",
+  "batch_plan_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "batch_config_sha256": "b703b51e373fc33430f2e558fff01c7e7c8ec03d633a521cb4dea29394e04b4e",
+  "run_config_sha256": "5ecb62e7633de29f4b41f2a918c9fcaaaef8e93f249fb8421dbb347d3e7eae8e",
+  "tuple_sha256": "2634816d5c090be034a615b632e27664f094a87885617183aab551984faef5e8",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-smoke-c253df79-e215f316-a3cabc03-20260915T045950739712Z/plan.json",
+      "size": 4717,
+      "sha256": "619a8472aaab22fb6f60e0176dc5abd806e2a88265402af3650b8c5346a82ed0"
+    },
+    "config": {
+      "path": "05_results/batches/l2-smoke-c253df79-e215f316-a3cabc03-20260915T045950739712Z/config.json",
+      "size": 1131,
+      "sha256": "b703b51e373fc33430f2e558fff01c7e7c8ec03d633a521cb4dea29394e04b4e"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T045950893538Z__q2__q2-c1-sp2-recursive__s17__pc253df79__ce215f316/factors.json",
+      "size": 1666,
+      "sha256": "e06ebfab212fc5033c5cc2ac50e17bd4cb972359c22d1719401192cbbefeabd5"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T045950893538Z__q2__q2-c1-sp2-recursive__s17__pc253df79__ce215f316/stdout.txt",
+      "size": 155,
+      "sha256": "7b36fbe0e6b6ce67f5540b09e44bb9616d0a9491d8e776937ba608b9d2ee6243"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T045950893538Z__q2__q2-c1-sp2-recursive__s17__pc253df79__ce215f316/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

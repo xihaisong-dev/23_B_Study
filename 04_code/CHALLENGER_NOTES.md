@@ -29,11 +29,13 @@
 
 1. 独立审阅者复核预算、候选实现、批次谱系、分片互斥和续跑行为；
 2. 完成一次受控的多 shard 扩展 MVT，确认 N=32/64 性能不会使正式批次失控；
-3. 正式 L2 完成后，从该批次选择真实 parent 并执行预登记的 L3/L4 子运行；四类消融 adapter 已实现作用性测试，但 L3/L4 当前仍为 `NOT_RUN`；
+3. 正式 L2 完成后，只能从严格验证且完整覆盖 canonical 1442 tuple 的批次选择真实 parent；L3 子运行绑定 parent batch/tuple/run 三重标识。L4 按候选组件适用性登记 30 个真实执行配置及 10 个有理由的 `NOT_APPLICABLE` 单元，当前仍为 `NOT_RUN`；
 4. 只有 L2/L3/L4 均闭合后才能生成最终 winner 与 model-results freeze。
 
 搜索接受与完整 sweep 的 patience 更新现由 `independent_search_score` 独立稠密路径完成，不调用生产 `_objective`。q2-c1 在每个右到左递归深度实际展开并保留 8 个 chain states。
 
 Q5 的精确 Gaussian 整数格证书使用正确下界 `min(r,1-r)`、`r=1/sqrt(N)`。证书短路是默认关闭的 readiness-only 开关；正式入口在缺少冻结协议变更时直接拒绝。因此当前冻结正式计划仍保留全部 825 个 Q5 tuple/seed，并不擅自用证明替换候选运行。
+
+manifest/聚合回归已覆盖真实 formal 单 tuple 的“执行→写因子→写 manifest→严格独立复算”端到端路径；聚合器重算 protocol/code/plan/level 对应的 batch-id，并拒绝 kind、problem/beta、最优性声明、wall-clock、failure/status/constraints 或 artifact 谱系篡改。普通 Q5 搜索不可使用精确证书声明；无可行 Q5 时 tournament/frontier 都写机器可读 `gate_incompatibility`，winner 仍为 null。
 
 因此本里程碑的 smoke 数值只能证明接口、约束、持久化和独立复算链路可工作，不能用于论文中的模型优胜结论。

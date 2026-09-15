@@ -6,7 +6,7 @@
   "L3": {
     "status": "NOT_RUN",
     "config_count": 50,
-    "config_sha256": "4c17b442f3e1756479039e8ece081a5a81a1e15f00dcba344f079b003b29c495",
+    "config_sha256": "3fdfb21cc3087439119754ffa992ff360430c33b52c1057bfe8ee862399b3db8",
     "configs": [
       {
         "problem": "q1",
@@ -17,14 +17,14 @@
         "q": 16,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "parent_tuple_sha256": "800cdcdffc91fa068319a53c761dd6262dce4f386755f1cbbe3f9daee99f8446",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -40,14 +40,14 @@
         "q": 16,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "parent_tuple_sha256": "800cdcdffc91fa068319a53c761dd6262dce4f386755f1cbbe3f9daee99f8446",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -64,14 +64,14 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "parent_tuple_sha256": "800cdcdffc91fa068319a53c761dd6262dce4f386755f1cbbe3f9daee99f8446",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -87,18 +87,19 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "parent_tuple_sha256": "800cdcdffc91fa068319a53c761dd6262dce4f386755f1cbbe3f9daee99f8446",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -110,14 +111,14 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "parent_tuple_sha256": "800cdcdffc91fa068319a53c761dd6262dce4f386755f1cbbe3f9daee99f8446",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -134,14 +135,14 @@
         "q": 16,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -157,14 +158,14 @@
         "q": 16,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -181,14 +182,14 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -204,18 +205,19 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -227,14 +229,14 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -251,14 +253,14 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -274,14 +276,14 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -298,14 +300,14 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -321,18 +323,19 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -344,14 +347,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -368,14 +371,14 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -391,14 +394,14 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -415,14 +418,14 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -438,18 +441,19 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -461,14 +465,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -485,14 +489,14 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -508,14 +512,14 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -532,14 +536,14 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -555,18 +559,19 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -578,14 +583,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -602,14 +607,14 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -625,14 +630,14 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -649,14 +654,14 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -672,18 +677,19 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -695,14 +701,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -719,14 +725,14 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -742,14 +748,14 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -766,14 +772,14 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -789,18 +795,19 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -812,14 +819,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -836,14 +843,14 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -859,14 +866,14 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -883,14 +890,14 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -906,18 +913,19 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -929,14 +937,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -953,14 +961,14 @@
         "q": 2,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -976,14 +984,14 @@
         "q": 2,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -1000,14 +1008,14 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -1023,18 +1031,19 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -1046,14 +1055,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -1070,14 +1079,14 @@
         "q": 2,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
         "variant": {
           "axis": "seed",
           "name": "alternate_seed",
@@ -1093,14 +1102,14 @@
         "q": 2,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
         "variant": {
           "axis": "initialization_order",
           "name": "reverse",
@@ -1117,14 +1126,14 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
         "variant": {
           "axis": "floating_tolerance",
           "name": "tight",
@@ -1140,18 +1149,19 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
         "variant": {
           "axis": "multiplication_association",
-          "name": "right_associated",
-          "association": "right"
+          "name": "right_associated_numerical_recompute",
+          "association": "right",
+          "scope": "independent_persisted_artifact_recompute_only"
         }
       },
       {
@@ -1163,14 +1173,14 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L3",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
         "variant": {
           "axis": "boundary_K_q",
           "name": "registered_boundary",
@@ -1187,8 +1197,8 @@
   },
   "L4": {
     "status": "NOT_RUN",
-    "config_count": 40,
-    "config_sha256": "1e8f69406f650c946cb72512065ece8a6309eb1341fc06e69c75b43b7e688ee5",
+    "config_count": 30,
+    "config_sha256": "777de8146cea356db3c176732b826a67902bfd31bb5dde3fd76c50cb0714695d",
     "configs": [
       {
         "problem": "q1",
@@ -1199,1006 +1209,1056 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
         },
         "validation_level": "L4",
         "parent_run_id": null,
         "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
+        "parent_tuple_sha256": "800cdcdffc91fa068319a53c761dd6262dce4f386755f1cbbe3f9daee99f8446",
         "variant": {
           "axis": "ablation",
           "name": "no_hierarchical_initialization",
           "disable": [
             "hierarchical_initialization"
-          ]
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
         }
       },
       {
         "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q1",
+        "candidate_id": "q1-c2-structure-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 16,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "e335cba18f2a1857e56bd5dfe31d671f48c53106b5dfc66ee9699d97efd80d48",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has reconnectable row-2 support rooted in a structured start",
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c1-sp2-recursive",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "bf340bfd7e53a230170e55de54a4eab477a3ccbe9c4a7e203601d23ce41cfac5",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q2",
+        "candidate_id": "q2-c2-relax-project-polish",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "e03629cb7f933a96fb34e717d05221eb2baae752332c94cddc6a337f380f7113",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c1-discrete-coordinate",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "84f8049232e11928c1ddf1a84c385809a8af32774296b89686292e46ac9a25ad",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has reconnectable row-2 support rooted in a structured start",
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q3",
+        "candidate_id": "q3-c2-hierarchical-reconnect",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "3867ea47626aa3f85ff9723b6fa8fbc996cf26989f9677b65564994184db65d0",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has reconnectable row-2 support rooted in a structured start",
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c1-generic-discrete",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "c18b00847ee7b4704ea2a0f4101a1a0b3efe5709a21aaeb9f3156e2ca6351940",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q4",
+        "candidate_id": "q4-c2-kron-reconnect",
+        "kind": "challenger",
+        "N": 32,
+        "K": 5,
+        "q": 3,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 900,
+          "sweep_cap": 15000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "24e76bc32c522cf06145153c25abd1ddd8d18b54b92bc4489a3a06865f1c9729",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has reconnectable row-2 support rooted in a structured start",
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c1-lexicographic-grid",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "8c5a6e0028661b2ddb6c908b16ff90e855c8114fe3b3360a9688ca976858617a",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has reconnectable row-2 support rooted in a structured start",
+          "support_mode": "fixed_butterfly"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_hierarchical_initialization",
+          "disable": [
+            "hierarchical_initialization"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has an explicit hierarchical or butterfly initialization"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_support_reconnection",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate proposes row-support swaps or reconnections"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
+        "variant": {
+          "axis": "ablation",
+          "name": "no_discrete_polish",
+          "disable": [
+            "discrete_polish"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has post-projection or native discrete local search"
+        }
+      },
+      {
+        "problem": "q5",
+        "candidate_id": "q5-c2-large-neighborhood",
+        "kind": "challenger",
+        "N": 4,
+        "K": 2,
+        "q": 2,
+        "seed": 17,
+        "budget": {
+          "wall_clock_s": 300,
+          "sweep_cap": 5000,
+          "source": "frozen tournament protocol"
+        },
+        "validation_level": "L4",
+        "parent_run_id": null,
+        "parent_batch_id": null,
+        "parent_tuple_sha256": "9ae4892b55350b6de198292115d7bc9f1fbb4de81482299e79cd10fe5c07711f",
+        "variant": {
+          "axis": "ablation",
+          "name": "fixed_support",
+          "disable": [
+            "support_reconnection"
+          ],
+          "applicability": "APPLICABLE",
+          "reason": "candidate has reconnectable row-2 support rooted in a structured start",
+          "support_mode": "fixed_butterfly"
+        }
+      }
+    ],
+    "applicability_count": 40,
+    "not_applicable_count": 10,
+    "applicability": [
+      {
         "candidate_id": "q1-c1-palm-row2",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q1",
         "candidate_id": "q1-c1-palm-row2",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no row-support reconnection component"
       },
       {
-        "problem": "q1",
         "candidate_id": "q1-c1-palm-row2",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "no_discrete_polish",
+        "status": "NOT_APPLICABLE",
+        "reason": "q1 coefficients are continuous, so no discrete-polish component exists"
       },
       {
-        "problem": "q1",
+        "candidate_id": "q1-c1-palm-row2",
+        "ablation": "fixed_support",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no reconnectable structured row-2 support to freeze"
+      },
+      {
         "candidate_id": "q1-c2-structure-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q1",
         "candidate_id": "q1-c2-structure-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q1",
         "candidate_id": "q1-c2-structure-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "NOT_APPLICABLE",
+        "reason": "q1 coefficients are continuous, so no discrete-polish component exists"
       },
       {
-        "problem": "q1",
         "candidate_id": "q1-c2-structure-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 16,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "APPLICABLE",
+        "reason": "candidate has reconnectable row-2 support rooted in a structured start"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c1-sp2-recursive",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c1-sp2-recursive",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no row-support reconnection component"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c1-sp2-recursive",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c1-sp2-recursive",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no reconnectable structured row-2 support to freeze"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c2-relax-project-polish",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c2-relax-project-polish",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no row-support reconnection component"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c2-relax-project-polish",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q2",
         "candidate_id": "q2-c2-relax-project-polish",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no reconnectable structured row-2 support to freeze"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c1-discrete-coordinate",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c1-discrete-coordinate",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c1-discrete-coordinate",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c1-discrete-coordinate",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "APPLICABLE",
+        "reason": "candidate has reconnectable row-2 support rooted in a structured start"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c2-hierarchical-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c2-hierarchical-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c2-hierarchical-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q3",
         "candidate_id": "q3-c2-hierarchical-reconnect",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "APPLICABLE",
+        "reason": "candidate has reconnectable row-2 support rooted in a structured start"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c1-generic-discrete",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate starts from a generic random discrete construction"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c1-generic-discrete",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c1-generic-discrete",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c1-generic-discrete",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "NOT_APPLICABLE",
+        "reason": "candidate has no reconnectable structured row-2 support to freeze"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c2-kron-reconnect",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c2-kron-reconnect",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c2-kron-reconnect",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q4",
         "candidate_id": "q4-c2-kron-reconnect",
-        "kind": "challenger",
-        "N": 32,
-        "K": 5,
-        "q": 3,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "APPLICABLE",
+        "reason": "candidate has reconnectable row-2 support rooted in a structured start"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c1-lexicographic-grid",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c1-lexicographic-grid",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c1-lexicographic-grid",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c1-lexicographic-grid",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "APPLICABLE",
+        "reason": "candidate has reconnectable row-2 support rooted in a structured start"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c2-large-neighborhood",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_hierarchical_initialization",
-          "disable": [
-            "hierarchical_initialization"
-          ]
-        }
+        "ablation": "no_hierarchical_initialization",
+        "status": "APPLICABLE",
+        "reason": "candidate has an explicit hierarchical or butterfly initialization"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c2-large-neighborhood",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_support_reconnection",
-          "disable": [
-            "support_reconnection"
-          ]
-        }
+        "ablation": "no_support_reconnection",
+        "status": "APPLICABLE",
+        "reason": "candidate proposes row-support swaps or reconnections"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c2-large-neighborhood",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
-        "variant": {
-          "axis": "ablation",
-          "name": "no_discrete_polish",
-          "disable": [
-            "discrete_polish"
-          ]
-        }
+        "ablation": "no_discrete_polish",
+        "status": "APPLICABLE",
+        "reason": "candidate has post-projection or native discrete local search"
       },
       {
-        "problem": "q5",
         "candidate_id": "q5-c2-large-neighborhood",
-        "kind": "challenger",
-        "N": 4,
-        "K": 2,
-        "q": 2,
-        "seed": 17,
-        "budget": {
-          "wall_clock_s": 20,
-          "sweep_cap": 8,
-          "source": "smoke minimum-viability budget"
-        },
-        "validation_level": "L4",
-        "parent_run_id": null,
-        "parent_batch_id": null,
-        "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
-        "variant": {
-          "axis": "ablation",
-          "name": "fixed_support",
-          "disable": [
-            "support_reconnection"
-          ],
-          "support_mode": "fixed_butterfly"
-        }
+        "ablation": "fixed_support",
+        "status": "APPLICABLE",
+        "reason": "candidate has reconnectable row-2 support rooted in a structured start"
       }
     ]
   },

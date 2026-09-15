@@ -73,7 +73,9 @@ python 04_code/scripts/run_tournament.py --dry-run --level L3
 | `aggregation` | 1442 tuple 双射、冻结排序、fallback 与 q5 frontier |
 | `validation_runs` | L3/L4 parent/variant 子运行预登记与统计 |
 
-L3/L4 正式执行必须通过 `--parent-batch-id` 指向已完成的真实 L2 批次；每个子运行绑定真实 `parent_run_id`。reverse initialization/update、tolerance、right-associated 独立计算和 boundary K/q 均改变实际执行，L4 四个 adapter 会真实禁用对应初始化、支持重连、离散润色或固定 Butterfly 支持。
+L3/L4 正式执行必须通过 `--parent-batch-id` 指向经严格聚合器验证、完整覆盖 canonical 1442 tuple 的 L2 批次；每个子运行同时绑定 `parent_batch_id`、`parent_tuple_sha256` 和 `parent_run_id`，残缺或伪造批次失败关闭。reverse initialization/update、tolerance 和 boundary K/q 会改变搜索运行；right-associated 轴明确限定为“对持久化因子的独立数值重算 stress”，不伪称改变搜索接受路径。L4 的 40 个候选×组件单元中，30 个为真实可执行消融，10 个为带机器可读理由的 `NOT_APPLICABLE`；不存在的组件不会制造假消融。
+
+正式 manifest 写入 `kind`，并强制核验 `problem_id==problem`、`beta=1`、非空最优性口径、有限非负 wall clock、failure/status/constraints 一致性及 canonical batch-id 重算。普通 Q5 候选运行一律只声明 `candidate_only_no_global_optimality_claim`；只有显式证书 artifact 分支可声明精确不可行证书。
 
 Q5 的 Gaussian 整数格下界为 `min(1/sqrt(N),1-1/sqrt(N))`，冻结六个 N 均大于 0.1。`--q5-certificate-shortcut` 仅供 readiness 审计，默认关闭；在没有获批并冻结的协议变更请求时，正式运行会失败关闭，不能用证书悄悄替代冻结搜索。
 

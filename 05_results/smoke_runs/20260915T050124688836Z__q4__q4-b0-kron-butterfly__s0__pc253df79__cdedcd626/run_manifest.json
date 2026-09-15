@@ -1,0 +1,127 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T050124688836Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdedcd626",
+  "problem_id": "q4",
+  "problem": "q4",
+  "candidate_id": "q4-b0-kron-butterfly",
+  "kind": "baseline",
+  "N": 32,
+  "K": 5,
+  "q": 3,
+  "beta": 1,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 20,
+    "sweep_cap": null,
+    "source": "smoke minimum-viability budget"
+  },
+  "wall_clock_s": 0.027312399994116277,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "2e7115883a7ddc9b1877d330791d8312987f3b4045a8b4e837e5d437e11161f6",
+  "factor_sha256s": [
+    "dff18158abcdaf8daab28544aa5a4ee33375105eb0ad1db510804cb9bfd286d2",
+    "27edd8b3c0713fadee57062a903ebb23c99b02b36ff65743344afd4385a142bb",
+    "22ed078ffa3623017634ef34849068f95d2db30a5fc3a7754035f444de61f76f",
+    "aa6053458117e9bd33f7e49ce8deb4c64aa78145191dd5fcd61ecd5b33a3a1de",
+    "a46296be18d3774cc3109fce6abd1e3cc0cb2f07789d562471be5c2241ca842e"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.7183905324091097,
+  "rmse_recompute_independent": 0.7183905324091097,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "polish_passes": 0
+  },
+  "started_at": "2026-09-15T05:01:24+00:00",
+  "finished_at": "2026-09-15T05:01:24+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54",
+  "batch_id": "l2-smoke-c253df79-dedcd626-a3cabc03-20260915T050124317809Z",
+  "batch_plan_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "batch_config_sha256": "237b9334ac08a356128542790e716e6209193119b0964743483f038a8af82b4d",
+  "run_config_sha256": "437920b6b98ed5d018fcf8ada410bc207df43b2f3e43c5fe9b69298bd119077f",
+  "tuple_sha256": "638bf74045e0b01a14b35556adea08fcfcf79562899a0bd2a6963eac694e64fb",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-smoke-c253df79-dedcd626-a3cabc03-20260915T050124317809Z/plan.json",
+      "size": 4717,
+      "sha256": "922d43787034e4fe60912aed402c0ee61adaef71f1860d7aec60d290b6223c56"
+    },
+    "config": {
+      "path": "05_results/batches/l2-smoke-c253df79-dedcd626-a3cabc03-20260915T050124317809Z/config.json",
+      "size": 1131,
+      "sha256": "237b9334ac08a356128542790e716e6209193119b0964743483f038a8af82b4d"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T050124688836Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdedcd626/factors.json",
+      "size": 44414,
+      "sha256": "79c9a21565c2e252d0606731a1a9f634bf9cbfb9ce3b5e28afa6c6ebaaac4fc9"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T050124688836Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdedcd626/stdout.txt",
+      "size": 156,
+      "sha256": "41ab9c9ef1bff6bbd01c5aaf99685946d065460ebb2a49ad15946b7adca59d3b"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T050124688836Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdedcd626/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

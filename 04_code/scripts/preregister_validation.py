@@ -16,7 +16,8 @@ from dft_integer_approx.formal_baseline_runner import _atomic_json  # noqa: E402
 from dft_integer_approx.formal_tournament_runner import _json_sha256  # noqa: E402
 from dft_integer_approx.hashing import sha256_file  # noqa: E402
 from dft_integer_approx.protocol_gate import check_frozen  # noqa: E402
-from dft_integer_approx.validation_runs import build_validation_plan  # noqa: E402
+from dft_integer_approx.validation_runs import (build_validation_plan,
+                                                l4_applicability)  # noqa: E402
 
 
 def main() -> int:
@@ -28,6 +29,9 @@ def main() -> int:
     protocol = json.loads((workspace / "03_model/tournament_protocol.json").read_text(encoding="utf-8"))
     l3 = build_validation_plan(protocol, "L3", smoke=False)
     l4 = build_validation_plan(protocol, "L4", smoke=False)
+    applicability = l4_applicability(protocol)
+    not_applicable = [item for item in applicability
+                      if item["status"] == "NOT_APPLICABLE"]
     registry = {"schema_version": "3.0", "status": "BLOCKED",
                 "execution_status": "NOT_RUN",
                 "parent_requirement": "complete frozen L2 batch run ids",
@@ -35,7 +39,10 @@ def main() -> int:
                        "config_sha256": _json_sha256(l3), "configs": l3,
                        "summary": ["best", "median", "worst"]},
                 "L4": {"status": "NOT_RUN", "config_count": len(l4),
-                       "config_sha256": _json_sha256(l4), "configs": l4},
+                       "config_sha256": _json_sha256(l4), "configs": l4,
+                       "applicability_count": len(applicability),
+                       "not_applicable_count": len(not_applicable),
+                       "applicability": applicability},
                 "command": "python 04_code/scripts/run_tournament.py --execute-full --level <L3|L4> --resume"}
     path = workspace / "05_results/validation_registry.json"
     _atomic_json(path, registry)

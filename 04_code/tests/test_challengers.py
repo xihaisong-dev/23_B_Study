@@ -75,6 +75,26 @@ class TestChallengers(unittest.TestCase):
                          ["hierarchical_initialization"])
         self.assertNotEqual(no_hierarchy.factors, initial)
 
+        q1_random = challenger_solution(
+            "q1-c1-palm-row2", target, 8, 3, 16, 17, smoke=True,
+            options={"disable": ["hierarchical_initialization"]})
+        self.assertEqual(q1_random.diagnostics["initialization"],
+                         "seeded_random_nonbutterfly")
+        self.assertFalse(q1_random.diagnostics["hierarchical_initialization"])
+        self.assertEqual(q1_random.permutation, list(range(8)))
+
+        q2_no_post_polish = challenger_solution(
+            "q2-c2-relax-project-polish", target, 8, 3, 3, 17,
+            smoke=True, options={"disable": ["discrete_polish"]})
+        phases = [event["phase"]
+                  for event in q2_no_post_polish.diagnostics["improvement_trace"]]
+        self.assertIn("continuous_fit", phases)
+        self.assertIn("exact_Pq_projection", phases)
+        self.assertNotIn("discrete_block_polish", phases)
+        self.assertTrue(q2_no_post_polish.diagnostics["continuous_fit"])
+        self.assertFalse(q2_no_post_polish.diagnostics[
+            "post_projection_discrete_polish"])
+
     def test_minimum_viability_all_ten(self):
         for candidate in sorted(EXPECTED):
             pid = candidate[:2]

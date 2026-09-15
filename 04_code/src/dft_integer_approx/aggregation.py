@@ -8,12 +8,14 @@
 from __future__ import annotations
 
 import json
+import math
 from functools import cmp_to_key
 from pathlib import Path
 from typing import Any, Dict, Optional, Sequence
 
 from .formal_baseline_runner import _atomic_json, _tree_sha256
-from .formal_tournament_runner import _json_sha256, build_plan, tuple_sha256
+from .formal_tournament_runner import (batch_identity, _json_sha256, build_plan,
+                                       tuple_sha256)
 from .hashing import sha256_file
 from .independent_verify import verify_artifact
 from .l0_validation import gaussian_integer_rmse_lower_bound
@@ -33,7 +35,7 @@ def aggregate_formal_batch(workspace: Path, batch_id: str, *,
     batch_dir = workspace / "05_results/batches" / batch_id
     plan_path, config_path = batch_dir / "plan.json", batch_dir / "config.json"
     plan_payload, config = _load_object(plan_path), _load_object(config_path)
-    if not config.get("formal") or config.get("validation_level") != "L2":
+    if config.get("formal") is not True or config.get("validation_level") != "L2":
         raise ValueError("aggregation accepts only formal L2 batches")
 
     protocol_path = workspace / "03_model/tournament_protocol.json"
@@ -43,8 +45,12 @@ def aggregate_formal_batch(workspace: Path, batch_id: str, *,
         raise ValueError("frozen protocol did not rebuild exactly 1442 unique tuples")
     if plan_payload.get("tuples") != canonical or plan_payload.get("tuple_count") != 1442:
         raise ValueError("batch plan is not the ordered canonical frozen 1442 plan")
-    if plan_payload.get("batch_id") != batch_id or not plan_payload.get("formal"):
+    if plan_payload.get("batch_id") != batch_id or plan_payload.get("formal") is not True:
         raise ValueError("plan batch identity/formal flag mismatch")
+    if (plan_payload.get("schema_version") != "3.0"
+            or plan_payload.get("validation_level") != "L2"
+            or config.get("schema_version") != "3.0"):
+        raise ValueError("batch plan/config schema or validation level mismatch")
 
     input_manifest = _load_object(workspace / "00_admin/input_manifest.json")
     problem_record = input_manifest["files"][0]
@@ -60,10 +66,22 @@ def aggregate_formal_batch(workspace: Path, batch_id: str, *,
     for key, value in current.items():
         if config.get(key) != value:
             raise ValueError(f"batch config {key} differs from current frozen input")
-    if config.get("batch_id") != batch_id or config.get("data_class") != problem_record["data_class"]:
+    expected_batch_id = batch_identity(
+        current["protocol_sha256"], current["code_tree_sha256"],
+        current["plan_content_sha256"], smoke=False, validation_level="L2")
+    if batch_id != expected_batch_id:
+        raise ValueError("batch_id does not match canonical protocol/code/plan/level identity")
+    expected_target_generation = "deterministic formula from the practice-authorized third-party-copy problem statement"
+    if (config.get("batch_id") != batch_id
+            or config.get("data_class") != problem_record["data_class"]
+            or config.get("target_generation") != expected_target_generation):
         raise ValueError("batch config identity/data class mismatch")
     if config.get("q5_certificate_shortcut") is not False:
         raise ValueError("formal aggregation refuses an unapproved q5 certificate shortcut")
+    if config.get("stop_rule") != {"patience": 50, "tolerance": 1e-10,
+                                   "deadline": "monotonic in-loop",
+                                   "sweep_cap": "per frozen N segment"}:
+        raise ValueError("formal batch stop rule differs from the registered rule")
 
     plan_artifact = _artifact_record(plan_path, workspace)
     config_artifact = _artifact_record(config_path, workspace)
@@ -106,23 +124,46 @@ def _verify_manifest(workspace: Path, manifest_path: Path, manifest: Dict[str, A
                      case: Dict[str, Any], config: Dict[str, Any],
                      plan_artifact: Dict[str, Any], config_artifact: Dict[str, Any],
                      problem_record: Dict[str, Any]) -> None:
+    if manifest.get("schema_version") != "3.0" or not isinstance(manifest.get("artifacts"), dict):
+        raise ValueError("manifest schema_version/artifacts schema mismatch")
     if manifest_path.parent.name != manifest.get("run_id"):
         raise ValueError("run directory and run_id differ")
+    if manifest.get("problem_id") != case["problem"] or manifest.get("problem") != case["problem"]:
+        raise ValueError("problem_id/problem canonical identity mismatch")
+    beta = manifest.get("beta")
+    if isinstance(beta, bool) or beta != 1:
+        raise ValueError("manifest beta must equal numeric 1")
+    claim = manifest.get("optimality_claim")
+    if not isinstance(claim, str) or not claim.strip():
+        raise ValueError("manifest optimality_claim is required")
+    if (claim == "exact Gaussian-integer infeasibility certificate"
+            and manifest["artifacts"].get("q5_certificate") is None):
+        raise ValueError("exact q5 claim requires a certificate artifact")
+    wall_clock = manifest.get("wall_clock_s")
+    if (isinstance(wall_clock, bool) or not isinstance(wall_clock, (int, float))
+            or not math.isfinite(float(wall_clock)) or wall_clock < 0):
+        raise ValueError("manifest wall_clock_s must be finite and non-negative")
     for field in TUPLE_FIELDS:
         if manifest.get(field) != case.get(field):
             raise ValueError(f"manifest tuple field differs: {field}")
     if manifest.get("run_config_sha256") != _json_sha256(case) or manifest.get("tuple_sha256") != tuple_sha256(case):
         raise ValueError("run config or tuple hash mismatch")
+    if manifest.get("batch_id") != config.get("batch_id"):
+        raise ValueError("manifest batch_id differs from strict batch config")
     if manifest.get("validation_level") != "L2" or manifest.get("variant") is not None:
         raise ValueError("formal L2 manifest carries wrong level/variant")
+    if any(manifest.get(field) is not None for field in
+           ("parent_run_id", "parent_batch_id", "parent_tuple_sha256")):
+        raise ValueError("formal L2 manifest must not carry parent lineage")
     if manifest.get("run_scope") != "FROZEN_L2" or not manifest.get("formal"):
         raise ValueError("formal L2 run scope mismatch")
     for field in ("protocol_sha256", "protocol_freeze_sha256", "problem_freeze_sha256",
                   "code_tree_sha256", "input_manifest_sha256"):
         if manifest.get(field) != config.get(field):
             raise ValueError(f"manifest/config lineage mismatch: {field}")
-    if manifest.get("batch_config_sha256") != config.get("plan_content_sha256"):
-        raise ValueError("manifest batch config hash mismatch")
+    if (manifest.get("batch_plan_sha256") != config.get("plan_content_sha256")
+            or manifest.get("batch_config_sha256") != config_artifact.get("sha256")):
+        raise ValueError("manifest batch plan/config hash mismatch")
     if manifest.get("batch_artifacts") != {"plan": plan_artifact, "config": config_artifact}:
         raise ValueError("manifest batch artifact lineage mismatch")
     if manifest.get("problem_input", {}).get("sha256") != problem_record["sha256"]:
@@ -135,6 +176,7 @@ def _verify_manifest(workspace: Path, manifest_path: Path, manifest: Dict[str, A
         raise ValueError("manifest data/dependency lineage mismatch")
     if manifest.get("status") not in ALLOWED_STATUSES:
         raise ValueError(f"unknown status: {manifest.get('status')}")
+    _verify_status_contract(manifest)
     for name in ("stdout", "stderr"):
         _verify_artifact_record(workspace, manifest["artifacts"].get(name), manifest_path.parent)
 
@@ -148,9 +190,14 @@ def _verify_manifest(workspace: Path, manifest_path: Path, manifest: Dict[str, A
                 or cert.get("rmse_lower_bound") != bound or bound <= 0.1
                 or cert.get("conclusion") != "INFEASIBLE"):
             raise ValueError("invalid q5 Gaussian-integer certificate")
+        if manifest.get("optimality_claim") != "exact Gaussian-integer infeasibility certificate":
+            raise ValueError("certificate branch must carry the exact certificate claim")
         if manifest["artifacts"].get("factors") is not None:
             raise ValueError("certificate-short-circuited q5 run must not carry factors")
         return
+    if (pid == "q5"
+            and manifest.get("optimality_claim") != "candidate_only_no_global_optimality_claim"):
+        raise ValueError("ordinary q5 search may not claim an exact certificate")
 
     factor_record = manifest["artifacts"].get("factors")
     if factor_record is None:
@@ -181,6 +228,26 @@ def _verify_manifest(workspace: Path, manifest_path: Path, manifest: Dict[str, A
         expected_status = "PASS" if independent["rmse"] <= 0.1 else "INFEASIBLE"
         if manifest.get("status") != expected_status:
             raise ValueError("q5 feasibility status differs from independent RMSE")
+
+
+def _verify_status_contract(manifest: Dict[str, Any]) -> None:
+    """Enforce failure/status/constraint semantics before reading artifacts."""
+    status = manifest["status"]
+    constraints = manifest.get("constraints_status")
+    failure = manifest.get("failure")
+    if status == "PASS":
+        if constraints != "PASS" or failure is not None:
+            raise ValueError("PASS requires constraints PASS and null failure")
+        return
+    if not isinstance(failure, dict) or not all(
+            isinstance(failure.get(key), str) and failure.get(key)
+            for key in ("stage", "error_type", "message")):
+        raise ValueError("non-PASS status requires a structured failure record")
+    if failure.get("error_type") != status:
+        raise ValueError("failure error_type must equal manifest status")
+    expected_constraints = "PASS" if status == "INFEASIBLE" else "FAIL"
+    if constraints != expected_constraints:
+        raise ValueError("status/constraints_status semantic mismatch")
 
 
 def _verify_artifact_record(workspace: Path, record: Any, run_dir: Path) -> Path:
@@ -247,14 +314,23 @@ def _tournament(runs: Sequence[Dict[str, Any]], batch_id: str) -> Dict[str, Any]
             selections.append({"N": n, "winner_id": None if best is None else best["candidate_id"],
                                "winner_run_id": None if best is None else best["run_id"],
                                "fallback_baseline_run_id": None if baseline is None else baseline["run_id"]})
-        problems.append({"id": pid, "problem_id": pid, "status": "L2_PROVISIONAL",
+        problem_entry = {"id": pid, "problem_id": pid, "status": "L2_PROVISIONAL",
                          "evaluated_candidates": sorted({run["candidate_id"] for run in problem_runs}),
                          "winner_id": None,
                          "winner": {"candidate_id": None, "run_id": None, "status": "BLOCKED"},
                          "robustness_status": "NOT_RUN", "ablation_status": "NOT_RUN",
-                         "selections": selections})
+                         "selections": selections}
+        if pid == "q5" and not any(run["status"] == "PASS" for run in problem_runs):
+            problem_entry["gate_incompatibility"] = {
+                "status": "RECORDED", "winner_id": None,
+                "reason": "no frozen Q5 tuple satisfies the RMSE<=0.1 feasibility gate"}
+        problems.append(problem_entry)
+    incompatibilities = [
+        {"problem_id": problem["id"], **problem["gate_incompatibility"]}
+        for problem in problems if "gate_incompatibility" in problem]
     return {"schema_version": "3.0", "status": "BLOCKED", "batch_id": batch_id,
             "winner_scope": "provisional_per_N_after_L2_only", "problems": problems,
+            "gate_incompatibilities": incompatibilities,
             "blocking_reason": "L3/L4 are required before final winner status."}
 
 

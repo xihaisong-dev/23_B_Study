@@ -1,0 +1,1486 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T045954111742Z__q5__q5-c2-large-neighborhood__s17__pc253df79__ce215f316",
+  "problem_id": "q5",
+  "problem": "q5",
+  "candidate_id": "q5-c2-large-neighborhood",
+  "kind": "challenger",
+  "N": 4,
+  "K": 2,
+  "q": 2,
+  "beta": 1,
+  "seed": 17,
+  "budget": {
+    "wall_clock_s": 20,
+    "sweep_cap": 8,
+    "source": "smoke minimum-viability budget"
+  },
+  "wall_clock_s": 0.006179800002428237,
+  "status": "INFEASIBLE",
+  "constraints_status": "PASS",
+  "failure": {
+    "stage": "q5 eligibility",
+    "error_type": "INFEASIBLE",
+    "message": "legal chain has RMSE>0.1"
+  },
+  "formal": false,
+  "run_scope": "SMOKE",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "factor_sha256s": [
+    "f58755eb751959259fe208ac85b8fd53b6a3fe23717dd188746efb65e0f00312",
+    "12124b1073024dd7c25f553775107e624c20aeda7e3f717d453b92c63d235f17"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.5,
+  "rmse_recompute_independent": 0.5,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "strategy": "large_neighborhood",
+    "protocol_method": "beam_ranked_multirow_large_neighborhood",
+    "seed": 17,
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": true,
+    "execution_scope": "smoke_minimum_viability",
+    "search_budget": {
+      "wall_clock_s": 20.0,
+      "sweep_cap": 8,
+      "patience": 8,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "sweep_cap",
+    "sweeps": 8,
+    "stale_sweeps": 7,
+    "evaluated_proposals": 142,
+    "accepted_proposals": 0,
+    "rejected_proposals": 142,
+    "failure_reasons": {
+      "beam_no_improvement": 1,
+      "no_improvement": 14
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "pre_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": null,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "large_neighborhood_beam",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 128,
+        "accepted": 0
+      },
+      {
+        "sweep": 3,
+        "phase": "post_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "post_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 5,
+        "phase": "post_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 6,
+        "phase": "post_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "post_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "post_large_neighborhood_polish",
+        "rmse": 0.5,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "pre_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "pre_large_neighborhood_polish"
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 0,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 1,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 2,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 3,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 4,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 5,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 6,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 7,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 8,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 9,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 10,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 11,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 12,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 13,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 14,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 15,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 16,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 17,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 18,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 19,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 20,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 21,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 22,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 23,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 24,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 25,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 26,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 27,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 28,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 29,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 30,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 1,
+        "beam_index": 31,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 0,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 1,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 2,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 3,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 4,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 5,
+        "objective": 4.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 6,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 7,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 8,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 9,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 10,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 11,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 12,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 13,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 14,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 15,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 16,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 17,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 18,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 19,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 20,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 21,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 22,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 23,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 24,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 25,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 26,
+        "objective": 4.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 27,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 28,
+        "objective": 6.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 29,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 30,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 2,
+        "beam_index": 31,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 0,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 1,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 2,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 3,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 4,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 5,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 6,
+        "objective": 14.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 7,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 8,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 9,
+        "objective": 13.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 10,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 11,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 12,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 13,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 14,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 15,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 16,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 17,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 18,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 19,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 20,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 21,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 22,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 23,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 24,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 25,
+        "objective": 14.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 26,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 27,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 28,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 29,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 30,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 4,
+        "beam_index": 31,
+        "objective": 13.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 0,
+        "objective": 18.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 1,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 2,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 3,
+        "objective": 17.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 4,
+        "objective": 16.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 5,
+        "objective": 15.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 6,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 7,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 8,
+        "objective": 18.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 9,
+        "objective": 14.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 10,
+        "objective": 23.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 11,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 12,
+        "objective": 9.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 13,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 14,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 15,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 16,
+        "objective": 7.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 17,
+        "objective": 20.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 18,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 19,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 20,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 21,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 22,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 23,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 24,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 25,
+        "objective": 10.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 26,
+        "objective": 19.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 27,
+        "objective": 21.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 28,
+        "objective": 8.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 29,
+        "objective": 14.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 30,
+        "objective": 12.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "large_neighborhood_beam",
+        "rows": 8,
+        "beam_index": 31,
+        "objective": 12.0
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "post_large_neighborhood_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "post_large_neighborhood_polish"
+      }
+    ],
+    "beam_width": 32,
+    "reconnect_rows": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "conservative_support_lower_bound": 0.0,
+    "safely_pruned": false,
+    "beam_trace": {
+      "evaluated": 128,
+      "retained": 32,
+      "accepted": 0
+    },
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T04:59:54+00:00",
+  "finished_at": "2026-09-15T04:59:54+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "e215f316edbb8a20074cf51d72cbaaf53fa4f3b29b4df33310e023606054f32e",
+  "batch_id": "l2-smoke-c253df79-e215f316-a3cabc03-20260915T045950739712Z",
+  "batch_plan_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "batch_config_sha256": "b703b51e373fc33430f2e558fff01c7e7c8ec03d633a521cb4dea29394e04b4e",
+  "run_config_sha256": "740ed2b55f8bca9c1a3512458b9b43895fa110e8f7be11e9e29ab25b57566485",
+  "tuple_sha256": "c4c7b6938ccf4408069c3215a8eb1ada75c9dba851e9e5378846978a96da325f",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-smoke-c253df79-e215f316-a3cabc03-20260915T045950739712Z/plan.json",
+      "size": 4717,
+      "sha256": "619a8472aaab22fb6f60e0176dc5abd806e2a88265402af3650b8c5346a82ed0"
+    },
+    "config": {
+      "path": "05_results/batches/l2-smoke-c253df79-e215f316-a3cabc03-20260915T045950739712Z/config.json",
+      "size": 1131,
+      "sha256": "b703b51e373fc33430f2e558fff01c7e7c8ec03d633a521cb4dea29394e04b4e"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T045954111742Z__q5__q5-c2-large-neighborhood__s17__pc253df79__ce215f316/factors.json",
+      "size": 1666,
+      "sha256": "6320223bb1b26b1836ea30fba3d78631f656b9c532f62db1af34b1dbb6a81cd8"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T045954111742Z__q5__q5-c2-large-neighborhood__s17__pc253df79__ce215f316/stdout.txt",
+      "size": 171,
+      "sha256": "811012f80a65ca627490556c6a0c3e9447d36dc4bfb70981128f876a506d7a27"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T045954111742Z__q5__q5-c2-large-neighborhood__s17__pc253df79__ce215f316/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

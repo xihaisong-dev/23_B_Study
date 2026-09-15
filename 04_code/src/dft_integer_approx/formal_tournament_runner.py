@@ -174,6 +174,9 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
         raise RuntimeError("protocol/freeze gate failed: " + "; ".join(gate.reasons))
     if q5_certificate_shortcut and not smoke:
         raise RuntimeError("formal q5 certificate shortcut requires an approved and frozen protocol amendment")
+    if not smoke and validation_level in {"L3", "L4"}:
+        from .validation_runs import validate_parent_bindings
+        validate_parent_bindings(workspace, plan)
     protocol_path = workspace / "03_model/tournament_protocol.json"
     protocol_sha = sha256_file(protocol_path)
     freeze_sha = sha256_file(workspace / "00_admin/freezes/tournament_protocol.json")
@@ -208,7 +211,8 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
                       "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
                       "plan_content_sha256": batch_sha,
                       "q5_certificate_shortcut": q5_certificate_shortcut,
-                      "stop_rule": {"patience": 50, "tolerance": 1e-10,
+                      "stop_rule": {"patience": 8 if smoke else 50,
+                                    "tolerance": 1e-10,
                                     "deadline": "monotonic in-loop",
                                     "sweep_cap": "per frozen N segment"}}
     batch_dir.mkdir(parents=True, exist_ok=True)
@@ -233,12 +237,17 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
     counts: Dict[str, int] = {}
     for item in results:
         counts[item["status"]] = counts.get(item["status"], 0) + 1
+    if smoke:
+        phase_status = f"{validation_level}_SMOKE_COMPLETE_FORMAL_NOT_RUN"
+    else:
+        phase_status = f"{validation_level}_EXECUTED_REVIEW_REQUIRED"
     summary = {
         "schema_version": "3.0", "status": "BLOCKED",
-        "phase_status": "L2_SMOKE_COMPLETE_FORMAL_NOT_RUN" if smoke else "L2_EXECUTED_REVIEW_REQUIRED",
+        "phase_status": phase_status,
         "formal": not smoke, "winner_id": None,
         "protocol_sha256": protocol_sha, "protocol_freeze_sha256": freeze_sha,
-        "batch_id": batch_id, "batch_config_sha256": batch_sha,
+        "batch_id": batch_id, "batch_plan_sha256": batch_sha,
+        "batch_config_sha256": config_artifact["sha256"],
         "batch_plan_count": len(canonical_plan), "selected_count": len(plan),
         "resume_skipped_count": len(plan) - len(selected),
         "run_count": len(results), "status_counts": counts, "runs": results,
@@ -372,7 +381,8 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
                     "alphabet": {"status": "PASS", "errors": []},
                     "gaussian_integer_certificate": {"status": "PASS", "value": bound}}}
     except Exception as exc:
-        failure = {"stage": "candidate execution", "error_type": type(exc).__name__, "message": str(exc)}
+        failure = {"stage": "candidate execution", "error_type": "CRASH",
+                   "exception_type": type(exc).__name__, "message": str(exc)}
         _write_text_lf(stderr_path, f"{type(exc).__name__}: {exc}\n")
     elapsed = time.perf_counter() - clock
     internal_stop = values.get("diagnostics", {}).get("stop_reason")
@@ -385,13 +395,14 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
     _write_text_lf(stdout_path, f"run_id={run_id}\nproblem={pid}\ncandidate={cid}\nN={n}\nK={k}\nq={q}\nseed={seed}\nstatus={status}\n")
     manifest = {
         "schema_version": "3.0", "run_id": run_id, "problem_id": pid,
-        "problem": pid, "candidate_id": cid, "N": n, "K": k, "q": q,
+        "problem": pid, "candidate_id": cid, "kind": case["kind"],
+        "N": n, "K": k, "q": q,
         "beta": 1, "seed": seed, "budget": case["budget"], "wall_clock_s": elapsed,
         "status": status, "constraints_status": "PASS" if status in {"PASS", "INFEASIBLE"} else "FAIL",
         "failure": failure, "formal": not smoke,
         "run_scope": "SMOKE" if smoke else f"FROZEN_{validation_level}",
         "optimality_claim": ("exact Gaussian-integer infeasibility certificate"
-                             if pid == "q5" and status == "INFEASIBLE"
+                             if certificate_path.exists() and status == "INFEASIBLE"
                              else "exact analytic construction" if pid == "q1" and cid in BASELINES and status == "PASS"
                              else "candidate_only_no_global_optimality_claim"),
         "target_sha256": values.get("target_sha256"), "factor_sha256s": values.get("factor_sha256s"),
@@ -401,10 +412,14 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
         "started_at": started, "finished_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "protocol_sha256": protocol_sha, "protocol_freeze_sha256": freeze_sha,
         "problem_freeze_sha256": problem_freeze_sha, "code_tree_sha256": code_sha,
-        "batch_id": batch_id, "batch_config_sha256": batch_sha,
+        "batch_id": batch_id, "batch_plan_sha256": batch_sha,
+        "batch_config_sha256": config_artifact["sha256"],
         "run_config_sha256": config_sha,
         "tuple_sha256": tuple_sha256(case), "validation_level": validation_level,
-        "parent_run_id": case.get("parent_run_id"), "variant": case.get("variant"),
+        "parent_run_id": case.get("parent_run_id"),
+        "parent_batch_id": case.get("parent_batch_id"),
+        "parent_tuple_sha256": case.get("parent_tuple_sha256"),
+        "variant": case.get("variant"),
         "batch_artifacts": {"plan": plan_artifact, "config": config_artifact},
         "input_manifest_sha256": input_manifest_sha,
         "problem_input": {"path": problem_record["path"],
@@ -425,6 +440,8 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
     summary = {key: manifest[key] for key in ("run_id", "problem", "candidate_id", "N", "K", "q", "seed", "status", "constraints_status", "rmse", "L", "C", "wall_clock_s")}
     summary["variant"] = manifest["variant"]
     summary["parent_run_id"] = manifest["parent_run_id"]
+    summary["parent_batch_id"] = manifest["parent_batch_id"]
+    summary["parent_tuple_sha256"] = manifest["parent_tuple_sha256"]
     summary["run_manifest"] = (run_dir / "run_manifest.json").relative_to(workspace).as_posix()
     return summary
 
@@ -468,8 +485,10 @@ def validation_framework(protocol_sha: str, l0: Dict[str, Any], *,
                 "L0": {"status": l0["status"], "evidence": "05_results/l0_checks.json"},
                 "L1": {"status": "COMPLETE_BUT_Q1_SUPERSEDED", "reason": "legacy runs retained; q1 L/C must be regenerated after single-factor scale fix"},
                 "L2": {"status": "SMOKE_ONLY" if smoke_complete else "NOT_RUN", "required": "complete frozen 1442-run plan with all failures retained"},
-                "L3": {"status": "NOT_RUN", "axes": ["seed", "initialization_order", "floating_tolerance", "multiplication_association", "boundary_K_q"], "report": ["best", "median", "worst"]},
-                "L4": {"status": "NOT_RUN", "ablations": ["no_hierarchical_initialization", "no_support_reconnection", "no_discrete_polish", "fixed_vs_reconnectable_support"]}},
+                "L3": {"status": "NOT_RUN", "axes": ["seed", "initialization_order", "floating_tolerance", "multiplication_association", "boundary_K_q"], "association_scope": "independent persisted-artifact numerical recomputation stress", "report": ["best", "median", "worst"]},
+                "L4": {"status": "NOT_RUN", "executable_config_count": 30,
+                       "not_applicable_count": 10,
+                       "ablations": ["no_hierarchical_initialization", "no_support_reconnection", "no_discrete_polish", "fixed_vs_reconnectable_support"]}},
             "blocking_reason": "Formal L2, L3 robustness, and L4 ablation are incomplete."}
 
 
@@ -481,8 +500,9 @@ def _json_sha256(value: Any) -> str:
 
 def tuple_sha256(case: Dict[str, Any]) -> str:
     identity = {key: case.get(key) for key in
-                ("problem", "candidate_id", "N", "K", "q", "seed",
-                 "validation_level", "parent_run_id", "variant")}
+                ("problem", "candidate_id", "kind", "N", "K", "q", "seed",
+                 "budget", "validation_level", "parent_run_id", "parent_batch_id",
+                 "parent_tuple_sha256", "variant")}
     return _json_sha256(identity)
 
 

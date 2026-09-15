@@ -907,14 +907,21 @@ def challenger_q1_palm_row2(n: int, k: int, seed: int,
     rng = random.Random(seed)
     seed_trace = _seed_trace(rng)
     state = _new_state(n, smoke, budget)
-    factors = None if _disabled(options, "hierarchical_initialization") else _exact_chain_start(n, k)
+    hierarchy_disabled = _disabled(options, "hierarchical_initialization")
+    factors = None if hierarchy_disabled else _exact_chain_start(n, k)
     perm = bit_reversal_permutation(n)
-    if factors is None:
+    initialization = "hierarchical_exact_chain"
+    if hierarchy_disabled:
+        factors, perm = _random_start(n, k, None, 2, rng), list(range(n))
+        initialization = "seeded_random_nonbutterfly"
+    elif factors is None:
         hierarchical = _butterfly_start(n, None, 2, k)
         if hierarchical is None:
             factors, perm = _random_start(n, k, None, 2, rng), list(range(n))
+            initialization = "seeded_random_fallback"
         else:
             factors, perm = hierarchical
+            initialization = "hierarchical_butterfly"
     _apply_initialization_order(factors, options)
     if not _disabled(options, "discrete_polish"):
         _polish(target, factors, None, 2, sweeps=_remaining_sweeps(state),
@@ -924,7 +931,8 @@ def challenger_q1_palm_row2(n: int, k: int, seed: int,
                             _candidate_diagnostics(
                                 "palm_row2", "hierarchical_projected_alternating",
                                 seed, seed_trace, smoke, state,
-                                initialization="hierarchical_butterfly",
+                                initialization=initialization,
+                                hierarchical_initialization=not hierarchy_disabled,
                                 best2_projection=True, global_polish=not _disabled(options, "discrete_polish"),
                                 active_options=options or {}))
 
@@ -1023,10 +1031,12 @@ def challenger_q2_relax_project(target: Matrix, n: int, k: int, q: int,
     factors, perm = (continuous if continuous is not None
                      else (_random_start(n, k, None, None, rng), list(range(n))))
     _apply_initialization_order(factors, options)
-    if not _disabled(options, "discrete_polish"):
-        _polish(target, factors, None, None, sweeps=1, permutation=perm, rng=rng,
-                state=state, phase="continuous_fit", order_mode=_order_mode(options),
-                fixed_support=_fixed_support(options))
+    # The ablation removes only the post-projection discrete local search.  The
+    # continuous fit and exact P_q projection define the candidate itself and
+    # therefore remain active in both the full and ablated paths.
+    _polish(target, factors, None, None, sweeps=1, permutation=perm, rng=rng,
+            state=state, phase="continuous_fit", order_mode=_order_mode(options),
+            fixed_support=_fixed_support(options))
     pre_projection_rmse = math.sqrt(independent_objective(target, factors, perm)) / n
     factors[:] = [[[quantize_complex(value, q) for value in row]
                    for row in factor] for factor in factors]
@@ -1043,7 +1053,10 @@ def challenger_q2_relax_project(target: Matrix, n: int, k: int, q: int,
                                 seed, seed_trace, smoke, state,
                                 pre_projection_rmse=pre_projection_rmse,
                                 post_projection_rmse=post_projection_rmse,
-                                exact_projection=True, active_options=options or {}))
+                                continuous_fit=True, exact_projection=True,
+                                post_projection_discrete_polish=(
+                                    not _disabled(options, "discrete_polish")),
+                                active_options=options or {}))
 
 
 def challenger_q3_discrete_coordinate(target: Matrix, n: int, k: int, q: int,

@@ -25,6 +25,7 @@
         "multiplication_association",
         "boundary_K_q"
       ],
+      "association_scope": "independent persisted-artifact numerical recomputation stress",
       "report": [
         "best",
         "median",
@@ -33,6 +34,8 @@
     },
     "L4": {
       "status": "NOT_RUN",
+      "executable_config_count": 30,
+      "not_applicable_count": 10,
       "ablations": [
         "no_hierarchical_initialization",
         "no_support_reconnection",
@@ -44,7 +47,7 @@
   "blocking_reason": "Formal L2, L3 robustness, and L4 ablation are incomplete.",
   "registry": {
     "path": "05_results/validation_registry.json",
-    "sha256": "627ab67906b274ad26d2056d2d913e75620743a51a8e40c7686386fb8967e24f",
+    "sha256": "c6c22a22ed7c1e1fdbb2baae8f31580baf325ad27241db5e5d3e787915e90cce",
     "status": "NOT_RUN"
   }
 }

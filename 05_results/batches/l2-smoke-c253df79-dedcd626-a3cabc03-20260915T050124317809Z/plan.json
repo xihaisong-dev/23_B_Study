@@ -1,0 +1,219 @@
+{
+  "schema_version": "3.0",
+  "batch_id": "l2-smoke-c253df79-dedcd626-a3cabc03-20260915T050124317809Z",
+  "validation_level": "L2",
+  "formal": false,
+  "tuple_count": 15,
+  "tuples": [
+    {
+      "problem": "q1",
+      "candidate_id": "q1-b0-scaled-radix2",
+      "kind": "baseline",
+      "N": 4,
+      "K": 2,
+      "q": 16,
+      "seed": 0,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": null,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q1",
+      "candidate_id": "q1-c1-palm-row2",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 16,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q1",
+      "candidate_id": "q1-c2-structure-reconnect",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 16,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q2",
+      "candidate_id": "q2-b0-onefactor-quantize",
+      "kind": "baseline",
+      "N": 4,
+      "K": 1,
+      "q": 3,
+      "seed": 0,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": null,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q2",
+      "candidate_id": "q2-c1-sp2-recursive",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 3,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q2",
+      "candidate_id": "q2-c2-relax-project-polish",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 3,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q3",
+      "candidate_id": "q3-b0-quantized-butterfly",
+      "kind": "baseline",
+      "N": 4,
+      "K": 2,
+      "q": 3,
+      "seed": 0,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": null,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q3",
+      "candidate_id": "q3-c1-discrete-coordinate",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 3,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q3",
+      "candidate_id": "q3-c2-hierarchical-reconnect",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 3,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q4",
+      "candidate_id": "q4-b0-kron-butterfly",
+      "kind": "baseline",
+      "N": 32,
+      "K": 5,
+      "q": 3,
+      "seed": 0,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": null,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q4",
+      "candidate_id": "q4-c1-generic-discrete",
+      "kind": "challenger",
+      "N": 32,
+      "K": 5,
+      "q": 3,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q4",
+      "candidate_id": "q4-c2-kron-reconnect",
+      "kind": "challenger",
+      "N": 32,
+      "K": 5,
+      "q": 3,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q5",
+      "candidate_id": "q5-b0-q1-butterfly",
+      "kind": "baseline",
+      "N": 4,
+      "K": 2,
+      "q": 1,
+      "seed": 0,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": null,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q5",
+      "candidate_id": "q5-c1-lexicographic-grid",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 2,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    },
+    {
+      "problem": "q5",
+      "candidate_id": "q5-c2-large-neighborhood",
+      "kind": "challenger",
+      "N": 4,
+      "K": 2,
+      "q": 2,
+      "seed": 17,
+      "budget": {
+        "wall_clock_s": 20,
+        "sweep_cap": 8,
+        "source": "smoke minimum-viability budget"
+      }
+    }
+  ]
+}

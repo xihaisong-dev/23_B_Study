@@ -175,3 +175,12 @@
 - 验证：89/89 unittest PASS；Python compile PASS；协议/冻结 gate PASS；dry-run L2/L3/L4 为 1442/50/40；最终普通 smoke 15 runs 为 12 PASS + 3 Q5 INFEASIBLE。最新代码树 SHA-256 `90be26870957f7c83d1d7084fd6ec99f6944605f8109a9e7c20cc2e45eb37bcc`。readiness-only Q5 证书 smoke 的 3 个 manifest/certificate 已保留；最终普通 smoke 未使用证书短路。
 - N64 非正式性能探针：`q1-c1-palm-row2,N=64,K=6,seed=17`，进程内预算 5s/1 sweep，外层硬终止 12s；最终实测约 `0.7110297s`，状态 `NON_FORMAL_READINESS_ONLY`，证据 `05_results/readiness_benchmarks/n64_q1_c1.json`。该值不可用于对擂。
 - 当前状态与阻断：winner=null，正式 L2/L3/L4 均 `NOT_RUN/BLOCKED`。正式 1442 前仍须独立审计本提交；严格聚合器尚无真实完整批次可执行端到端 1442 聚合；若要采用 Q5 证书替代 825 次搜索，必须先由用户/总控批准并冻结协议变更，否则只能按原冻结计划逐 tuple 搜索。
+
+## Regression-closure（终审代码闭合，正式批次仍未运行）
+
+- manifest/批次：run manifest 现显式写入 `kind`、正确区分 plan/config SHA，并严格核验 `problem_id==problem`、`beta=1`、最优性声明、有限非负 wall clock、failure/status/constraints 语义、L2 parent 空值及全部 lineage/artifact。聚合器按当前 protocol/code/canonical-plan/L2/non-smoke 规则重算 batch-id，篡改即失败关闭；临时目录中的真实 formal 单 tuple 已完成“runner→因子/manifest→独立复算→`_verify_manifest`”端到端测试，但没有在仓库执行正式 tuple。
+- Q5：普通候选搜索无论 PASS/INFEASIBLE 都只声明 `candidate_only_no_global_optimality_claim`；仅存在并通过核验的证书 artifact 分支可声明精确不可行。无可行 Q5 时 `tournament.json` 的 q5 problem 与顶层列表、以及 `q5_frontier.json` 均提供机器可读 `gate_incompatibility`，winner 保持 null、总状态保持 BLOCKED。
+- L3：正式 parent 只能来自严格验证、完整覆盖 canonical 1442 tuple 的同一 L2 batch；子运行绑定并再次校验 `parent_batch_id`、`parent_tuple_sha256`、`parent_run_id`。association 轴明确仅为持久化因子的 independent right-associated numerical recomputation stress，不声称改变搜索接受顺序。
+- L4：q1-c1 的 `no_hierarchical_initialization` 现真正使用 seeded random non-Butterfly 初始化并如实诊断；q2-c2 的 `no_discrete_polish` 保留 continuous fit 与 exact Pq projection，只跳 post-projection discrete polish。候选×组件适用性矩阵共 40 单元，其中 30 个真实可执行配置、10 个带理由 `NOT_APPLICABLE`，不再制造无效消融。
+- 验证：97/97 `unittest` PASS；Python compile、`git diff --check`、协议校验和 tournament freeze verify 均 PASS；dry-run L2/L3/L4 分别为 1442/50/30。最终普通 L2 smoke 批次 `l2-smoke-c253df79-dedcd626-a3cabc03-20260915T050124317809Z` 共 15 runs，12 PASS + 3 Q5 INFEASIBLE，未启用证书短路；代码树 SHA-256 `dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54`。`validation_registry.json` 为 L3=50、L4=30、NOT_APPLICABLE=10，状态仍 `NOT_RUN/BLOCKED`。
+- 运行边界：没有执行正式 1442-run L2，也没有执行正式 L3/L4；没有改动冻结文件、题面、检索、模型协议或论文目录。下一步仍须独立审查本提交并由主 Agent 明确放行正式运行；Q5 证书替代搜索仍需获批且冻结的协议变更。
