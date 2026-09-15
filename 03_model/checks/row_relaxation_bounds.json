@@ -1,0 +1,2562 @@
+{
+  "artifact_class": "modeling_check",
+  "certificate_a_active_cases": [],
+  "certificate_a_sweep": {
+    "N16": {
+      "coordinate_caps": {
+        "q1": {
+          "cap": 2.8284271247461903,
+          "cap_active": false
+        },
+        "q2": {
+          "cap": 5.656854249492381,
+          "cap_active": false
+        },
+        "q3": {
+          "cap": 11.313708498984761,
+          "cap_active": false
+        },
+        "q4": {
+          "cap": 22.627416997969522,
+          "cap_active": false
+        }
+      },
+      "target_modulus": 0.25
+    },
+    "N2": {
+      "coordinate_caps": {
+        "q1": {
+          "cap": 2.8284271247461903,
+          "cap_active": false
+        },
+        "q2": {
+          "cap": 5.656854249492381,
+          "cap_active": false
+        },
+        "q3": {
+          "cap": 11.313708498984761,
+          "cap_active": false
+        },
+        "q4": {
+          "cap": 22.627416997969522,
+          "cap_active": false
+        }
+      },
+      "target_modulus": 0.7071067811865475
+    },
+    "N32": {
+      "coordinate_caps": {
+        "q1": {
+          "cap": 2.8284271247461903,
+          "cap_active": false
+        },
+        "q2": {
+          "cap": 5.656854249492381,
+          "cap_active": false
+        },
+        "q3": {
+          "cap": 11.313708498984761,
+          "cap_active": false
+        },
+        "q4": {
+          "cap": 22.627416997969522,
+          "cap_active": false
+        }
+      },
+      "target_modulus": 0.17677669529663687
+    },
+    "N4": {
+      "coordinate_caps": {
+        "q1": {
+          "cap": 2.8284271247461903,
+          "cap_active": false
+        },
+        "q2": {
+          "cap": 5.656854249492381,
+          "cap_active": false
+        },
+        "q3": {
+          "cap": 11.313708498984761,
+          "cap_active": false
+        },
+        "q4": {
+          "cap": 22.627416997969522,
+          "cap_active": false
+        }
+      },
+      "target_modulus": 0.5
+    },
+    "N64": {
+      "coordinate_caps": {
+        "q1": {
+          "cap": 2.8284271247461903,
+          "cap_active": false
+        },
+        "q2": {
+          "cap": 5.656854249492381,
+          "cap_active": false
+        },
+        "q3": {
+          "cap": 11.313708498984761,
+          "cap_active": false
+        },
+        "q4": {
+          "cap": 22.627416997969522,
+          "cap_active": false
+        }
+      },
+      "target_modulus": 0.125
+    },
+    "N8": {
+      "coordinate_caps": {
+        "q1": {
+          "cap": 2.8284271247461903,
+          "cap_active": false
+        },
+        "q2": {
+          "cap": 5.656854249492381,
+          "cap_active": false
+        },
+        "q3": {
+          "cap": 11.313708498984761,
+          "cap_active": false
+        },
+        "q4": {
+          "cap": 22.627416997969522,
+          "cap_active": false
+        }
+      },
+      "target_modulus": 0.35355339059327373
+    }
+  },
+  "companion": "verify_row_bound.py (frozen hash-bound; not modified)",
+  "formal_experiment": false,
+  "headline": "under the frozen semantics the classical support bound is the only non-vacuous certified lower bound for K >= 2; the row-support x coordinate-cap relaxation is exactly the support bound whenever 2*m_q >= 1/sqrt(N), which holds for every registered (N,K,q)",
+  "instance_table": [
+    {
+      "N": 2,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": null,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q1",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 4,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.1767766952966369,
+            "lb_effective": 0.3535533905932738,
+            "lb_support": 0.3535533905932738
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": null,
+          "min_k_certified": 2
+        }
+      },
+      "problem": "q1",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 8,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.10825317547305482,
+            "lb_effective": 0.30618621784789724,
+            "lb_support": 0.30618621784789724
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.08838834764831843,
+            "lb_effective": 0.25,
+            "lb_support": 0.25
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": null,
+          "min_k_certified": 3
+        }
+      },
+      "problem": "q1",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 16,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05846339666834283,
+            "lb_effective": 0.23385358667337133,
+            "lb_support": 0.23385358667337133
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05412658773652741,
+            "lb_effective": 0.21650635094610965,
+            "lb_support": 0.21650635094610965
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.04419417382415922,
+            "lb_effective": 0.1767766952966369,
+            "lb_support": 0.1767766952966369
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": null,
+          "min_k_certified": 4
+        }
+      },
+      "problem": "q1",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 32,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": null,
+          "min_k_certified": 5
+        }
+      },
+      "problem": "q1",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 64,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015378921628929319,
+            "lb_effective": 0.12303137303143455,
+            "lb_support": 0.12303137303143455
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015128841196122723,
+            "lb_effective": 0.12103072956898178,
+            "lb_support": 0.12103072956898178
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.014615849167085708,
+            "lb_effective": 0.11692679333668567,
+            "lb_support": 0.11692679333668567
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.013531646934131853,
+            "lb_effective": 0.10825317547305482,
+            "lb_support": 0.10825317547305482
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.011048543456039806,
+            "lb_effective": 0.08838834764831845,
+            "lb_support": 0.08838834764831845
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": null,
+          "min_k_certified": 5
+        }
+      },
+      "problem": "q1",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 2,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q2",
+      "row_constraint_applies": false
+    },
+    {
+      "N": 4,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q2",
+      "row_constraint_applies": false
+    },
+    {
+      "N": 8,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q2",
+      "row_constraint_applies": false
+    },
+    {
+      "N": 16,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q2",
+      "row_constraint_applies": false
+    },
+    {
+      "N": 32,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q2",
+      "row_constraint_applies": false
+    },
+    {
+      "N": 2,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q3",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 4,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.1767766952966369,
+            "lb_effective": 0.3535533905932738,
+            "lb_support": 0.3535533905932738
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 2
+        }
+      },
+      "problem": "q3",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 8,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.10825317547305482,
+            "lb_effective": 0.30618621784789724,
+            "lb_support": 0.30618621784789724
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.08838834764831843,
+            "lb_effective": 0.25,
+            "lb_support": 0.25
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 3
+        }
+      },
+      "problem": "q3",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 16,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05846339666834283,
+            "lb_effective": 0.23385358667337133,
+            "lb_support": 0.23385358667337133
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05412658773652741,
+            "lb_effective": 0.21650635094610965,
+            "lb_support": 0.21650635094610965
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.04419417382415922,
+            "lb_effective": 0.1767766952966369,
+            "lb_support": 0.1767766952966369
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 4
+        }
+      },
+      "problem": "q3",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 32,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 5
+        }
+      },
+      "problem": "q3",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 32,
+      "alphabet_q": 3,
+      "per_registered_q": {
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 5
+        }
+      },
+      "problem": "q4",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 2,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q1": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 1,
+          "min_k_certified": 1
+        },
+        "q2": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 2,
+          "min_k_certified": 1
+        },
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 1
+        },
+        "q4": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 4,
+          "min_k_certified": 1
+        }
+      },
+      "problem": "q5",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 4,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q1": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.1767766952966369,
+            "lb_effective": 0.3535533905932738,
+            "lb_support": 0.3535533905932738
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 1,
+          "min_k_certified": 2
+        },
+        "q2": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.1767766952966369,
+            "lb_effective": 0.3535533905932738,
+            "lb_support": 0.3535533905932738
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 2,
+          "min_k_certified": 2
+        },
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.1767766952966369,
+            "lb_effective": 0.3535533905932738,
+            "lb_support": 0.3535533905932738
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 2
+        },
+        "q4": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.1767766952966369,
+            "lb_effective": 0.3535533905932738,
+            "lb_support": 0.3535533905932738
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 4,
+          "min_k_certified": 2
+        }
+      },
+      "problem": "q5",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 8,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q1": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.10825317547305482,
+            "lb_effective": 0.30618621784789724,
+            "lb_support": 0.30618621784789724
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.08838834764831843,
+            "lb_effective": 0.25,
+            "lb_support": 0.25
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 1,
+          "min_k_certified": 3
+        },
+        "q2": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.10825317547305482,
+            "lb_effective": 0.30618621784789724,
+            "lb_support": 0.30618621784789724
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.08838834764831843,
+            "lb_effective": 0.25,
+            "lb_support": 0.25
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 2,
+          "min_k_certified": 3
+        },
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.10825317547305482,
+            "lb_effective": 0.30618621784789724,
+            "lb_support": 0.30618621784789724
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.08838834764831843,
+            "lb_effective": 0.25,
+            "lb_support": 0.25
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 3
+        },
+        "q4": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.10825317547305482,
+            "lb_effective": 0.30618621784789724,
+            "lb_support": 0.30618621784789724
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.08838834764831843,
+            "lb_effective": 0.25,
+            "lb_support": 0.25
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 4,
+          "min_k_certified": 3
+        }
+      },
+      "problem": "q5",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 16,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q1": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05846339666834283,
+            "lb_effective": 0.23385358667337133,
+            "lb_support": 0.23385358667337133
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05412658773652741,
+            "lb_effective": 0.21650635094610965,
+            "lb_support": 0.21650635094610965
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.04419417382415922,
+            "lb_effective": 0.1767766952966369,
+            "lb_support": 0.1767766952966369
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 1,
+          "min_k_certified": 4
+        },
+        "q2": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05846339666834283,
+            "lb_effective": 0.23385358667337133,
+            "lb_support": 0.23385358667337133
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05412658773652741,
+            "lb_effective": 0.21650635094610965,
+            "lb_support": 0.21650635094610965
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.04419417382415922,
+            "lb_effective": 0.1767766952966369,
+            "lb_support": 0.1767766952966369
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 2,
+          "min_k_certified": 4
+        },
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05846339666834283,
+            "lb_effective": 0.23385358667337133,
+            "lb_support": 0.23385358667337133
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05412658773652741,
+            "lb_effective": 0.21650635094610965,
+            "lb_support": 0.21650635094610965
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.04419417382415922,
+            "lb_effective": 0.1767766952966369,
+            "lb_support": 0.1767766952966369
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 4
+        },
+        "q4": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05846339666834283,
+            "lb_effective": 0.23385358667337133,
+            "lb_support": 0.23385358667337133
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.05412658773652741,
+            "lb_effective": 0.21650635094610965,
+            "lb_support": 0.21650635094610965
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.04419417382415922,
+            "lb_effective": 0.1767766952966369,
+            "lb_support": 0.1767766952966369
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 4,
+          "min_k_certified": 4
+        }
+      },
+      "problem": "q5",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 32,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q1": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 1,
+          "min_k_certified": 5
+        },
+        "q2": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 2,
+          "min_k_certified": 5
+        },
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 5
+        },
+        "q4": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.030257682392245442,
+            "lb_effective": 0.1711632992203644,
+            "lb_support": 0.1711632992203644
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.029231698334171413,
+            "lb_effective": 0.16535945694153692,
+            "lb_support": 0.16535945694153692
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.027063293868263706,
+            "lb_effective": 0.15309310892394862,
+            "lb_support": 0.15309310892394862
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.022097086912079608,
+            "lb_effective": 0.125,
+            "lb_support": 0.125
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 4,
+          "min_k_certified": 5
+        }
+      },
+      "problem": "q5",
+      "row_constraint_applies": true
+    },
+    {
+      "N": 64,
+      "alphabet_q": null,
+      "per_registered_q": {
+        "q1": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015378921628929319,
+            "lb_effective": 0.12303137303143455,
+            "lb_support": 0.12303137303143455
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015128841196122723,
+            "lb_effective": 0.12103072956898178,
+            "lb_support": 0.12103072956898178
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.014615849167085708,
+            "lb_effective": 0.11692679333668567,
+            "lb_support": 0.11692679333668567
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.013531646934131853,
+            "lb_effective": 0.10825317547305482,
+            "lb_support": 0.10825317547305482
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.011048543456039806,
+            "lb_effective": 0.08838834764831845,
+            "lb_support": 0.08838834764831845
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 1,
+          "min_k_certified": 5
+        },
+        "q2": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015378921628929319,
+            "lb_effective": 0.12303137303143455,
+            "lb_support": 0.12303137303143455
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015128841196122723,
+            "lb_effective": 0.12103072956898178,
+            "lb_support": 0.12103072956898178
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.014615849167085708,
+            "lb_effective": 0.11692679333668567,
+            "lb_support": 0.11692679333668567
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.013531646934131853,
+            "lb_effective": 0.10825317547305482,
+            "lb_support": 0.10825317547305482
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.011048543456039806,
+            "lb_effective": 0.08838834764831845,
+            "lb_support": 0.08838834764831845
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 2,
+          "min_k_certified": 5
+        },
+        "q3": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015378921628929319,
+            "lb_effective": 0.12303137303143455,
+            "lb_support": 0.12303137303143455
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015128841196122723,
+            "lb_effective": 0.12103072956898178,
+            "lb_support": 0.12103072956898178
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.014615849167085708,
+            "lb_effective": 0.11692679333668567,
+            "lb_support": 0.11692679333668567
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.013531646934131853,
+            "lb_effective": 0.10825317547305482,
+            "lb_support": 0.10825317547305482
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.011048543456039806,
+            "lb_effective": 0.08838834764831845,
+            "lb_support": 0.08838834764831845
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 3,
+          "min_k_certified": 5
+        },
+        "q4": {
+          "K1": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015378921628929319,
+            "lb_effective": 0.12303137303143455,
+            "lb_support": 0.12303137303143455
+          },
+          "K2": {
+            "cap_active": false,
+            "lb_certificate_a": 0.015128841196122723,
+            "lb_effective": 0.12103072956898178,
+            "lb_support": 0.12103072956898178
+          },
+          "K3": {
+            "cap_active": false,
+            "lb_certificate_a": 0.014615849167085708,
+            "lb_effective": 0.11692679333668567,
+            "lb_support": 0.11692679333668567
+          },
+          "K4": {
+            "cap_active": false,
+            "lb_certificate_a": 0.013531646934131853,
+            "lb_effective": 0.10825317547305482,
+            "lb_support": 0.10825317547305482
+          },
+          "K5": {
+            "cap_active": false,
+            "lb_certificate_a": 0.011048543456039806,
+            "lb_effective": 0.08838834764831845,
+            "lb_support": 0.08838834764831845
+          },
+          "K6": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K7": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "K8": {
+            "cap_active": false,
+            "lb_certificate_a": 0.0,
+            "lb_effective": 0.0,
+            "lb_support": 0.0
+          },
+          "effective_q": 4,
+          "min_k_certified": 5
+        }
+      },
+      "problem": "q5",
+      "row_constraint_applies": true
+    }
+  ],
+  "k_exclusion": {
+    "N16": {
+      "K1": {
+        "excludes_0.1": true,
+        "lb_support": 0.23385358667337133
+      },
+      "K2": {
+        "excludes_0.1": true,
+        "lb_support": 0.21650635094610965
+      },
+      "K3": {
+        "excludes_0.1": true,
+        "lb_support": 0.1767766952966369
+      },
+      "K4": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      },
+      "K5": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      },
+      "K6": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      }
+    },
+    "N32": {
+      "K1": {
+        "excludes_0.1": true,
+        "lb_support": 0.1711632992203644
+      },
+      "K2": {
+        "excludes_0.1": true,
+        "lb_support": 0.16535945694153692
+      },
+      "K3": {
+        "excludes_0.1": true,
+        "lb_support": 0.15309310892394862
+      },
+      "K4": {
+        "excludes_0.1": true,
+        "lb_support": 0.125
+      },
+      "K5": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      },
+      "K6": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      }
+    },
+    "N64": {
+      "K1": {
+        "excludes_0.1": true,
+        "lb_support": 0.12303137303143455
+      },
+      "K2": {
+        "excludes_0.1": true,
+        "lb_support": 0.12103072956898178
+      },
+      "K3": {
+        "excludes_0.1": true,
+        "lb_support": 0.11692679333668567
+      },
+      "K4": {
+        "excludes_0.1": true,
+        "lb_support": 0.10825317547305482
+      },
+      "K5": {
+        "excludes_0.1": false,
+        "lb_support": 0.08838834764831845
+      },
+      "K6": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      }
+    },
+    "N8": {
+      "K1": {
+        "excludes_0.1": true,
+        "lb_support": 0.30618621784789724
+      },
+      "K2": {
+        "excludes_0.1": true,
+        "lb_support": 0.25
+      },
+      "K3": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      },
+      "K4": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      },
+      "K5": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      },
+      "K6": {
+        "excludes_0.1": false,
+        "lb_support": 0.0
+      }
+    }
+  },
+  "schema_version": "1.0",
+  "script": "verify_row_relaxation_bounds.py",
+  "status": "PASS"
+}

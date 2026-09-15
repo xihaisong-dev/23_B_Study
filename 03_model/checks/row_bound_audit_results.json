@@ -1,0 +1,138 @@
+{
+  "artifact_class": "modeling_check",
+  "failed_checks": [],
+  "formal_experiment": false,
+  "freeze_binds_protocol": true,
+  "problem_freeze": {
+    "actor": "main-integrator",
+    "bindings_ok": true,
+    "created_at": "2026-09-15T01:47:55+00:00",
+    "dependencies": [],
+    "exists": true,
+    "files": [
+      {
+        "actual_size": 2231,
+        "exists": true,
+        "expected_size": 2231,
+        "path": "00_admin/input_manifest.json",
+        "sha256_ok": true,
+        "size_ok": true
+      },
+      {
+        "actual_size": 2179,
+        "exists": true,
+        "expected_size": 2179,
+        "path": "00_admin/rules.json",
+        "sha256_ok": true,
+        "size_ok": true
+      },
+      {
+        "actual_size": 1863,
+        "exists": true,
+        "expected_size": 1863,
+        "path": "00_admin/semantic_contract.json",
+        "sha256_ok": true,
+        "size_ok": true
+      },
+      {
+        "actual_size": 7156,
+        "exists": true,
+        "expected_size": 7156,
+        "path": "01_problem/PROBLEM_BRIEF.md",
+        "sha256_ok": true,
+        "size_ok": true
+      }
+    ],
+    "path": "00_admin\\freezes\\problem.json",
+    "stage": "problem",
+    "status": "PASS"
+  },
+  "protocol": {
+    "exists": true,
+    "frozen": true,
+    "kbref_bad": 0,
+    "kbref_total": 25,
+    "problem_count": 5,
+    "problems": {
+      "q1": {
+        "candidates": 3,
+        "kbref_ranges_ok": true
+      },
+      "q2": {
+        "candidates": 3,
+        "kbref_ranges_ok": true
+      },
+      "q3": {
+        "candidates": 3,
+        "kbref_ranges_ok": true
+      },
+      "q4": {
+        "candidates": 3,
+        "kbref_ranges_ok": true
+      },
+      "q5": {
+        "candidates": 3,
+        "kbref_ranges_ok": true
+      }
+    },
+    "semantic_decision": "D-005",
+    "status": "PASS"
+  },
+  "protocol_freeze": {
+    "actor": "main-integrator",
+    "bindings_ok": true,
+    "created_at": "2026-09-15T01:48:07+00:00",
+    "dependencies": [
+      {
+        "exists": true,
+        "path": "problem.json",
+        "sha256_ok": true,
+        "stage": "problem"
+      }
+    ],
+    "exists": true,
+    "files": [
+      {
+        "actual_size": 14474,
+        "exists": true,
+        "expected_size": 14474,
+        "path": "02_retrieval/retrieval_manifest.json",
+        "sha256_ok": true,
+        "size_ok": true
+      },
+      {
+        "actual_size": 7956,
+        "exists": true,
+        "expected_size": 7956,
+        "path": "03_model/ANALYSIS_MODELING_REPORT.md",
+        "sha256_ok": true,
+        "size_ok": true
+      },
+      {
+        "actual_size": 34087,
+        "exists": true,
+        "expected_size": 34087,
+        "path": "03_model/tournament_protocol.json",
+        "sha256_ok": true,
+        "size_ok": true
+      }
+    ],
+    "path": "00_admin\\freezes\\tournament_protocol.json",
+    "stage": "tournament_protocol",
+    "status": "PASS"
+  },
+  "read_only": true,
+  "reasons": [],
+  "retrieval": {
+    "exists": true,
+    "kb_documents": 3,
+    "kb_status": "PASS",
+    "knowledge_base_status": "PASS",
+    "paths_checked": 7,
+    "paths_missing": [],
+    "status": "PASS"
+  },
+  "schema_version": "1.0",
+  "script": "verify_row_bound_audit.py",
+  "status": "PASS"
+}
