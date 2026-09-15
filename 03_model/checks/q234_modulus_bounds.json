@@ -1,0 +1,266 @@
+{
+  "artifact_class": "modeling_certificate",
+  "failed_checks": [],
+  "formal_experiment": false,
+  "headline": "the K-free lattice/modulus bound family bites only for Q5 (q = 1, target modulus 1/sqrt(N) < 1); for q >= 2 the alphabet already contains +-2 so p >= 2 > t = 1/sqrt(N) for every N >= 2 and the argument is vacuous",
+  "interpretation": {
+    "k_free_family_available_for": [
+      "q5"
+    ],
+    "q3_q4_bounds_are_structural_in_disguise": true,
+    "reason": "m_q >= sqrt(2) > 1/sqrt(N) = t for every registered N, so max(0,t-p)=0"
+  },
+  "per_entry_gaps": [
+    {
+      "N": 2,
+      "t": 0.7071067811865475,
+      "t_minus_m_q": {
+        "q1": 0.0,
+        "q2": 0.0,
+        "q3": 0.0,
+        "q4": 0.0
+      }
+    },
+    {
+      "N": 4,
+      "t": 0.5,
+      "t_minus_m_q": {
+        "q1": 0.0,
+        "q2": 0.0,
+        "q3": 0.0,
+        "q4": 0.0
+      }
+    },
+    {
+      "N": 8,
+      "t": 0.35355339059327373,
+      "t_minus_m_q": {
+        "q1": 0.0,
+        "q2": 0.0,
+        "q3": 0.0,
+        "q4": 0.0
+      }
+    },
+    {
+      "N": 16,
+      "t": 0.25,
+      "t_minus_m_q": {
+        "q1": 0.0,
+        "q2": 0.0,
+        "q3": 0.0,
+        "q4": 0.0
+      }
+    },
+    {
+      "N": 32,
+      "t": 0.17677669529663687,
+      "t_minus_m_q": {
+        "q1": 0.0,
+        "q2": 0.0,
+        "q3": 0.0,
+        "q4": 0.0
+      }
+    },
+    {
+      "N": 64,
+      "t": 0.125,
+      "t_minus_m_q": {
+        "q1": 0.0,
+        "q2": 0.0,
+        "q3": 0.0,
+        "q4": 0.0
+      }
+    }
+  ],
+  "q3_q4_bounds": {
+    "q3": [
+      {
+        "N": 2,
+        "p": 11.313708498984761,
+        "per_K": {
+          "K1": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 2
+          },
+          "K2": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 2
+          },
+          "K5": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 2
+          }
+        },
+        "q": 3,
+        "target_modulus": 0.7071067811865475
+      },
+      {
+        "N": 4,
+        "p": 11.313708498984761,
+        "per_K": {
+          "K1": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.1767766952966369,
+            "s": 2
+          },
+          "K2": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 4
+          },
+          "K5": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 4
+          }
+        },
+        "q": 3,
+        "target_modulus": 0.5
+      },
+      {
+        "N": 8,
+        "p": 11.313708498984761,
+        "per_K": {
+          "K1": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.10825317547305482,
+            "s": 2
+          },
+          "K2": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.08838834764831843,
+            "s": 4
+          },
+          "K5": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 8
+          }
+        },
+        "q": 3,
+        "target_modulus": 0.35355339059327373
+      },
+      {
+        "N": 16,
+        "p": 11.313708498984761,
+        "per_K": {
+          "K1": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.05846339666834283,
+            "s": 2
+          },
+          "K2": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.05412658773652741,
+            "s": 4
+          },
+          "K5": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 16
+          }
+        },
+        "q": 3,
+        "target_modulus": 0.25
+      },
+      {
+        "N": 32,
+        "p": 11.313708498984761,
+        "per_K": {
+          "K1": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.030257682392245442,
+            "s": 2
+          },
+          "K2": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.029231698334171413,
+            "s": 4
+          },
+          "K5": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 32
+          }
+        },
+        "q": 3,
+        "target_modulus": 0.17677669529663687
+      }
+    ],
+    "q4": [
+      {
+        "N": 32,
+        "p": 11.313708498984761,
+        "per_K": {
+          "K1": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.030257682392245442,
+            "s": 2
+          },
+          "K2": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.029231698334171413,
+            "s": 4
+          },
+          "K5": {
+            "p": 11.313708498984761,
+            "rmse_bound": 0.0,
+            "s": 32
+          }
+        },
+        "q": 3,
+        "target_modulus": 0.17677669529663687
+      }
+    ]
+  },
+  "q5_q1_bounds": [
+    {
+      "N": 2,
+      "exceeds_threshold": true,
+      "per_entry_floor": 0.29289321881345254,
+      "rmse_bound": 0.29289321881345254,
+      "t": 0.7071067811865475
+    },
+    {
+      "N": 4,
+      "exceeds_threshold": true,
+      "per_entry_floor": 0.5,
+      "rmse_bound": 0.5,
+      "t": 0.5
+    },
+    {
+      "N": 8,
+      "exceeds_threshold": true,
+      "per_entry_floor": 0.35355339059327373,
+      "rmse_bound": 0.35355339059327373,
+      "t": 0.35355339059327373
+    },
+    {
+      "N": 16,
+      "exceeds_threshold": true,
+      "per_entry_floor": 0.25,
+      "rmse_bound": 0.25,
+      "t": 0.25
+    },
+    {
+      "N": 32,
+      "exceeds_threshold": true,
+      "per_entry_floor": 0.17677669529663687,
+      "rmse_bound": 0.17677669529663687,
+      "t": 0.17677669529663687
+    },
+    {
+      "N": 64,
+      "exceeds_threshold": true,
+      "per_entry_floor": 0.125,
+      "rmse_bound": 0.125,
+      "t": 0.125
+    }
+  ],
+  "schema_version": "1.0",
+  "script": "verify_q234_modulus_bounds.py",
+  "status": "PASS"
+}

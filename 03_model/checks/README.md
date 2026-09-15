@@ -26,6 +26,8 @@
 | `row_relaxation_bounds.json` | 上者的输出。 |
 | `verify_q5_gaussian_integer_infeasibility.py` | Q5 高斯整数闭包与格距下界证书；纯标准库，核对题面、冻结协议和输入谱系。 |
 | `q5_gaussian_integer_infeasibility.json` | 上者的机器输出；冻结六尺寸上全局排除 `RMSE<=0.1`。 |
+| `verify_q234_modulus_bounds.py` | 该 K-无关界族的**适用边界**复核：证明它只在 Q5 生效，对 q2/q3/q4 完全空洞（`m_q >= sqrt(2) > 1/sqrt(N) = t`）。 |
+| `q234_modulus_bounds.json` | 上者的输出；含逐项间隙、Q5 逐尺寸下界与 q3/q4 的"行支持换形"对照。 |
 
 ## 运行
 
