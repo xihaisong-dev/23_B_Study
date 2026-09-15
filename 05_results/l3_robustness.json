@@ -1,0 +1,5634 @@
+{
+  "artifact_class": "formal_experiment",
+  "level": "L3",
+  "problems": {
+    "q1": {
+      "association_order": {
+        "checked": 60,
+        "drift_runs": 0,
+        "status": "PASS",
+        "worst_max_abs_diff": 6.206335383118183e-17
+      },
+      "instances_measured": 12,
+      "seed_coverage_complete": true,
+      "seed_robustness": [
+        {
+          "K": 1,
+          "N": 2,
+          "best": 4.329780281177466e-17,
+          "candidate_id": "q1-c1-palm-row2",
+          "median": 4.329780281177466e-17,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 4.329780281177466e-17
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 1.4888964106947385e-16,
+          "candidate_id": "q1-c1-palm-row2",
+          "median": 1.4888964106947385e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 1.4888964106947385e-16
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 3.1431115805241707e-16,
+          "candidate_id": "q1-c1-palm-row2",
+          "median": 3.1431115805241707e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 3.1431115805241707e-16
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 6.900375539105994e-16,
+          "candidate_id": "q1-c1-palm-row2",
+          "median": 6.900375539105994e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 6.900375539105994e-16
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 9.762804601309942e-16,
+          "candidate_id": "q1-c1-palm-row2",
+          "median": 9.762804601309942e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 9.762804601309942e-16
+        },
+        {
+          "K": 6,
+          "N": 64,
+          "best": 1.319180125185828e-15,
+          "candidate_id": "q1-c1-palm-row2",
+          "median": 1.319180125185828e-15,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 1.319180125185828e-15
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 4.329780281177466e-17,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "median": 4.329780281177466e-17,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 4.329780281177466e-17
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 1.4888964106947385e-16,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "median": 1.4888964106947385e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 1.4888964106947385e-16
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 3.1431115805241707e-16,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "median": 3.1431115805241707e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 3.1431115805241707e-16
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 6.900375539105994e-16,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "median": 6.900375539105994e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 6.900375539105994e-16
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 9.762804601309942e-16,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "median": 9.762804601309942e-16,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 9.762804601309942e-16
+        },
+        {
+          "K": 6,
+          "N": 64,
+          "best": 1.319180125185828e-15,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "median": 1.319180125185828e-15,
+          "n": 3,
+          "q": 16,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 1.319180125185828e-15
+        }
+      ],
+      "status": "PASS",
+      "stochastic_candidates": [
+        "q1-c1-palm-row2",
+        "q1-c2-structure-reconnect"
+      ],
+      "tolerance_note": "independent-recompute tolerance 1e-10; association drift allowance 1e-09"
+    },
+    "q2": {
+      "association_order": {
+        "checked": 60,
+        "drift_runs": 0,
+        "status": "PASS",
+        "worst_max_abs_diff": 0.0
+      },
+      "instances_measured": 70,
+      "seed_coverage_complete": true,
+      "seed_robustness": [
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 4,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 5,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 6,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 7,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 5,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 6,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 7,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 6,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 7,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 7,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 4,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 5,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 6,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 7,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 5,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 6,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 7,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 6,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 7,
+          "N": 8,
+          "best": 0.35355339059327373,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.35355339059327373,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.35355339059327373
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 7,
+          "N": 16,
+          "best": 0.25,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.25,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.17677669529663687,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "median": 0.17677669529663687,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17677669529663687
+        }
+      ],
+      "status": "PASS",
+      "stochastic_candidates": [
+        "q2-c1-sp2-recursive",
+        "q2-c2-relax-project-polish"
+      ],
+      "tolerance_note": "independent-recompute tolerance 1e-10; association drift allowance 1e-09"
+    },
+    "q3": {
+      "association_order": {
+        "checked": 60,
+        "drift_runs": 0,
+        "status": "PASS",
+        "worst_max_abs_diff": 0.0
+      },
+      "instances_measured": 50,
+      "seed_coverage_complete": true,
+      "seed_robustness": [
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.07492270061719092,
+          "worst": 0.3613336815519309
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.2795084971874737,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.3156095293238149,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.04315910389880545,
+          "worst": 0.3226676010862792
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.25352221329665237,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.25352221329665237,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25352221329665237
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23419572560117022,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.23461043875421966,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0004147131530494452,
+          "worst": 0.23461043875421966
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19083721082115385,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.21287009039957175,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02822695106455192,
+          "worst": 0.21906416188570577
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.19994955376543422,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.21104736126101606,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014308601967064127,
+          "worst": 0.21425815573249835
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.19960102144304082,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.21088091887844182,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.06236010336038211,
+          "worst": 0.26196112480342293
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.18394135075343648,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.017597216892286882,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.1865770163149758,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014961551330747558,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02919854838907493,
+          "worst": 0.3156095293238149
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.2795084971874737,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.3029799910885206,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.03467818877025114,
+          "worst": 0.31418668595772486
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.25352221329665237,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.25352221329665237,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25352221329665237
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23419572560117022,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.23461043875421966,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0004147131530494452,
+          "worst": 0.23461043875421966
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19083721082115385,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.21287009039957175,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02822695106455192,
+          "worst": 0.21906416188570577
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.19994955376543422,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.21104736126101606,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014308601967064127,
+          "worst": 0.21425815573249835
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.197328150277139,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.21088091887844182,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.06463297452628394,
+          "worst": 0.26196112480342293
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.18394135075343648,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.017597216892286882,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.1865770163149758,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014961551330747558,
+          "worst": 0.20153856764572337
+        }
+      ],
+      "status": "PASS",
+      "stochastic_candidates": [
+        "q3-c1-discrete-coordinate",
+        "q3-c2-hierarchical-reconnect"
+      ],
+      "tolerance_note": "independent-recompute tolerance 1e-10; association drift allowance 1e-09"
+    },
+    "q4": {
+      "association_order": {
+        "checked": 47,
+        "drift_runs": 0,
+        "status": "PASS",
+        "worst_max_abs_diff": 0.0
+      },
+      "instances_measured": 14,
+      "seed_coverage_complete": true,
+      "seed_robustness": [
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.253545998517054,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.253545998517054,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.253545998517054
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23610980140179488,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.23618327501753267,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 7.347361573778466e-05,
+          "worst": 0.23618327501753267
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19794185231528846,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.21147014513637027,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.021786628544604336,
+          "worst": 0.2197284808598928
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.2025231468252456,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.21437741473626304,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.016744617757225078,
+          "worst": 0.2192677645824707
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.18841846242606175,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.20237684292180336,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02709477892816159,
+          "worst": 0.21551324135422334
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.19794185231528846,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.20252314682524564,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.18927519900091125,
+          "worst": 0.3872170513161997
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.18410230570528574,
+          "candidate_id": "q4-c1-generic-discrete",
+          "median": 0.20166893170986638,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.26591796256270295,
+          "worst": 0.4500202682679887
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.253545998517054,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.253545998517054,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.253545998517054
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23610980140179488,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.23618327501753267,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 7.347361573778466e-05,
+          "worst": 0.23618327501753267
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19794185231528846,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.21147014513637027,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.021786628544604336,
+          "worst": 0.2197284808598928
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.2025231468252456,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.21437741473626304,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.016744617757225078,
+          "worst": 0.2192677645824707
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.18841846242606175,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.20237684292180336,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02709477892816159,
+          "worst": 0.21551324135422334
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.19794185231528846,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.20252314682524564,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.18927519900091125,
+          "worst": 0.3872170513161997
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.18410230570528574,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "median": 0.20166893170986638,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.26591796256270295,
+          "worst": 0.4500202682679887
+        }
+      ],
+      "status": "PASS",
+      "stochastic_candidates": [
+        "q4-c1-generic-discrete",
+        "q4-c2-kron-reconnect"
+      ],
+      "tolerance_note": "independent-recompute tolerance 1e-10; association drift allowance 1e-09"
+    },
+    "q5": {
+      "association_order": {
+        "checked": 60,
+        "drift_runs": 0,
+        "status": "PASS",
+        "worst_max_abs_diff": 0.0
+      },
+      "instances_measured": 264,
+      "seed_coverage_complete": true,
+      "seed_robustness": [
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.3151381116651431,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.32430140983947664,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.01852058371083537,
+          "worst": 0.3336586953759785
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.04134178411843237,
+          "worst": 0.32775276505317236
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.07492270061719092,
+          "worst": 0.3613336815519309
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.07492270061719092,
+          "worst": 0.3613336815519309
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.07492270061719092,
+          "worst": 0.3613336815519309
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.2795084971874737,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3103254433506447,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.04176752031752495,
+          "worst": 0.3212760175049987
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.2795084971874737,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3156095293238149,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.04315910389880545,
+          "worst": 0.3226676010862792
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.2795084971874737,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3156095293238149,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.04315910389880545,
+          "worst": 0.3226676010862792
+        },
+        {
+          "K": 6,
+          "N": 16,
+          "best": 0.2795084971874737,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.3156095293238149,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.04315910389880545,
+          "worst": 0.3226676010862792
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.25352221329665237,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.25352221329665237,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25352221329665237
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.25352221329665237,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.25352221329665237,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25352221329665237
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.25352221329665237,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.25352221329665237,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25352221329665237
+        },
+        {
+          "K": 1,
+          "N": 32,
+          "best": 0.25352221329665237,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.25352221329665237,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.25352221329665237
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23419572560117022,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.23461043875421966,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0004147131530494452,
+          "worst": 0.23461043875421966
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23419572560117022,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.23461043875421966,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0004147131530494452,
+          "worst": 0.23461043875421966
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23419572560117022,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.23461043875421966,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0004147131530494452,
+          "worst": 0.23461043875421966
+        },
+        {
+          "K": 2,
+          "N": 32,
+          "best": 0.23419572560117022,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.23461043875421966,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0004147131530494452,
+          "worst": 0.23461043875421966
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19083721082115385,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21287009039957175,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02822695106455192,
+          "worst": 0.21906416188570577
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19083721082115385,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21287009039957175,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02822695106455192,
+          "worst": 0.21906416188570577
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19083721082115385,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21287009039957175,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02822695106455192,
+          "worst": 0.21906416188570577
+        },
+        {
+          "K": 3,
+          "N": 32,
+          "best": 0.19083721082115385,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21287009039957175,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.02822695106455192,
+          "worst": 0.21906416188570577
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.19994955376543422,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21104736126101606,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.01636838612442909,
+          "worst": 0.2163179398898633
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.19994955376543422,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21104736126101606,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014308601967064127,
+          "worst": 0.21425815573249835
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.19994955376543422,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21104736126101606,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014308601967064127,
+          "worst": 0.21425815573249835
+        },
+        {
+          "K": 4,
+          "N": 32,
+          "best": 0.19994955376543422,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21104736126101606,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014308601967064127,
+          "worst": 0.21425815573249835
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.19693895492511349,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.20433493726473095,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.013941963953328335,
+          "worst": 0.21088091887844182
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.19960102144304082,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21088091887844182,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.06236010336038211,
+          "worst": 0.26196112480342293
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.19960102144304082,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21088091887844182,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.06236010336038211,
+          "worst": 0.26196112480342293
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "best": 0.19960102144304082,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.21088091887844182,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.06236010336038211,
+          "worst": 0.26196112480342293
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.18394135075343648,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.2003329003828316,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.017597216892286882,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.18394135075343648,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.017597216892286882,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.18394135075343648,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.017597216892286882,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 6,
+          "N": 32,
+          "best": 0.18394135075343648,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.017597216892286882,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.1865770163149758,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.2000950075076852,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014961551330747558,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.1865770163149758,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014961551330747558,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.1865770163149758,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014961551330747558,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 7,
+          "N": 32,
+          "best": 0.1865770163149758,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.197328150277139,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.014961551330747558,
+          "worst": 0.20153856764572337
+        },
+        {
+          "K": 1,
+          "N": 64,
+          "best": 0.17857276284862617,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17857276284862617,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17857276284862617
+        },
+        {
+          "K": 1,
+          "N": 64,
+          "best": 0.17857276284862617,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17857276284862617,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17857276284862617
+        },
+        {
+          "K": 1,
+          "N": 64,
+          "best": 0.17857276284862617,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17857276284862617,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17857276284862617
+        },
+        {
+          "K": 1,
+          "N": 64,
+          "best": 0.17857276284862617,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17857276284862617,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.17857276284862617
+        },
+        {
+          "K": 2,
+          "N": 64,
+          "best": 0.16891640774682393,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17229123168460822,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0033748239377842937,
+          "worst": 0.17229123168460822
+        },
+        {
+          "K": 2,
+          "N": 64,
+          "best": 0.16891640774682393,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17229123168460822,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0033748239377842937,
+          "worst": 0.17229123168460822
+        },
+        {
+          "K": 2,
+          "N": 64,
+          "best": 0.16891640774682393,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17229123168460822,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0033748239377842937,
+          "worst": 0.17229123168460822
+        },
+        {
+          "K": 2,
+          "N": 64,
+          "best": 0.16891640774682393,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.17229123168460822,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0033748239377842937,
+          "worst": 0.17229123168460822
+        },
+        {
+          "K": 3,
+          "N": 64,
+          "best": 0.1588962039610694,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.16188563521552202,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.006263078351240792,
+          "worst": 0.1651592823123102
+        },
+        {
+          "K": 3,
+          "N": 64,
+          "best": 0.1588962039610694,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.16188563521552202,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.006263078351240792,
+          "worst": 0.1651592823123102
+        },
+        {
+          "K": 3,
+          "N": 64,
+          "best": 0.1588962039610694,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.16188563521552202,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.006263078351240792,
+          "worst": 0.1651592823123102
+        },
+        {
+          "K": 3,
+          "N": 64,
+          "best": 0.1588962039610694,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.16188563521552202,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.006263078351240792,
+          "worst": 0.1651592823123102
+        },
+        {
+          "K": 4,
+          "N": 64,
+          "best": 0.13775208502146308,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14139140031233977,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010552987150740684,
+          "worst": 0.14830507217220376
+        },
+        {
+          "K": 4,
+          "N": 64,
+          "best": 0.13775208502146308,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14139140031233977,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010552987150740684,
+          "worst": 0.14830507217220376
+        },
+        {
+          "K": 4,
+          "N": 64,
+          "best": 0.13775208502146308,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14139140031233977,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010552987150740684,
+          "worst": 0.14830507217220376
+        },
+        {
+          "K": 4,
+          "N": 64,
+          "best": 0.13775208502146308,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14139140031233977,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010552987150740684,
+          "worst": 0.14830507217220376
+        },
+        {
+          "K": 5,
+          "N": 64,
+          "best": 0.13770701679757755,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1481057551389029,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010520264313405803,
+          "worst": 0.14822728111098335
+        },
+        {
+          "K": 5,
+          "N": 64,
+          "best": 0.13770701679757755,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1481057551389029,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010520264313405803,
+          "worst": 0.14822728111098335
+        },
+        {
+          "K": 5,
+          "N": 64,
+          "best": 0.13770701679757755,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1481057551389029,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010520264313405803,
+          "worst": 0.14822728111098335
+        },
+        {
+          "K": 5,
+          "N": 64,
+          "best": 0.13770701679757755,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1481057551389029,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.010520264313405803,
+          "worst": 0.14822728111098335
+        },
+        {
+          "K": 6,
+          "N": 64,
+          "best": 0.1276573018622515,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1478567174897582,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020423737408655634,
+          "worst": 0.14808103927090713
+        },
+        {
+          "K": 6,
+          "N": 64,
+          "best": 0.1276573018622515,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1478567174897582,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020423737408655634,
+          "worst": 0.14808103927090713
+        },
+        {
+          "K": 6,
+          "N": 64,
+          "best": 0.1276573018622515,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1478567174897582,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020423737408655634,
+          "worst": 0.14808103927090713
+        },
+        {
+          "K": 6,
+          "N": 64,
+          "best": 0.1276573018622515,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1478567174897582,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020423737408655634,
+          "worst": 0.14808103927090713
+        },
+        {
+          "K": 7,
+          "N": 64,
+          "best": 0.12717828590702895,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1462446607199475,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020739574735355426,
+          "worst": 0.14791786064238438
+        },
+        {
+          "K": 7,
+          "N": 64,
+          "best": 0.12717828590702895,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1462446607199475,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020739574735355426,
+          "worst": 0.14791786064238438
+        },
+        {
+          "K": 7,
+          "N": 64,
+          "best": 0.12717828590702895,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1462446607199475,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020739574735355426,
+          "worst": 0.14791786064238438
+        },
+        {
+          "K": 7,
+          "N": 64,
+          "best": 0.12717828590702895,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.1462446607199475,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.020739574735355426,
+          "worst": 0.14791786064238438
+        },
+        {
+          "K": 8,
+          "N": 64,
+          "best": 0.14334394331705408,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14603956591492476,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.004467455319032254,
+          "worst": 0.14781139863608633
+        },
+        {
+          "K": 8,
+          "N": 64,
+          "best": 0.14334394331705408,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14603956591492476,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.004467455319032254,
+          "worst": 0.14781139863608633
+        },
+        {
+          "K": 8,
+          "N": 64,
+          "best": 0.14334394331705408,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14603956591492476,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.004467455319032254,
+          "worst": 0.14781139863608633
+        },
+        {
+          "K": 8,
+          "N": 64,
+          "best": 0.14334394331705408,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "median": 0.14603956591492476,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.004467455319032254,
+          "worst": 0.14781139863608633
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 2,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 3,
+          "N": 2,
+          "best": 0.29289321881345254,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.29289321881345254,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.29289321881345254
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 1,
+          "N": 4,
+          "best": 0.5590169943749475,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5590169943749475,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5590169943749475
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 2,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 3,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 4,
+          "N": 4,
+          "best": 0.5,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 1,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 2,
+          "N": 8,
+          "best": 0.44345564951629646,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.44345564951629646,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.44345564951629646
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 3,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 4,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 5,
+          "N": 8,
+          "best": 0.5870859512116514,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.5870859512116514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.5870859512116514
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 1,
+          "N": 16,
+          "best": 0.34829308019504834,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.34829308019504834,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0,
+          "worst": 0.34829308019504834
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 2,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 3,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.28641098093474,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.022948235834374553,
+          "worst": 0.30935921676911454
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.3151381116651431,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.32430140983947664,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.01852058371083537,
+          "worst": 0.3336586953759785
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 4,
+          "N": 16,
+          "best": 0.30618621784789724,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3151381116651431,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.0732035011057724,
+          "worst": 0.37938971895366963
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3029799910885206,
+          "n": 3,
+          "q": 1,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3088782598757514,
+          "n": 3,
+          "q": 2,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3088782598757514,
+          "n": 3,
+          "q": 3,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        },
+        {
+          "K": 5,
+          "N": 16,
+          "best": 0.28641098093474,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "median": 0.3088782598757514,
+          "n": 3,
+          "q": 4,
+          "seeds": [
+            17,
+            43,
+            71
+          ],
+          "spread": 0.028727130730403116,
+          "worst": 0.3151381116651431
+        }
+      ],
+      "status": "PASS",
+      "stochastic_candidates": [
+        "q5-c1-lexicographic-grid",
+        "q5-c2-large-neighborhood"
+      ],
+      "tolerance_note": "independent-recompute tolerance 1e-10; association drift allowance 1e-09"
+    }
+  },
+  "schema_version": "1.0",
+  "wall_clock_s": 2.314503899993724
+}

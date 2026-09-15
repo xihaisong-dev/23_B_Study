@@ -1,0 +1,708 @@
+{
+  "artifact_class": "formal_experiment",
+  "level": "L4",
+  "problems": {
+    "q1": {
+      "measurements": 8,
+      "rows": [
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c1-palm-row2",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c1-palm-row2",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c1-palm-row2",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c1-palm-row2",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q1-c2-structure-reconnect",
+          "delta": 0.0,
+          "q": 16,
+          "rmse_ablated": 4.329780281177466e-17,
+          "rmse_full": 4.329780281177466e-17,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        }
+      ],
+      "status": "PASS",
+      "variants": [
+        "no_hierarchical_init",
+        "no_support_reconnect",
+        "no_discrete_polish",
+        "fixed_butterfly_vs_reconnectable"
+      ]
+    },
+    "q2": {
+      "measurements": 8,
+      "rows": [
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "delta": 2.8227297977253825,
+          "q": 3,
+          "rmse_ablated": 3.115623016538835,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c1-sp2-recursive",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "delta": 2.8227297977253825,
+          "q": 3,
+          "rmse_ablated": 3.115623016538835,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q2-c2-relax-project-polish",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        }
+      ],
+      "status": "PASS",
+      "variants": [
+        "no_hierarchical_init",
+        "no_support_reconnect",
+        "no_discrete_polish",
+        "fixed_butterfly_vs_reconnectable"
+      ]
+    },
+    "q3": {
+      "measurements": 8,
+      "rows": [
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "delta": 2.8227297977253825,
+          "q": 3,
+          "rmse_ablated": 3.115623016538835,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c1-discrete-coordinate",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "delta": 2.8227297977253825,
+          "q": 3,
+          "rmse_ablated": 3.115623016538835,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q3-c2-hierarchical-reconnect",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        }
+      ],
+      "status": "PASS",
+      "variants": [
+        "no_hierarchical_init",
+        "no_support_reconnect",
+        "no_discrete_polish",
+        "fixed_butterfly_vs_reconnectable"
+      ]
+    },
+    "q4": {
+      "measurements": 8,
+      "rows": [
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c1-generic-discrete",
+          "delta": 100.76237036073974,
+          "q": 3,
+          "rmse_ablated": 100.97788360209397,
+          "rmse_full": 0.21551324135422334,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c1-generic-discrete",
+          "delta": 0.5436759142268682,
+          "q": 3,
+          "rmse_ablated": 0.7591891555810916,
+          "rmse_full": 0.21551324135422334,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c1-generic-discrete",
+          "delta": 0.5436759142268682,
+          "q": 3,
+          "rmse_ablated": 0.7591891555810916,
+          "rmse_full": 0.21551324135422334,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c1-generic-discrete",
+          "delta": 0.5436759142268682,
+          "q": 3,
+          "rmse_ablated": 0.7591891555810916,
+          "rmse_full": 0.21551324135422334,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "delta": 100.76237036073974,
+          "q": 3,
+          "rmse_ablated": 100.97788360209397,
+          "rmse_full": 0.21551324135422334,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "delta": 0.5436759142268682,
+          "q": 3,
+          "rmse_ablated": 0.7591891555810916,
+          "rmse_full": 0.21551324135422334,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "delta": 0.5436759142268682,
+          "q": 3,
+          "rmse_ablated": 0.7591891555810916,
+          "rmse_full": 0.21551324135422334,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 5,
+          "N": 32,
+          "candidate_id": "q4-c2-kron-reconnect",
+          "delta": 0.5436759142268682,
+          "q": 3,
+          "rmse_ablated": 0.7591891555810916,
+          "rmse_full": 0.21551324135422334,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        }
+      ],
+      "status": "PASS",
+      "variants": [
+        "no_hierarchical_init",
+        "no_support_reconnect",
+        "no_discrete_polish",
+        "fixed_butterfly_vs_reconnectable"
+      ]
+    },
+    "q5": {
+      "measurements": 32,
+      "rows": [
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.7071067811865475,
+          "q": 1,
+          "rmse_ablated": 1.0,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 1,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 1,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 1,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 1.2882456112707372,
+          "q": 2,
+          "rmse_ablated": 1.5811388300841898,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 2,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 2,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 2,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 2.8227297977253825,
+          "q": 3,
+          "rmse_ablated": 3.115623016538835,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 4.063967238790582,
+          "q": 4,
+          "rmse_ablated": 4.356860457604034,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 4,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 4,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c1-lexicographic-grid",
+          "delta": 0.0,
+          "q": 4,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.7071067811865475,
+          "q": 1,
+          "rmse_ablated": 1.0,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 1,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 1,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 1,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 1.2882456112707372,
+          "q": 2,
+          "rmse_ablated": 1.5811388300841898,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 2,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 2,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 2,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 2.8227297977253825,
+          "q": 3,
+          "rmse_ablated": 3.115623016538835,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 3,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 4.063967238790582,
+          "q": 4,
+          "rmse_ablated": 4.356860457604034,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_hierarchical_init"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 4,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_support_reconnect"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 4,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "no_discrete_polish"
+        },
+        {
+          "K": 1,
+          "N": 2,
+          "candidate_id": "q5-c2-large-neighborhood",
+          "delta": 0.0,
+          "q": 4,
+          "rmse_ablated": 0.29289321881345254,
+          "rmse_full": 0.29289321881345254,
+          "variant": "fixed_butterfly_vs_reconnectable"
+        }
+      ],
+      "status": "PASS",
+      "variants": [
+        "no_hierarchical_init",
+        "no_support_reconnect",
+        "no_discrete_polish",
+        "fixed_butterfly_vs_reconnectable"
+      ]
+    }
+  },
+  "schema_version": "1.0",
+  "wall_clock_s": 2.314503899993724
+}

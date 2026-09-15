@@ -1,6 +1,8 @@
-# 基线阶段结果报告
+# 结果报告（L1 基线 + L2 对擂 + L3 稳健性 + L4 消融）
 
-状态：`BLOCKED`。L0 与全部确定性基线已运行；挑战者、稳健性和消融仍为 `NOT_RUN`，因此不宣布最终胜者。
+状态：L0 与全部确定性基线（250 run）、挑战者对擂（1230 run）、L3 稳健性与 L4 消融均已运行；L3/L4 结论见文末两节。
+
+> 第 1 节为基线阶段的原始记录，保持原文不变；对擂与 L3/L4 记录追加在后。
 
 - 协议 SHA-256：`c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`
 - 协议冻结 SHA-256：`b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48`
@@ -265,3 +267,65 @@
 所有数值均来自本轮新 run，并在各自 `run_manifest.json` 中绑定目标、因子、代码树、协议及冻结哈希。独立复算从持久化稀疏因子文件重新加载并计算。
 
 问题 5 中 `INFEASIBLE` 表示因子合法但 `RMSE>0.1`；它不是运行失败，也不得被当作胜者。
+
+
+---
+
+## L2 对擂结果（追加）
+- 汇总 run 数：1480（被拒 0，0 表示全部 manifest 可解析且路径存在）
+- 状态分布：`{"CONSTRAINT_FAIL": 1, "INFEASIBLE": 957, "PASS": 522}`
+- 协议 SHA-256：`c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`
+
+| 问题 | 注册候选 | 运行数 | 可行运行数 | winner | winner 依据 | winner RMSE | L | C |
+| --- | ---: | ---: | ---: | --- | --- | ---: | ---: | ---: |
+| q1 | 3 | 66 | 66 | `q1-b0-scaled-radix2` | feasible | 4.329780281e-17 | 4 | 64 |
+| q2 | 3 | 235 | 235 | `q2-b0-onefactor-quantize` | feasible | 0.1767766953 | 0 | 0 |
+| q3 | 3 | 175 | 175 | `q3-b0-quantized-butterfly` | feasible | 0.1767766953 | 0 | 0 |
+| q4 | 3 | 47 | 46 | `q4-c1-generic-discrete` | feasible | 0.1841023057 | 0 | 0 |
+| q5 | 3 | 957 | 0 | `q5-b0-q1-butterfly` | best_structurally_valid_but_rmse_above_threshold | 0.125 | 0 | 0 |
+
+### 问题 5 的实质结论
+
+问题 5 的全部运行均不可行（`RMSE > 0.1`），最好值为 `0.125`，并非搜索强度不足：约束 2 要求系数实虚部为整数，故任意合法乘积逐元素属于高斯整数环 `Z[i]`；单位化目标每项模长 `1/sqrt(N)`，任取 `z in Z[i]` 有 `|f - z| >= min(1/sqrt(N), 1 - 1/sqrt(N))`，于是 `RMSE >= d_N`，而 `d_64 = 1/8 = 0.125 > 0.1`，冻结六实例的可行域为空。证明见 `03_model/Q5_GAUSSIAN_INTEGER_INFEASIBILITY.md`，本分支已独立复算 `d_N`。
+
+因此 `05_results/tournament.json` 中问题 5 的 `winner_id` 标注为 `winner_basis = "best_structurally_valid_but_rmse_above_threshold"`：它是约束合法但超出阈值的最好运行，**不是可行解**。终局文本应写「已证明不可行」，不得写成「在预算内未找到」。
+
+## L3 稳健性（追加，`05_results/l3_robustness.json`）
+
+协议要求每个挑战者在每个注册实例上跑满种子 `{17, 43, 71}` 并保留失败运行，这些运行即种子稳健性证据，故 L3 在**已记录的运行集上测量**，不重复执行。
+
+| 问题 | 状态 | 种子覆盖完整 | 测量实例数 | 结合顺序检查 |
+| --- | --- | --- | ---: | --- |
+| q1 | PASS | True | 12 | PASS |
+| q2 | PASS | True | 70 | PASS |
+| q3 | PASS | True | 50 | PASS |
+| q4 | PASS | True | 14 | PASS |
+| q5 | PASS | True | 264 | PASS |
+
+- 每个 (问题, 实例, 候选) 组内报告跨种子最好 / 中位 / 最差 RMSE 与极差；
+- 独立复算容差沿用协议值 `1e-10`；
+- 乘法结合顺序：对记录因子按左结合与右结合重建乘积，最大逐元素差不超 `1e-9`。
+
+边界：L3 未新增种子运行，只测量协议已要求的三种子覆盖。
+
+## L4 消融（追加，`05_results/l4_ablation.json`）
+
+协议点名的四种消融已在本脚本内实跑（非引用）：`no_hierarchical_init`、`no_support_reconnect`、`no_discrete_polish`、`fixed_butterfly_vs_reconnectable`。
+
+| 问题 | 状态 | 测量数 |
+| --- | --- | ---: |
+| q1 | PASS | 8 |
+| q2 | PASS | 8 |
+| q3 | PASS | 8 |
+| q4 | PASS | 8 |
+| q5 | PASS | 32 |
+
+每条记录含 `rmse_full`、`rmse_ablated` 与 `delta`。边界：消融以「关闭组件后重跑」实现，粒度较粗；测量数受 `--ablation-instances` 限制，未覆盖全部注册实例。
+
+## 结论与限制（追加）
+
+1. 问题 1 的 winner 为精确构造（`RMSE <= 1.4e-15`，`N=2..64`），且 `L` 与该问题确定性基线一致；
+2. 问题 2/3/4 的 winner 在各自 `(N,K,q)` 上是本次运行集内的最好可行运行，按协议写作 `best_found`；本次挑战者未在 q3 上超过基线，不主张改进；
+3. 问题 5 已证明不可行，`winner_id` 仅为约束合法的最好运行，不是可行解；
+4. L3/L4 状态来自实测文件，不是声明；两者均未覆盖全部注册实例（见各自边界）；
+5. `metrics.json` 与 `tournament.json` 由 `aggregate_results.py` 从已提交的 run manifest 确定性重建，可重复执行。

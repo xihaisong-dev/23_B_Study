@@ -1,0 +1,91 @@
+{
+  "actor": "compute-agent",
+  "change_request": null,
+  "created_at": "2026-09-15T05:53:59+00:00",
+  "dependencies": [
+    {
+      "manifest_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+      "stage": "tournament_protocol"
+    }
+  ],
+  "files": [
+    {
+      "path": "03_model/ANALYSIS_MODELING_REPORT.md",
+      "sha256": "1b5428a271ff55eeda5a8d70d440f73e77bf04ed625bbfd2bfc607e602c1a605",
+      "size": 7956
+    },
+    {
+      "path": "03_model/tournament_protocol.json",
+      "sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+      "size": 34087
+    },
+    {
+      "path": "05_results/metrics.json",
+      "sha256": "dea71e1f59d803ea6e3e1499a861a19b6ca6bc5d240eff988e72b0e0859bb966",
+      "size": 1121256
+    },
+    {
+      "path": "05_results/tournament.json",
+      "sha256": "33672f7c11f9eedeb87646238465b95200242a15e4a8e9f5ca28840b02140131",
+      "size": 23999
+    },
+    {
+      "path": "05_results/RESULTS_REPORT.md",
+      "sha256": "e81f5dd11dd7d8ecdf958ca0c908cc98e37f4d6f3fd5491a62267278b947550a",
+      "size": 38299
+    },
+    {
+      "path": "05_results/challenger_runs.json",
+      "sha256": "2c5cebe68e6ed04728106ec1cf3beee680b08933b16eb524b1362ec002e0aab9",
+      "size": 745138
+    },
+    {
+      "path": "05_results/l3_robustness.json",
+      "sha256": "657c45cb0dc4a5b69d892af26b1ab2f4c826efb83a0bb68eaba9f892d0e64aa7",
+      "size": 130488
+    },
+    {
+      "path": "05_results/l4_ablation.json",
+      "sha256": "f354417034a83c7733300daa6e4fb9811e2b1b1cb719d02d4e386fda2633e271",
+      "size": 20262
+    },
+    {
+      "path": "00_admin/freezes/tournament_protocol.json",
+      "sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+      "size": 866
+    },
+    {
+      "path": "04_code/src/dft_integer_approx/aggregate_results.py",
+      "sha256": "45c8eac86c9269e6fb67d14212a8b250427e1f776a505d37862deb4d51a4daad",
+      "size": 14306
+    },
+    {
+      "path": "04_code/src/dft_integer_approx/robustness_ablation.py",
+      "sha256": "f2e3ad10a0e7a86c93631f412a05bb5328c3db267c42e409f9a5c4c1afc63b28",
+      "size": 14794
+    },
+    {
+      "path": "04_code/src/dft_integer_approx/challengers.py",
+      "sha256": "e23f723f2e1ddc3c10ce0c00a86d6cb225372241b3171463a913a2fd16437909",
+      "size": 11479
+    },
+    {
+      "path": "04_code/src/dft_integer_approx/challenger_core.py",
+      "sha256": "57da1c7d6e532113871a6a489f9d1d32308ed9a429537de469d6b3da5714b99d",
+      "size": 15162
+    },
+    {
+      "path": "04_code/src/dft_integer_approx/formal_challenger_runner.py",
+      "sha256": "bb4a896585671b169e508727000fc828f66a1ebdab7f3f788605688f12a4f64f",
+      "size": 17162
+    },
+    {
+      "path": "04_code/scripts/run_challengers.py",
+      "sha256": "9985836b5cd9f23ff7151f4f8cf06736bdafce5f3d3d6f322df3c139f8ddab05",
+      "size": 714
+    }
+  ],
+  "schema_version": "3.0",
+  "stage": "model_results",
+  "status": "PASS"
+}
