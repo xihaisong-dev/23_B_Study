@@ -2,7 +2,7 @@
   "schema_version": "3.0",
   "gate": "protocol",
   "status": "FAIL",
-  "checked_at": "2026-09-15T01:17:29+00:00",
+  "checked_at": "2026-09-15T01:32:43+00:00",
   "errors": [
     "rules status is not PASS",
     "input manifest status is not PASS",

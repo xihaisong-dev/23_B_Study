@@ -14,8 +14,18 @@
         "source": "https://github.com/reinshift/CPMC2023B/blob/main/DFT类矩阵的整数分解逼近.docx",
         "comparison": "两份 DOCX 二进制不同；分别经 Pandoc 提取为纯文本并删除全部空白后，均为 5431 个字符且逐字符完全一致",
         "corroborating_sha256": "508b2151dcbb9ed05b1656a7baa0e4b21ddfad79d09d3cc48733fe20a94f4ecf"
+      },
+      "archive_mirror": {
+        "status": "PASS",
+        "source": "https://github.com/xihaisong-dev/MathModel/tree/master/国赛试题/2023年研究生数学建模竞赛试题/B题",
+        "repository_commit": "cd5be91735ebf11d5ee52eb170e86a6d07131977",
+        "git_blob": "ab1a4e6e2abc1dff678d0043b29a499cfbcbcb1c",
+        "size": 205337,
+        "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+        "comparison": "归档仓库 B 题 DOCX 与 01_problem/original 中当前文件逐字节完全一致",
+        "authority_boundary": "该 GitHub 仓库是用户提供的后续归档镜像，不是主办方下载端点；因此增强版本一致性证据，但不把数据类别升格为 official"
       }
     }
   ],
-  "blocked_reason": "主办方公开页面确认 2023 B 题名称，且本地 DOCX 全文与独立公开副本一致；但题目 ZIP 当年需登录竞赛系统下载，尚未取得官方 ZIP/MD5，不能把本地 DOCX 升格为 official"
+  "blocked_reason": "主办方公开页面确认 2023 B 题名称；本地 DOCX 与用户归档镜像逐字节一致，且全文与另一独立公开副本一致。但归档镜像不是主办方下载端点，仍未取得官方 ZIP/MD5，不能把本地 DOCX 升格为 official"
 }

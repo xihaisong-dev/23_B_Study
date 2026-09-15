@@ -70,3 +70,11 @@
 - 接口复核：门禁只接受协议 `status=PASS`，并递归核验 `problem` 与 `tournament_protocol` 冻结清单、依赖清单哈希、文件哈希和大小；`FROZEN` token 明确拒绝，因子乘积顺序与 D-007 一致。
 - 主分支验收：`python -m unittest discover -s 04_code/tests -p 'test_*.py'` 为 52/52 PASS；`validate_protocol.py` 与 `run_tournament.py` 均以退出码 1 拒绝当前 `BLOCKED` 协议，未写入 `05_results`。
 - 继续阻断：本次合并不构成协议冻结。只有规则、题面、检索和协议门禁全部通过并生成可验证冻结后，计算 Agent 才能实现真实候选和启动 L0--L4 正式对擂。
+
+## D-009 用户归档仓库的题面二进制核验
+
+- 时间：2026-09-15
+- 用户提供：`xihaisong-dev/MathModel` 的 `国赛试题/2023年研究生数学建模竞赛试题/B题` 目录。
+- 固定版本：仓库提交 `cd5be91735ebf11d5ee52eb170e86a6d07131977`；B 题文件 Git blob 为 `ab1a4e6e2abc1dff678d0043b29a499cfbcb1c`。
+- 比对结果：镜像文件和本仓库 `01_problem/original/DFT类矩阵的整数分解逼近.docx` 均为 205337 字节，SHA-256 均为 `c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841`，逐字节完全一致。
+- 裁决：该证据确认当前工作副本就是用户归档中的同一版本，并与 D-006 的独立文本佐证形成双重交叉核验；但该 GitHub 目录没有 B 题原始 ZIP/官方 MD5，且不是主办方下载端点，因此仍标为 `third_party_copy/UNVERIFIED`，规则与问题冻结门禁继续失败关闭。
