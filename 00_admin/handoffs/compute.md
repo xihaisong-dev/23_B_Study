@@ -87,3 +87,24 @@
 - 下一步与接收人：
   1. **集成者/主 Agent**：审核 `e1f4194` 与本提案；裁决 `FROZEN` 门禁与 `product_order` 约定并写入 `DECISIONS.md`；推动题面规则冻结、检索与 `tournament_protocol` 冻结。
   2. **计算 Agent（下一轮）**：冻结校验 PASS 后同步最新 `main`，验证冻结哈希，映射真实候选（C1/C2/C3）并实现 NPZ/runner/汇总器，进入 L0–L4。
+
+## 对擂协议门禁接口修正交接
+
+- 角色/分支/工作树：E 计算 Agent；`agent/compute`；`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/compute`。
+- 内容提交：`2595bf019ae8730c26070f6a5a1943bfd2a6800d`。
+- 输入版本与哈希：
+  - `00_admin/workflow.json` SHA-256 `486ba2eaa9b2e48a294735e77ea2fa77d4509406e3054e5558970d666d1ea672`；机器状态契约只有明确 `PASS` 才放行。
+  - `03_model/tournament_protocol.json` SHA-256 `167635df24be6afdf40042345f2cd38995d03d5cde98047f29fc831bea302398`；本工作树仍为 `NOT_RUN`，只用于确认门禁继续失败关闭。
+  - `workflow_guard.py` 的 `verify_freeze`/`freeze` 实现作为接口事实源：冻结清单自身为 `status=PASS`、`stage=tournament_protocol`，并绑定文件 SHA-256/大小及 `problem` 冻结依赖。
+- 改动与接口影响：
+  - `04_code/src/dft_integer_approx/protocol_gate.py` 改为只接受协议 `status=PASS`，明确拒绝 `FROZEN` token；递归验证 `tournament_protocol`/`problem` 冻结元数据、依赖 manifest SHA-256、冻结文件 SHA-256/大小和工作区路径边界，并要求清单显式包含当前协议。文件 SHA-256 `e40412880a72c4b435c0ac2bfe2b5b4bc9334727a4e1583f6a9563f39ba3d27b`。
+  - `04_code/tests/test_protocol_gate.py` 增加合法放行、`FROZEN` token 拒绝、缺冻结、协议哈希漂移、依赖哈希漂移等测试。文件 SHA-256 `161b9b09071f7f254798b0dd716447f56919b2dda67e8a09cbbe52d07bead1d3`。
+  - `04_code/README.md` 与 `scripts/validate_protocol.py` 同步机器口径；未修改 `03_model/` 或 `05_results/`。
+- 测试与门禁：
+  - `python -m unittest discover -s 04_code/tests -p 'test_*.py' -v`：退出码 0，**52/52 PASS**。
+  - `python 04_code/scripts/validate_protocol.py`：退出码 1，原因是协议 `NOT_RUN`、`problems` 为空、缺冻结清单；按预期拒绝。
+  - `python 04_code/scripts/run_tournament.py`：退出码 1，按预期拒绝；没有启动候选或正式 tournament。
+  - `git diff --check`：PASS；pre-commit 分支写入边界检查：PASS。
+- run-id 与结果边界：`NOT_RUN`；没有创建、修改或覆盖任何 `05_results/` 文件，没有生成数值、排名或胜者。
+- 已知限制：本提交只修正冻结门禁接口；真实候选映射和 L0–L4 仍须等待上游规则/题面、检索、协议及冻结链全部 PASS。
+- 下一步与接收人：交给主 Agent 审核并合并；合并后以主工作树执行 `workflow_guard.py verify-freeze --stage tournament_protocol` 和本地 `validate_protocol.py` 双重校验，任何一项失败都不得进入正式运行。
