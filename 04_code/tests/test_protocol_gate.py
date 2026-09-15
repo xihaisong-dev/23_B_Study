@@ -1,5 +1,6 @@
 """Fail-closed protocol gate tests (temp workspaces, no 05_results writes)."""
 
+import hashlib
 import json
 import sys
 import tempfile
@@ -13,25 +14,60 @@ from dft_integer_approx import protocol_gate as g  # noqa: E402
 REPO_ROOT = str(Path(__file__).resolve().parents[2])
 
 
-def _write_workspace(freeze_status=None, protocol_status=None, problems=True):
+def _sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _entry(root, relative):
+    path = root / relative
+    return {"path": relative, "size": path.stat().st_size, "sha256": _sha256(path)}
+
+
+def _write_workspace(protocol_status="PASS", problems=True, with_freeze=True):
     tmp = tempfile.TemporaryDirectory()
     root = Path(tmp.name)
     model = root / "03_model"
     model.mkdir(parents=True)
-    admin = root / "00_admin" / "freezes"
-    admin.mkdir(parents=True)
+    freeze_dir = root / "00_admin" / "freezes"
+    freeze_dir.mkdir(parents=True)
 
     protocol = {
         "schema_version": "3.0",
-        "status": protocol_status if protocol_status is not None else "NOT_RUN",
+        "status": protocol_status,
         "problems": [{"problem_id": "q1"}] if problems else [],
     }
-    (model / "tournament_protocol.json").write_text(
-        json.dumps(protocol), encoding="utf-8"
-    )
-    if freeze_status is not None:
-        (admin / "tournament_protocol.json").write_text(
-            json.dumps({"status": freeze_status}), encoding="utf-8"
+    protocol_path = model / "tournament_protocol.json"
+    protocol_path.write_text(json.dumps(protocol), encoding="utf-8")
+
+    if with_freeze:
+        rules_path = root / "00_admin" / "rules.json"
+        rules_path.write_text(json.dumps({"status": "PASS"}), encoding="utf-8")
+        problem_freeze = freeze_dir / "problem.json"
+        problem_freeze.write_text(
+            json.dumps(
+                {
+                    "schema_version": "3.0",
+                    "stage": "problem",
+                    "status": "PASS",
+                    "dependencies": [],
+                    "files": [_entry(root, "00_admin/rules.json")],
+                }
+            ),
+            encoding="utf-8",
+        )
+        (freeze_dir / "tournament_protocol.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": "3.0",
+                    "stage": "tournament_protocol",
+                    "status": "PASS",
+                    "dependencies": [
+                        {"stage": "problem", "manifest_sha256": _sha256(problem_freeze)}
+                    ],
+                    "files": [_entry(root, "03_model/tournament_protocol.json")],
+                }
+            ),
+            encoding="utf-8",
         )
     return tmp, root
 
@@ -41,26 +77,31 @@ class TestGateAgainstRepo(unittest.TestCase):
         result = g.check_frozen(REPO_ROOT)
         self.assertFalse(result.allowed)
         joined = " ".join(result.reasons)
-        self.assertIn("NOT_RUN", joined)
+        self.assertIn("expected 'PASS'", joined)
         self.assertIn("freeze", joined)
 
 
 class TestGateOnTempWorkspaces(unittest.TestCase):
-    def test_frozen_but_no_freeze_file_refuses(self):
-        tmp, root = _write_workspace(
-            protocol_status="FROZEN", freeze_status=None, problems=True
-        )
+    def test_pass_but_no_freeze_file_refuses(self):
+        tmp, root = _write_workspace(with_freeze=False)
         try:
             result = g.check_frozen(str(root))
             self.assertFalse(result.allowed)
-            self.assertTrue(any("freeze" in r for r in result.reasons))
+            self.assertTrue(any("freeze" in reason for reason in result.reasons))
         finally:
             tmp.cleanup()
 
-    def test_all_preconditions_allow(self):
-        tmp, root = _write_workspace(
-            protocol_status="FROZEN", freeze_status="FROZEN", problems=True
-        )
+    def test_frozen_status_token_is_refused(self):
+        tmp, root = _write_workspace(protocol_status="FROZEN")
+        try:
+            result = g.check_frozen(str(root))
+            self.assertFalse(result.allowed)
+            self.assertTrue(any("expected 'PASS'" in reason for reason in result.reasons))
+        finally:
+            tmp.cleanup()
+
+    def test_verified_pass_protocol_allows(self):
+        tmp, root = _write_workspace()
         try:
             result = g.check_frozen(str(root))
             self.assertTrue(result.allowed, msg=result.reasons)
@@ -68,14 +109,34 @@ class TestGateOnTempWorkspaces(unittest.TestCase):
         finally:
             tmp.cleanup()
 
+    def test_protocol_hash_drift_refuses(self):
+        tmp, root = _write_workspace()
+        try:
+            path = root / "03_model" / "tournament_protocol.json"
+            path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+            result = g.check_frozen(str(root))
+            self.assertFalse(result.allowed)
+            self.assertTrue(any("frozen file changed" in reason for reason in result.reasons))
+        finally:
+            tmp.cleanup()
+
+    def test_dependency_hash_drift_refuses(self):
+        tmp, root = _write_workspace()
+        try:
+            path = root / "00_admin" / "freezes" / "problem.json"
+            path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+            result = g.check_frozen(str(root))
+            self.assertFalse(result.allowed)
+            self.assertTrue(any("dependency changed" in reason for reason in result.reasons))
+        finally:
+            tmp.cleanup()
+
     def test_empty_problems_refuses(self):
-        tmp, root = _write_workspace(
-            protocol_status="FROZEN", freeze_status="FROZEN", problems=False
-        )
+        tmp, root = _write_workspace(problems=False)
         try:
             result = g.check_frozen(str(root))
             self.assertFalse(result.allowed)
-            self.assertTrue(any("problems" in r for r in result.reasons))
+            self.assertTrue(any("problems" in reason for reason in result.reasons))
         finally:
             tmp.cleanup()
 
@@ -84,7 +145,7 @@ class TestGateOnTempWorkspaces(unittest.TestCase):
         try:
             result = g.check_frozen(tmp.name)
             self.assertFalse(result.allowed)
-            self.assertTrue(any("protocol" in r for r in result.reasons))
+            self.assertTrue(any("protocol" in reason for reason in result.reasons))
         finally:
             tmp.cleanup()
 

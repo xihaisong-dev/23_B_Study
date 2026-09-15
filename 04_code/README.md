@@ -31,11 +31,12 @@ python scripts/run_tournament.py        # 当前应拒绝
 
 放行条件（全部满足才 `allowed=True`）：
 
-1. `03_model/tournament_protocol.json` 的 `status == "FROZEN"`；
+1. `03_model/tournament_protocol.json` 的 `status == "PASS"`；
 2. 该协议的 `problems` 非空；
-3. `00_admin/freezes/tournament_protocol.json` 存在且 `status == "FROZEN"`。
+3. `00_admin/freezes/tournament_protocol.json` 存在、元数据为 `status == "PASS"`/`stage == "tournament_protocol"`，并通过文件 SHA-256、大小及上游 `problem` 冻结依赖校验；
+4. 冻结清单必须显式绑定当前 `03_model/tournament_protocol.json`。
 
-冻结 token（`FROZEN`）与冻结文件路径出自 `00_admin/proposals/modeling/TOURNAMENT_PROTOCOL_FREEZE_PACKET.md` 及先前 compute 交接的 `verify-freeze` 失败信息。
+`PASS` 是机器状态；“已冻结”由 `00_admin/freezes/tournament_protocol.json` 的可验证哈希清单证明，不使用 `FROZEN` 状态 token。该口径与 `workflow_guard.py verify-freeze --stage tournament_protocol` 一致。
 
 ## 模块
 

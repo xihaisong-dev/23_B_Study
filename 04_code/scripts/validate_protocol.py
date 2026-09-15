@@ -14,9 +14,9 @@ def main() -> int:
     result = check_frozen(".")
     print(json.dumps(result.as_dict(), ensure_ascii=False, indent=2))
     if result.allowed:
-        print("PROTOCOL FROZEN: formal runs are permitted.")
+        print("PROTOCOL PASS + FREEZE VERIFIED: formal runs are permitted.")
         return 0
-    print("PROTOCOL NOT FROZEN: formal runs refused (fail-closed).")
+    print("PROTOCOL/FREEZE NOT VERIFIED: formal runs refused (fail-closed).")
     return 1
 
 
