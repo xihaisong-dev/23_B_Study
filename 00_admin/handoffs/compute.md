@@ -57,3 +57,33 @@
 - 结果边界：未创建/修改任何 `05_results/` 产物，未生成或声称任何候选 RMSE、改善、胜者或最优性数值。
 - 接口影响：未改机器协议或现有代码。未来验证器以 D-005 为配置契约，只接受 beta=1；NPZ 用 factor/permutation operation stream 精确复原乘积，只有纯排列不计 K/L。
 - 下一步与接收人：总控/建模 Agent 需完成候选、种子、预算、容差和失败规则，生成并验证 `tournament_protocol` freeze；总控同时需批准 Python 兼容范围和锁定依赖。只有 verify-freeze PASS 后才返回计算 Agent 开始正式实现。
+
+## 预冻结计算端骨架与失败关闭门禁交接
+
+- 角色/分支/工作树：E 计算 Agent；`agent/compute`；`D:/研究生资料/学习资料/数模/17`（本轮工作目录，非独立 worktree）。
+- 同步：`git merge --no-edit main` 返回 `Already up to date`（`main` 已在分支历史内）。
+- 内容提交：`e1f41946e061466979bbcaeaabd0597ce7e4dccb`。
+- 基线：`7111a5af0f0619af4d2f81e1deabcebbaa8a8306`。
+- 输入版本与哈希：
+  - `03_model/tournament_protocol.json` SHA-256 `167635df24be6afdf40042345f2cd38995d03d5cde98047f29fc831bea302398`；状态 `NOT_RUN`、`problems` 为空，本轮未改动。
+  - `00_admin/freezes/tournament_protocol.json` 缺失（本轮与先前 `verify-freeze` 门禁失败原因一致）。
+  - `00_admin/semantic_contract.json`、`00_admin/DECISIONS.md`（含 D-005 固定 beta=1/单位化 DFT/RMSE/q/K/L 口径）作为已签署口径只读引用。
+- 命令与 run-id：
+  - `python -m unittest discover -s 04_code/tests -p "test_*.py"`：退出码 0，**49/49 PASS**。
+  - `python 04_code/scripts/validate_protocol.py`：退出码 1，`allowed=false`，三条原因（status `NOT_RUN`、`problems` 空、缺 freeze 文件）。
+  - `python 04_code/scripts/run_tournament.py`：退出码 1，拒绝运行。
+  - `git diff --check`：PASS；pre-commit 边界检查：PASS（`core.hooksPath=.githooks`，未用 `--no-verify`）。
+  - run-id：`NOT_RUN`（本轮无候选或正式实验）。
+- 产物路径（`04_code/`，纯标准库、无第三方依赖）：
+  - `README.md`、`pyproject.toml`；
+  - `src/dft_integer_approx/`：`targets`（式 (1)/(3) DFT、Kronecker、左起优先 `product`）、`metrics`（`RMSE=||F-P||_F/N`，D-005 `beta=1`）、`hardware`（`L`/`C=qL`，精确免计数集合、失败关闭）、`constraints`（约束 1 行稀疏、约束 2 字母表 `P_q` 精确成员）、`serialization`/`hashing`（规范字节与内容哈希）、`contracts`（协议适配只读对象）、`candidate_api`（候选 Protocol + 结构化失败 + fake）、`provenance`（run-id/环境/manifest）、`protocol_gate`（失败关闭门禁）、`runner`（门禁优先唯一入口）；
+  - `scripts/validate_protocol.py`、`scripts/run_tournament.py`；
+  - `tests/`：7 文件 49 用例，覆盖题面手算例 `[[1,2+4j],[1+2j,0]]` 的 L=2/C=6、字母表、行稀疏、Kronecker `F4⊗F8≠F32`、乘积顺序、非有限值/非方阵失败、门禁放行/拒绝；
+  - `00_admin/proposals/compute/GATE_AND_ORDER_CONVENTION.md`：记录门禁三条前置与「左起优先 vs 应用顺序」乘积约定，请集成者裁决。
+- 测试与门禁：unittest 49/49 PASS；`git diff --check` PASS；pre-commit 边界 PASS；协议冻结门禁 `FAIL`（`NOT_RUN`，缺 `00_admin/freezes/tournament_protocol.json`），未当作通过。
+- 结果边界：未创建/修改 `05_results/` 任何产物（`git diff main HEAD -- 05_results/` 为空）；未改动 `03_model/`；未生成或声称任何候选 RMSE、复杂度、胜者或最优性数值；测试输出仅写入系统临时目录。
+- 接口影响：未改机器协议或现有代码。新增 `targets.product`（左起优先 `A1@..@AK`）与 `protocol_gate` 的 `FROZEN` token/冻结路径，均出自冻结包准备件与先前 `verify-freeze` 失败信息，但仍需集成者在 `DECISIONS.md` 落盘（见提案）。
+- 已知限制：NPZ 安全加载（需锁定 NumPy）、真实候选映射、L0–L4 执行、`05_results/runs/<run-id>/` 不可覆盖写入与汇总器尚未实现，留待协议冻结后；本机 `pytest` 未装，测试用 stdlib `unittest`。
+- 下一步与接收人：
+  1. **集成者/主 Agent**：审核 `e1f4194` 与本提案；裁决 `FROZEN` 门禁与 `product_order` 约定并写入 `DECISIONS.md`；推动题面规则冻结、检索与 `tournament_protocol` 冻结。
+  2. **计算 Agent（下一轮）**：冻结校验 PASS 后同步最新 `main`，验证冻结哈希，映射真实候选（C1/C2/C3）并实现 NPZ/runner/汇总器，进入 L0–L4。
