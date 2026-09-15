@@ -1,0 +1,8 @@
+run_id=20260915T042725604689Z__q2__q2-c2-relax-project-polish__s43__pc253df79__cc0633793
+problem=q2
+candidate=q2-c2-relax-project-polish
+N=16
+K=1
+q=3
+seed=43
+status=PASS

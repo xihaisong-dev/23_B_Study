@@ -1,0 +1,94 @@
+{
+  "C": 768,
+  "K": 3,
+  "L": 48,
+  "N": 8,
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T042715515892Z__q1__q1-c1-palm-row2__s17__pc253df79__cc0633793/factors.json",
+      "sha256": "d47fb871f5ecbc0384e570185d32ff5d2c9f1035a9d714bc5b6aed5f87d88d67",
+      "size": 5039
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T042715515892Z__q1__q1-c1-palm-row2__s17__pc253df79__cc0633793/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "stdout": {
+      "path": "05_results/runs/20260915T042715515892Z__q1__q1-c1-palm-row2__s17__pc253df79__cc0633793/stdout.txt",
+      "sha256": "664096924ea734882d672a5da2a4d442f39e82cd89563f6b91546d5fa97e0f63",
+      "size": 148
+    }
+  },
+  "beta": 1,
+  "budget": {
+    "source": "frozen protocol segmented budget",
+    "wall_clock_s": 60
+  },
+  "candidate_id": "q1-c1-palm-row2",
+  "code_tree_sha256": "c063379367cf248dc02668c13d6fa594628f33eaf451724fd956bc1edd52160a",
+  "command": "python -X utf8 04_code\\scripts\\run_challengers.py --quiet",
+  "constraint_checks": {
+    "alphabet": {
+      "errors": [],
+      "status": "NOT_APPLICABLE"
+    },
+    "factor_hash_match": true,
+    "finite_square": true,
+    "independent_counts_match": true,
+    "independent_rmse_delta": 0.0,
+    "row_support": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true
+  },
+  "constraints_status": "PASS",
+  "data_class": "third_party_copy",
+  "diagnostics": {
+    "S0": 6.322656260880096e-30,
+    "S_final": 6.322656260880096e-30,
+    "accepted": 0,
+    "rejected": 3,
+    "row_cap_respected": true,
+    "seed": 17,
+    "strategy": "q1_uncapped_exact_descent"
+  },
+  "environment": {
+    "dependencies": {
+      "standard_library_only": true,
+      "third_party": []
+    },
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "factor_sha256s": [
+    "3c8e2a03e0daed2dfca0ab6866d26d3798b9e6cce0b7af81047261ed9bd66dec",
+    "28f6b5b15e5e8a86c4ac76ac2d98e8c4165c89833e8bddb3ce14ed3c383b7e17",
+    "a7c73f31c501ab761a3cbca2268609c46b02fa56241ba3a59a6cc22191d409bb"
+  ],
+  "failure": null,
+  "finished_at": "2026-09-15T04:27:15+00:00",
+  "formal": true,
+  "optimality_claim": "best_found",
+  "problem": "q1",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "problem_id": "q1",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "q": 16,
+  "rmse": 3.1431115805241707e-16,
+  "rmse_recompute_independent": 3.1431115805241707e-16,
+  "run_id": "20260915T042715515892Z__q1__q1-c1-palm-row2__s17__pc253df79__cc0633793",
+  "schema_version": "3.0",
+  "seed": 17,
+  "started_at": "2026-09-15T04:27:15+00:00",
+  "status": "PASS",
+  "target_sha256": "3f4efdf3a084f2290c56d5cd1b4f588b58d7bf360c4c8a82f68582c4fd0aa4c5",
+  "wall_clock_s": 0.003417200001422316
+}

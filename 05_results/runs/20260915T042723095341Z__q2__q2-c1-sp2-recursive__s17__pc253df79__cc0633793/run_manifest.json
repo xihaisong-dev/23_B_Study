@@ -1,0 +1,95 @@
+{
+  "C": 0,
+  "K": 4,
+  "L": 0,
+  "N": 4,
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T042723095341Z__q2__q2-c1-sp2-recursive__s17__pc253df79__cc0633793/factors.json",
+      "sha256": "0cf6807ac59396480d1f00f4b6e40a31470776a0088ea3d1df58f9f1e1e3e08c",
+      "size": 2446
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T042723095341Z__q2__q2-c1-sp2-recursive__s17__pc253df79__cc0633793/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "stdout": {
+      "path": "05_results/runs/20260915T042723095341Z__q2__q2-c1-sp2-recursive__s17__pc253df79__cc0633793/stdout.txt",
+      "sha256": "41df1d3f4acb50363ada9a315cee4962bd0a7ca99e493527c11b91c1b22d5d3b",
+      "size": 155
+    }
+  },
+  "beta": 1,
+  "budget": {
+    "source": "frozen protocol segmented budget",
+    "wall_clock_s": 60
+  },
+  "candidate_id": "q2-c1-sp2-recursive",
+  "code_tree_sha256": "c063379367cf248dc02668c13d6fa594628f33eaf451724fd956bc1edd52160a",
+  "command": "python -X utf8 04_code\\scripts\\run_challengers.py --quiet",
+  "constraint_checks": {
+    "alphabet": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "factor_hash_match": true,
+    "finite_square": true,
+    "independent_counts_match": true,
+    "independent_rmse_delta": 0.0,
+    "row_support": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "support_lower_bound": {
+      "status": "NOT_APPLICABLE",
+      "value": null
+    },
+    "target_hash_match": true
+  },
+  "constraints_status": "PASS",
+  "data_class": "third_party_copy",
+  "diagnostics": {
+    "S0": 4.0,
+    "S_final": 4.0,
+    "accepted": 0,
+    "rejected": 4,
+    "seed": 17,
+    "smoke": false,
+    "strategy": "q2_sp2_recursive"
+  },
+  "environment": {
+    "dependencies": {
+      "standard_library_only": true,
+      "third_party": []
+    },
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "factor_sha256s": [
+    "f58755eb751959259fe208ac85b8fd53b6a3fe23717dd188746efb65e0f00312",
+    "12124b1073024dd7c25f553775107e624c20aeda7e3f717d453b92c63d235f17",
+    "fd42d7831c94df658c0d110e27b6c65a61b0eedf8a1b5ab1c55b3704c3ed53ea",
+    "fd42d7831c94df658c0d110e27b6c65a61b0eedf8a1b5ab1c55b3704c3ed53ea"
+  ],
+  "failure": null,
+  "finished_at": "2026-09-15T04:27:23+00:00",
+  "formal": true,
+  "optimality_claim": "best_found",
+  "problem": "q2",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "problem_id": "q2",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "q": 3,
+  "rmse": 0.5,
+  "rmse_recompute_independent": 0.5,
+  "run_id": "20260915T042723095341Z__q2__q2-c1-sp2-recursive__s17__pc253df79__cc0633793",
+  "schema_version": "3.0",
+  "seed": 17,
+  "started_at": "2026-09-15T04:27:23+00:00",
+  "status": "PASS",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "wall_clock_s": 0.009733999999298248
+}

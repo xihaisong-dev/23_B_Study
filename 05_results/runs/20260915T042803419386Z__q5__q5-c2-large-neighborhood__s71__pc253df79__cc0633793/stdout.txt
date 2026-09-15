@@ -1,0 +1,8 @@
+run_id=20260915T042803419386Z__q5__q5-c2-large-neighborhood__s71__pc253df79__cc0633793
+problem=q5
+candidate=q5-c2-large-neighborhood
+N=16
+K=6
+q=2
+seed=71
+status=INFEASIBLE

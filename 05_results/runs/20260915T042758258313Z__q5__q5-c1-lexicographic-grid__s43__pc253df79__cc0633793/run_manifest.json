@@ -1,0 +1,99 @@
+{
+  "C": 0,
+  "K": 4,
+  "L": 0,
+  "N": 16,
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T042758258313Z__q5__q5-c1-lexicographic-grid__s43__pc253df79__cc0633793/factors.json",
+      "sha256": "8c11d99a204ef72884e2ffc00748508c1b25e87aab1136888f40c19c15c2d2e3",
+      "size": 4209
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T042758258313Z__q5__q5-c1-lexicographic-grid__s43__pc253df79__cc0633793/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "stdout": {
+      "path": "05_results/runs/20260915T042758258313Z__q5__q5-c1-lexicographic-grid__s43__pc253df79__cc0633793/stdout.txt",
+      "sha256": "da626080d77d3b86aa4c40bbcde810565d8f2aa694e6269e74406bc7fe763809",
+      "size": 172
+    }
+  },
+  "beta": 1,
+  "budget": {
+    "source": "frozen protocol segmented budget",
+    "wall_clock_s": 300
+  },
+  "candidate_id": "q5-c1-lexicographic-grid",
+  "code_tree_sha256": "c063379367cf248dc02668c13d6fa594628f33eaf451724fd956bc1edd52160a",
+  "command": "python -X utf8 04_code\\scripts\\run_challengers.py --quiet",
+  "constraint_checks": {
+    "alphabet": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "factor_hash_match": true,
+    "finite_square": true,
+    "independent_counts_match": true,
+    "independent_rmse_delta": 0.0,
+    "row_support": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true
+  },
+  "constraints_status": "PASS",
+  "data_class": "third_party_copy",
+  "diagnostics": {
+    "S0": 97.21792747981942,
+    "S_final": 26.923879532511286,
+    "accepted": 4,
+    "rejected": 3,
+    "seed": 43,
+    "smoke": false,
+    "strategy": "q5_discrete"
+  },
+  "environment": {
+    "dependencies": {
+      "standard_library_only": true,
+      "third_party": []
+    },
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "factor_sha256s": [
+    "2cc6305dcd1daa4a199cf80fcf7b2cedf14b7955a05c940650c7d80737dce0a8",
+    "dffda9fcf7882b60a0303ca9eb183147fb1e76460deefab36042ee364ee4e553",
+    "d9a4656c8d92e55627bd786abfea109829488925efd1f0b8bb1ddf8b30f9b033",
+    "c409dc5eaab571cb1a731ad2e3c5a90237fa0c168e97b7f9c63c3030c51fa59a"
+  ],
+  "failure": {
+    "error_type": "INFEASIBLE",
+    "message": "legal challenger has RMSE>0.1; retained as infeasible",
+    "stage": "q5 eligibility"
+  },
+  "finished_at": "2026-09-15T04:27:58+00:00",
+  "formal": true,
+  "optimality_claim": "best_found",
+  "problem": "q5",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "problem_id": "q5",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "q": 1,
+  "rmse": 0.32430140983947664,
+  "rmse_recompute_independent": 0.32430140983947664,
+  "run_id": "20260915T042758258313Z__q5__q5-c1-lexicographic-grid__s43__pc253df79__cc0633793",
+  "schema_version": "3.0",
+  "seed": 43,
+  "started_at": "2026-09-15T04:27:58+00:00",
+  "status": "INFEASIBLE",
+  "target_sha256": "998bf845abe6497e24535b92dfb11a94b733ee4c30c2432702f19cd0ace0d850",
+  "wall_clock_s": 0.048620599998685066
+}

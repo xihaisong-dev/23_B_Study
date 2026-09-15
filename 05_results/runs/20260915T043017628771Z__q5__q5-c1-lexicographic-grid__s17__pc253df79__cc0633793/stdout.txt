@@ -1,0 +1,8 @@
+run_id=20260915T043017628771Z__q5__q5-c1-lexicographic-grid__s17__pc253df79__cc0633793
+problem=q5
+candidate=q5-c1-lexicographic-grid
+N=64
+K=3
+q=4
+seed=17
+status=INFEASIBLE

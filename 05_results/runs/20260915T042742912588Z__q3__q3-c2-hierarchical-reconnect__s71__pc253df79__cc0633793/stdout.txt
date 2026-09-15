@@ -1,0 +1,8 @@
+run_id=20260915T042742912588Z__q3__q3-c2-hierarchical-reconnect__s71__pc253df79__cc0633793
+problem=q3
+candidate=q3-c2-hierarchical-reconnect
+N=32
+K=6
+q=3
+seed=71
+status=PASS

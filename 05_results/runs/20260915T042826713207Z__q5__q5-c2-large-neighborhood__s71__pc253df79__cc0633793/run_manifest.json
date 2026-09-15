@@ -1,0 +1,102 @@
+{
+  "C": 0,
+  "K": 7,
+  "L": 0,
+  "N": 32,
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T042826713207Z__q5__q5-c2-large-neighborhood__s71__pc253df79__cc0633793/factors.json",
+      "sha256": "5004fdcb652266d0dfc64ea78ec95197c68900f35f4c6dbccbf65ddf9e1fe333",
+      "size": 11503
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T042826713207Z__q5__q5-c2-large-neighborhood__s71__pc253df79__cc0633793/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "stdout": {
+      "path": "05_results/runs/20260915T042826713207Z__q5__q5-c2-large-neighborhood__s71__pc253df79__cc0633793/stdout.txt",
+      "sha256": "262fca8a1fd1aa9c06b03ea20874bfd4abdaf02260e2366f4f4b02c4e75685e1",
+      "size": 172
+    }
+  },
+  "beta": 1,
+  "budget": {
+    "source": "frozen protocol segmented budget",
+    "wall_clock_s": 900
+  },
+  "candidate_id": "q5-c2-large-neighborhood",
+  "code_tree_sha256": "c063379367cf248dc02668c13d6fa594628f33eaf451724fd956bc1edd52160a",
+  "command": "python -X utf8 04_code\\scripts\\run_challengers.py --quiet",
+  "constraint_checks": {
+    "alphabet": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "factor_hash_match": true,
+    "finite_square": true,
+    "independent_counts_match": true,
+    "independent_rmse_delta": 0.0,
+    "row_support": {
+      "errors": [],
+      "status": "PASS"
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true
+  },
+  "constraints_status": "PASS",
+  "data_class": "third_party_copy",
+  "diagnostics": {
+    "S0": 412.0462529702444,
+    "S_final": 41.59262131065837,
+    "accepted": 7,
+    "rejected": 11,
+    "seed": 71,
+    "smoke": false,
+    "strategy": "q5_discrete"
+  },
+  "environment": {
+    "dependencies": {
+      "standard_library_only": true,
+      "third_party": []
+    },
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "factor_sha256s": [
+    "f6048e98de86e3cdd16bc28d42370709d216a96798810a1c11414f2175094bde",
+    "74ca7fd6dcff2c79cf4b40faae05e7194b7c4b7cff4c214b369ce11e6cc80d9f",
+    "42985e38f003b6bc2652501d0178dbc21b91e90cc9419499389d56c3fc8cb7fc",
+    "b82a8451ac4fe40792528c8f755ddbbcdff44fca981a3e01b6762635be8809c9",
+    "47a10273b236bd2e0e90a39f00fb755e1533e91bfdca6f94bc08eff9e26b5244",
+    "3bf0d861884ac1c720c89a4647c872ea11b5c6be64daab354f80c55e443a7e11",
+    "1b3c2f2fdec805589f096da3dda3b7c83f5d40dc05d3c218dadb4dbe4500af83"
+  ],
+  "failure": {
+    "error_type": "INFEASIBLE",
+    "message": "legal challenger has RMSE>0.1; retained as infeasible",
+    "stage": "q5 eligibility"
+  },
+  "finished_at": "2026-09-15T04:28:27+00:00",
+  "formal": true,
+  "optimality_claim": "best_found",
+  "problem": "q5",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "problem_id": "q5",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "q": 1,
+  "rmse": 0.20153856764572337,
+  "rmse_recompute_independent": 0.20153856764572337,
+  "run_id": "20260915T042826713207Z__q5__q5-c2-large-neighborhood__s71__pc253df79__cc0633793",
+  "schema_version": "3.0",
+  "seed": 71,
+  "started_at": "2026-09-15T04:28:26+00:00",
+  "status": "INFEASIBLE",
+  "target_sha256": "c416f39a92aebc03fd1e65d9ca18c0eeec7b36e665c5d8a1284973200b15111e",
+  "wall_clock_s": 0.39179990000411635
+}

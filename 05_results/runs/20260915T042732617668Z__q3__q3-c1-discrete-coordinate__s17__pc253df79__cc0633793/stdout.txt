@@ -1,0 +1,8 @@
+run_id=20260915T042732617668Z__q3__q3-c1-discrete-coordinate__s17__pc253df79__cc0633793
+problem=q3
+candidate=q3-c1-discrete-coordinate
+N=4
+K=2
+q=3
+seed=17
+status=PASS
