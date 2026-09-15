@@ -1,6 +1,32 @@
 # 建模 Agent 交接
 
-## 当前交接：Q5 高斯整数格全局不可行性证书
+## 当前交接：K-无关界族的适用边界（补足 Q5 证书的射程）
+
+- 角色：M 建模 Agent
+- 状态：复算 `PASS`；结论为**限定性**（把 Q5 的 K-无关界族限定在 Q5）
+- 工作树 / 分支：`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/modeling`，`agent/modeling`
+- 内容提交：`d2ada2574a0f0b7a0a0b9dbdb3f1e0bcd1137b0d`（父提交 `186f151`）
+- 前置：`3dd246f`（Q5 高斯整数不可行性证书，已在 `main`）、`da5797e`（我的 `BOUND_AVAILABILITY_AUDIT.md`，已在 `main`）
+- 输入版本与哈希：`03_model/tournament_protocol.json`（冻结，SHA-256 与清单一致）；两份冻结清单复核**无漂移**
+- 命令与 run-id：`python -X utf8 03_model/checks/verify_q234_modulus_bounds.py`（退出码 0、`status=PASS`）；run-id `N/A`（建模证书，非正式实验）
+- 产物：
+  - `03_model/checks/verify_q234_modulus_bounds.py`（纯标准库）
+  - `03_model/checks/q234_modulus_bounds.json`（机器输出）
+  - `03_model/Q5_GAUSSIAN_INTEGER_INFEASIBILITY.md` 新增第 6 节「该 K-无关界族的适用边界」
+  - `03_model/checks/README.md` 文件清单补录
+- 结论：
+  1. Q5 证书所用的界族（只用字母表与目标模长、**不依赖 `K`**）**只在 Q5 生效**；
+  2. 判据是纯算术：`m_q = sqrt(2)·2^(q-1) ≥ sqrt(2) > 1/sqrt(N) = t` 对所有注册 `(N,q)` 成立，故逐项项 `max(0, t-p)` 恒为 0；该界只能通过"强迫某些位置取 0"起作用，即要求字母表内不存在模长小于 `t` 的非零元素；
+  3. 满足该条件的只有 `q = 1`（高斯整数，最小非零模长 1）配 `t = 1/8`（`N=64`）—— 正是问题 5 的情形，也只可能是问题 5；
+  4. 该脚本对 q3/q4 产生的非零数字（`N=4,K=1` 的 `0.176777`、`N=8,K=1` 的 `0.108253`）**全部来自行上限**，是结构界 `sqrt(N-min(N,2^K))/N` 的换形，与字母表无关；
+  5. 因此 `BOUND_AVAILABILITY_AUDIT.md` 的「K ≥ log2(N) 后无可用下界」对 Q2/Q3/Q4 成立，并未被 Q5 证书推翻——两者是**两族不同的界**（代数结构界 vs 模长/格点界）。
+- 本轮修正的自身缺陷（留档）：脚本初稿把 `t = 1/sqrt(N) < 1` 误断言为"仅从 `N=64` 起成立"（实际对所有 `N ≥ 2` 成立）；q3/q4 的行上限曾硬编码，已改为从冻结协议文本读取。
+- 验证：六个建模检查脚本全部退出码 0（`verify_row_bound`、`verify_row_bound_audit`、`verify_structural_bounds`、`verify_row_relaxation_bounds`、`verify_q5_gaussian_integer_infeasibility`、`verify_q234_modulus_bounds`）；`git diff --check` `PASS`；冻结清单哈希无漂移；误触发他人脚本输出（仅时间戳变化）已还原，未覆盖他人产出。
+- 已知限制：本文只做界的**射程**判定，不提供 Q2/Q3/Q4 的更强下界；该结论只覆盖冻结的有限实例，不外推到无限尺寸族（`N ≥ 128` 时 `t ≤ 0.1`，Q5 证书本身也要求不得外推）。
+- 接口影响：无协议改动；仅新增 `03_model/` 下文件。对论文的措辞约束：**不得**把 Q5 的 `d_N` 写法搬到 Q2/Q3/Q4。
+- 下一步与接收人：主 Agent 审核并集成；建模侧剩余可做的是 Q2/Q3/Q4 的更强下界（目前只有结构界，`2^K ≥ N` 后为空），若确认无更多可证界，则应把结论写成「这些问题上只能报告 `best_found`」。
+
+## 历史交接：Q5 高斯整数格全局不可行性证书
 
 - 角色：M 建模 Agent
 - 状态：数学证书与机器复核 `PASS`；结论限定于冻结注册实例
