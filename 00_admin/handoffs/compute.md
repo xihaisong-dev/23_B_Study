@@ -142,3 +142,13 @@
 - 历史失败保留：开发期首批 q4 曾因稀疏 JSON 未保存 IEEE-754 负零符号而触发因子字节哈希不一致；该 `CONSTRAINT_FAIL` run 及后续重跑批次均按不可删除原则保留。最终 `metrics.json` 共含 250 个历史/当前 run，其中 `latest_batch_run_ids` 的 50 项才是当前代码树证据集。
 - 结果边界：未实现或运行任何 c1/c2 挑战者；未选择最终 winner；未写 `PASS` 总状态；未执行 L2/L3/L4；未修改任何冻结文件。
 - 下一步与接收人：主 Agent 审核并合并本提交；随后计算 Agent 在同一冻结协议和预算下实现并运行全部挑战者，保留所有失败，完成 L2 后再做 L3/L4。论文 Agent 当前只能引用“基线阶段证据”，不得写最终赢家或最优性结论。
+
+## 挑战者统一 runner 与 smoke 里程碑
+
+- 角色/分支/工作树：E 计算 Agent；`agent/compute-challengers`；`worktrees/compute-challengers`。
+- 冻结输入：协议 SHA-256 `c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`；协议冻结清单 SHA-256 `b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48`；两重 gate 均 PASS，冻结文件未改。
+- 修复：q1 只在一个 counted factor 吸收 `1/sqrt(N)`，N=8 L0 断言 `L=20,C=320`；修 q1 重复缩放、q4 未定义排列、support swap 漏排列、离散全零投影回退连续解。
+- 实现：登记 10 个 challenger；seed 驱动初始化/更新/支持顺序；统一 runner 支持完整 dry-run、问题/候选筛选、smoke 和 full 入口；每次只新建 run-id，manifest 绑定批次/配置/代码/协议/冻结/目标/因子哈希及独立复算。
+- 验证：`unittest` 70/70 PASS；完整 L2 dry-run 为 1442 个互异 tuple；最新 smoke 15 个候选为 12 PASS + 3 q5 INFEASIBLE，0 CRASH/CONSTRAINT_FAIL；历史 smoke 失败 run 均保留。
+- 状态边界：`05_results/smoke_summary.json` 与 `validation_plan.json` 均为 `BLOCKED`、winner null；正式 L2 1442-run、L3、L4 均未运行。
+- 正式批次前阻塞：非 smoke 搜索仍是固定 pass 参考实现，尚未把 wall-clock/sweep/patience 注入循环，也未真实实现全部 beam/多行 reconnect 操作；须独立复核并在下一提交闭合后才可启动正式批次。

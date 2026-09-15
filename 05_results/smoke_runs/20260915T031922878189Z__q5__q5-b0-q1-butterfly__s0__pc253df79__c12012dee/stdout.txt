@@ -1,0 +1,8 @@
+run_id=20260915T031922878189Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c12012dee
+problem=q5
+candidate=q5-b0-q1-butterfly
+N=4
+K=2
+q=1
+seed=0
+status=INFEASIBLE

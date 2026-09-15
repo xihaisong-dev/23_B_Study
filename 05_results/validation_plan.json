@@ -1,0 +1,45 @@
+{
+  "schema_version": "3.0",
+  "status": "BLOCKED",
+  "winner_id": null,
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "levels": {
+    "L0": {
+      "status": "PASS",
+      "evidence": "05_results/l0_checks.json"
+    },
+    "L1": {
+      "status": "COMPLETE_BUT_Q1_SUPERSEDED",
+      "reason": "legacy runs retained; q1 L/C must be regenerated after single-factor scale fix"
+    },
+    "L2": {
+      "status": "SMOKE_ONLY",
+      "required": "complete frozen 1442-run plan with all failures retained"
+    },
+    "L3": {
+      "status": "NOT_RUN",
+      "axes": [
+        "seed",
+        "initialization_order",
+        "floating_tolerance",
+        "multiplication_association",
+        "boundary_K_q"
+      ],
+      "report": [
+        "best",
+        "median",
+        "worst"
+      ]
+    },
+    "L4": {
+      "status": "NOT_RUN",
+      "ablations": [
+        "no_hierarchical_initialization",
+        "no_support_reconnection",
+        "no_discrete_polish",
+        "fixed_vs_reconnectable_support"
+      ]
+    }
+  },
+  "blocking_reason": "Formal L2, L3 robustness, and L4 ablation are incomplete."
+}

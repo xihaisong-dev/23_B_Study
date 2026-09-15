@@ -1,0 +1,83 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T031644846879Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__cdb3b7697",
+  "problem_id": "q2",
+  "problem": "q2",
+  "candidate_id": "q2-b0-onefactor-quantize",
+  "N": 4,
+  "K": 1,
+  "q": 3,
+  "beta": 1,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 60,
+    "sweep_cap": null,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 0.0028855000018666033,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "factor_sha256s": [
+    "8d7a0ddce802130a30713a6984c27f2c8c3cc308276a27e4a8649a00159a9f11"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "NOT_APPLICABLE",
+      "value": null
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true
+  },
+  "rmse": 0.5,
+  "rmse_recompute_independent": 0.5,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "polish_passes": 0
+  },
+  "started_at": "2026-09-15T03:16:44+00:00",
+  "finished_at": "2026-09-15T03:16:44+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "db3b7697d683bd76d62d68bfa4702ecbb7dc62d8ad04feb0fae68b5209a8ab01",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T031644846879Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__cdb3b7697/factors.json",
+      "size": 354,
+      "sha256": "bb49f24911ca423604724f767da737584bc66eb7cd964da74df0e61e2dd6336f"
+    },
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T031644846879Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__cdb3b7697/stdout.txt",
+      "size": 163,
+      "sha256": "2c8d5d538b99dacd7660ca72c16ac714944f7470eec2b61282f65746a2f362b2"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T031644846879Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__cdb3b7697/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

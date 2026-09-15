@@ -75,7 +75,14 @@ def run_l0_checks(workspace: Path) -> Dict[str, Any]:
     exact_approx = approximate_matrix(exact.factors, exact.permutation)
     exact_rmse = rmse(dft_matrix(8), exact_approx)
     row_checks = [check_row_sparse(factor, 2)[0] for factor in exact.factors]
-    _record(checks, "radix2_exact_N8", exact_rmse <= 1e-12 and all(row_checks), {"rmse": exact_rmse, "K": len(exact.factors)})
+    exact_l = count_nontrivial_positions(exact.factors)
+    exact_c = hardware_complexity(exact.factors, 16)
+    _record(
+        checks,
+        "radix2_exact_N8",
+        exact_rmse <= 1e-12 and all(row_checks) and exact_l == 20 and exact_c == 320,
+        {"rmse": exact_rmse, "K": len(exact.factors), "L": exact_l, "C": exact_c},
+    )
 
     status = "PASS" if all(item["status"] == "PASS" for item in checks) else "FAIL"
     return {"schema_version": "3.0", "status": status, "checks": checks}

@@ -1,0 +1,8 @@
+run_id=20260915T031644820664Z__q1__q1-c1-palm-row2__s17__pc253df79__cdb3b7697
+problem=q1
+candidate=q1-c1-palm-row2
+N=4
+K=2
+q=16
+seed=17
+status=CRASH

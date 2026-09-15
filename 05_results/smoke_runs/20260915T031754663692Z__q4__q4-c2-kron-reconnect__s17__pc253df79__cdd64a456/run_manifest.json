@@ -1,0 +1,138 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T031754663692Z__q4__q4-c2-kron-reconnect__s17__pc253df79__cdd64a456",
+  "problem_id": "q4",
+  "problem": "q4",
+  "candidate_id": "q4-c2-kron-reconnect",
+  "N": 32,
+  "K": 5,
+  "q": 3,
+  "beta": 1,
+  "seed": 17,
+  "budget": {
+    "wall_clock_s": 900,
+    "sweep_cap": 15000,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 2.1263508000010916,
+  "status": "CONSTRAINT_FAIL",
+  "constraints_status": "FAIL",
+  "failure": {
+    "stage": "independent verification",
+    "error_type": "CONSTRAINT_FAIL",
+    "message": "constraint, hash, or independent metric mismatch"
+  },
+  "formal": false,
+  "run_scope": "SMOKE",
+  "target_sha256": "2e7115883a7ddc9b1877d330791d8312987f3b4045a8b4e837e5d437e11161f6",
+  "factor_sha256s": [
+    "9fc119f9189adc8270b184f2e8d73cfdc613b6b4ba1566c9b532e4f92aeff4bc",
+    "8b6a3f102646ee1ac09389e945e8bd56bf22207fa17225010e14cedaf4cd740d",
+    "089306179a591815d8855381d3fa168f16dc5b95f19e24f39335fe2b6897576a",
+    "46dbac593f4adc6f67794275d331f392278a4e610c510ae5415938dc6d067b6a",
+    "5e5f68f016f7934c1c87dfac3ebdbc67ac821da51628f48570e918e154b2140e"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "FAIL",
+      "errors": [
+        "factor 3: [5][5]=(-0.15088834764831843+0.062499999999999944j) not in P_3",
+        "factor 3: [5][7]=(0.06249999999999963+0.15088834764831854j) not in P_3",
+        "factor 3: [7][5]=(-0.025888347648318565+0.06250000000000004j) not in P_3",
+        "factor 3: [13][13]=(0.06249999999999993+0.15088834764831843j) not in P_3",
+        "factor 3: [13][15]=(0.15088834764831854-0.06249999999999962j) not in P_3",
+        "factor 3: [15][13]=(0.06250000000000003+0.02588834764831857j) not in P_3",
+        "factor 3: [15][15]=(-0.025888347648318703+0.06250000000000029j) not in P_3",
+        "factor 3: [21][21]=(-0.15088834764831843+0.06249999999999991j) not in P_3",
+        "factor 3: [21][23]=(0.0624999999999996+0.15088834764831854j) not in P_3",
+        "factor 3: [23][21]=(-0.02588834764831858+0.06250000000000003j) not in P_3",
+        "factor 3: [23][23]=(-0.06250000000000029-0.02588834764831871j) not in P_3",
+        "factor 3: [29][29]=(0.06249999999999986+0.15088834764831843j) not in P_3",
+        "factor 3: [29][31]=(0.15088834764831857-0.06249999999999955j) not in P_3",
+        "factor 3: [31][29]=(0.06250000000000001+0.0258883476483186j) not in P_3",
+        "factor 3: [31][31]=(-0.02588834764831873+0.06250000000000028j) not in P_3",
+        "factor 4: [5][4]=(-0.12500000000000003+0.12499999999999997j) not in P_3",
+        "factor 4: [5][5]=(0.12499999999999997-0.125j) not in P_3",
+        "factor 4: [7][6]=(-0.12499999999999996+0.12500000000000003j) not in P_3",
+        "factor 4: [7][7]=(0.1250000000000005-0.12499999999999947j) not in P_3",
+        "factor 4: [13][12]=(0.12500000000000006-0.12499999999999996j) not in P_3",
+        "factor 4: [13][13]=(-0.12499999999999999+0.12499999999999999j) not in P_3",
+        "factor 4: [15][14]=(0.12499999999999997-0.125j) not in P_3",
+        "factor 4: [15][15]=(-0.12500000000000053+0.12499999999999946j) not in P_3",
+        "factor 4: [21][20]=(0.12500000000000006-0.12499999999999996j) not in P_3",
+        "factor 4: [21][21]=(-0.12499999999999999+0.12499999999999999j) not in P_3",
+        "factor 4: [23][22]=(0.12499999999999997-0.125j) not in P_3",
+        "factor 4: [23][23]=(-0.12500000000000053+0.12499999999999946j) not in P_3",
+        "factor 4: [29][28]=(0.1249999999999999+0.12500000000000008j) not in P_3",
+        "factor 4: [29][29]=(-0.12499999999999993-0.12500000000000003j) not in P_3",
+        "factor 4: [31][30]=(0.12499999999999996+0.12500000000000003j) not in P_3",
+        "factor 4: [31][31]=(-0.1249999999999994-0.12500000000000056j) not in P_3"
+      ]
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true
+  },
+  "rmse": 0.22687234593393713,
+  "rmse_recompute_independent": 0.22687234593393713,
+  "L": 43,
+  "C": 129,
+  "diagnostics": {
+    "strategy": "kron_reconnect",
+    "seed": 17,
+    "protocol_method": "kron_initialised_cross_block_reconnect",
+    "beam_width": 16,
+    "reconnect_rows": [
+      1,
+      2,
+      4
+    ],
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": true,
+    "support_swaps": 9,
+    "S0_start": 52.70636682195767,
+    "accepted_updates": 0,
+    "rejected_updates": 5,
+    "S1_final": 52.70636682195767
+  },
+  "started_at": "2026-09-15T03:17:54+00:00",
+  "finished_at": "2026-09-15T03:17:56+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dd64a4564f76268e2167a377d54ef7bd3b60cb5302dbbf5e624c5bff3a5100ef",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T031754663692Z__q4__q4-c2-kron-reconnect__s17__pc253df79__cdd64a456/factors.json",
+      "size": 15878,
+      "sha256": "e58f68d1f7a71ab2cf58e8130158ed8f523c97f62a775884a69c4ff9b32575cc"
+    },
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T031754663692Z__q4__q4-c2-kron-reconnect__s17__pc253df79__cdd64a456/stdout.txt",
+      "size": 169,
+      "sha256": "ba10eb4ae0687b524df038f792cfe0e8bce2cabf313f028f35b4617761cebf7b"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T031754663692Z__q4__q4-c2-kron-reconnect__s17__pc253df79__cdd64a456/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

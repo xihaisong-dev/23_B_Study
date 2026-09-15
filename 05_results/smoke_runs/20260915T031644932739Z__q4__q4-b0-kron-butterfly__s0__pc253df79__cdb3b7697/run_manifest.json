@@ -1,0 +1,87 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T031644932739Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdb3b7697",
+  "problem_id": "q4",
+  "problem": "q4",
+  "candidate_id": "q4-b0-kron-butterfly",
+  "N": 32,
+  "K": 5,
+  "q": 3,
+  "beta": 1,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 60,
+    "sweep_cap": null,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 0.029182700000092154,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "target_sha256": "2e7115883a7ddc9b1877d330791d8312987f3b4045a8b4e837e5d437e11161f6",
+  "factor_sha256s": [
+    "dff18158abcdaf8daab28544aa5a4ee33375105eb0ad1db510804cb9bfd286d2",
+    "27edd8b3c0713fadee57062a903ebb23c99b02b36ff65743344afd4385a142bb",
+    "22ed078ffa3623017634ef34849068f95d2db30a5fc3a7754035f444de61f76f",
+    "aa6053458117e9bd33f7e49ce8deb4c64aa78145191dd5fcd61ecd5b33a3a1de",
+    "a46296be18d3774cc3109fce6abd1e3cc0cb2f07789d562471be5c2241ca842e"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true
+  },
+  "rmse": 0.7183905324091097,
+  "rmse_recompute_independent": 0.7183905324091097,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "polish_passes": 0
+  },
+  "started_at": "2026-09-15T03:16:44+00:00",
+  "finished_at": "2026-09-15T03:16:44+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "db3b7697d683bd76d62d68bfa4702ecbb7dc62d8ad04feb0fae68b5209a8ab01",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T031644932739Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdb3b7697/factors.json",
+      "size": 44414,
+      "sha256": "79c9a21565c2e252d0606731a1a9f634bf9cbfb9ce3b5e28afa6c6ebaaac4fc9"
+    },
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T031644932739Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdb3b7697/stdout.txt",
+      "size": 156,
+      "sha256": "6c8b112c046237fb4e3002da53c5effea6f66488af55f67b2228d939296fd567"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T031644932739Z__q4__q4-b0-kron-butterfly__s0__pc253df79__cdb3b7697/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

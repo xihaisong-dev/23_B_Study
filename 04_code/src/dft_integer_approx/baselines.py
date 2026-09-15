@@ -47,12 +47,17 @@ def permutation_matrix(mapping: Sequence[int]) -> Matrix:
     return out
 
 
-def radix2_unitary_factors(n: int) -> Tuple[List[Matrix], List[List[List[int]]]]:
-    """Return counted factors whose product followed by bit reversal is unitary F_N."""
+def radix2_raw_factors(n: int) -> Tuple[List[Matrix], List[List[List[int]]]]:
+    """Return the unnormalised radix-2 factors for the raw DFT.
+
+    The returned product, followed on the right by bit reversal, is the raw DFT.
+    Keeping these factors unscaled is important for the frozen q1 construction:
+    its single ``1/sqrt(N)`` normalisation is absorbed into exactly one counted
+    factor, rather than being distributed as ``1/sqrt(2)`` over every layer.
+    """
     levels = _power_of_two_levels(n)
     application_stages: List[Matrix] = []
     application_masks: List[List[List[int]]] = []
-    scale = 1.0 / math.sqrt(2.0)
     for level in range(1, levels + 1):
         width = 1 << level
         half = width >> 1
@@ -63,15 +68,25 @@ def radix2_unitary_factors(n: int) -> Tuple[List[Matrix], List[List[List[int]]]]
                 top = block + offset
                 bottom = top + half
                 twiddle = cmath.exp(-2j * math.pi * offset / width)
-                stage[top][top] = scale
-                stage[top][bottom] = scale * twiddle
-                stage[bottom][top] = scale
-                stage[bottom][bottom] = -scale * twiddle
+                stage[top][top] = 1 + 0j
+                stage[top][bottom] = twiddle
+                stage[bottom][top] = 1 + 0j
+                stage[bottom][bottom] = -twiddle
                 masks[top] = [top, bottom]
                 masks[bottom] = [top, bottom]
         application_stages.append(stage)
         application_masks.append(masks)
     return list(reversed(application_stages)), list(reversed(application_masks))
+
+
+def radix2_unitary_factors(n: int) -> Tuple[List[Matrix], List[List[List[int]]]]:
+    """Return a layer-normalised radix-2 chain for projection baselines."""
+    factors, masks = radix2_raw_factors(n)
+    scale = 1.0 / math.sqrt(2.0)
+    return (
+        [[[scale * value for value in row] for row in factor] for factor in factors],
+        masks,
+    )
 
 
 def quantize_component(value: float, q: int) -> int:
@@ -88,7 +103,9 @@ def quantize_factors(factors: Sequence[Matrix], q: int) -> List[Matrix]:
 
 
 def exact_q1_baseline(n: int) -> BaselineSolution:
-    factors, masks = radix2_unitary_factors(n)
+    factors, masks = radix2_raw_factors(n)
+    scale = 1.0 / math.sqrt(n)
+    factors[0] = [[scale * value for value in row] for row in factors[0]]
     return BaselineSolution(factors, bit_reversal_permutation(n), masks, {"polish_passes": 0})
 
 

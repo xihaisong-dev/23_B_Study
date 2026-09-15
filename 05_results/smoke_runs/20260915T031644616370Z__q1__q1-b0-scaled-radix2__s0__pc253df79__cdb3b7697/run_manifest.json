@@ -1,0 +1,84 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T031644616370Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdb3b7697",
+  "problem_id": "q1",
+  "problem": "q1",
+  "candidate_id": "q1-b0-scaled-radix2",
+  "N": 4,
+  "K": 2,
+  "q": 16,
+  "beta": 1,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 60,
+    "sweep_cap": null,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 0.003347800000483403,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "factor_sha256s": [
+    "735d567ab13b3af8a84b6d6a281cbe8ce0db3f4f8c453e06fdb011757dab2877",
+    "a62a4c89f519827fa85ec9bd5a7eb7aaa7a739cecbc9eb5de846b6da987b5867"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "NOT_APPLICABLE",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true
+  },
+  "rmse": 9.92077294051146e-17,
+  "rmse_recompute_independent": 9.92077294051146e-17,
+  "L": 8,
+  "C": 128,
+  "diagnostics": {
+    "polish_passes": 0
+  },
+  "started_at": "2026-09-15T03:16:44+00:00",
+  "finished_at": "2026-09-15T03:16:44+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "db3b7697d683bd76d62d68bfa4702ecbb7dc62d8ad04feb0fae68b5209a8ab01",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T031644616370Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdb3b7697/factors.json",
+      "size": 1707,
+      "sha256": "f04607c42088b7fe607006d673d42c9f307169d25bd370b401c3b54591d0e2e8"
+    },
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T031644616370Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdb3b7697/stdout.txt",
+      "size": 154,
+      "sha256": "f463f5c906a04091e99cb94fc455600ade374c01e30afc09a9fbfbad35416fbf"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T031644616370Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdb3b7697/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

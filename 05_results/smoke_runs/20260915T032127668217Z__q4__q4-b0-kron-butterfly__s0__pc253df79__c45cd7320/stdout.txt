@@ -1,0 +1,8 @@
+run_id=20260915T032127668217Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c45cd7320
+problem=q4
+candidate=q4-b0-kron-butterfly
+N=32
+K=5
+q=3
+seed=0
+status=PASS

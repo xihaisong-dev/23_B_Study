@@ -27,11 +27,13 @@ from dft_integer_approx.targets import dft_matrix, kron  # noqa: E402
 
 class TestBaselines(unittest.TestCase):
     def test_q1_exact_registered_small_sizes(self):
+        expected_l = {2: 4, 4: 8, 8: 20, 16: 52}
         for n in (2, 4, 8, 16):
             solution = exact_q1_baseline(n)
             self.assertEqual(len(solution.factors), n.bit_length() - 1)
             self.assertLessEqual(rmse(dft_matrix(n), approximate_matrix(solution.factors, solution.permutation)), 1e-12)
             self.assertTrue(all(check_row_sparse(factor, 2)[0] for factor in solution.factors))
+            self.assertEqual(count_nontrivial_positions(solution.factors), expected_l[n])
 
     def test_q2_onefactor_is_p3(self):
         target = dft_matrix(4)
