@@ -1,6 +1,29 @@
 # 建模 Agent 交接
 
-## 当前交接：K-无关界族的适用边界（补足 Q5 证书的射程）
+## 当前交接：Q5「无可行赢家」门禁裁决提案
+
+- 角色：M 建模 Agent
+- 状态：`PROPOSED`（提案，非冻结）；**未修改任何协议/冻结/门禁**，只提交一份提案交集成者裁决
+- 工作树 / 分支：`worktrees/modeling`，`agent/modeling`
+- 内容提交：`cb2f48e9498970ced616cbd85997712c0b5e59a5`（父提交 `b7b5391`），已推送 `origin/agent/modeling`
+- 产物路径：`00_admin/proposals/modeling/Q5_WINNER_GATE_DECISION_PROPOSAL.md`
+- 输入与依据（均为实测，未改动）：
+  - `03_model/tournament_protocol.json` SHA-256 `c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`
+  - `03_model/checks/q5_gaussian_integer_infeasibility.json`（`status = PASS`，`failed_checks = []`，`minimum_registered_rmse_lower_bound = 0.125`，`minimum_registered_margin_above_point_one = 0.025`）
+  - `05_results/tournament.json` 的 q5：`runs_total = 957`、`runs_eligible = 0`、`status_counts = {"INFEASIBLE": 957}`、`no_feasible_winner = true`、`best_infeasible` 为 `q5-b0-q1-butterfly`（`RMSE 0.125`）
+  - 门禁实现：`workflow_guard.py` 第 423–428 行（`check_tournament`，`tournament` 与 `model-results` 共用）
+- 命令与门禁结果：
+  - `workflow_guard.py check --workspace <wt/compute-tournament> --gate tournament` → `FAIL`，1 错 `q5: winner has no feasible PASS run`
+  - 在 `05_results/tournament.json` 的**临时副本**上把 q5 `winner_id` 改为 `null` 后用**真实门禁**复测 → `FAIL`，**2 错**（多出 `q5: winner is not a registered candidate`，因 `str(None)` 得到 `"None"`）；测后 `git checkout --` 逐字节还原，sha256 `33672F7C…` 前后一致，工作树 0 个未提交项
+- 核心结论：门禁与其所强制执行的**冻结协议互相矛盾**。协议 `problems[q5].failure_rule` 明文要求「若不存在可行 run，赢家保持 `null`」，而门禁对 `null` 反而多报一条错误；候选取值则必然缺少可行 PASS run。故**在遵守协议的前提下该门禁永不可通过**，这不是计算端实现缺陷。推论：`main` 上建模 handoff 中「把 Q5 赢家保持为 `null`」的建议若单独执行，会让门禁错误数从 1 增加到 2。
+- 提案内容：给出 A/A′/B/C/D 五个方案及代价。推荐 A——承认「无可行赢家」为合法终态，但**保持失败关闭**：判据取自 `05_results/metrics.json` 已记录 runs（仅当实测确无任何可行 run 时才走 null 分支），并要求 `no_feasible_winner` + `winner_basis` + `best_infeasible` 三项证据齐备，缺一即 FAIL，因此无法用来跳过本可解出的问题。A′ 追加要求可落盘的不可能性证据路径以区分「已证明无解」与「仅未搜到」。
+- 现实约束（须集成者处理）：`workflow_guard.py` **不在仓库内**（`git ls-files` 计数 0；实际位于 `C:\Users\Lenovo\.codex\skills\1start-mathmodel\scripts\workflow_guard.py`，32611 字节，mtime 2026-09-12 15:01:01）。因此所有方案都无法由任一泳道 Agent 在仓库内完成。该工具替换已存在冻结的唯一正式途径是 `freeze --replace --change-request "<说明>"`（第 589–592 行），方案 C 必须走此路径。建议在 `DECISIONS.md` 新增 D-013 记录裁决与该工具版本。
+- 影响面：`tournament`、`model-results` 两个门禁被阻塞（后者继承前者同一错误）；`rules-problem`/`retrieval`/`protocol` 均 PASS；`check_paper` 不调用 `check_tournament`，`paper` 门禁不被此冲突阻塞。因 `model_results` freeze 已修至可移植（清单哈希 = 工作树 = 索引 blob，全新检出 `verify-freeze` PASS），**Q5 子句一经裁决，两门禁即可通过且无需重跑任何 run**。
+- 限制：本提案只做裁决设计，不含实现；不主张任何数值改进；未对 `workflow_guard.py` 做任何写入尝试。
+- 分支同步提示：`agent/modeling` 当前落后 `main` 5 个提交（`main` 已含本角色 3 个提交的等价版本 `da5797e`/`3dd246f`/`b4c6f58`；本分支另有 `d2ada25`、`b7b5391` 以及本次 `cb2f48e` 未入 `main`），且两侧在本文件与 `03_model/` 存在同源不同 SHA 的改动，合并时可能出现冲突，需人工处理。
+- 下一步与接收人：接收人 = 主 Agent / 集成者（抄送计算 Agent、论文 Agent）。建议顺序：(1) 采纳方案 A（或 A′）；(2) 由具备 `workflow_guard.py` 权限的一方实施并记录版本；(3) `DECISIONS.md` 落盘 D-013；(4) 重跑 `check --gate tournament` 与 `--gate model-results` 确认 PASS；(5) 论文端按「Q5 无可行解（可证）」表述并引用 `d_64 = 1/8`。
+
+## 历史交接：K-无关界族的适用边界（补足 Q5 证书的射程）
 
 - 角色：M 建模 Agent
 - 状态：复算 `PASS`；结论为**限定性**（把 Q5 的 K-无关界族限定在 Q5）
