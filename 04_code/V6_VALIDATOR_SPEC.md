@@ -8,7 +8,7 @@
 
 `00_admin/DECISIONS.md` 的 D-005 是当前 `practice` 配置的已签署工程解释：所有问题固定 `beta=1`，使用单位化 DFT、幂次字母表、因子逐层应用的 L 口径和明确的 K/排列计数。如后续官方资料与 D-005 冲突，必须新建决策、替换冻结并作废受影响运行。
 
-当前 `tournament_protocol` 仍未冻结。实际执行 `verify-freeze --stage tournament_protocol` 返回 FAIL，缺少 `00_admin/freezes/tournament_protocol.json`。因此本轮仅交付规格：不创建验证代码，不读取或运行候选，不写入 `05_results/`，不确认 README 中的任何数值。
+当前 `tournament_protocol` 仍未冻结。实际执行 `verify-freeze --stage tournament_protocol` 返回 FAIL，缺少 `00_admin/freezes/tournament_protocol.json`。因此本轮仅交付规格和不接触候选的通用验证/门禁脚手架：不实现候选搜索算法，不读取或运行候选，不写入 `05_results/`，不确认 README 中的任何数值。
 
 ## 2. 模块边界与 API
 
