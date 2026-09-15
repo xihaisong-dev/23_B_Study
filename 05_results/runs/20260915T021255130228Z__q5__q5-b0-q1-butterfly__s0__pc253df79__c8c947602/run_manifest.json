@@ -1,0 +1,95 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T021255130228Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c8c947602",
+  "problem_id": "q5",
+  "problem": "q5",
+  "candidate_id": "q5-b0-q1-butterfly",
+  "N": 4,
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "q": 1,
+  "K": 2,
+  "beta": 1,
+  "factor_sha256s": [
+    "8d7a0ddce802130a30713a6984c27f2c8c3cc308276a27e4a8649a00159a9f11",
+    "8d7a0ddce802130a30713a6984c27f2c8c3cc308276a27e4a8649a00159a9f11"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_counts_match": true,
+    "independent_rmse_delta": 0.0
+  },
+  "rmse": 0.5,
+  "rmse_recompute_independent": 0.5,
+  "L": 0,
+  "C": 0,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 60,
+    "source": "frozen protocol deterministic_baseline"
+  },
+  "wall_clock_s": 0.00692939999862574,
+  "status": "INFEASIBLE",
+  "constraints_status": "PASS",
+  "optimality_claim": "baseline_only_no_global_optimality_claim",
+  "failure": {
+    "stage": "q5 eligibility",
+    "error_type": "INFEASIBLE",
+    "message": "legal baseline has RMSE>0.1; retained as an infeasible run"
+  },
+  "formal": true,
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "started_at": "2026-09-15T02:12:55+00:00",
+  "finished_at": "2026-09-15T02:12:55+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "8c9476026d7536ac5befa9acce8bce1aaea6d50d9adff11a6d883245f8167935",
+  "command": "python -X utf8 04_code/scripts/run_baselines.py",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T021255130228Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c8c947602/factors.json",
+      "size": 434,
+      "sha256": "74c698f326af8555597d785ff1ec401741c277dfb51dcbc713761a32cd417b0c"
+    },
+    "stdout": {
+      "path": "05_results/runs/20260915T021255130228Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c8c947602/stdout.txt",
+      "size": 150,
+      "sha256": "05fe87aa20b48534b95d43f1559945896e0925398cf0fb84b0e779786ef3ba1c"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T021255130228Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c8c947602/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "diagnostics": {
+    "polish_passes": 1,
+    "accepted_moves": 16,
+    "sse_before": 4.0,
+    "sse_after": 4.0
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "factor_order": "A1@A2@...@AK, followed on the right by the pure permutation",
+  "q": 1,
+  "N": 16,
+  "K": 3,
+  "factors": [
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "nonzero": []
+    },
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "nonzero": []
+    },
+    {
+      "shape": [
+        16,
+        16
+      ],
+      "nonzero": []
+    }
+  ],
+  "pure_permutation": {
+    "counted_in_K": false,
+    "mapping": [
+      0,
+      8,
+      4,
+      12,
+      2,
+      10,
+      6,
+      14,
+      1,
+      9,
+      5,
+      13,
+      3,
+      11,
+      7,
+      15
+    ]
+  }
+}

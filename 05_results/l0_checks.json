@@ -1,0 +1,167 @@
+{
+  "schema_version": "3.0",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "input_sha256:01_problem/original/DFT类矩阵的整数分解逼近.docx",
+      "status": "PASS",
+      "evidence": {
+        "expected": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+        "actual": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841"
+      }
+    },
+    {
+      "id": "unitary_F2",
+      "status": "PASS",
+      "evidence": {
+        "max_identity_error": 2.220446049250313e-16
+      }
+    },
+    {
+      "id": "unitary_F4",
+      "status": "PASS",
+      "evidence": {
+        "max_identity_error": 1.2989340843532398e-16
+      }
+    },
+    {
+      "id": "unitary_F8",
+      "status": "PASS",
+      "evidence": {
+        "max_identity_error": 6.871046789485633e-16
+      }
+    },
+    {
+      "id": "unitary_F16",
+      "status": "PASS",
+      "evidence": {
+        "max_identity_error": 2.0708308344013457e-15
+      }
+    },
+    {
+      "id": "unitary_F32",
+      "status": "PASS",
+      "evidence": {
+        "max_identity_error": 3.236198705238085e-15
+      }
+    },
+    {
+      "id": "unitary_F64",
+      "status": "PASS",
+      "evidence": {
+        "max_identity_error": 5.843436395935717e-15
+      }
+    },
+    {
+      "id": "hand_check_F2",
+      "status": "PASS",
+      "evidence": {
+        "max_difference": 8.659560562354932e-17
+      }
+    },
+    {
+      "id": "zero_based_F4_1_1",
+      "status": "PASS",
+      "evidence": {
+        "actual": [
+          3.061616997868383e-17,
+          -0.5
+        ]
+      }
+    },
+    {
+      "id": "F4_kron_F8_not_F32",
+      "status": "PASS",
+      "evidence": {
+        "max_difference": 0.35355339059327373
+      }
+    },
+    {
+      "id": "factor_order_A1_A2",
+      "status": "PASS",
+      "evidence": {
+        "AB": [
+          [
+            [
+              2.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "BA": [
+          [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              2.0,
+              0.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "row_support_hand_check",
+      "status": "PASS",
+      "evidence": {
+        "errors": []
+      }
+    },
+    {
+      "id": "P3_hand_check",
+      "status": "PASS",
+      "evidence": {
+        "errors": []
+      }
+    },
+    {
+      "id": "L_C_hand_check",
+      "status": "PASS",
+      "evidence": {
+        "L": 2,
+        "C": 6
+      }
+    },
+    {
+      "id": "support_bound_N64_K5",
+      "status": "PASS",
+      "evidence": {
+        "bound": 0.08838834764831845
+      }
+    },
+    {
+      "id": "radix2_exact_N8",
+      "status": "PASS",
+      "evidence": {
+        "rmse": 3.1431115805241707e-16,
+        "K": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T020658661866Z__q5__q5-b0-q1-butterfly__s0__pc253df79__cf98eb4a9",
+  "problem": "q5",
+  "candidate_id": "q5-b0-q1-butterfly",
+  "N": 8,
+  "target_sha256": "3f4efdf3a084f2290c56d5cd1b4f588b58d7bf360c4c8a82f68582c4fd0aa4c5",
+  "q": 1,
+  "K": 4,
+  "beta": 1,
+  "factor_sha256s": [
+    "6060d0c60f8612bdb80f75fdbc8bcc683a058cd6c3b893c26230a6ae40804498",
+    "84b064fdd6613509e5267023430eef20afbe063565b1c3ca8a2e8716e57c5958",
+    "f8e5b34b43acce2234cb918c96c344b930a5d1335c472bd3c608c99d80cb465c",
+    "f8e5b34b43acce2234cb918c96c344b930a5d1335c472bd3c608c99d80cb465c"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_counts_match": true,
+    "independent_rmse_delta": 0.0
+  },
+  "rmse": 0.35355339059327373,
+  "rmse_recompute_independent": 0.35355339059327373,
+  "L": 0,
+  "C": 0,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 60,
+    "source": "frozen protocol deterministic_baseline"
+  },
+  "wall_clock_s": 0.0035547000006772578,
+  "status": "INFEASIBLE",
+  "optimality_claim": "baseline_only_no_global_optimality_claim",
+  "failure": {
+    "stage": "q5 eligibility",
+    "error_type": "INFEASIBLE",
+    "message": "legal baseline has RMSE>0.1; retained as an infeasible run"
+  },
+  "formal": true,
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "started_at": "2026-09-15T02:06:58+00:00",
+  "finished_at": "2026-09-15T02:06:58+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "f98eb4a97915e7b432213aa2b4039c68d2d3a806a270f9bc438f79a3625c7e2f",
+  "command": "python -X utf8 04_code/scripts/run_baselines.py",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T020658661866Z__q5__q5-b0-q1-butterfly__s0__pc253df79__cf98eb4a9/factors.json",
+      "size": 1252,
+      "sha256": "0aeb7a68177cb95574a5f95ce0789b893fef1743bd156e1c76b6a2bf9b11148b"
+    },
+    "stdout": {
+      "path": "05_results/runs/20260915T020658661866Z__q5__q5-b0-q1-butterfly__s0__pc253df79__cf98eb4a9/stdout.txt",
+      "size": 150,
+      "sha256": "20a114eacb1f8a7e177bf91203cd00b698171550607dd98ce0ea72dc42cc5167"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T020658661866Z__q5__q5-b0-q1-butterfly__s0__pc253df79__cf98eb4a9/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "diagnostics": {
+    "polish_passes": 1,
+    "accepted_moves": 48,
+    "sse_before": 22.058874503045722,
+    "sse_after": 7.999999999999998
+  }
+}

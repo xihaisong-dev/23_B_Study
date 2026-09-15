@@ -21,6 +21,19 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 每个测试文件自行把 `src/` 加入 `sys.path`，因此从任意工作目录运行均可。
 
+## 冻结后的 L0/L1 里程碑
+
+所有 `04_code/**/*.py` 文件均在文件头按 D-011 记录 AI 辅助工具、型号、开发机构和版本日期披露边界。正式运行前依次执行：
+
+```bash
+python -X utf8 C:/Users/Lenovo/.codex/skills/1start-mathmodel/scripts/workflow_guard.py verify-freeze --workspace . --stage tournament_protocol
+python -X utf8 04_code/scripts/validate_protocol.py
+python -X utf8 04_code/scripts/run_l0.py
+python -X utf8 04_code/scripts/run_baselines.py
+```
+
+`run_baselines.py` 只执行冻结协议登记的 q1--q5 确定性 baseline。每个 `(problem,N,K,q,candidate,seed)` 使用全新 run-id，因子以稀疏 JSON 保存并由独立路径重新加载复算。该里程碑把 `metrics.json` 与 `tournament.json` 保持为 `BLOCKED`，直到挑战者、稳健性和消融全部完成；不会提前选择最终胜者。
+
 ## 失败关闭门禁
 
 ```bash

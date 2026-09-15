@@ -1,3 +1,8 @@
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: structured candidate outputs are validated before scoring.
 """Candidate plugin contract (Protocol) with structured failures.
 
 Candidates return only factors, a real ``beta``, diagnostics and a structured

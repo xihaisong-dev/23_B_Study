@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: the protocol and recursive freeze bindings are verified before execution.
 """Fail-closed CLI over the protocol gate: exit 0 only when the protocol is frozen."""
 
 import json

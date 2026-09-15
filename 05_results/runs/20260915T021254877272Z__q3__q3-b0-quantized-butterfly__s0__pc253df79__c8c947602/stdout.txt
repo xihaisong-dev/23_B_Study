@@ -1,0 +1,7 @@
+run_id=20260915T021254877272Z__q3__q3-b0-quantized-butterfly__s0__pc253df79__c8c947602
+problem=q3
+candidate=q3-b0-quantized-butterfly
+N=8
+K=3
+q=3
+status=PASS

@@ -1,3 +1,8 @@
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: adapters are one-way and validated against the frozen protocol.
 """Typed protocol-adapter objects (one-way; never reverse-write the protocol).
 
 These objects are built from the frozen ``03_model/tournament_protocol.json``

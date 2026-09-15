@@ -1,3 +1,8 @@
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: tests cover valid freezes, hash drift, and fail-closed states.
 """Fail-closed protocol gate tests (temp workspaces, no 05_results writes)."""
 
 import hashlib

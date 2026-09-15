@@ -1,0 +1,7 @@
+run_id=20260915T020658230151Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cf98eb4a9
+problem=q1
+candidate=q1-b0-scaled-radix2
+N=16
+K=4
+q=16
+status=PASS

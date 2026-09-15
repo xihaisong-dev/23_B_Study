@@ -1,3 +1,8 @@
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: tests distinguish factor order, shape, and transpose cases.
 """Canonical serialization and content-hashing tests."""
 
 import sys

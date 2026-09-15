@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: formal execution remains gate-first and retains every failure.
 """Tournament entrypoint; refuses until the protocol is frozen.
 
 Post-freeze this maps the real candidates and runs L0-L4; it is intentionally not

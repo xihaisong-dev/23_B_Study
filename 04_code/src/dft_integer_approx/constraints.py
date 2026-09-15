@@ -1,3 +1,8 @@
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: exact alphabet and row-support checks are covered by boundary tests.
 """Constraint 1 (row sparsity) and constraint 2 (alphabet) checks.
 
 Constraint 2 alphabet ``P_q = {0, ±2^r : r = 0..q-1}`` is applied to the real and

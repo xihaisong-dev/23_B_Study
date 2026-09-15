@@ -1,3 +1,8 @@
+# AI-assisted development disclosure (D-011)
+# Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
+# Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
+# Human verification: L and C counts are independently recomputed from persisted factors.
 """Hardware complexity counting (single source of truth).
 
 Per D-005 and ``04_code/IMPLEMENTATION_PLAN.md`` section 5:
