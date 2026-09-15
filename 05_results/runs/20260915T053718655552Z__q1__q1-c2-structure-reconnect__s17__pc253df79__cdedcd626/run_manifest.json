@@ -1,0 +1,2115 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T053718655552Z__q1__q1-c2-structure-reconnect__s17__pc253df79__cdedcd626",
+  "problem_id": "q1",
+  "problem": "q1",
+  "candidate_id": "q1-c2-structure-reconnect",
+  "kind": "challenger",
+  "N": 16,
+  "K": 4,
+  "q": 16,
+  "beta": 1,
+  "seed": 17,
+  "budget": {
+    "wall_clock_s": 300,
+    "sweep_cap": 5000,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 0.7151274999996531,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": true,
+  "run_scope": "FROZEN_L2",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "998bf845abe6497e24535b92dfb11a94b733ee4c30c2432702f19cd0ace0d850",
+  "factor_sha256s": [
+    "15b55685d2f58532f213a220523464241c79dfb643d20bc8dce65dc426af8a04",
+    "a1a52132a868b9dbb20850a4ff8a1c229e4a5a970cdec74eae1481329d0e02a2",
+    "fce84e94f3e3fbbed644a06f5219bc4f369d0ac938c0251c41aaa521efeb9534",
+    "745c7c1e5269093bb818dfe6d68ddd5678352ab194f06d5d418e15cb1b9a1029"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "NOT_APPLICABLE",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 1.3877787807814457e-17,
+    "scoring_association": "left"
+  },
+  "rmse": 6.854870921378935e-16,
+  "rmse_recompute_independent": 6.854870921378935e-16,
+  "L": 52,
+  "C": 832,
+  "diagnostics": {
+    "strategy": "structure_reconnect",
+    "protocol_method": "butterfly_large_neighborhood_reconnect",
+    "seed": 17,
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": false,
+    "execution_scope": "frozen_budget_search",
+    "search_budget": {
+      "wall_clock_s": 300.0,
+      "sweep_cap": 5000,
+      "patience": 50,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "patience",
+    "sweeps": 51,
+    "stale_sweeps": 50,
+    "evaluated_proposals": 211,
+    "accepted_proposals": 0,
+    "rejected_proposals": 211,
+    "failure_reasons": {
+      "beam_no_improvement": 3,
+      "no_improvement": 187
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "coefficient_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": null,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "reconnect_rate_0.05",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 3,
+        "phase": "permutation_optimisation",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "reconnect_rate_0.1",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 5,
+        "phase": "permutation_optimisation",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 6,
+        "phase": "reconnect_rate_0.2",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "permutation_optimisation",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 9,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 10,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 11,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 12,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 13,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 14,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 15,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 16,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 17,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 18,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 19,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 20,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 21,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 22,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 23,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 24,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 25,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 26,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 27,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 28,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 29,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 30,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 31,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 32,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 33,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 34,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 35,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 36,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 37,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 38,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 39,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 40,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 41,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 42,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 43,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 44,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 45,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 46,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 47,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 48,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 49,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 50,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      },
+      {
+        "sweep": 51,
+        "phase": "global_polish",
+        "rmse": 6.854870921378935e-16,
+        "improvement": 0.0,
+        "evaluated": 4,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 0,
+        "objective": 10.990224804698723
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 1,
+        "objective": 11.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 2,
+        "objective": 10.323223304703365
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 3,
+        "objective": 11.250000000000004
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 4,
+        "objective": 11.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 5,
+        "objective": 11.000000000000002
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 6,
+        "objective": 10.999999999999998
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 4,
+        "beam_index": 7,
+        "objective": 11.207106781186548
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 1,
+        "b": 11
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 0,
+        "objective": 20.124999999999996
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 1,
+        "objective": 14.058058261758406
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 2,
+        "objective": 19.960786437626904
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 3,
+        "objective": 20.380794325570704
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 4,
+        "objective": 20.10649371286309
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 5,
+        "objective": 14.35355339059327
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 6,
+        "objective": 22.961091206922017
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 7,
+        "beam_index": 7,
+        "objective": 21.125
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 11,
+        "b": 8
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 13,
+        "b": 6
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 0,
+        "objective": 40.97855339059328
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 1,
+        "objective": 25.68176206501329
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 2,
+        "objective": 33.25024581562626
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 3,
+        "objective": 33.80482624272954
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 4,
+        "objective": 34.02828148243819
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 5,
+        "objective": 24.007683432365106
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 6,
+        "objective": 32.875787522605336
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 13,
+        "beam_index": 7,
+        "objective": 32.31433982822018
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 0,
+        "b": 6
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 2,
+        "b": 6
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 0,
+        "b": 10
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 14,
+        "b": 1
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      }
+    ],
+    "reconnect_rates": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "reconnect_trace": [
+      {
+        "rate": 0.05,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "rate": 0.1,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "rate": 0.2,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      }
+    ],
+    "permutation_optimisation": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T05:37:18+00:00",
+  "finished_at": "2026-09-15T05:37:19+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54",
+  "batch_id": "l2-c253df79-dedcd626-73e8bd72",
+  "batch_plan_sha256": "73e8bd72d98908cf10763891e52f734bd0c84e33b18f65bdd6563dd8a33a58f9",
+  "batch_config_sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f",
+  "run_config_sha256": "67b563105a6f8afc483495dbf91cdbd1ea033881a17c8e6ea4ac0c72c07490fb",
+  "tuple_sha256": "e4e5e6fa5e0aa02c5d429d687ba0cfc7b79495ecb65b012ce077bc4db3daf11e",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/plan.json",
+      "size": 437688,
+      "sha256": "7be32c7ed4b1e18ec1a905b8891c1cd201a3193619cc550faca5d5ab65f75d51"
+    },
+    "config": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/config.json",
+      "size": 1102,
+      "sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --level L2 --execute-full --shard-index 2 --shard-count 3 --resume",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T053718655552Z__q1__q1-c2-structure-reconnect__s17__pc253df79__cdedcd626/factors.json",
+      "size": 11522,
+      "sha256": "a215160462a92ecd7253676e0262b9814947758a0cf0ae64d0b0f00839d9550b"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/runs/20260915T053718655552Z__q1__q1-c2-structure-reconnect__s17__pc253df79__cdedcd626/stdout.txt",
+      "size": 169,
+      "sha256": "5f46b2efc0763a34534cbef3049e2906acad35d3d8639b728fe74310b500ac4a"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T053718655552Z__q1__q1-c2-structure-reconnect__s17__pc253df79__cdedcd626/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
