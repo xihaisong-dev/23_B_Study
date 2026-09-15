@@ -29,7 +29,11 @@
 
 1. 独立审阅者复核预算、候选实现、批次谱系、分片互斥和续跑行为；
 2. 完成一次受控的多 shard 扩展 MVT，确认 N=32/64 性能不会使正式批次失控；
-3. 正式 L2 完成后再执行预登记的 L3/L4 子运行；当前 L3/L4 仍为 `NOT_RUN`，消融 adapter 尚需在执行前复核；
+3. 正式 L2 完成后，从该批次选择真实 parent 并执行预登记的 L3/L4 子运行；四类消融 adapter 已实现作用性测试，但 L3/L4 当前仍为 `NOT_RUN`；
 4. 只有 L2/L3/L4 均闭合后才能生成最终 winner 与 model-results freeze。
+
+搜索接受与完整 sweep 的 patience 更新现由 `independent_search_score` 独立稠密路径完成，不调用生产 `_objective`。q2-c1 在每个右到左递归深度实际展开并保留 8 个 chain states。
+
+Q5 的精确 Gaussian 整数格证书使用正确下界 `min(r,1-r)`、`r=1/sqrt(N)`。证书短路是默认关闭的 readiness-only 开关；正式入口在缺少冻结协议变更时直接拒绝。因此当前冻结正式计划仍保留全部 825 个 Q5 tuple/seed，并不擅自用证明替换候选运行。
 
 因此本里程碑的 smoke 数值只能证明接口、约束、持久化和独立复算链路可工作，不能用于论文中的模型优胜结论。

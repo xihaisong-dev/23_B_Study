@@ -6,8 +6,8 @@
   "winner_id": null,
   "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
   "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
-  "batch_id": "l2-smoke-c253df79-597e8620-fee24ed4-20260915T040404663380Z",
-  "batch_config_sha256": "fee24ed48b4c489ecf8a7d2435715653bd72bc73bc49a974b0303632d342d2e3",
+  "batch_id": "l2-smoke-c253df79-90be2687-a3cabc03-20260915T043625112479Z",
+  "batch_config_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
   "batch_plan_count": 15,
   "selected_count": 15,
   "resume_skipped_count": 0,
@@ -18,7 +18,7 @@
   },
   "runs": [
     {
-      "run_id": "20260915T040404723984Z__q1__q1-b0-scaled-radix2__s0__pc253df79__c597e8620",
+      "run_id": "20260915T043625171359Z__q1__q1-b0-scaled-radix2__s0__pc253df79__c90be2687",
       "problem": "q1",
       "candidate_id": "q1-b0-scaled-radix2",
       "N": 4,
@@ -30,11 +30,13 @@
       "rmse": 9.92077294051146e-17,
       "L": 8,
       "C": 128,
-      "wall_clock_s": 0.0025591000012354925,
-      "run_manifest": "05_results/smoke_runs/20260915T040404723984Z__q1__q1-b0-scaled-radix2__s0__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.002414499998849351,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625171359Z__q1__q1-b0-scaled-radix2__s0__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040404899688Z__q1__q1-c1-palm-row2__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625247754Z__q1__q1-c1-palm-row2__s17__pc253df79__c90be2687",
       "problem": "q1",
       "candidate_id": "q1-c1-palm-row2",
       "N": 4,
@@ -46,11 +48,13 @@
       "rmse": 9.92077294051146e-17,
       "L": 8,
       "C": 128,
-      "wall_clock_s": 0.004869099997449666,
-      "run_manifest": "05_results/smoke_runs/20260915T040404899688Z__q1__q1-c1-palm-row2__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.0035669999997480772,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625247754Z__q1__q1-c1-palm-row2__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040404914842Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625260126Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c90be2687",
       "problem": "q1",
       "candidate_id": "q1-c2-structure-reconnect",
       "N": 4,
@@ -62,11 +66,13 @@
       "rmse": 9.92077294051146e-17,
       "L": 8,
       "C": 128,
-      "wall_clock_s": 0.0031923999995342456,
-      "run_manifest": "05_results/smoke_runs/20260915T040404914842Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.0028406999990693294,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625260126Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040404928831Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__c597e8620",
+      "run_id": "20260915T043625269223Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__c90be2687",
       "problem": "q2",
       "candidate_id": "q2-b0-onefactor-quantize",
       "N": 4,
@@ -78,11 +84,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.002115600000252016,
-      "run_manifest": "05_results/smoke_runs/20260915T040404928831Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.0014326000018627383,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625269223Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040404941786Z__q2__q2-c1-sp2-recursive__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625277120Z__q2__q2-c1-sp2-recursive__s17__pc253df79__c90be2687",
       "problem": "q2",
       "candidate_id": "q2-c1-sp2-recursive",
       "N": 4,
@@ -94,11 +102,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.01951280000503175,
-      "run_manifest": "05_results/smoke_runs/20260915T040404941786Z__q2__q2-c1-sp2-recursive__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.09152219999668887,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625277120Z__q2__q2-c1-sp2-recursive__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040404972096Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625378464Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c90be2687",
       "problem": "q2",
       "candidate_id": "q2-c2-relax-project-polish",
       "N": 4,
@@ -110,11 +120,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.005136899999342859,
-      "run_manifest": "05_results/smoke_runs/20260915T040404972096Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.0048001000031945296,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625378464Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040404987526Z__q3__q3-b0-quantized-butterfly__s0__pc253df79__c597e8620",
+      "run_id": "20260915T043625389893Z__q3__q3-b0-quantized-butterfly__s0__pc253df79__c90be2687",
       "problem": "q3",
       "candidate_id": "q3-b0-quantized-butterfly",
       "N": 4,
@@ -126,11 +138,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.0031308999969041906,
-      "run_manifest": "05_results/smoke_runs/20260915T040404987526Z__q3__q3-b0-quantized-butterfly__s0__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.0022171999953570776,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625389893Z__q3__q3-b0-quantized-butterfly__s0__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040405000953Z__q3__q3-c1-discrete-coordinate__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625397760Z__q3__q3-c1-discrete-coordinate__s17__pc253df79__c90be2687",
       "problem": "q3",
       "candidate_id": "q3-c1-discrete-coordinate",
       "N": 4,
@@ -142,11 +156,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.06491839999944204,
-      "run_manifest": "05_results/smoke_runs/20260915T040405000953Z__q3__q3-c1-discrete-coordinate__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.06709029999910854,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625397760Z__q3__q3-c1-discrete-coordinate__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040405076506Z__q3__q3-c2-hierarchical-reconnect__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625473431Z__q3__q3-c2-hierarchical-reconnect__s17__pc253df79__c90be2687",
       "problem": "q3",
       "candidate_id": "q3-c2-hierarchical-reconnect",
       "N": 4,
@@ -158,11 +174,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.006339200001093559,
-      "run_manifest": "05_results/smoke_runs/20260915T040405076506Z__q3__q3-c2-hierarchical-reconnect__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.005672200000844896,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625473431Z__q3__q3-c2-hierarchical-reconnect__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040405092143Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c597e8620",
+      "run_id": "20260915T043625486401Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c90be2687",
       "problem": "q4",
       "candidate_id": "q4-b0-kron-butterfly",
       "N": 32,
@@ -174,11 +192,13 @@
       "rmse": 0.7183905324091097,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.027643399997032247,
-      "run_manifest": "05_results/smoke_runs/20260915T040405092143Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.027483899997605477,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625486401Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040405134300Z__q4__q4-c1-generic-discrete__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043625522111Z__q4__q4-c1-generic-discrete__s17__pc253df79__c90be2687",
       "problem": "q4",
       "candidate_id": "q4-c1-generic-discrete",
       "N": 32,
@@ -190,11 +210,13 @@
       "rmse": 0.17677669529663687,
       "L": 85,
       "C": 255,
-      "wall_clock_s": 2.588872699998319,
-      "run_manifest": "05_results/smoke_runs/20260915T040405134300Z__q4__q4-c1-generic-discrete__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 2.618637799998396,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043625522111Z__q4__q4-c1-generic-discrete__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040407736297Z__q4__q4-c2-kron-reconnect__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043628151475Z__q4__q4-c2-kron-reconnect__s17__pc253df79__c90be2687",
       "problem": "q4",
       "candidate_id": "q4-c2-kron-reconnect",
       "N": 32,
@@ -206,11 +228,13 @@
       "rmse": 0.24407030237208294,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.5415915999983554,
-      "run_manifest": "05_results/smoke_runs/20260915T040407736297Z__q4__q4-c2-kron-reconnect__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.4994576999961282,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043628151475Z__q4__q4-c2-kron-reconnect__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040408288997Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c597e8620",
+      "run_id": "20260915T043628660893Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c90be2687",
       "problem": "q5",
       "candidate_id": "q5-b0-q1-butterfly",
       "N": 4,
@@ -222,11 +246,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.0025946000023395754,
-      "run_manifest": "05_results/smoke_runs/20260915T040408288997Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.0020479000013438053,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043628660893Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040408300565Z__q5__q5-c1-lexicographic-grid__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043628669325Z__q5__q5-c1-lexicographic-grid__s17__pc253df79__c90be2687",
       "problem": "q5",
       "candidate_id": "q5-c1-lexicographic-grid",
       "N": 4,
@@ -238,11 +264,13 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.019763199998124037,
-      "run_manifest": "05_results/smoke_runs/20260915T040408300565Z__q5__q5-c1-lexicographic-grid__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.019789699996181298,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043628669325Z__q5__q5-c1-lexicographic-grid__s17__pc253df79__c90be2687/run_manifest.json"
     },
     {
-      "run_id": "20260915T040408330048Z__q5__q5-c2-large-neighborhood__s17__pc253df79__c597e8620",
+      "run_id": "20260915T043628694539Z__q5__q5-c2-large-neighborhood__s17__pc253df79__c90be2687",
       "problem": "q5",
       "candidate_id": "q5-c2-large-neighborhood",
       "N": 4,
@@ -254,20 +282,22 @@
       "rmse": 0.5,
       "L": 0,
       "C": 0,
-      "wall_clock_s": 0.00684430000546854,
-      "run_manifest": "05_results/smoke_runs/20260915T040408330048Z__q5__q5-c2-large-neighborhood__s17__pc253df79__c597e8620/run_manifest.json"
+      "wall_clock_s": 0.006356199999572709,
+      "variant": null,
+      "parent_run_id": null,
+      "run_manifest": "05_results/smoke_runs/20260915T043628694539Z__q5__q5-c2-large-neighborhood__s17__pc253df79__c90be2687/run_manifest.json"
     }
   ],
   "batch_artifacts": {
     "plan": {
-      "path": "05_results/batches/l2-smoke-c253df79-597e8620-fee24ed4-20260915T040404663380Z/plan.json",
-      "size": 4699,
-      "sha256": "14797604bdd8505f747e3f228d338de62ddb6d0a7a125ed02d8a785846ae3220"
+      "path": "05_results/batches/l2-smoke-c253df79-90be2687-a3cabc03-20260915T043625112479Z/plan.json",
+      "size": 4717,
+      "sha256": "2ed06fdd3274a6ee8a3a3e8bb5baa8fb1ae509670469656c196d82df870fc7a2"
     },
     "config": {
-      "path": "05_results/batches/l2-smoke-c253df79-597e8620-fee24ed4-20260915T040404663380Z/config.json",
-      "size": 1096,
-      "sha256": "0c44a24b0ac40948ba229f18318205263b7b34924b8b9c15305a614354cb7de4"
+      "path": "05_results/batches/l2-smoke-c253df79-90be2687-a3cabc03-20260915T043625112479Z/config.json",
+      "size": 1132,
+      "sha256": "bd72507f7d045500d72b4342d84901676fa76934fc03d77469d20ad2e654116e"
     }
   },
   "blocking_reason": "No winner until the complete frozen L2 grid and required L3/L4 evidence pass review."

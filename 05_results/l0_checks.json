@@ -156,6 +156,15 @@
       }
     },
     {
+      "id": "gaussian_integer_bound_N64",
+      "status": "PASS",
+      "evidence": {
+        "bound": 0.125,
+        "threshold": 0.1,
+        "certificate": "product of P_q matrices lies in Z[i]"
+      }
+    },
+    {
       "id": "radix2_exact_N8",
       "status": "PASS",
       "evidence": {

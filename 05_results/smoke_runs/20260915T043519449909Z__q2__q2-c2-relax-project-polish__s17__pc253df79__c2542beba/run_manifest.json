@@ -1,0 +1,314 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T043519449909Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c2542beba",
+  "problem_id": "q2",
+  "problem": "q2",
+  "candidate_id": "q2-c2-relax-project-polish",
+  "N": 4,
+  "K": 2,
+  "q": 3,
+  "beta": 1,
+  "seed": 17,
+  "budget": {
+    "wall_clock_s": 20,
+    "sweep_cap": 8,
+    "source": "smoke minimum-viability budget"
+  },
+  "wall_clock_s": 0.005943900003330782,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "factor_sha256s": [
+    "f58755eb751959259fe208ac85b8fd53b6a3fe23717dd188746efb65e0f00312",
+    "12124b1073024dd7c25f553775107e624c20aeda7e3f717d453b92c63d235f17"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "NOT_APPLICABLE",
+      "value": null
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.5,
+  "rmse_recompute_independent": 0.5,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "strategy": "relax_project_polish",
+    "protocol_method": "continuous_relax_project_discrete_polish",
+    "seed": 17,
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": true,
+    "execution_scope": "smoke_minimum_viability",
+    "search_budget": {
+      "wall_clock_s": 20.0,
+      "sweep_cap": 8,
+      "patience": 8,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "sweep_cap",
+    "sweeps": 8,
+    "stale_sweeps": 7,
+    "evaluated_proposals": 15,
+    "accepted_proposals": 1,
+    "rejected_proposals": 14,
+    "failure_reasons": {
+      "no_improvement": 14
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "continuous_fit",
+        "rmse": 1.4888964106947385e-16,
+        "improvement": null,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "exact_Pq_projection",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 1,
+        "accepted": 1
+      },
+      {
+        "sweep": 3,
+        "phase": "discrete_block_polish",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "discrete_block_polish",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 5,
+        "phase": "discrete_block_polish",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 6,
+        "phase": "discrete_block_polish",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "discrete_block_polish",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "discrete_block_polish",
+        "rmse": 0.5,
+        "improvement": -0.49999999999999983,
+        "evaluated": 2,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "continuous_fit"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "continuous_fit"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_block_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_block_polish"
+      }
+    ],
+    "pre_projection_rmse": 1.4888964106947385e-16,
+    "post_projection_rmse": 0.5,
+    "exact_projection": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T04:35:19+00:00",
+  "finished_at": "2026-09-15T04:35:19+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "2542beba2df8cad88ca6c237a96c107084547ffd2dd5c31422d694649386e1b5",
+  "batch_id": "l2-smoke-c253df79-2542beba-a3cabc03-20260915T043519147543Z",
+  "batch_config_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "run_config_sha256": "4af8ae7eee9c7ab7b493267f320ba61438527c32cdfd1aa00f6d957d3e9027d1",
+  "tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-smoke-c253df79-2542beba-a3cabc03-20260915T043519147543Z/plan.json",
+      "size": 4717,
+      "sha256": "b870ac0e130b901f3892ea3016815571cc991410ef776f5d9eba89a669067237"
+    },
+    "config": {
+      "path": "05_results/batches/l2-smoke-c253df79-2542beba-a3cabc03-20260915T043519147543Z/config.json",
+      "size": 1132,
+      "sha256": "b6b92caf62e4f0aca70666ab46cce94ab23505f336e181522531e67d507338fb"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T043519449909Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c2542beba/factors.json",
+      "size": 1666,
+      "sha256": "e06ebfab212fc5033c5cc2ac50e17bd4cb972359c22d1719401192cbbefeabd5"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T043519449909Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c2542beba/stdout.txt",
+      "size": 169,
+      "sha256": "095a0caa5bd4ca799f7937d16d5cba00eaf2fc0260187a2ab702e2835f105552"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T043519449909Z__q2__q2-c2-relax-project-polish__s17__pc253df79__c2542beba/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

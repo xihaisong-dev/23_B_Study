@@ -1,0 +1,123 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T043427471633Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c4bf5c36a",
+  "problem_id": "q4",
+  "problem": "q4",
+  "candidate_id": "q4-b0-kron-butterfly",
+  "N": 32,
+  "K": 5,
+  "q": 3,
+  "beta": 1,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 20,
+    "sweep_cap": null,
+    "source": "smoke minimum-viability budget"
+  },
+  "wall_clock_s": 0.029029900004388765,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "2e7115883a7ddc9b1877d330791d8312987f3b4045a8b4e837e5d437e11161f6",
+  "factor_sha256s": [
+    "dff18158abcdaf8daab28544aa5a4ee33375105eb0ad1db510804cb9bfd286d2",
+    "27edd8b3c0713fadee57062a903ebb23c99b02b36ff65743344afd4385a142bb",
+    "22ed078ffa3623017634ef34849068f95d2db30a5fc3a7754035f444de61f76f",
+    "aa6053458117e9bd33f7e49ce8deb4c64aa78145191dd5fcd61ecd5b33a3a1de",
+    "a46296be18d3774cc3109fce6abd1e3cc0cb2f07789d562471be5c2241ca842e"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.7183905324091097,
+  "rmse_recompute_independent": 0.7183905324091097,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "polish_passes": 0
+  },
+  "started_at": "2026-09-15T04:34:27+00:00",
+  "finished_at": "2026-09-15T04:34:27+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "4bf5c36a3dbe8dc2fe65535601b2c2daac63aba8ac1e443b82d750161422983c",
+  "batch_id": "l2-smoke-c253df79-4bf5c36a-a3cabc03-20260915T043427024205Z",
+  "batch_config_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "run_config_sha256": "437920b6b98ed5d018fcf8ada410bc207df43b2f3e43c5fe9b69298bd119077f",
+  "tuple_sha256": "955ec3e20d723483a241aec66a1e6b9ead4cc602e70092ecd4147e38b46a95ff",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-smoke-c253df79-4bf5c36a-a3cabc03-20260915T043427024205Z/plan.json",
+      "size": 4717,
+      "sha256": "5441296a686f0efa71838bcd95d206222a48b08fe373a144174e2d78a8c027f1"
+    },
+    "config": {
+      "path": "05_results/batches/l2-smoke-c253df79-4bf5c36a-a3cabc03-20260915T043427024205Z/config.json",
+      "size": 1132,
+      "sha256": "734ce2affe08104d96a476c50721c7a2a3b89656307a87e60439321ce78e0252"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T043427471633Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c4bf5c36a/factors.json",
+      "size": 44414,
+      "sha256": "79c9a21565c2e252d0606731a1a9f634bf9cbfb9ce3b5e28afa6c6ebaaac4fc9"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T043427471633Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c4bf5c36a/stdout.txt",
+      "size": 156,
+      "sha256": "549c48fd91842663e146fdb1db5133cbbce4885b7608b4cca5523d49bfbe7f6c"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T043427471633Z__q4__q4-b0-kron-butterfly__s0__pc253df79__c4bf5c36a/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

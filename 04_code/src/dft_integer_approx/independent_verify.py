@@ -16,12 +16,15 @@ from .factor_artifacts import read_factor_artifact
 from .serialization import canonical_matrix_sha256
 
 
-def verify_artifact(path: Path, problem_id: str, n: int, expected_q: int, row_cap: Optional[int]) -> Dict[str, Any]:
+def verify_artifact(path: Path, problem_id: str, n: int, expected_q: int,
+                    row_cap: Optional[int], association: str = "left") -> Dict[str, Any]:
     factors, permutation, q = read_factor_artifact(path)
     if q != expected_q:
         raise ValueError(f"artifact q={q}, expected {expected_q}")
     target = _target(problem_id, n)
-    product = _multiply_chain(factors)
+    product = (_multiply_chain(factors) if association == "left"
+               else _multiply_chain_right(factors) if association == "right"
+               else (_raise_association(association)))
     approximation = _right_permute(product, permutation)
     sse = 0.0
     for row in range(n):
@@ -92,6 +95,31 @@ def _multiply_chain(factors):
                         next_result[row][col] += left * factor[mid][col]
         result = next_result
     return result
+
+
+def _multiply_chain_right(factors):
+    if not factors:
+        raise ValueError("empty factor chain")
+    result = [row[:] for row in factors[-1]]
+    for factor in reversed(factors[:-1]):
+        result = _multiply_two(factor, result)
+    return result
+
+
+def _multiply_two(left, right):
+    n = len(left)
+    out = [[0j] * n for _ in range(n)]
+    for row in range(n):
+        for middle in range(n):
+            value = left[row][middle]
+            if value != 0:
+                for column in range(n):
+                    out[row][column] += value * right[middle][column]
+    return out
+
+
+def _raise_association(association):
+    raise ValueError(f"unknown multiplication association {association!r}")
 
 
 def _right_permute(matrix, mapping):

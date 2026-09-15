@@ -44,7 +44,7 @@
   "blocking_reason": "Formal L2, L3 robustness, and L4 ablation are incomplete.",
   "registry": {
     "path": "05_results/validation_registry.json",
-    "sha256": "b3f2ca1c9af83ed47dba242a98e8b3e5d5d025ffb7abdcf02593ca52797a6246",
+    "sha256": "627ab67906b274ad26d2056d2d913e75620743a51a8e40c7686386fb8967e24f",
     "status": "NOT_RUN"
   }
 }

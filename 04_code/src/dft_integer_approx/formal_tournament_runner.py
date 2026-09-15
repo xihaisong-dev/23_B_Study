@@ -37,7 +37,8 @@ from .formal_baseline_runner import _artifact_record, _atomic_json, _tree_sha256
 from .hardware import count_nontrivial_positions, hardware_complexity
 from .hashing import sha256_file
 from .independent_verify import verify_artifact
-from .l0_validation import run_l0_checks, support_rmse_lower_bound
+from .l0_validation import (gaussian_integer_rmse_lower_bound, run_l0_checks,
+                            support_rmse_lower_bound)
 from .metrics import max_abs_difference, rmse
 from .protocol_gate import check_frozen
 from .provenance import generate_run_id
@@ -54,6 +55,10 @@ BASELINES = {
     "q5-b0-q1-butterfly",
 }
 SEEDS = (17, 43, 71)
+
+
+class Q5InfeasibleCertificate(RuntimeError):
+    """Control-flow marker for the exact Gaussian-integer lattice certificate."""
 
 
 def build_plan(protocol: Dict[str, Any], *, smoke: bool = False,
@@ -127,24 +132,26 @@ def _smoke_instances(pid: str, cid: str, kind: str,
                      instances: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
     seed = 0 if kind == "baseline" else 17
     if pid == "q1":
-        yield _case(pid, cid, kind, 4, 2, 16, seed)
+        yield _case(pid, cid, kind, 4, 2, 16, seed, smoke=True)
     elif pid == "q2":
-        yield _case(pid, cid, kind, 4, 1 if kind == "baseline" else 2, 3, seed)
+        yield _case(pid, cid, kind, 4, 1 if kind == "baseline" else 2, 3, seed, smoke=True)
     elif pid == "q3":
-        yield _case(pid, cid, kind, 4, 2, 3, seed)
+        yield _case(pid, cid, kind, 4, 2, 3, seed, smoke=True)
     elif pid == "q4":
-        yield _case(pid, cid, kind, 32, 5, 3, seed)
+        yield _case(pid, cid, kind, 32, 5, 3, seed, smoke=True)
     else:
-        yield _case(pid, cid, kind, 4, 2, 1 if kind == "baseline" else 2, seed)
+        yield _case(pid, cid, kind, 4, 2, 1 if kind == "baseline" else 2, seed, smoke=True)
 
 
 def _case(pid: str, cid: str, kind: str, n: int, k: int, q: int,
-          seed: int) -> Dict[str, Any]:
-    seconds, sweeps = _budget(n, kind)
+          seed: int, smoke: bool = False) -> Dict[str, Any]:
+    seconds, sweeps = ((20, None if kind == "baseline" else 8)
+                       if smoke else _budget(n, kind))
     return {"problem": pid, "candidate_id": cid, "kind": kind, "N": n,
             "K": k, "q": q, "seed": seed,
             "budget": {"wall_clock_s": seconds, "sweep_cap": sweeps,
-                       "source": "frozen tournament protocol"}}
+                       "source": ("smoke minimum-viability budget"
+                                  if smoke else "frozen tournament protocol")}}
 
 
 def _budget(n: int, kind: str) -> tuple[int, Optional[int]]:
@@ -159,11 +166,14 @@ def _budget(n: int, kind: str) -> tuple[int, Optional[int]]:
 
 def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
              smoke: bool, batch_plan: Optional[Sequence[Dict[str, Any]]] = None,
-             resume: bool = False, validation_level: str = "L2") -> Dict[str, Any]:
+             resume: bool = False, validation_level: str = "L2",
+             q5_certificate_shortcut: bool = False) -> Dict[str, Any]:
     workspace = workspace.resolve()
     gate = check_frozen(str(workspace))
     if not gate.allowed:
         raise RuntimeError("protocol/freeze gate failed: " + "; ".join(gate.reasons))
+    if q5_certificate_shortcut and not smoke:
+        raise RuntimeError("formal q5 certificate shortcut requires an approved and frozen protocol amendment")
     protocol_path = workspace / "03_model/tournament_protocol.json"
     protocol_sha = sha256_file(protocol_path)
     freeze_sha = sha256_file(workspace / "00_admin/freezes/tournament_protocol.json")
@@ -197,6 +207,7 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
                       "data_class": problem_record["data_class"],
                       "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
                       "plan_content_sha256": batch_sha,
+                      "q5_certificate_shortcut": q5_certificate_shortcut,
                       "stop_rule": {"patience": 50, "tolerance": 1e-10,
                                     "deadline": "monotonic in-loop",
                                     "sweep_cap": "per frozen N segment"}}
@@ -216,7 +227,8 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
     results = [_run_case(workspace, root, item, protocol_sha, freeze_sha,
                          problem_freeze_sha, code_sha, batch_id, batch_sha,
                          plan_artifact, config_artifact, input_manifest_sha,
-                         problem_record, command, smoke, validation_level)
+                         problem_record, command, smoke, validation_level,
+                         q5_certificate_shortcut)
                for item in selected]
     counts: Dict[str, int] = {}
     for item in results:
@@ -233,6 +245,9 @@ def run_plan(workspace: Path, plan: Sequence[Dict[str, Any]], *, command: str,
         "batch_artifacts": {"plan": plan_artifact, "config": config_artifact},
         "blocking_reason": "No winner until the complete frozen L2 grid and required L3/L4 evidence pass review.",
     }
+    if validation_level in {"L3", "L4"}:
+        from .validation_runs import grouped_validation_statistics
+        summary["best_median_worst"] = grouped_validation_statistics(results)
     if smoke:
         _atomic_json(workspace / "05_results/smoke_summary.json", summary)
     else:
@@ -252,7 +267,7 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
               batch_id: str, batch_sha: str, plan_artifact: Dict[str, Any],
               config_artifact: Dict[str, Any], input_manifest_sha: str,
               problem_record: Dict[str, Any], command: str, smoke: bool,
-              validation_level: str) -> Dict[str, Any]:
+              validation_level: str, q5_certificate_shortcut: bool) -> Dict[str, Any]:
     pid, cid = case["problem"], case["candidate_id"]
     n, k, q, seed = case["N"], case["K"], case["q"], case["seed"]
     config_sha = _json_sha256(case)
@@ -262,12 +277,13 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
     factor_path, stdout_path, stderr_path = (run_dir / "factors.json",
                                               run_dir / "stdout.txt",
                                               run_dir / "stderr.txt")
+    certificate_path = run_dir / "q5_infeasibility_certificate.json"
     started = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     clock = time.perf_counter()
     status, failure, values = "CRASH", None, {}
     try:
         target = kron(dft_matrix(4), dft_matrix(8)) if pid == "q4" else dft_matrix(n)
-        solution = _solution(case, target, smoke)
+        solution = _solution(case, target, smoke, q5_certificate_shortcut)
         if len(solution.factors) != k:
             raise ValueError(f"constructed K={len(solution.factors)}, expected K={k}")
         if sorted(solution.permutation) != list(range(n)):
@@ -278,7 +294,9 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
         right_associated = apply_permutation_right(
             _right_associated_product(solution.factors), solution.permutation)
         association_delta = max_abs_difference(approximation, right_associated)
-        search_rmse = rmse(target, approximation)
+        association = (case.get("variant") or {}).get("association", "left")
+        scored_approximation = right_associated if association == "right" else approximation
+        search_rmse = rmse(target, scored_approximation)
         row_cap = None if pid == "q2" else 2
         row_errors, alphabet_errors = [], []
         if row_cap is not None:
@@ -294,7 +312,7 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
         bound = support_rmse_lower_bound(n, k) if row_cap is not None else None
         bound_ok = bound is None or search_rmse + 1e-10 >= bound
         write_factor_artifact(factor_path, solution.factors, solution.permutation, q)
-        independent = verify_artifact(factor_path, pid, n, q, row_cap)
+        independent = verify_artifact(factor_path, pid, n, q, row_cap, association)
         target_hash = canonical_matrix_sha256(target)
         factor_hashes = [canonical_matrix_sha256(factor) for factor in solution.factors]
         l_value = count_nontrivial_positions(solution.factors)
@@ -326,7 +344,33 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
                     "target_hash_match": target_hash == independent["target_sha256"],
                     "factor_hash_match": factor_hashes == independent["factor_sha256s"],
                     "independent_metric_match": recompute_ok, "q1_exact_check": exact_ok,
-                    "association_max_delta": association_delta}}
+                    "association_max_delta": association_delta,
+                    "scoring_association": association}}
+    except Q5InfeasibleCertificate:
+        bound = gaussian_integer_rmse_lower_bound(n)
+        certificate = {
+            "schema_version": "3.0", "certificate_type": "gaussian_integer_lattice",
+            "problem": pid, "N": n, "K": k, "q": q, "seed": seed,
+            "threshold": 0.1, "rmse_lower_bound": bound,
+            "premises": ["each P_q component is an integer",
+                         "matrix products remain in Gaussian integers",
+                         "each unitary DFT entry has modulus 1/sqrt(N)"],
+            "conclusion": "INFEASIBLE" if bound > 0.1 else "NOT_CERTIFIED",
+        }
+        _atomic_json(certificate_path, certificate)
+        status = "INFEASIBLE"
+        failure = {"stage": "q5 exact certificate", "error_type": status,
+                   "message": "Gaussian-integer RMSE lower bound exceeds 0.1"}
+        target = dft_matrix(n)
+        values = {"target_sha256": canonical_matrix_sha256(target),
+                  "factor_sha256s": None, "rmse": None,
+                  "rmse_recompute_independent": None, "L": None, "C": None,
+                  "diagnostics": {"stop_reason": "exact_infeasibility_certificate",
+                                  "q5_certificate": certificate},
+                  "constraint_checks": {"finite_square": "NOT_APPLICABLE",
+                    "permutation": "NOT_APPLICABLE", "row_support": {"status": "NOT_APPLICABLE", "errors": []},
+                    "alphabet": {"status": "PASS", "errors": []},
+                    "gaussian_integer_certificate": {"status": "PASS", "value": bound}}}
     except Exception as exc:
         failure = {"stage": "candidate execution", "error_type": type(exc).__name__, "message": str(exc)}
         _write_text_lf(stderr_path, f"{type(exc).__name__}: {exc}\n")
@@ -344,8 +388,12 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
         "problem": pid, "candidate_id": cid, "N": n, "K": k, "q": q,
         "beta": 1, "seed": seed, "budget": case["budget"], "wall_clock_s": elapsed,
         "status": status, "constraints_status": "PASS" if status in {"PASS", "INFEASIBLE"} else "FAIL",
-        "failure": failure, "formal": not smoke, "run_scope": "SMOKE" if smoke else "FROZEN_L2",
-        "optimality_claim": "exact analytic construction" if pid == "q1" and cid in BASELINES and status == "PASS" else "candidate_only_no_global_optimality_claim",
+        "failure": failure, "formal": not smoke,
+        "run_scope": "SMOKE" if smoke else f"FROZEN_{validation_level}",
+        "optimality_claim": ("exact Gaussian-integer infeasibility certificate"
+                             if pid == "q5" and status == "INFEASIBLE"
+                             else "exact analytic construction" if pid == "q1" and cid in BASELINES and status == "PASS"
+                             else "candidate_only_no_global_optimality_claim"),
         "target_sha256": values.get("target_sha256"), "factor_sha256s": values.get("factor_sha256s"),
         "constraint_checks": values.get("constraint_checks"), "rmse": values.get("rmse"),
         "rmse_recompute_independent": values.get("rmse_recompute_independent"),
@@ -369,18 +417,24 @@ def _run_case(workspace: Path, root: Path, case: Dict[str, Any], protocol_sha: s
             "implementation": platform.python_implementation(), "platform": platform.platform(),
             "dependencies": {"third_party": [], "standard_library_only": True}},
         "artifacts": {"factors": _artifact_record(factor_path, workspace) if factor_path.exists() else None,
+                      "q5_certificate": _artifact_record(certificate_path, workspace) if certificate_path.exists() else None,
                       "stdout": _artifact_record(stdout_path, workspace),
                       "stderr": _artifact_record(stderr_path, workspace)},
     }
     _atomic_json(run_dir / "run_manifest.json", manifest)
     summary = {key: manifest[key] for key in ("run_id", "problem", "candidate_id", "N", "K", "q", "seed", "status", "constraints_status", "rmse", "L", "C", "wall_clock_s")}
+    summary["variant"] = manifest["variant"]
+    summary["parent_run_id"] = manifest["parent_run_id"]
     summary["run_manifest"] = (run_dir / "run_manifest.json").relative_to(workspace).as_posix()
     return summary
 
 
-def _solution(case: Dict[str, Any], target: Any, smoke: bool):
+def _solution(case: Dict[str, Any], target: Any, smoke: bool,
+              q5_certificate_shortcut: bool = False):
     pid, cid = case["problem"], case["candidate_id"]
     n, k, q, seed = case["N"], case["K"], case["q"], case["seed"]
+    if pid == "q5" and q5_certificate_shortcut and gaussian_integer_rmse_lower_bound(n) > 0.1:
+        raise Q5InfeasibleCertificate()
     if cid not in BASELINES:
         if smoke:
             budget = SearchBudget.frozen(n, smoke=True)
@@ -389,8 +443,12 @@ def _solution(case: Dict[str, Any], target: Any, smoke: bool):
             budget = SearchBudget(float(case["budget"]["wall_clock_s"]),
                                   int(case["budget"]["sweep_cap"]),
                                   patience=50, tolerance=tolerance)
+        variant = case.get("variant") or {}
+        options = {"disable": variant.get("disable", []),
+                   "support_mode": variant.get("support_mode"),
+                   "initialization_order": variant.get("order", "seeded")}
         return challenger_solution(cid, target, n, k, q, seed, smoke=smoke,
-                                   budget=budget)
+                                   budget=budget, options=options)
     if pid == "q1":
         return exact_q1_baseline(n)
     if pid == "q2":

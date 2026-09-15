@@ -164,3 +164,14 @@
 - 验证：83/83 unittest PASS；Python compile PASS；本地协议门禁与冻结验证 PASS；L2 dry-run 1442，三 shard 覆盖测试 PASS；L3/L4 dry-run 分别 50/40。最新 L2 smoke 为 15 个候选、12 PASS + 3 q5 INFEASIBLE、0 CRASH/CONSTRAINT_FAIL，batch id `l2-smoke-c253df79-597e8620-fee24ed4-20260915T040404663380Z`，代码树 SHA-256 `597e862073969e75c5b6d786a44d4e46904df2dfce63c0a001cf543da3acab19`；15 个 run manifest 与因子产物均存在，历史 runs 未删。
 - 状态边界：winner 仍为 null，`05_results/smoke_summary.json`、`validation_plan.json`、`validation_registry.json` 均保持 BLOCKED/NOT_RUN 语义；不得据此写正式结果。
 - **正式运行前阻断**：L4 的四类 ablation 目前只完成计划/runner/谱系接口，`disable` 适配器尚未真正改变挑战者算法路径；必须实现并增加效果测试。正式 1442-run 还需独立复核十候选忠实度、搜索预算、分片并发和聚合器后才可启动。
+
+## 最终 code-closure（仍未运行正式 1442）
+
+- 本轮只修改 `04_code/`、`05_results/` 和本 compute handoff；冻结文件、题面、检索、模型协议及论文目录均未改。
+- 搜索评分：新增与生产 `_objective` 隔离的独立稠密 scorer；所有接受判断和完整 sweep patience 更新均走独立路径。q2-c1 逐个右到左深度展开候选并实际保留 beam8 chain states。
+- 严格聚合：从当前冻结协议重建并要求有序 canonical 1442；核验 plan/config/current protocol/freeze/code/input 哈希、tuple 全字段与预算、run config/tuple hash、level/variant/scope、全部 artifact path/size/SHA；持久化因子由独立模块重新加载并复算 target/RMSE/L/C/约束。缺失、重复、跨 run artifact、谱系漂移均失败关闭。输出保持 `BLOCKED`，并提供 workflow 兼容的 `problem_id`、`evaluated_candidates` 和结构化空 winner。
+- L3/L4：正式入口要求 `--parent-batch-id`，从真实完成 L2 记录中为每个 challenger 选择 parent 并绑定 `parent_run_id`。reverse 初始化/更新、tolerance、right-associated 独立计算、boundary K/q 均进入真实运行；四个 L4 adapter 已由作用性测试证明会禁用层次初始化、支持重连、离散润色或固定 Butterfly 支持。仍未实际运行 L3/L4。
+- Q5：Gaussian 整数格严格下界为 `min(r,1-r)`、`r=1/sqrt(N)`；冻结 N=2/4/8/16/32/64 的值均大于 0.1，已加入 L0 和逐尺寸测试。正式 canonical 计划仍含完整 825 个 Q5 tuple/seed。证书短路为显式、默认关闭的 readiness-only flag；缺获批冻结协议变更时正式入口直接拒绝。证书 run 不生成/不声称独立因子复算，`constraints_status=PASS` 仅表示证书前提/推理通过，manifest 明确 `factors=null` 并绑定 certificate artifact。
+- 验证：89/89 unittest PASS；Python compile PASS；协议/冻结 gate PASS；dry-run L2/L3/L4 为 1442/50/40；最终普通 smoke 15 runs 为 12 PASS + 3 Q5 INFEASIBLE。最新代码树 SHA-256 `90be26870957f7c83d1d7084fd6ec99f6944605f8109a9e7c20cc2e45eb37bcc`。readiness-only Q5 证书 smoke 的 3 个 manifest/certificate 已保留；最终普通 smoke 未使用证书短路。
+- N64 非正式性能探针：`q1-c1-palm-row2,N=64,K=6,seed=17`，进程内预算 5s/1 sweep，外层硬终止 12s；最终实测约 `0.7110297s`，状态 `NON_FORMAL_READINESS_ONLY`，证据 `05_results/readiness_benchmarks/n64_q1_c1.json`。该值不可用于对擂。
+- 当前状态与阻断：winner=null，正式 L2/L3/L4 均 `NOT_RUN/BLOCKED`。正式 1442 前仍须独立审计本提交；严格聚合器尚无真实完整批次可执行端到端 1442 聚合；若要采用 Q5 证书替代 825 次搜索，必须先由用户/总控批准并冻结协议变更，否则只能按原冻结计划逐 tuple 搜索。

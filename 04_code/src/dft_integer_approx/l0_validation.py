@@ -26,6 +26,21 @@ def support_rmse_lower_bound(n: int, k: int) -> float:
     return math.sqrt(n - min(n, 2 ** k)) / n
 
 
+def gaussian_integer_rmse_lower_bound(n: int) -> float:
+    """Exact lattice bound for products of Gaussian-integer factor matrices.
+
+    Products of matrices whose real and imaginary parts are integers remain in
+    ``Z[i]``.  For entry modulus ``r=1/sqrt(n)``, the reverse triangle inequality
+    gives distance at least ``min(r, 1-r)`` to every Gaussian integer: zero gives
+    the first branch and every nonzero lattice point has modulus at least one.
+    Applying this per entry gives the same RMSE lower bound.
+    """
+    if n < 2:
+        raise ValueError("registered DFT sizes require n>=2")
+    radius = 1.0 / math.sqrt(n)
+    return min(radius, 1.0 - radius)
+
+
 def run_l0_checks(workspace: Path) -> Dict[str, Any]:
     checks = []
 
@@ -70,6 +85,12 @@ def run_l0_checks(workspace: Path) -> Dict[str, Any]:
 
     bound = support_rmse_lower_bound(64, 5)
     _record(checks, "support_bound_N64_K5", abs(bound - math.sqrt(32) / 64) <= 1e-15, {"bound": bound})
+
+    integer_bound = gaussian_integer_rmse_lower_bound(64)
+    _record(checks, "gaussian_integer_bound_N64",
+            abs(integer_bound - 0.125) <= 1e-15 and integer_bound > 0.1,
+            {"bound": integer_bound, "threshold": 0.1,
+             "certificate": "product of P_q matrices lies in Z[i]"})
 
     exact = exact_q1_baseline(8)
     exact_approx = approximate_matrix(exact.factors, exact.permutation)

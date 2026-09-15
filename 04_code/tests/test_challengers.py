@@ -1,6 +1,7 @@
 # AI-assisted development disclosure (D-011)
 # Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
 # Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
 # Human verification: tests cover every frozen challenger, constraints, permutation scoring, and seed determinism.
 
 import math
@@ -14,6 +15,7 @@ sys.path.insert(0, str(SRC))
 from dft_integer_approx.baselines import approximate_matrix  # noqa: E402
 from dft_integer_approx.challengers import (  # noqa: E402
     _objective,
+    _lattice_start,
     challenger_solution,
     registered_challenger_ids,
     support_swap_sweep,
@@ -37,6 +39,41 @@ EXPECTED = {
 class TestChallengers(unittest.TestCase):
     def test_registry_is_exactly_the_ten_frozen_challengers(self):
         self.assertEqual(set(registered_challenger_ids()), EXPECTED)
+
+    def test_l3_reverse_order_and_l4_ablation_adapters_act(self):
+        target = dft_matrix(8)
+        reverse = challenger_solution(
+            "q1-c1-palm-row2", target, 8, 3, 16, 17, smoke=True,
+            options={"initialization_order": "reverse"})
+        factor_events = [event for event in reverse.diagnostics["proposal_trace"]
+                         if event["kind"] == "factor_update"]
+        self.assertTrue(factor_events)
+        self.assertEqual(factor_events[0]["factor"], 2)
+
+        initial, _ = _lattice_start(target, 8, 3, 3, 2)
+        fixed = challenger_solution(
+            "q3-c2-hierarchical-reconnect", target, 8, 3, 3, 17,
+            smoke=True, options={"disable": ["support_reconnection"],
+                                 "support_mode": "fixed_butterfly"})
+        initial_support = [[{c for c, z in enumerate(row) if z != 0} for row in factor]
+                           for factor in initial]
+        final_support = [[{c for c, z in enumerate(row) if z != 0} for row in factor]
+                         for factor in fixed.factors]
+        self.assertEqual(final_support, initial_support)
+        self.assertEqual(fixed.diagnostics["beam_trace"]["evaluated"], 0)
+
+        no_polish = challenger_solution(
+            "q3-c2-hierarchical-reconnect", target, 8, 3, 3, 17,
+            smoke=True, options={"disable": ["discrete_polish"]})
+        self.assertFalse(any(event["kind"] == "factor_update"
+                             for event in no_polish.diagnostics["proposal_trace"]))
+
+        no_hierarchy = challenger_solution(
+            "q3-c2-hierarchical-reconnect", target, 8, 3, 3, 17,
+            smoke=True, options={"disable": ["hierarchical_initialization"]})
+        self.assertEqual(no_hierarchy.diagnostics["active_options"]["disable"],
+                         ["hierarchical_initialization"])
+        self.assertNotEqual(no_hierarchy.factors, initial)
 
     def test_minimum_viability_all_ten(self):
         for candidate in sorted(EXPECTED):
@@ -103,8 +140,12 @@ class TestChallengers(unittest.TestCase):
         target = dft_matrix(4)
         c1 = challenger_solution("q2-c1-sp2-recursive", target, 4, 2, 3, 17,
                                  smoke=True)
-        self.assertEqual(c1.diagnostics["right_factor_beam"]["evaluated"], 8)
-        self.assertTrue(any(event["kind"] == "right_factor_beam"
+        self.assertEqual(len(c1.diagnostics["right_factor_beam"]), 2)
+        self.assertTrue(all(item["retained"] == 8
+                            for item in c1.diagnostics["right_factor_beam"]))
+        self.assertGreaterEqual(sum(item["evaluated"]
+                                    for item in c1.diagnostics["right_factor_beam"]), 16)
+        self.assertTrue(any(event["kind"] == "recursive_beam_state"
                             for event in c1.diagnostics["proposal_trace"]))
         c2 = challenger_solution("q2-c2-relax-project-polish", target, 4, 2, 3,
                                  17, smoke=True)

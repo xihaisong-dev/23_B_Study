@@ -1,0 +1,17 @@
+{
+  "schema_version": "3.0",
+  "certificate_type": "gaussian_integer_lattice",
+  "problem": "q5",
+  "N": 4,
+  "K": 2,
+  "q": 1,
+  "seed": 0,
+  "threshold": 0.1,
+  "rmse_lower_bound": 0.5,
+  "premises": [
+    "each P_q component is an integer",
+    "matrix products remain in Gaussian integers",
+    "each unitary DFT entry has modulus 1/sqrt(N)"
+  ],
+  "conclusion": "INFEASIBLE"
+}

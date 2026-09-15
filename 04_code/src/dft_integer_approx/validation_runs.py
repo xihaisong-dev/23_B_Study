@@ -1,31 +1,38 @@
 # AI-assisted development disclosure (D-011)
 # Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
 # Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
 # Human verification: preregistered variants remain NOT_RUN until parent L2 evidence exists.
 """Executable, preregistered L3 robustness and L4 ablation sub-run configs."""
 
 from __future__ import annotations
 
 import statistics
+import json
+from pathlib import Path
 from typing import Any, Dict, List, Sequence
 
 from .formal_tournament_runner import _case, build_plan, tuple_sha256
 
 
 def build_validation_plan(protocol: Dict[str, Any], level: str, *,
-                          smoke: bool = False) -> List[Dict[str, Any]]:
+                          smoke: bool = False,
+                          parents: Sequence[Dict[str, Any]] | None = None) -> List[Dict[str, Any]]:
     if level not in {"L3", "L4"}:
         raise ValueError("validation level must be L3 or L4")
-    parents = [case for case in build_plan(protocol, smoke=True)
-               if case["kind"] == "challenger"]
+    parent_cases = (list(parents) if parents is not None else
+                    [case for case in build_plan(protocol, smoke=True)
+                     if case["kind"] == "challenger"])
     plan: List[Dict[str, Any]] = []
-    for parent in parents:
-        parent_hash = tuple_sha256(parent)
+    for parent in parent_cases:
+        parent_hash = parent.get("tuple_sha256") or tuple_sha256(parent)
         variants = _l3_variants(parent) if level == "L3" else _l4_variants(parent)
         for variant in variants:
-            case = dict(parent)
+            case = {key: parent[key] for key in
+                    ("problem", "candidate_id", "kind", "N", "K", "q", "seed", "budget")}
             case["validation_level"] = level
-            case["parent_run_id"] = None
+            case["parent_run_id"] = parent.get("run_id")
+            case["parent_batch_id"] = parent.get("batch_id")
             case["parent_tuple_sha256"] = parent_hash
             case["variant"] = variant
             if "effective_seed" in variant:
@@ -38,6 +45,33 @@ def build_validation_plan(protocol: Dict[str, Any], level: str, *,
                                   "source": f"{level} smoke validation"}
             plan.append(case)
     return plan
+
+
+def select_validation_parents(workspace: Path, batch_id: str,
+                              protocol: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Select one real completed L2 parent for every registered challenger."""
+    expected_ids = {candidate["id"] for problem in protocol["problems"]
+                    for candidate in problem["candidates"] if candidate["kind"] == "challenger"}
+    grouped: Dict[str, List[Dict[str, Any]]] = {candidate_id: [] for candidate_id in expected_ids}
+    for path in (workspace / "05_results/runs").glob("*/run_manifest.json"):
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        candidate_id = manifest.get("candidate_id")
+        if (manifest.get("batch_id") == batch_id and manifest.get("validation_level") == "L2"
+                and candidate_id in grouped):
+            grouped[candidate_id].append(manifest)
+    missing = sorted(candidate_id for candidate_id, runs in grouped.items() if not runs)
+    if missing:
+        raise ValueError(f"completed L2 parents missing for: {missing}")
+    parents = []
+    for candidate_id in sorted(grouped):
+        runs = grouped[candidate_id]
+        feasible = [run for run in runs if run.get("status") == "PASS"]
+        pool = feasible or runs
+        parent = min(pool, key=lambda run: (
+            float("inf") if run.get("rmse") is None else run["rmse"],
+            run["N"], run["K"], run["q"], run["seed"], run["run_id"]))
+        parents.append(parent)
+    return parents
 
 
 def _l3_variants(parent: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -69,3 +103,15 @@ def validation_statistics(runs: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
             "best": min(feasible) if feasible else None,
             "median": statistics.median(feasible) if feasible else None,
             "worst": max(feasible) if feasible else None}
+
+
+def grouped_validation_statistics(runs: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Report real best/median/worst for every problem/candidate/validation axis."""
+    keys = sorted({(run["problem"], run["candidate_id"],
+                    (run.get("variant") or {}).get("axis")) for run in runs})
+    return [{"problem_id": problem, "candidate_id": candidate, "axis": axis,
+             **validation_statistics([run for run in runs
+                                      if (run["problem"], run["candidate_id"],
+                                          (run.get("variant") or {}).get("axis"))
+                                      == (problem, candidate, axis)])}
+            for problem, candidate, axis in keys]

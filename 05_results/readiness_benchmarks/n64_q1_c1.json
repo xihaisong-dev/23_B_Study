@@ -1,0 +1,105 @@
+{
+  "schema_version": "3.0",
+  "status": "NON_FORMAL_READINESS_ONLY",
+  "formal": false,
+  "problem": "q1",
+  "candidate_id": "q1-c1-palm-row2",
+  "N": 64,
+  "K": 6,
+  "q": 16,
+  "seed": 17,
+  "budget": {
+    "in_loop_wall_clock_s": 5.0,
+    "hard_process_deadline_s": 12.0,
+    "sweep_cap": 1,
+    "patience": 1,
+    "tolerance": 1e-10
+  },
+  "wall_clock_s": 0.7110296999962884,
+  "rmse_independent_search_scorer": 1.3186901660334803e-15,
+  "diagnostics": {
+    "strategy": "palm_row2",
+    "protocol_method": "hierarchical_projected_alternating",
+    "seed": 17,
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": false,
+    "execution_scope": "frozen_budget_search",
+    "search_budget": {
+      "wall_clock_s": 5.0,
+      "sweep_cap": 1,
+      "patience": 1,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "sweep_cap",
+    "sweeps": 1,
+    "stale_sweeps": 0,
+    "evaluated_proposals": 6,
+    "accepted_proposals": 0,
+    "rejected_proposals": 6,
+    "failure_reasons": {
+      "no_improvement": 6
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "palm_best2_global_polish",
+        "rmse": 1.3186901660334803e-15,
+        "improvement": null,
+        "evaluated": 6,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 3,
+        "phase": "palm_best2_global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "palm_best2_global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "palm_best2_global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 4,
+        "phase": "palm_best2_global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 5,
+        "phase": "palm_best2_global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "palm_best2_global_polish"
+      }
+    ],
+    "initialization": "hierarchical_butterfly",
+    "best2_projection": true,
+    "global_polish": true,
+    "active_options": {}
+  },
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "code_tree_sha256": "90be26870957f7c83d1d7084fd6ec99f6944605f8109a9e7c20cc2e45eb37bcc",
+  "created_at": "2026-09-15T04:36:24.965069+00:00",
+  "warning": "Not comparable to frozen budgets; never use as a tournament result."
+}

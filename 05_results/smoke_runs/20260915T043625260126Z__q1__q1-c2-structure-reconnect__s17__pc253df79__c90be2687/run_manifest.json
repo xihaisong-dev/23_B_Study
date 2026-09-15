@@ -1,0 +1,505 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T043625260126Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c90be2687",
+  "problem_id": "q1",
+  "problem": "q1",
+  "candidate_id": "q1-c2-structure-reconnect",
+  "N": 4,
+  "K": 2,
+  "q": 16,
+  "beta": 1,
+  "seed": 17,
+  "budget": {
+    "wall_clock_s": 20,
+    "sweep_cap": 8,
+    "source": "smoke minimum-viability budget"
+  },
+  "wall_clock_s": 0.0028406999990693294,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": false,
+  "run_scope": "SMOKE",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "eaad9eee6fd388181ff2b0757964de9d6add17e723eced480d213a840eadce47",
+  "factor_sha256s": [
+    "735d567ab13b3af8a84b6d6a281cbe8ce0db3f4f8c453e06fdb011757dab2877",
+    "a62a4c89f519827fa85ec9bd5a7eb7aaa7a739cecbc9eb5de846b6da987b5867"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "NOT_APPLICABLE",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 9.92077294051146e-17,
+  "rmse_recompute_independent": 9.92077294051146e-17,
+  "L": 8,
+  "C": 128,
+  "diagnostics": {
+    "strategy": "structure_reconnect",
+    "protocol_method": "butterfly_large_neighborhood_reconnect",
+    "seed": 17,
+    "seed_trace": "6a06e9ab85a0bcc1",
+    "smoke": true,
+    "execution_scope": "smoke_minimum_viability",
+    "search_budget": {
+      "wall_clock_s": 20.0,
+      "sweep_cap": 8,
+      "patience": 8,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "sweep_cap",
+    "sweeps": 8,
+    "stale_sweeps": 7,
+    "evaluated_proposals": 31,
+    "accepted_proposals": 0,
+    "rejected_proposals": 31,
+    "failure_reasons": {
+      "beam_no_improvement": 3,
+      "no_improvement": 7
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "coefficient_polish",
+        "rmse": 9.92077294051146e-17,
+        "improvement": null,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "reconnect_rate_0.05",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 3,
+        "phase": "permutation_optimisation",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "reconnect_rate_0.1",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 5,
+        "phase": "permutation_optimisation",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 6,
+        "phase": "reconnect_rate_0.2",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "permutation_optimisation",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "global_polish",
+        "rmse": 9.92077294051146e-17,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 0,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 1,
+        "objective": 1.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 2,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 3,
+        "objective": 1.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 4,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 5,
+        "objective": 1.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 6,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 7,
+        "objective": 1.0
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 0,
+        "b": 1
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 0,
+        "objective": 2.4999999999999996
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 1,
+        "objective": 1.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 2,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 3,
+        "objective": 1.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 4,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 5,
+        "objective": 1.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 6,
+        "objective": 2.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 1,
+        "beam_index": 7,
+        "objective": 0.9999999999999999
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 2,
+        "b": 0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 0,
+        "objective": 3.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 1,
+        "objective": 5.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 2,
+        "objective": 4.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 3,
+        "objective": 3.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 4,
+        "objective": 3.5
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 5,
+        "objective": 3.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 6,
+        "objective": 3.0
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 2,
+        "beam_index": 7,
+        "objective": 3.0
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 2,
+        "b": 1
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      }
+    ],
+    "reconnect_rates": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "reconnect_trace": [
+      {
+        "rate": 0.05,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "rate": 0.1,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "rate": 0.2,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      }
+    ],
+    "permutation_optimisation": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T04:36:25+00:00",
+  "finished_at": "2026-09-15T04:36:25+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "90be26870957f7c83d1d7084fd6ec99f6944605f8109a9e7c20cc2e45eb37bcc",
+  "batch_id": "l2-smoke-c253df79-90be2687-a3cabc03-20260915T043625112479Z",
+  "batch_config_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "run_config_sha256": "c507d0f553cdea7b5c81799cf98fff470501342c01e922c6de0cb824a9ded5f7",
+  "tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-smoke-c253df79-90be2687-a3cabc03-20260915T043625112479Z/plan.json",
+      "size": 4717,
+      "sha256": "2ed06fdd3274a6ee8a3a3e8bb5baa8fb1ae509670469656c196d82df870fc7a2"
+    },
+    "config": {
+      "path": "05_results/batches/l2-smoke-c253df79-90be2687-a3cabc03-20260915T043625112479Z/config.json",
+      "size": 1132,
+      "sha256": "bd72507f7d045500d72b4342d84901676fa76934fc03d77469d20ad2e654116e"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --smoke --level L2",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/smoke_runs/20260915T043625260126Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c90be2687/factors.json",
+      "size": 1707,
+      "sha256": "f04607c42088b7fe607006d673d42c9f307169d25bd370b401c3b54591d0e2e8"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/smoke_runs/20260915T043625260126Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c90be2687/stdout.txt",
+      "size": 168,
+      "sha256": "7aa097f503192c1c76b30f688fbfa86ca08794fe400e169824dd8b4ba4d8cecd"
+    },
+    "stderr": {
+      "path": "05_results/smoke_runs/20260915T043625260126Z__q1__q1-c2-structure-reconnect__s17__pc253df79__c90be2687/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

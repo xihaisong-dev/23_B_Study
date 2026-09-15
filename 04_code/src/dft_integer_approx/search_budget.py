@@ -1,6 +1,7 @@
 # AI-assisted development disclosure (D-011)
 # Tool/model: OpenAI Codex desktop, GPT-5 family (exact deployment version undisclosed)
 # Developer/provider: OpenAI
+# Version release date: exact deployed model date undisclosed by host; see 00_admin/AI_USE_LOG.md
 # Human verification: stop conditions and traces are exercised with deterministic clocks in tests.
 """Shared in-loop resource budget and convergence state for every challenger."""
 

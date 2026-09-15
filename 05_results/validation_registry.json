@@ -6,7 +6,7 @@
   "L3": {
     "status": "NOT_RUN",
     "config_count": 50,
-    "config_sha256": "195da6bc317181d4cfb3d4378905bbac2200f621f8596bb5fe14688b324fc399",
+    "config_sha256": "4c17b442f3e1756479039e8ece081a5a81a1e15f00dcba344f079b003b29c495",
     "configs": [
       {
         "problem": "q1",
@@ -17,12 +17,13 @@
         "q": 16,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "seed",
@@ -39,12 +40,13 @@
         "q": 16,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "initialization_order",
@@ -62,12 +64,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "floating_tolerance",
@@ -84,12 +87,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "multiplication_association",
@@ -106,12 +110,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "boundary_K_q",
@@ -129,12 +134,13 @@
         "q": 16,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "seed",
@@ -151,12 +157,13 @@
         "q": 16,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "initialization_order",
@@ -174,12 +181,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "floating_tolerance",
@@ -196,12 +204,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "multiplication_association",
@@ -218,12 +227,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "boundary_K_q",
@@ -241,12 +251,13 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "seed",
@@ -263,12 +274,13 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "initialization_order",
@@ -286,12 +298,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "floating_tolerance",
@@ -308,12 +321,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "multiplication_association",
@@ -330,12 +344,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "boundary_K_q",
@@ -353,12 +368,13 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "seed",
@@ -375,12 +391,13 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "initialization_order",
@@ -398,12 +415,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "floating_tolerance",
@@ -420,12 +438,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "multiplication_association",
@@ -442,12 +461,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "boundary_K_q",
@@ -465,12 +485,13 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "seed",
@@ -487,12 +508,13 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "initialization_order",
@@ -510,12 +532,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "floating_tolerance",
@@ -532,12 +555,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "multiplication_association",
@@ -554,12 +578,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "boundary_K_q",
@@ -577,12 +602,13 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "seed",
@@ -599,12 +625,13 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "initialization_order",
@@ -622,12 +649,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "floating_tolerance",
@@ -644,12 +672,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "multiplication_association",
@@ -666,12 +695,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "boundary_K_q",
@@ -689,12 +719,13 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "seed",
@@ -711,12 +742,13 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "initialization_order",
@@ -734,12 +766,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "floating_tolerance",
@@ -756,12 +789,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "multiplication_association",
@@ -778,12 +812,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "boundary_K_q",
@@ -801,12 +836,13 @@
         "q": 3,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "seed",
@@ -823,12 +859,13 @@
         "q": 3,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "initialization_order",
@@ -846,12 +883,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "floating_tolerance",
@@ -868,12 +906,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "multiplication_association",
@@ -890,12 +929,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "boundary_K_q",
@@ -913,12 +953,13 @@
         "q": 2,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "seed",
@@ -935,12 +976,13 @@
         "q": 2,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "initialization_order",
@@ -958,12 +1000,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "floating_tolerance",
@@ -980,12 +1023,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "multiplication_association",
@@ -1002,12 +1046,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "boundary_K_q",
@@ -1025,12 +1070,13 @@
         "q": 2,
         "seed": 1017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "seed",
@@ -1047,12 +1093,13 @@
         "q": 2,
         "seed": 2017,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "initialization_order",
@@ -1070,12 +1117,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "floating_tolerance",
@@ -1092,12 +1140,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "multiplication_association",
@@ -1114,12 +1163,13 @@
         "q": 1,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L3",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "boundary_K_q",
@@ -1138,7 +1188,7 @@
   "L4": {
     "status": "NOT_RUN",
     "config_count": 40,
-    "config_sha256": "1d6db23d6481a2d1298a7d6e8f0ddfd3c51db4a30bc090bc73a13a99b0701a3b",
+    "config_sha256": "1e8f69406f650c946cb72512065ece8a6309eb1341fc06e69c75b43b7e688ee5",
     "configs": [
       {
         "problem": "q1",
@@ -1149,12 +1199,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "ablation",
@@ -1173,12 +1224,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "ablation",
@@ -1197,12 +1249,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "ablation",
@@ -1221,12 +1274,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "4fc6b448000c3eefdda254e02175e5887d32d967d35799e54be549cd0c4ecd2b",
         "variant": {
           "axis": "ablation",
@@ -1246,12 +1300,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "ablation",
@@ -1270,12 +1325,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "ablation",
@@ -1294,12 +1350,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "ablation",
@@ -1318,12 +1375,13 @@
         "q": 16,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eb1ad22602d56a139e008afd6226565dcb9dde72a5f25f213f397d359d1e9bb7",
         "variant": {
           "axis": "ablation",
@@ -1343,12 +1401,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "ablation",
@@ -1367,12 +1426,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "ablation",
@@ -1391,12 +1451,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "ablation",
@@ -1415,12 +1476,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "217df9bab6c14a35171cb0d7186f127e7a637d122af0d4446ce1ffbb43c54b4c",
         "variant": {
           "axis": "ablation",
@@ -1440,12 +1502,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "ablation",
@@ -1464,12 +1527,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "ablation",
@@ -1488,12 +1552,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "ablation",
@@ -1512,12 +1577,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "894c07ca661cba31fe01b460df7d2430fbac18af384c57ede2c3959843d83cf8",
         "variant": {
           "axis": "ablation",
@@ -1537,12 +1603,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "ablation",
@@ -1561,12 +1628,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "ablation",
@@ -1585,12 +1653,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "ablation",
@@ -1609,12 +1678,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2385cae8193e8f04b9ba5e20fafe080522c454ff11646c2880c99fa071640fd6",
         "variant": {
           "axis": "ablation",
@@ -1634,12 +1704,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "ablation",
@@ -1658,12 +1729,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "ablation",
@@ -1682,12 +1754,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "ablation",
@@ -1706,12 +1779,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "f28eb28f35636f0581338aa629c77345564e6d9019a7778b3eabf0fd999449da",
         "variant": {
           "axis": "ablation",
@@ -1731,12 +1805,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "ablation",
@@ -1755,12 +1830,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "ablation",
@@ -1779,12 +1855,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "ablation",
@@ -1803,12 +1880,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "eac8a35bdc6a04f8b0628eae44e2c55628bee94d90e362bdac20f0bcbe7b19b4",
         "variant": {
           "axis": "ablation",
@@ -1828,12 +1906,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "ablation",
@@ -1852,12 +1931,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "ablation",
@@ -1876,12 +1956,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "ablation",
@@ -1900,12 +1981,13 @@
         "q": 3,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 900,
-          "sweep_cap": 15000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "a7a0dde52afda095abc010507553b3aa4198d47463a4890cc5a88bc366835255",
         "variant": {
           "axis": "ablation",
@@ -1925,12 +2007,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "ablation",
@@ -1949,12 +2032,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "ablation",
@@ -1973,12 +2057,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "ablation",
@@ -1997,12 +2082,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "2324b797ad6d5a1d169d4aa65b46c7ce72a00302d33a320d41019eae2fd3f4e3",
         "variant": {
           "axis": "ablation",
@@ -2022,12 +2108,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "ablation",
@@ -2046,12 +2133,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "ablation",
@@ -2070,12 +2158,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "ablation",
@@ -2094,12 +2183,13 @@
         "q": 2,
         "seed": 17,
         "budget": {
-          "wall_clock_s": 300,
-          "sweep_cap": 5000,
-          "source": "frozen tournament protocol"
+          "wall_clock_s": 20,
+          "sweep_cap": 8,
+          "source": "smoke minimum-viability budget"
         },
         "validation_level": "L4",
         "parent_run_id": null,
+        "parent_batch_id": null,
         "parent_tuple_sha256": "b693ee0587a2d69b738ccf78393a18af9d2befddd7529f891cb08f3a97354260",
         "variant": {
           "axis": "ablation",

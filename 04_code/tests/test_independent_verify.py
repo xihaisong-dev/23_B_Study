@@ -29,7 +29,9 @@ class TestIndependentVerify(unittest.TestCase):
             self.assertEqual(permutation, solution.permutation)
             self.assertEqual(factors, solution.factors)
             verified = verify_artifact(path, "q1", 4, 16, 2)
+            verified_right = verify_artifact(path, "q1", 4, 16, 2, "right")
             self.assertLessEqual(verified["rmse"], 1e-12)
+            self.assertAlmostEqual(verified_right["rmse"], verified["rmse"], places=12)
             self.assertTrue(verified["row_support_ok"])
 
     def test_q4_signed_zero_round_trip_preserves_hashes(self):

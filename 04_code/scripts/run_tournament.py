@@ -30,6 +30,10 @@ def main() -> int:
     parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--shard-count", type=int, default=1)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--parent-batch-id",
+                        help="completed formal L2 batch supplying real L3/L4 parents")
+    parser.add_argument("--q5-certificate-shortcut", action="store_true",
+                        help="readiness-only shortcut; formal use is refused without a frozen amendment")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--dry-run", action="store_true")
     mode.add_argument("--smoke", action="store_true")
@@ -49,8 +53,15 @@ def main() -> int:
         plan = build_plan(protocol, smoke=args.smoke, problems=args.problems,
                           candidates=args.candidates)
     else:
-        from dft_integer_approx.validation_runs import build_validation_plan
-        canonical_plan = build_validation_plan(protocol, args.level, smoke=args.smoke)
+        from dft_integer_approx.validation_runs import (build_validation_plan,
+                                                        select_validation_parents)
+        parents = None
+        if not args.smoke and not args.dry_run:
+            if not args.parent_batch_id:
+                parser.error("formal L3/L4 execution requires --parent-batch-id")
+            parents = select_validation_parents(workspace, args.parent_batch_id, protocol)
+        canonical_plan = build_validation_plan(protocol, args.level, smoke=args.smoke,
+                                               parents=parents)
         plan = [case for case in canonical_plan
                 if (not args.problems or case["problem"] in args.problems)
                 and (not args.candidates or case["candidate_id"] in args.candidates)]
@@ -67,7 +78,8 @@ def main() -> int:
     command = " ".join(sys.argv)
     summary = run_plan(workspace, plan, command=command, smoke=args.smoke,
                        batch_plan=canonical_plan, resume=args.resume,
-                       validation_level=args.level)
+                       validation_level=args.level,
+                       q5_certificate_shortcut=args.q5_certificate_shortcut)
     print(json.dumps({"status": summary["status"], "phase_status": summary["phase_status"],
                       "run_count": summary["run_count"],
                       "status_counts": summary["status_counts"]}, ensure_ascii=False, indent=2))

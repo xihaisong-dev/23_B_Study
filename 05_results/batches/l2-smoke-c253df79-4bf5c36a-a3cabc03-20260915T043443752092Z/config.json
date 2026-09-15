@@ -1,0 +1,22 @@
+{
+  "schema_version": "3.0",
+  "batch_id": "l2-smoke-c253df79-4bf5c36a-a3cabc03-20260915T043443752092Z",
+  "validation_level": "L2",
+  "formal": false,
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "4bf5c36a3dbe8dc2fe65535601b2c2daac63aba8ac1e443b82d750161422983c",
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input_sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "plan_content_sha256": "a3cabc03789ad907e05f8861c90e19c43337774f47d5a5de700ab9c76310ed20",
+  "q5_certificate_shortcut": true,
+  "stop_rule": {
+    "patience": 50,
+    "tolerance": 1e-10,
+    "deadline": "monotonic in-loop",
+    "sweep_cap": "per frozen N segment"
+  }
+}

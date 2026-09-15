@@ -10,7 +10,7 @@
 
 ## 环境
 
-纯标准库，无第三方依赖。本机 `Python 3.12.10`、`numpy 2.5.0`（已装但未作为锁定依赖使用）、`pytest` 未装。测试用 stdlib `unittest`，无需安装任何东西。
+纯标准库，无第三方依赖。本轮验证环境为 CPython `3.14.6`；测试用 stdlib `unittest`，无需安装任何东西。
 
 ## 运行测试
 
@@ -41,6 +41,7 @@ python 04_code/scripts/validate_protocol.py
 python 04_code/scripts/run_tournament.py --dry-run --level L2
 python 04_code/scripts/run_tournament.py --smoke --level L2
 python 04_code/scripts/run_tournament.py --dry-run --level L2 --shard-index 0 --shard-count 3
+python 04_code/scripts/run_tournament.py --dry-run --level L3
 ```
 
 放行条件（全部满足才 `allowed=True`）：
@@ -67,9 +68,14 @@ python 04_code/scripts/run_tournament.py --dry-run --level L2 --shard-index 0 --
 | `provenance` | run-id、环境摘要、最小 manifest |
 | `protocol_gate` | 失败关闭门禁 |
 | `search_budget` | 循环内 wall/sweep/patience/tolerance 停止与轨迹 |
+| `independent_search_score` | 不导入生产目标/指标模块的搜索接受与 patience 评分 |
 | `formal_tournament_runner` | 批次、分片、续跑、manifest 与独立复算 |
 | `aggregation` | 1442 tuple 双射、冻结排序、fallback 与 q5 frontier |
 | `validation_runs` | L3/L4 parent/variant 子运行预登记与统计 |
+
+L3/L4 正式执行必须通过 `--parent-batch-id` 指向已完成的真实 L2 批次；每个子运行绑定真实 `parent_run_id`。reverse initialization/update、tolerance、right-associated 独立计算和 boundary K/q 均改变实际执行，L4 四个 adapter 会真实禁用对应初始化、支持重连、离散润色或固定 Butterfly 支持。
+
+Q5 的 Gaussian 整数格下界为 `min(1/sqrt(N),1-1/sqrt(N))`，冻结六个 N 均大于 0.1。`--q5-certificate-shortcut` 仅供 readiness 审计，默认关闭；在没有获批并冻结的协议变更请求时，正式运行会失败关闭，不能用证书悄悄替代冻结搜索。
 
 ## 口径（D-005）
 
