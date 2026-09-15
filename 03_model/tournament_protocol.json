@@ -15,6 +15,7 @@
     "beta": 1,
     "target_dft": "F_N=N^(-1/2)[exp(-j*2*pi*k*n/N)] with zero-based indices",
     "rmse": "||T-A1*A2*...*AK||_F/N",
+    "factor_chain_order": "factors are stored as [A1,...,AK] and multiplied as A1@A2@...@AK; for a column vector, AK acts first",
     "coefficient_set": "P_q={0,+/-2^r:r=0,...,q-1}; real and imaginary parts independently belong to P_q",
     "free_multipliers": ["0", "+1", "-1", "+j", "-j", "+1+j", "+1-j", "-1+j", "-1-j"],
     "L": "number of nontrivial constant-multiplication positions when the factor chain acts layer by layer on an input vector; no sharing across rows or layers",

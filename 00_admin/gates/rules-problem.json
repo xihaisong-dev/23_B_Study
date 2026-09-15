@@ -1,0 +1,14 @@
+{
+  "schema_version": "3.0",
+  "gate": "rules-problem",
+  "status": "FAIL",
+  "checked_at": "2026-09-15T01:17:29+00:00",
+  "errors": [
+    "rules status is not PASS",
+    "input manifest status is not PASS",
+    "rules.ai_policy is not PASS",
+    "unverified input provenance: 01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "missing required file: 00_admin/freezes/problem.json"
+  ],
+  "warnings": []
+}

@@ -34,10 +34,11 @@
 
 硬性要求：
 
-1. `rmse_recompute_independent` 必须由**与搜索代码无关**的复算路径产生（本仓库可用 `03_model/checks/verify_row_bound.py` 中的 `dft_matrix/residual` 作为独立参照）。
-2. 未计算的量写 `null`，不得写 0。
-3. `optimality_claim` 必须逐条命名；"最小误差"在无证明时只能写 `best_found`，并同时给出可用的下界（若存在）。
-4. 每个候选都要报告**约束 1/2 的逐元素检查结果**，不能只报 `feasible: true`。
+1. 因子按 `[A1,...,AK]` 存储，乘积固定为 `A1 @ A2 @ ... @ AK`；对列向量作用时 `AK` 最先作用。搜索代码与独立复算不得采用相反顺序。
+2. `rmse_recompute_independent` 必须由**与搜索代码无关**的复算路径产生（本仓库可用 `03_model/checks/verify_row_bound.py` 中的 `dft_matrix/residual` 作为独立参照）。
+3. 未计算的量写 `null`，不得写 0。
+4. `optimality_claim` 必须逐条命名；"最小误差"在无证明时只能写 `best_found`，并同时给出可用的下界（若存在）。
+5. 每个候选都要报告**约束 1/2 的逐元素检查结果**，不能只报 `feasible: true`。
 
 ## 2. 候选清单（至少 3 个；`minimum_candidates` 的门槛值由 `00_admin/workflow.json` 的集成者字段裁定，本文件不复制该字段）
 
