@@ -3,9 +3,12 @@ set -euo pipefail
 
 branch="$(git branch --show-current)"
 case "$branch" in
-  agent/modeling) role="modeling" ;;
-  agent/compute) role="compute" ;;
-  agent/paper) role="paper" ;;
+  agent/modeling|agent/modeling-*) role="modeling" ;;
+  agent/compute|agent/compute-*) role="compute" ;;
+  agent/paper|agent/paper-*) role="paper" ;;
+  agent/*)
+    echo "提交被拒绝：未知 Agent 分支 $branch；请使用 agent/modeling[-*]、agent/compute[-*] 或 agent/paper[-*]。" >&2
+    exit 1 ;;
   *) exit 0 ;;
 esac
 
@@ -29,7 +32,7 @@ while IFS= read -r -d '' path; do
       ;;
     *) blocked+=("$path") ;;
   esac
-done < <(git diff --cached --name-only --diff-filter=ACMR -z)
+done < <(git diff --cached --name-only --diff-filter=ACMRD -z)
 
 if ((${#blocked[@]})); then
   echo "提交被拒绝：分支 $branch 暂存了越权路径：" >&2

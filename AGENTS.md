@@ -9,10 +9,11 @@
 - `agent/modeling` 只写 `01_problem/`、`02_retrieval/`、`03_model/`，以及自己的 handoff/proposals。
 - `agent/compute` 只写 `04_code/`、`05_results/`，以及自己的 handoff/proposals。
 - `agent/paper` 只写 `06_paper/`、`07_review/`，以及自己的 handoff/proposals。
+- 同一角色的临时分支只能使用 `agent/modeling-*`、`agent/compute-*` 或 `agent/paper-*`；它们继承对应角色的相同写入边界。其他未知 `agent/*` 分支拒绝提交。
 - `main` 只用于集成。工作 Agent 不得直接提交到 `main`。
 - `01_problem/original/` 只读，任何角色都不得修改。
 
-仓库的 `.githooks/pre-commit` 会检查上述边界。不要使用 `--no-verify` 绕过；需要跨目录改变接口时，在自己的 proposals 目录提交提案，由集成者裁决。
+仓库的 `.githooks/pre-commit` 会检查上述边界，包括删除操作。不要使用 `--no-verify` 绕过；需要跨目录改变接口时，在自己的 proposals 目录提交提案，由集成者裁决。
 
 ## 交接和证据
 
