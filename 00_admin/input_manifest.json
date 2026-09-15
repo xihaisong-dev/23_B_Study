@@ -8,8 +8,14 @@
       "data_class": "third_party_copy",
       "provenance_status": "UNVERIFIED",
       "source": "用户于 2026-09-14 提供的本地微信临时文件；文档自称 2023 年中国研究生数学建模竞赛 B 题",
-      "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841"
+      "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+      "content_corroboration": {
+        "status": "PASS",
+        "source": "https://github.com/reinshift/CPMC2023B/blob/main/DFT类矩阵的整数分解逼近.docx",
+        "comparison": "两份 DOCX 二进制不同；分别经 Pandoc 提取为纯文本并删除全部空白后，均为 5431 个字符且逐字符完全一致",
+        "corroborating_sha256": "508b2151dcbb9ed05b1656a7baa0e4b21ddfad79d09d3cc48733fe20a94f4ecf"
+      }
     }
   ],
-  "blocked_reason": "主办方公开页面确认 2023 B 题名称，但题目 ZIP 当年需登录竞赛系统下载；尚未取得官方 ZIP/MD5，不能把本地 DOCX 升格为 official"
+  "blocked_reason": "主办方公开页面确认 2023 B 题名称，且本地 DOCX 全文与独立公开副本一致；但题目 ZIP 当年需登录竞赛系统下载，尚未取得官方 ZIP/MD5，不能把本地 DOCX 升格为 official"
 }
