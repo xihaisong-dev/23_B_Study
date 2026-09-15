@@ -1,6 +1,53 @@
 # 计算 Agent 交接
 
-## 当前交接：L2 挑战者对擂执行完毕（隔离分支）
+## 当前交接：对擂结果聚合与 `model_results` 冻结（隔离分支）
+
+- 角色：E 计算 Agent（本轮为「聚合 + 冻结」阶段，由总控/用户授权在隔离分支执行）
+- 状态：聚合与冻结已完成、已提交、已推送；门禁 `tournament` / `model-results` 仍为 `FAIL`，唯一错误是**已证明的数学冲突**，需集成者裁决（见「阻塞项」）。本轮**不主张任何改进**。
+- 分支 / 提交：`agent/compute-tournament` = `adf187e6490af2f9a5f4a63021bab2a5aeaab31d`（父提交 `72e2df0`），已推送 `origin/agent/compute-tournament`
+- 输入版本与哈希：
+  - `03_model/tournament_protocol.json` SHA-256 `c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`（本分支未改动）
+  - `00_admin/freezes/tournament_protocol.json` SHA-256 `b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48`（作为 `model_results` freeze 的依赖写入）
+  - 输入 run manifests：`05_results/runs/` 共 **1480** 个 run 目录（250 基线 + 1230 挑战者），全部已在库中（`git ls-files` 计数 5920 = 1480 × 4）
+- 命令与 run-id：
+  - `python -X utf8 04_code/scripts/normalise_line_endings.py`
+  - `python -X utf8 04_code/scripts/freeze_model_results.py`
+  - `python -X utf8 -m pytest 04_code -q` → `61 passed`
+  - 门禁：`workflow_guard.py verify-freeze --workspace . --stage {problem,tournament_protocol,model_results}`；`workflow_guard.py check --workspace . --gate {rules-problem,retrieval,protocol,tournament,model-results}`
+  - 本轮**不产生新 run-id**（只对已提交的 run manifests 做聚合，`metrics.run_count = 1480`）
+- 产物路径：
+  - `04_code/src/dft_integer_approx/aggregate_results.py`（折叠 run manifests → `metrics.json` + `tournament.json`）
+  - `04_code/src/dft_integer_approx/robustness_ablation.py`（L3/L4）
+  - `04_code/scripts/freeze_model_results.py`、`04_code/scripts/normalise_line_endings.py`
+  - `05_results/metrics.json`、`05_results/tournament.json`、`05_results/l3_robustness.json`、`05_results/l4_ablation.json`、`05_results/RESULTS_REPORT.md`
+  - `00_admin/freezes/model_results.json`（15 个文件绑定 + `tournament_protocol` 依赖）
+- 聚合结果（`metrics.status = PASS`，`tournament.status = PASS`，逐问题 `robustness = PASS`、`ablation = PASS`）：
+  - 状态分布：`PASS 764` / `INFEASIBLE 792` / `CONSTRAINT_FAIL 0`
+  - q1 赢家 `q1-b0-scaled-radix2`，`RMSE 4.329780281177466e-17`（`N=2, K=1, q=16, L=4, C=64`）
+  - q2 `q2-b0-onefactor-quantize` `0.17677669529663687`（`N=32, K=1, q=3`）
+  - q3 `q3-b0-quantized-butterfly` `0.17677669529663687`（`N=32, K=5, q=3`）
+  - q4 `q4-c1-generic-discrete` `0.18410230570528574`（`N=32, K=7, q=3`）
+  - q5 `q5-b0-q1-butterfly` `0.125`（`N=64, K=1, q=1`），`winner_basis = best_structurally_valid_but_rmse_above_threshold`
+- L3/L4 边界（状态取自**实测文件** `l3_robustness.json` / `l4_ablation.json`，非声明）：
+  - L3：在**已记录**的三种子（17/43/71）run 上度量种子覆盖率、best/median/worst 离散度、因子结合顺序检查（`ASSOC_TOL = 1e-9`）；**未新增种子**
+  - L4：组件开关级重跑（`no_hierarchical_init`、`no_support_reconnect`、`no_discrete_polish`、`fixed_butterfly_vs_reconnectable`），受 `--ablation-instances`（默认每问题 3 个）限制，**非全量覆盖**
+- 本轮修复的自身缺陷（两处，均实测验证）：
+  1. `io.open(..., newline="\n")` **不会**去掉文本中已存在的 `\r`——它只抑制写入时 `\n → os.linesep` 的转换。首版 `normalise_line_endings.py` 因此把 1236 个文件**按字节原样重写**，却汇报「已归一化 1236 个文件」。已改为按字节 `\r\n → \n` 重写并加幂等自检。修正后实际转换 1236 个文件，`git add` 后**未产生任何 blob 变更**（暂存 10 个交付文件，而非 1236 个）。
+  2. `freeze_model_results.py` 原用 `Path.write_text(...)` 的默认换行写出，使 freeze 清单自身成为 CRLF。已改为 `newline="\n"`。
+  - 实质影响：`workflow_guard.sha256()` 对**原始字节**取哈希（`path.open("rb")`），因此「按 CRLF 工作树字节算出」的清单在**全新检出**（等价地：本分支并入 `main` 后 git 以 `eol=lf` 写出文件）会哈希不匹配、`verify-freeze` 失败。修正后实测：用全新 worktree 检出 `adf187e`，绑定集合 CRLF 字节 = 0，`verify-freeze --stage model_results` = `PASS`，`check --gate tournament` 复现同一单错，1480 个 run manifest 全部在盘上（`missing = 0`）。
+- 测试与门禁结果：
+  - 单测 `61 passed`；`git diff --cached --check` 退出 0；暂存区无删除项
+  - `verify-freeze`：`problem` `PASS`、`tournament_protocol` `PASS`、`model_results` `PASS`（且全新检出复测 `PASS`）
+  - `check --gate`：`rules-problem` `PASS`、`retrieval` `PASS`、`protocol` `PASS`、`tournament` **`FAIL`（1 错）**、`model-results` **`FAIL`（同 1 错）**
+- 已知限制：L3 未补新种子、L4 非全量覆盖；除 q5 外 q2–q5 均无已证明下界，只能按 `best_found` 表述；本轮未改动任何 run 产物与冻结协议
+- 接口影响：`03_model/`、`05_results/runs/` 内既有产物均未修改，新增文件性变更全部在 compute 边界内。**唯一越界项**：`00_admin/freezes/model_results.json` 不在 `.githooks/pre-commit` 的 `compute:` 白名单内（白名单仅 `04_code/*`、`05_results/*`、`00_admin/handoffs/compute.md`、`00_admin/proposals/compute/*`）；该文件由 `workflow_guard` 的冻结流程产出。另注该钩子的 `case` 只识别 `agent/modeling|agent/compute|agent/paper` 三个规范分支名，对 `agent/compute-*` 临时分支一律 `exit 0`，即临时分支上写入边界**不被强制**。请集成者决定是否把 `00_admin/freezes/*` 纳入白名单。
+- 阻塞项（需集成者裁决；我未做任何规避）：
+  - `workflow_guard.check_tournament` 要求注册的 `winner_id` 存在 `status == "PASS"` **且** `constraints_status == "PASS"` 的 run；但 q5 在全部 6 个冻结实例上**可证不可行**（系数为高斯整数 ⇒ `RMSE ≥ d_64 = 1/8 = 0.125 > 0.1`），该子句因此**不可满足**。
+  - 我**没有**放宽阈值、改状态名或伪造成可行解；`tournament.json` 对 q5 明确记录 `winner_basis = best_structurally_valid_but_rmse_above_threshold`。
+  - 两个可选裁决：(a) 修改门禁语义，允许 q5 在「已证明不可行」时以文档化形式登记赢家；(b) 集成者明确接受「无可行赢家」，使 `check_tournament` 跳过该子句。二者均属跨目录接口变更，需由集成者/总控落盘到 `DECISIONS.md`。
+- 下一步与接收人：接收人 = 总控/集成者。建议顺序：(1) 先裁决 q5 门禁语义；(2) 合并时注意 `00_admin/handoffs/compute.md` 与 `agent/compute-challengers`（`c8500b5`，13:02）在本文件顶部各有新增小节，可能产生冲突，需人工合并；(3) 合并后重跑 `verify-freeze` 与全部门禁，确认 `PASS`。
+
+## 历史交接：L2 挑战者对擂执行完毕（隔离分支）
 
 - 角色：E 计算 Agent
 - 状态：对擂已执行（1230 runs）；结论为**挑战者在多数问题上未优于基线**，见下文；正式结果冻结仍由集成者执行
