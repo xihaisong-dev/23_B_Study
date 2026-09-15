@@ -24,6 +24,8 @@
 | `structural_bounds_results.json` | 上者的输出。 |
 | `verify_row_relaxation_bounds.py` | 下界可用性审计：证明在冻结语义下 `K >= 2` 时经典支持下界是唯一非平凡证书。 |
 | `row_relaxation_bounds.json` | 上者的输出。 |
+| `verify_q5_gaussian_integer_infeasibility.py` | Q5 高斯整数闭包与格距下界证书；纯标准库，核对题面、冻结协议和输入谱系。 |
+| `q5_gaussian_integer_infeasibility.json` | 上者的机器输出；冻结六尺寸上全局排除 `RMSE<=0.1`。 |
 
 ## 运行
 
@@ -31,14 +33,16 @@
 python -X utf8 03_model/checks/verify_row_bound.py
 python -X utf8 03_model/checks/verify_structural_bounds.py
 python -X utf8 03_model/checks/verify_row_relaxation_bounds.py
+python -X utf8 03_model/checks/verify_q5_gaussian_integer_infeasibility.py
 ```
 
-三者都从任意当前目录运行并把 JSON 写回本目录。成功标准：退出码 0、顶层 `status` 为 `PASS`、`failed_checks` 为空。
+四者都从任意当前目录运行并把 JSON 写回本目录。成功标准：退出码 0、顶层 `status` 为 `PASS`、`failed_checks` 为空。
 
 ## 证据边界
 
 - 可核验：单位化 DFT 与 Kronecker 目标、行支持传播、问题 1 的 radix-2 非零精确构造、固定 `β` 的支持下界、尺度退化、提取稿式 (5) 的印刷顺序复算、冻结清单哈希与协议引用行号。
-- **已验证的下界只有一个**：`RMSE >= sqrt(N - min(N,2^K))/N`（`β=1`）。它在 `2^K >= N` 时退化为 0。其他候选证书（列支持传播、计数式收紧、系数幅值上限）已在本目录被证明无效或平凡，见 `structural_bounds_results.json` 的 `falsified` 字段与 `row_relaxation_bounds.json` 的 `headline`。
+- 对只使用行支持信息的松弛，已验证的非平凡下界只有 `RMSE >= sqrt(N - min(N,2^K))/N`（`β=1`），且在 `2^K >= N` 时退化为 0。列支持传播、计数式收紧和既有系数幅值上限无效或平凡。
+- **Q5 离散场景另有独立的整数格证书**：合法因子乘积逐项属于 `Z[i]`，故 `RMSE >= min(1/sqrt(N),1-1/sqrt(N))`。它在冻结 `N=2..64` 上均严格大于 `0.1`，详见 `Q5_GAUSSIAN_INTEGER_INFEASIBILITY.md`；这补充并收紧了此前只考察支持/幅值松弛所得的结论。
 - 不可核验：用户 README 中的 V4–V6 搜索值及 `current_best`；本目录没有 V5 因子、NPZ、搜索源码或日志。
 - 本目录的 JSON 都不是 `05_results/` 正式结果，不得用它们跳过题面、检索、协议与对擂门禁。
 - `__pycache__/`、`*.pyc`、临时日志均为可再生缓存，不得提交。

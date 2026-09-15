@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0",
+  "artifact_class": "modeling_certificate",
+  "formal_experiment": false,
+  "status": "PASS",
+  "generated_at": "2026-09-15T04:13:30.341641+00:00",
+  "conclusion": "For beta=1, every admissible Q5 product (with any positive integer q, any K, and any right permutation) is Gaussian-integer valued.  On every frozen registered N, RMSE is strictly greater than 0.1; therefore the registered Q5 feasible set is empty.",
+  "scope": {
+    "certified": "all admissible factors for frozen N=[2,4,8,16,32,64]",
+    "not_certified": "the original all-t family beyond the frozen finite validation set; for N>=128 the present bound is <=0.1"
+  },
+  "proof_formula": {
+    "entry_bound": "d_N=min(1/sqrt(N),1-1/sqrt(N))",
+    "rmse_bound": "RMSE=||F_N-B||_F/N >= d_N",
+    "reason": "B entries lie in Z[i]; a nonzero Gaussian integer has modulus at least 1, while every unitary-DFT entry has modulus 1/sqrt(N)."
+  },
+  "inputs": [
+    {
+      "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+      "size": 205337,
+      "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841"
+    },
+    {
+      "path": "03_model/tournament_protocol.json",
+      "size": 34087,
+      "sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592"
+    },
+    {
+      "path": "00_admin/freezes/tournament_protocol.json",
+      "size": 866,
+      "sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48"
+    },
+    {
+      "path": "00_admin/semantic_contract.json",
+      "size": 1863,
+      "sha256": "bdbe1b5a454e1ba56d47201ff942f94844165e5550755cc4195af50da6f0cb62"
+    },
+    {
+      "path": "03_model/checks/verify_q5_gaussian_integer_infeasibility.py",
+      "size": 10470,
+      "sha256": "8ea7d6b55539426c44f13d5b5d43d27a3f19b388da5050984a65d5d6f1012143"
+    }
+  ],
+  "problem_text_checks": {
+    "contains_discrete_constraint": true,
+    "contains_q5_threshold": true,
+    "contains_q5_joint_constraints": true
+  },
+  "protocol_checks": {
+    "protocol_status_pass": true,
+    "protocol_declares_frozen": true,
+    "freeze_status_pass": true,
+    "protocol_hash_matches_freeze": true,
+    "protocol_size_matches_freeze": true,
+    "beta_is_one": true,
+    "target_is_unitary_dft": true,
+    "coefficient_set_is_power_of_two_integer_set": true,
+    "q5_requires_discrete_constraint": true,
+    "q5_threshold_is_point_one": true,
+    "registered_N": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "registered_q": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "gaussian_integer_closure_sanity": [
+    {
+      "q": 1,
+      "component_count": 3,
+      "gaussian_alphabet_count": 9,
+      "ordered_pairs_checked": 81,
+      "sum_and_product_remain_in_Z_i": true
+    },
+    {
+      "q": 2,
+      "component_count": 5,
+      "gaussian_alphabet_count": 25,
+      "ordered_pairs_checked": 625,
+      "sum_and_product_remain_in_Z_i": true
+    },
+    {
+      "q": 3,
+      "component_count": 7,
+      "gaussian_alphabet_count": 49,
+      "ordered_pairs_checked": 2401,
+      "sum_and_product_remain_in_Z_i": true
+    },
+    {
+      "q": 4,
+      "component_count": 9,
+      "gaussian_alphabet_count": 81,
+      "ordered_pairs_checked": 6561,
+      "sum_and_product_remain_in_Z_i": true
+    }
+  ],
+  "matrix_product_and_right_permutation_sanity": {
+    "matrix_size": 2,
+    "product_entries_are_in_Z_i": true,
+    "right_permutation_is_column_reordering": true,
+    "right_permuted_entries_are_in_Z_i": true
+  },
+  "instances": [
+    {
+      "N": 2,
+      "target_entry_modulus": 0.7071067811865475,
+      "analytic_entry_distance_lower_bound": 0.29289321881345254,
+      "analytic_rmse_lower_bound": 0.29289321881345254,
+      "threshold": 0.1,
+      "strict_margin": 0.19289321881345253,
+      "excludes_rmse_le_threshold": true,
+      "enumeration": {
+        "lattice_box": {
+          "real": [
+            -2,
+            2
+          ],
+          "imag": [
+            -2,
+            2
+          ]
+        },
+        "target_entries_checked": 4,
+        "minimum_nearest_distance": 0.29289321881345254,
+        "maximum_nearest_distance": 0.29289321881345254,
+        "all_respect_analytic_bound": true
+      }
+    },
+    {
+      "N": 4,
+      "target_entry_modulus": 0.5,
+      "analytic_entry_distance_lower_bound": 0.5,
+      "analytic_rmse_lower_bound": 0.5,
+      "threshold": 0.1,
+      "strict_margin": 0.4,
+      "excludes_rmse_le_threshold": true,
+      "enumeration": {
+        "lattice_box": {
+          "real": [
+            -2,
+            2
+          ],
+          "imag": [
+            -2,
+            2
+          ]
+        },
+        "target_entries_checked": 16,
+        "minimum_nearest_distance": 0.5,
+        "maximum_nearest_distance": 0.5,
+        "all_respect_analytic_bound": true
+      }
+    },
+    {
+      "N": 8,
+      "target_entry_modulus": 0.35355339059327373,
+      "analytic_entry_distance_lower_bound": 0.35355339059327373,
+      "analytic_rmse_lower_bound": 0.35355339059327373,
+      "threshold": 0.1,
+      "strict_margin": 0.25355339059327375,
+      "excludes_rmse_le_threshold": true,
+      "enumeration": {
+        "lattice_box": {
+          "real": [
+            -2,
+            2
+          ],
+          "imag": [
+            -2,
+            2
+          ]
+        },
+        "target_entries_checked": 64,
+        "minimum_nearest_distance": 0.35355339059327373,
+        "maximum_nearest_distance": 0.3535533905932738,
+        "all_respect_analytic_bound": true
+      }
+    },
+    {
+      "N": 16,
+      "target_entry_modulus": 0.25,
+      "analytic_entry_distance_lower_bound": 0.25,
+      "analytic_rmse_lower_bound": 0.25,
+      "threshold": 0.1,
+      "strict_margin": 0.15,
+      "excludes_rmse_le_threshold": true,
+      "enumeration": {
+        "lattice_box": {
+          "real": [
+            -2,
+            2
+          ],
+          "imag": [
+            -2,
+            2
+          ]
+        },
+        "target_entries_checked": 256,
+        "minimum_nearest_distance": 0.24999999999999997,
+        "maximum_nearest_distance": 0.25,
+        "all_respect_analytic_bound": true
+      }
+    },
+    {
+      "N": 32,
+      "target_entry_modulus": 0.17677669529663687,
+      "analytic_entry_distance_lower_bound": 0.17677669529663687,
+      "analytic_rmse_lower_bound": 0.17677669529663687,
+      "threshold": 0.1,
+      "strict_margin": 0.07677669529663686,
+      "excludes_rmse_le_threshold": true,
+      "enumeration": {
+        "lattice_box": {
+          "real": [
+            -2,
+            2
+          ],
+          "imag": [
+            -2,
+            2
+          ]
+        },
+        "target_entries_checked": 1024,
+        "minimum_nearest_distance": 0.17677669529663684,
+        "maximum_nearest_distance": 0.1767766952966369,
+        "all_respect_analytic_bound": true
+      }
+    },
+    {
+      "N": 64,
+      "target_entry_modulus": 0.125,
+      "analytic_entry_distance_lower_bound": 0.125,
+      "analytic_rmse_lower_bound": 0.125,
+      "threshold": 0.1,
+      "strict_margin": 0.024999999999999994,
+      "excludes_rmse_le_threshold": true,
+      "enumeration": {
+        "lattice_box": {
+          "real": [
+            -2,
+            2
+          ],
+          "imag": [
+            -2,
+            2
+          ]
+        },
+        "target_entries_checked": 4096,
+        "minimum_nearest_distance": 0.12499999999999999,
+        "maximum_nearest_distance": 0.125,
+        "all_respect_analytic_bound": true
+      }
+    }
+  ],
+  "minimum_registered_rmse_lower_bound": 0.125,
+  "minimum_registered_margin_above_point_one": 0.024999999999999994,
+  "failed_checks": []
+}
