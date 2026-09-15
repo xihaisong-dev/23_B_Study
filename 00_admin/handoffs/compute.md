@@ -108,3 +108,37 @@
 - run-id 与结果边界：`NOT_RUN`；没有创建、修改或覆盖任何 `05_results/` 文件，没有生成数值、排名或胜者。
 - 已知限制：本提交只修正冻结门禁接口；真实候选映射和 L0–L4 仍须等待上游规则/题面、检索、协议及冻结链全部 PASS。
 - 下一步与接收人：交给主 Agent 审核并合并；合并后以主工作树执行 `workflow_guard.py verify-freeze --stage tournament_protocol` 和本地 `validate_protocol.py` 双重校验，任何一项失败都不得进入正式运行。
+
+## 协议冻结后 L0/L1 确定性基线交接
+
+- 角色/分支/工作树：E 计算 Agent；`agent/compute`；`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/compute`。
+- 同步与内容提交：开始时已确认 `HEAD=origin/main=a8ad6cfb6ec49acb7da70b4e3e127b29e745c873`；L0/L1 代码与结果提交为 `6aeddd1514e50bd2be8d17e6e72a525344627a8d`。
+- 冻结输入与哈希：
+  - `00_admin/input_manifest.json` SHA-256 `dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680`；L0 重算题面文件 SHA-256 与清单一致，数据类别保持 `third_party_copy`。
+  - `03_model/tournament_protocol.json` SHA-256 `c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`。
+  - `00_admin/freezes/problem.json` SHA-256 `fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1`。
+  - `00_admin/freezes/tournament_protocol.json` SHA-256 `b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48`；正式运行前两次执行 `workflow_guard.py verify-freeze --stage tournament_protocol` 均为 PASS，本地 `validate_protocol.py` 也为 PASS。
+- D-011 披露：所有 31 个 `04_code/**/*.py` 均有统一 AI 辅助文件头；`04_code/AI_ASSISTED_DEVELOPMENT.md`（SHA-256 `046bad06d491094557520e32404272b939768af623fa478997499fb1c7ebb1d6`）集中记录工具/型号、开发机构、精确版本日期未披露边界、任务输入摘要、后处理和人工复核要求。
+- 实现范围：
+  - L0：题面输入哈希、单位化/正交性、零基索引、F2 手算、`F4 tensor F8 != F32`、因子顺序、行支持、Pq、K/L/C、支持下界、N=8 精确 radix-2 构造；`05_results/l0_checks.json` 状态 PASS，SHA-256 `bf91c0f84b752c0591273f56ccba7854fccc3b6eff0660791fca8e57b7aa3890`。
+  - L1：q1 精确缩放 radix-2、q2 单因子 P3 投影、q3 P3 量化 Butterfly＋固定顺序一次坐标润色、q4 Kronecker 提升量化 Butterfly、q5 q=1 全登记 K 网格基线。
+  - 每个实例保存稀疏 `factors.json`、`stdout.txt`、`stderr.txt` 与完整 `run_manifest.json`；独立复算路径重新加载持久化因子，不导入搜索侧乘积/RMSE函数。所有文本产物固定 LF；`05_results/.gitattributes` 固定 `.txt eol=lf`，避免 checkout 后哈希漂移。
+- 实际命令：
+  - `python -m compileall -q 04_code`：PASS。
+  - `python -m unittest discover -s 04_code/tests -p 'test_*.py'`：**61/61 PASS**。
+  - `python -X utf8 C:/Users/Lenovo/.codex/skills/1start-mathmodel/scripts/workflow_guard.py verify-freeze --workspace . --stage tournament_protocol`：PASS。
+  - `python -X utf8 04_code/scripts/validate_protocol.py`：PASS。
+  - `python -X utf8 04_code/scripts/run_l0.py`：PASS。
+  - `python -X utf8 04_code/scripts/run_baselines.py`：最终批次退出码 0，50 个实例均完成；最大单实例墙钟约 0.792119 秒，未触及 60 秒上限。
+  - `workflow_guard.py check --gate tournament`：按预期 FAIL，原因仅为挑战者、最终 winner、L3 稳健性和 L4 消融仍未完成，未把本里程碑伪装成对擂 PASS。
+- 当前正式证据批次与 run-id：`05_results/metrics.json.latest_batch_run_ids` 完整登记 50 个 run-id（首个 `20260915T021254422985Z__q1__q1-b0-scaled-radix2__s0__pc253df79__c8c947602`，末个 `20260915T021258909558Z__q5__q5-b0-q1-butterfly__s0__pc253df79__c8c947602`）；字段内 50 项是本提交代码树 SHA-256 `8c9476026d7536ac5befa9acce8bce1aaea6d50d9adff11a6d883245f8167935` 对应的当前证据集。搜索侧与独立复算 RMSE 最大绝对差为 0，全部产物哈希复核无误。
+- 当前批次结果（不作最终胜者结论）：
+  - q1：6/6 PASS；N=2/4/8/16/32/64 的 RMSE 分别约为 `4.33e-17/1.49e-16/3.14e-16/6.90e-16/9.76e-16/1.32e-15`，对应 `(L,C)` 为 `(4,64)/(16,256)/(48,768)/(128,2048)/(320,5120)/(768,12288)`。
+  - q2：5/5 PASS；N=2/4/8/16/32 的 RMSE 为 `0.292893/0.5/0.353553/0.25/0.176777`，本基线均 `L=C=0`。
+  - q3：5/5 PASS；同尺寸 RMSE 为 `0.292893/0.5/0.353553/0.25/0.176777`，本基线均 `L=C=0`。
+  - q4：1/1 PASS；N=32、K=5、q=3，RMSE `0.7183905324091097`，`L=C=0`。
+  - q5：33/33 为 `INFEASIBLE` 而非运行失败；所有 q=1/K 网格因子合法且 `L=C=0`，但 N=2/4/8/16/32/64 的最好 RMSE 仍为 `0.292893/0.5/0.353553/0.25/0.176777/0.125`，均未达到 0.1，因此 winner 保持 null。
+- 机器汇总：`05_results/metrics.json` SHA-256 `ade19f68217307cdd06250f64bce0ae7a517d3cb1b556c7a99ff8045747f4902`、`05_results/tournament.json` SHA-256 `8a4957bd8c5744d37234f277ead56dff86dfd7714be1684b668a93a0254e4c02` 均保持 `BLOCKED`；`05_results/RESULTS_REPORT.md` SHA-256 `17ebced19b274d0d06363217d5273dcf782ddddbc3bf5dc6bff4d952ed934d94`。
+- 历史失败保留：开发期首批 q4 曾因稀疏 JSON 未保存 IEEE-754 负零符号而触发因子字节哈希不一致；该 `CONSTRAINT_FAIL` run 及后续重跑批次均按不可删除原则保留。最终 `metrics.json` 共含 250 个历史/当前 run，其中 `latest_batch_run_ids` 的 50 项才是当前代码树证据集。
+- 结果边界：未实现或运行任何 c1/c2 挑战者；未选择最终 winner；未写 `PASS` 总状态；未执行 L2/L3/L4；未修改任何冻结文件。
+- 下一步与接收人：主 Agent 审核并合并本提交；随后计算 Agent 在同一冻结协议和预算下实现并运行全部挑战者，保留所有失败，完成 L2 后再做 L3/L4。论文 Agent 当前只能引用“基线阶段证据”，不得写最终赢家或最优性结论。
