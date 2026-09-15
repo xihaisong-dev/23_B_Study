@@ -1,0 +1,8 @@
+run_id=20260915T053841471818Z__q2__q2-b0-onefactor-quantize__s0__pc253df79__cdedcd626
+problem=q2
+candidate=q2-b0-onefactor-quantize
+N=16
+K=1
+q=3
+seed=0
+status=PASS

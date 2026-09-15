@@ -1,0 +1,128 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T052938318953Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdedcd626",
+  "problem_id": "q1",
+  "problem": "q1",
+  "candidate_id": "q1-b0-scaled-radix2",
+  "kind": "baseline",
+  "N": 64,
+  "K": 6,
+  "q": 16,
+  "beta": 1,
+  "seed": 0,
+  "budget": {
+    "wall_clock_s": 60,
+    "sweep_cap": null,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 0.10240039999916917,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": true,
+  "run_scope": "FROZEN_L2",
+  "optimality_claim": "exact analytic construction",
+  "target_sha256": "018679609f74327f16cced08fde62af350f7e494d2bec4ecbeb35e3345e01be8",
+  "factor_sha256s": [
+    "e9ce522bb9e740300a9a037f51082d7d52586d3d99577c1904da97f3247ee3b3",
+    "5d6a9c0aad4542cb7112b788c5b2bcb72473825040020afee57aaebf4f6c7fa3",
+    "c72c48eb1ddbfe29db814e21a1a433411a0792952ad4fccc66a4d7739fa03d11",
+    "9f9ab6725df27a260cca5bdbf4ad906f2643c0ae50eb9233553cc457f0065a27",
+    "2bbe0e1a17b0412e94d26f0c4bb12417f859cc35391de1683aff60710d276b9f",
+    "b6397f0fe8d8883bc058c0413ddd61ab6338a2e271a92018a17d174619fbfe2f"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "NOT_APPLICABLE",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.0
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 3.1031676915590914e-17,
+    "scoring_association": "left"
+  },
+  "rmse": 1.3186901660334803e-15,
+  "rmse_recompute_independent": 1.3186901660334803e-15,
+  "L": 324,
+  "C": 5184,
+  "diagnostics": {
+    "polish_passes": 0
+  },
+  "started_at": "2026-09-15T05:29:38+00:00",
+  "finished_at": "2026-09-15T05:29:38+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54",
+  "batch_id": "l2-c253df79-dedcd626-73e8bd72",
+  "batch_plan_sha256": "73e8bd72d98908cf10763891e52f734bd0c84e33b18f65bdd6563dd8a33a58f9",
+  "batch_config_sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f",
+  "run_config_sha256": "0790771be4317e4c146716ee148e10169f3cf8458353ed292eb1c49bcef3d35d",
+  "tuple_sha256": "34535abb505b1ed6850833475aea33d19621c9de4e6064a8aa812647f556153b",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/plan.json",
+      "size": 437688,
+      "sha256": "7be32c7ed4b1e18ec1a905b8891c1cd201a3193619cc550faca5d5ab65f75d51"
+    },
+    "config": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/config.json",
+      "size": 1102,
+      "sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --level L2 --execute-full --shard-index 1 --shard-count 3 --resume",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T052938318953Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdedcd626/factors.json",
+      "size": 68714,
+      "sha256": "dcfb0e8277db8da229bf79bd3ec94188731616cad6f79b21c91c4cf457ac68cb"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/runs/20260915T052938318953Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdedcd626/stdout.txt",
+      "size": 155,
+      "sha256": "693079966af8390601d21226071f343a9cbbe6350ca0853254be2302cbedc952"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T052938318953Z__q1__q1-b0-scaled-radix2__s0__pc253df79__cdedcd626/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

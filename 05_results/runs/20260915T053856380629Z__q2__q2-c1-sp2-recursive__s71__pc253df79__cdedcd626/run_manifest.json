@@ -1,0 +1,2769 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T053856380629Z__q2__q2-c1-sp2-recursive__s71__pc253df79__cdedcd626",
+  "problem_id": "q2",
+  "problem": "q2",
+  "candidate_id": "q2-c1-sp2-recursive",
+  "kind": "challenger",
+  "N": 32,
+  "K": 3,
+  "q": 3,
+  "beta": 1,
+  "seed": 71,
+  "budget": {
+    "wall_clock_s": 900,
+    "sweep_cap": 15000,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 1.5197574999983772,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": true,
+  "run_scope": "FROZEN_L2",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "c416f39a92aebc03fd1e65d9ca18c0eeec7b36e665c5d8a1284973200b15111e",
+  "factor_sha256s": [
+    "eca88d837c0c87af418da29018a0e5fe391660ef21482eace651367740d608d1",
+    "ea45ecc6c4745b182e7165a0f0ac84dab56794022cddc0e591fc55f351436c0e",
+    "e9b82008bafee2ddd0487d7a1343298350016379ed2d5573f740b2dd07536226"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "NOT_APPLICABLE",
+      "value": null
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.17677669529663687,
+  "rmse_recompute_independent": 0.17677669529663687,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "strategy": "sp2_recursive",
+    "protocol_method": "recursive_right_factor_greedy",
+    "seed": 71,
+    "seed_trace": "822a87dc52e17fd9",
+    "smoke": false,
+    "execution_scope": "frozen_budget_search",
+    "search_budget": {
+      "wall_clock_s": 900.0,
+      "sweep_cap": 15000,
+      "patience": 50,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "patience",
+    "sweeps": 54,
+    "stale_sweeps": 50,
+    "evaluated_proposals": 239,
+    "accepted_proposals": 1,
+    "rejected_proposals": 238,
+    "failure_reasons": {
+      "no_improvement": 102,
+      "unchanged": 50
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "recursive_right_factor_depth_2",
+        "rmse": 0.4185605157931941,
+        "improvement": null,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "recursive_right_factor_depth_1",
+        "rmse": 0.4185605157931941,
+        "improvement": 0.0,
+        "evaluated": 64,
+        "accepted": 0
+      },
+      {
+        "sweep": 3,
+        "phase": "recursive_right_factor_depth_0",
+        "rmse": 0.4185605157931941,
+        "improvement": 0.0,
+        "evaluated": 64,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.24178382049655722,
+        "evaluated": 3,
+        "accepted": 1
+      },
+      {
+        "sweep": 5,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 6,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 9,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 10,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 11,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 12,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 13,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 14,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 15,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 16,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 17,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 18,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 19,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 20,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 21,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 22,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 23,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 24,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 25,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 26,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 27,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 28,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 29,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 30,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 31,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 32,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 33,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 34,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 35,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 36,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 37,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 38,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 39,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 40,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 41,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 42,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 43,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 44,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 45,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 46,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 47,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 48,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 49,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 50,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 51,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 52,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 53,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      },
+      {
+        "sweep": 54,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 2,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 179.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 199.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 259.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 247.39753511021027
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 307.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 259.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 179.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 179.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 259.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 210.569107985464
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 301.25211305651885
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 186.85633901006403
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 186.85633901006398
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 190.43350002501344
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 179.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 219.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 201.51885545376987
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 211.39753511021027
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 183.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 307.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 189.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 271.4867157851716
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 229.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 204.81174867258332
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 227.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 204.02390235061347
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 199.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 240.81174867258338
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 199.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 220.3535473264289
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 219.39753511021027
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 261.0100213013393
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 209.39753511021027
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 276.50384048449405
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 247.39753511021027
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 279.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 315.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 255.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 327.39753511021013
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 313.5623195107949
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 377.5623195107949
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 289.46946493981676
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 259.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 261.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 275.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 273.9833215478371
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 275.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 339.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 268.81174867258335
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 262.05081659264846
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 259.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 387.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 291.69616644641155
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 273.9833215478371
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 279.39753511021013
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 288.78440918045743
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 263.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 265.6904283290237
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 307.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 378.4686029220758
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 313.6904283290237
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 342.22596223495634
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 372.1778963982747
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 382.32125034309627
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 307.39753511021024
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 376.933069016143
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 179.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 187.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 184.10464189139677
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 188.10464189139677
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 248.3521040456399
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 183.6681331602833
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 199.65243289976232
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 213.48125045833703
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 179.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 187.63377193316856
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 221.3838787352013
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 260.6002248840803
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 212.47992731050263
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 207.21114393149205
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 183.610142633902
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 181.7510885008035
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 183.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 247.8310806128596
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 193.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 313.1974875564831
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 313.5140552772975
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 203.2510885008035
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 215.81174867258338
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 221.08951745202077
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 186.85633901006398
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 202.85633901006398
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 249.5835804294912
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 259.38697624182845
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 223.71241456235
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 201.04408411735818
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 202.14923222887748
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 206.7850515276444
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 186.85633901006403
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 226.77055257243714
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 192.74425362777205
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 250.85633901006403
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 221.19495214774284
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 194.64923222887748
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 313.05638656379114
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 223.25406786955736
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 189.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 198.44042832902366
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 229.51885545376987
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 192.22596223495643
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 230.7040980750866
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 205.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 194.98793902847095
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 193.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 190.43350002501344
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 198.43350002501344
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 222.66573307204712
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 224.43350002501344
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 228.43350002501344
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 269.1269370601372
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 231.14060680620005
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 222.66573307204712
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 195.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 215.45819528199004
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 206.10464189139677
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 196.7173409783978
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 235.3975351102102
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 197.07089436899113
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 224.9223524406433
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 235.6173984964109
+      },
+      {
+        "kind": "factor_update",
+        "accepted": true,
+        "reason": "objective_improved",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      }
+    ],
+    "greedy_beam": 8,
+    "right_factor_beam": [
+      {
+        "depth": 2,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "depth": 1,
+        "evaluated": 64,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "depth": 0,
+        "evaluated": 64,
+        "retained": 8,
+        "accepted": 0
+      }
+    ],
+    "recursive_depths": 3,
+    "residual_left_projection": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T05:38:56+00:00",
+  "finished_at": "2026-09-15T05:38:57+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54",
+  "batch_id": "l2-c253df79-dedcd626-73e8bd72",
+  "batch_plan_sha256": "73e8bd72d98908cf10763891e52f734bd0c84e33b18f65bdd6563dd8a33a58f9",
+  "batch_config_sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f",
+  "run_config_sha256": "abae11d9b4cfb4b44903a84a9c9a45fc422e5ac85a87ec260d33b19be0e82c2f",
+  "tuple_sha256": "2b62f04c1489308be28301a82129676404507811ceebb514be477c127ee7498e",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/plan.json",
+      "size": 437688,
+      "sha256": "7be32c7ed4b1e18ec1a905b8891c1cd201a3193619cc550faca5d5ab65f75d51"
+    },
+    "config": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/config.json",
+      "size": 1102,
+      "sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --level L2 --execute-full --shard-index 1 --shard-count 3 --resume",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T053856380629Z__q2__q2-c1-sp2-recursive__s71__pc253df79__cdedcd626/factors.json",
+      "size": 8870,
+      "sha256": "c7e9fd802b126601faebac5baee71094e0adba80735cbf5320a8bc1b03a3015d"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/runs/20260915T053856380629Z__q2__q2-c1-sp2-recursive__s71__pc253df79__cdedcd626/stdout.txt",
+      "size": 156,
+      "sha256": "5a3792a482e75eae2d1dadc866e1d322653a08e5d8c097188a9e7167eb8fe444"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T053856380629Z__q2__q2-c1-sp2-recursive__s71__pc253df79__cdedcd626/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

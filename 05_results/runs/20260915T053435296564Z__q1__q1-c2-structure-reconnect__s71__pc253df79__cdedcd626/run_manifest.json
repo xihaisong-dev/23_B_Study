@@ -1,0 +1,1633 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T053435296564Z__q1__q1-c2-structure-reconnect__s71__pc253df79__cdedcd626",
+  "problem_id": "q1",
+  "problem": "q1",
+  "candidate_id": "q1-c2-structure-reconnect",
+  "kind": "challenger",
+  "N": 8,
+  "K": 2,
+  "q": 16,
+  "beta": 1,
+  "seed": 71,
+  "budget": {
+    "wall_clock_s": 300,
+    "sweep_cap": 5000,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 0.04716770000231918,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": true,
+  "run_scope": "FROZEN_L2",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "3f4efdf3a084f2290c56d5cd1b4f588b58d7bf360c4c8a82f68582c4fd0aa4c5",
+  "factor_sha256s": [
+    "40ae7eda656f7f20b0c5114afa750b6dc0218e99fc50f825692ac6f48936f4eb",
+    "21be76162858602f4e21be0c7e8caf7868d2addf1251e027014a9be3d2f6258a"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "NOT_APPLICABLE",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "PASS",
+      "value": 0.25
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.35628802773185103,
+  "rmse_recompute_independent": 0.35628802773185103,
+  "L": 26,
+  "C": 416,
+  "diagnostics": {
+    "strategy": "structure_reconnect",
+    "protocol_method": "butterfly_large_neighborhood_reconnect",
+    "seed": 71,
+    "seed_trace": "822a87dc52e17fd9",
+    "smoke": false,
+    "execution_scope": "frozen_budget_search",
+    "search_budget": {
+      "wall_clock_s": 300.0,
+      "sweep_cap": 5000,
+      "patience": 50,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "patience",
+    "sweeps": 58,
+    "stale_sweeps": 50,
+    "evaluated_proposals": 82,
+    "accepted_proposals": 7,
+    "rejected_proposals": 75,
+    "failure_reasons": {
+      "beam_no_improvement": 1,
+      "no_improvement": 53,
+      "unchanged": 50
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "coefficient_polish",
+        "rmse": 0.3950134223711312,
+        "improvement": null,
+        "evaluated": 2,
+        "accepted": 2
+      },
+      {
+        "sweep": 2,
+        "phase": "reconnect_rate_0.05",
+        "rmse": 0.3896353090533714,
+        "improvement": 0.005378113317759781,
+        "evaluated": 8,
+        "accepted": 1
+      },
+      {
+        "sweep": 3,
+        "phase": "permutation_optimisation",
+        "rmse": 0.3896353090533714,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "reconnect_rate_0.1",
+        "rmse": 0.380059913741696,
+        "improvement": 0.009575395311675394,
+        "evaluated": 8,
+        "accepted": 1
+      },
+      {
+        "sweep": 5,
+        "phase": "permutation_optimisation",
+        "rmse": 0.36906284442628856,
+        "improvement": 0.010997069315407448,
+        "evaluated": 1,
+        "accepted": 1
+      },
+      {
+        "sweep": 6,
+        "phase": "reconnect_rate_0.2",
+        "rmse": 0.36906284442628856,
+        "improvement": 0.0,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "permutation_optimisation",
+        "rmse": 0.3624165008679109,
+        "improvement": 0.006646343558377676,
+        "evaluated": 2,
+        "accepted": 1
+      },
+      {
+        "sweep": 8,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.006128473136059853,
+        "evaluated": 2,
+        "accepted": 1
+      },
+      {
+        "sweep": 9,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 10,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 11,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 12,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 13,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 14,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 15,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 16,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 17,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 18,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 19,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 20,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 21,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 22,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 23,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 24,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 25,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 26,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 27,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 28,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 29,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 30,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 31,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 32,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 33,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 34,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 35,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 36,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 37,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 38,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 39,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 40,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 41,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 42,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 43,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 44,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 45,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 46,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 47,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 48,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 49,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 50,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 51,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 52,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 53,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 54,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 55,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 56,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 57,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      },
+      {
+        "sweep": 58,
+        "phase": "global_polish",
+        "rmse": 0.35628802773185103,
+        "improvement": 0.0,
+        "evaluated": 1,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "factor_update",
+        "accepted": true,
+        "reason": "objective_improved",
+        "factor": 0,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": true,
+        "reason": "objective_improved",
+        "factor": 1,
+        "phase": "coefficient_polish"
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 0,
+        "objective": 10.007256530504716
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 1,
+        "objective": 11.036379105601213
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 2,
+        "objective": 9.997946666382727
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 3,
+        "objective": 9.953884532478646
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 4,
+        "objective": 9.806029729095778
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 5,
+        "objective": 9.890049897892348
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 6,
+        "objective": 9.71620313991144
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "beam_index": 7,
+        "objective": 10.042272880126966
+      },
+      {
+        "kind": "beam_state",
+        "accepted": true,
+        "reason": "best_retained_improved",
+        "phase": "reconnect_rate_0.05",
+        "rows": 1,
+        "retained": 8
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 0,
+        "b": 3
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 0,
+        "objective": 10.342045642297272
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 1,
+        "objective": 9.788641248807084
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 2,
+        "objective": 10.085157330478813
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 3,
+        "objective": 11.986780189332443
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 4,
+        "objective": 9.91827886426357
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 5,
+        "objective": 10.901414911639462
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 6,
+        "objective": 9.573099391189153
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "beam_index": 7,
+        "objective": 9.244514434134107
+      },
+      {
+        "kind": "beam_state",
+        "accepted": true,
+        "reason": "best_retained_improved",
+        "phase": "reconnect_rate_0.1",
+        "rows": 2,
+        "retained": 8
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": true,
+        "reason": "objective_improved",
+        "a": 7,
+        "b": 1
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 0,
+        "objective": 9.73874393106683
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 1,
+        "objective": 9.166185760991393
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 2,
+        "objective": 10.668150346199859
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 3,
+        "objective": 9.682396227249809
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 4,
+        "objective": 11.322320065142044
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 5,
+        "objective": 10.480609292433487
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 6,
+        "objective": 11.811571959484043
+      },
+      {
+        "kind": "beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "phase": "reconnect_rate_0.2",
+        "rows": 4,
+        "beam_index": 7,
+        "objective": 8.790317705435838
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": true,
+        "reason": "objective_improved",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "kind": "permutation_swap",
+        "accepted": false,
+        "reason": "no_improvement",
+        "a": 1,
+        "b": 7
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": true,
+        "reason": "objective_improved",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "global_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 1,
+        "phase": "global_polish"
+      }
+    ],
+    "reconnect_rates": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "reconnect_trace": [
+      {
+        "rate": 0.05,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 1
+      },
+      {
+        "rate": 0.1,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 1
+      },
+      {
+        "rate": 0.2,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      }
+    ],
+    "permutation_optimisation": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T05:34:35+00:00",
+  "finished_at": "2026-09-15T05:34:35+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54",
+  "batch_id": "l2-c253df79-dedcd626-73e8bd72",
+  "batch_plan_sha256": "73e8bd72d98908cf10763891e52f734bd0c84e33b18f65bdd6563dd8a33a58f9",
+  "batch_config_sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f",
+  "run_config_sha256": "42915b95aec765b0bdabe271a3ae8455409aa5c08cfed23eaa3060633e7a94cc",
+  "tuple_sha256": "9d78c57991095b308fc3cc4ad3db2b301b22872441ebc49bd67ec3438a8a9172",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/plan.json",
+      "size": 437688,
+      "sha256": "7be32c7ed4b1e18ec1a905b8891c1cd201a3193619cc550faca5d5ab65f75d51"
+    },
+    "config": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/config.json",
+      "size": 1102,
+      "sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --level L2 --execute-full --shard-index 1 --shard-count 3 --resume",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T053435296564Z__q1__q1-c2-structure-reconnect__s71__pc253df79__cdedcd626/factors.json",
+      "size": 3406,
+      "sha256": "75216da61038f20bcba21bfe5dfd21ba1aeaefecdde242b4281342ad0f0ee7f8"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/runs/20260915T053435296564Z__q1__q1-c2-structure-reconnect__s71__pc253df79__cdedcd626/stdout.txt",
+      "size": 168,
+      "sha256": "c920afd05a25570106a80e85afa5774f2cb09f1569fcbd07d1c1863b39e8dcb6"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T053435296564Z__q1__q1-c2-structure-reconnect__s71__pc253df79__cdedcd626/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -1,0 +1,3653 @@
+{
+  "schema_version": "3.0",
+  "run_id": "20260915T053857910658Z__q2__q2-c1-sp2-recursive__s43__pc253df79__cdedcd626",
+  "problem_id": "q2",
+  "problem": "q2",
+  "candidate_id": "q2-c1-sp2-recursive",
+  "kind": "challenger",
+  "N": 32,
+  "K": 4,
+  "q": 3,
+  "beta": 1,
+  "seed": 43,
+  "budget": {
+    "wall_clock_s": 900,
+    "sweep_cap": 15000,
+    "source": "frozen tournament protocol"
+  },
+  "wall_clock_s": 2.384949899998901,
+  "status": "PASS",
+  "constraints_status": "PASS",
+  "failure": null,
+  "formal": true,
+  "run_scope": "FROZEN_L2",
+  "optimality_claim": "candidate_only_no_global_optimality_claim",
+  "target_sha256": "c416f39a92aebc03fd1e65d9ca18c0eeec7b36e665c5d8a1284973200b15111e",
+  "factor_sha256s": [
+    "7a3da3e4c740c82d9c064bb38535c69608d30902c2b3428d337c97493599fd84",
+    "ea45ecc6c4745b182e7165a0f0ac84dab56794022cddc0e591fc55f351436c0e",
+    "e9b82008bafee2ddd0487d7a1343298350016379ed2d5573f740b2dd07536226",
+    "eca88d837c0c87af418da29018a0e5fe391660ef21482eace651367740d608d1"
+  ],
+  "constraint_checks": {
+    "finite_square": true,
+    "permutation": "PASS",
+    "row_support": {
+      "status": "PASS",
+      "errors": []
+    },
+    "alphabet": {
+      "status": "PASS",
+      "errors": []
+    },
+    "support_lower_bound": {
+      "status": "NOT_APPLICABLE",
+      "value": null
+    },
+    "target_hash_match": true,
+    "factor_hash_match": true,
+    "independent_metric_match": true,
+    "q1_exact_check": true,
+    "association_max_delta": 0.0,
+    "scoring_association": "left"
+  },
+  "rmse": 0.17677669529663687,
+  "rmse_recompute_independent": 0.17677669529663687,
+  "L": 0,
+  "C": 0,
+  "diagnostics": {
+    "strategy": "sp2_recursive",
+    "protocol_method": "recursive_right_factor_greedy",
+    "seed": 43,
+    "seed_trace": "493cd01609de8895",
+    "smoke": false,
+    "execution_scope": "frozen_budget_search",
+    "search_budget": {
+      "wall_clock_s": 900.0,
+      "sweep_cap": 15000,
+      "patience": 50,
+      "tolerance": 1e-10
+    },
+    "stop_reason": "patience",
+    "sweeps": 55,
+    "stale_sweeps": 50,
+    "evaluated_proposals": 354,
+    "accepted_proposals": 1,
+    "rejected_proposals": 353,
+    "failure_reasons": {
+      "no_improvement": 153,
+      "unchanged": 50
+    },
+    "improvement_trace": [
+      {
+        "sweep": 1,
+        "phase": "recursive_right_factor_depth_3",
+        "rmse": 0.5471536772857888,
+        "improvement": null,
+        "evaluated": 8,
+        "accepted": 0
+      },
+      {
+        "sweep": 2,
+        "phase": "recursive_right_factor_depth_2",
+        "rmse": 0.5471536772857888,
+        "improvement": 0.0,
+        "evaluated": 64,
+        "accepted": 0
+      },
+      {
+        "sweep": 3,
+        "phase": "recursive_right_factor_depth_1",
+        "rmse": 0.5471536772857888,
+        "improvement": 0.0,
+        "evaluated": 64,
+        "accepted": 0
+      },
+      {
+        "sweep": 4,
+        "phase": "recursive_right_factor_depth_0",
+        "rmse": 0.5471536772857888,
+        "improvement": 0.0,
+        "evaluated": 64,
+        "accepted": 0
+      },
+      {
+        "sweep": 5,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.3703769819891519,
+        "evaluated": 4,
+        "accepted": 1
+      },
+      {
+        "sweep": 6,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 7,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 8,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 9,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 10,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 11,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 12,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 13,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 14,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 15,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 16,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 17,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 18,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 19,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 20,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 21,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 22,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 23,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 24,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 25,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 26,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 27,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 28,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 29,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 30,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 31,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 32,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 33,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 34,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 35,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 36,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 37,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 38,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 39,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 40,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 41,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 42,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 43,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 44,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 45,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 46,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 47,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 48,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 49,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 50,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 51,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 52,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 53,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 54,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      },
+      {
+        "sweep": 55,
+        "phase": "discrete_polish",
+        "rmse": 0.17677669529663687,
+        "improvement": 0.0,
+        "evaluated": 3,
+        "accepted": 0
+      }
+    ],
+    "proposal_trace": [
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 1,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 2,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 3,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 4,
+        "objective": 346.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 5,
+        "objective": 331.38324732085744
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 6,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 3,
+        "branch": 7,
+        "objective": 434.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 370.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 442.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 330.07691671073917
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 322.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 346.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 562.5621980849775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 434.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 434.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 442.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 314.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 442.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 378.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 410.5621980849779
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 450.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 353.38098881223584
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 698.5621980849787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 378.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 331.38324732085744
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 491.38324732085727
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 587.3832473208573
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 331.38324732085744
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 494.21167444560353
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 395.3832473208573
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 363.3832473208573
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 331.38324732085744
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 378.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 463.500730626057
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 378.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 810.5621980849794
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 346.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 386.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 482.5621980849776
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 602.5621980849781
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 386.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 482.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 346.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 346.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 434.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 690.562198084979
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 3382.249278043175
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 451.1139968435436
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 566.319557397859
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 477.49234935029267
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 441.1479845226046
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 434.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 0,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 1,
+        "objective": 594.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 2,
+        "objective": 602.5621980849779
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 3,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 4,
+        "objective": 530.5621980849776
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 5,
+        "objective": 530.5621980849776
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 6,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 2,
+        "branch": 7,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 412.0513954530421
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 466.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 383.9764116473509
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 387.976411647351
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 370.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 322.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 434.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 437.44333596560494
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 338.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 338.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 434.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 442.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 326.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 310.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 324.22513730958286
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 326.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 346.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 345.79683122024767
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 314.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 314.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 338.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 326.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 346.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 562.5621980849775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 449.73418007298756
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 314.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 570.5621980849781
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 450.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 322.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 330.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 323.97641164735086
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 474.562198084978
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 314.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 414.2196702052982
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 354.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 377.73377096023154
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 581.0147018039893
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 345.26930486616436
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 382.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 358.68351842853747
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 352.8550913037912
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 322.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 330.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 585.3442706051584
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 442.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 0,
+        "objective": 322.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 1,
+        "objective": 342.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 2,
+        "objective": 458.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 3,
+        "objective": 352.9053438354854
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 4,
+        "objective": 322.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 5,
+        "objective": 406.8048387720971
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 6,
+        "objective": 394.09773199091046
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 1,
+        "branch": 7,
+        "objective": 362.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 430.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 338.99574358762726
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 466.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 359.95932056504074
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 466.5621980849777
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 314.0210019848316
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 373.07683198071317
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 313.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 374.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 330.7819340647665
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 389.3906252097241
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 314.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 322.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 374.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 326.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 465.6622218618411
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 386.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 322.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 338.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 386.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 314.8170958745299
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 374.79443113201125
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 308.53007980607134
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 433.73377096023125
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 314.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 374.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 434.56219808497764
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 374.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 314.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 339.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 314.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 326.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 325.14798452260465
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 326.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 335.73377096023165
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 306.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 426.63869976386104
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 370.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 468.2142521579976
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 314.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 387.6835184285374
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 323.5887580192965
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 433.7968312202473
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 310.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 364.21905233447023
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 377.85509130379126
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 444.21905233447006
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 330.0621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 393.56219808497787
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 566.5621980849778
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 342.5621980849779
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 0,
+        "objective": 314.56219808497775
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 1,
+        "objective": 322.66778020642914
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 2,
+        "objective": 380.09293181443803
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 3,
+        "objective": 343.3813902484562
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 4,
+        "objective": 378.7574483440644
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 5,
+        "objective": 333.96717668608323
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 6,
+        "objective": 394.5621980849776
+      },
+      {
+        "kind": "recursive_beam_state",
+        "accepted": false,
+        "reason": "evaluated",
+        "depth": 0,
+        "branch": 7,
+        "objective": 314.56219808497775
+      },
+      {
+        "kind": "factor_update",
+        "accepted": true,
+        "reason": "objective_improved",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 1,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 0,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "unchanged",
+        "factor": 3,
+        "phase": "discrete_polish"
+      },
+      {
+        "kind": "factor_update",
+        "accepted": false,
+        "reason": "no_improvement",
+        "factor": 2,
+        "phase": "discrete_polish"
+      }
+    ],
+    "greedy_beam": 8,
+    "right_factor_beam": [
+      {
+        "depth": 3,
+        "evaluated": 8,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "depth": 2,
+        "evaluated": 64,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "depth": 1,
+        "evaluated": 64,
+        "retained": 8,
+        "accepted": 0
+      },
+      {
+        "depth": 0,
+        "evaluated": 64,
+        "retained": 8,
+        "accepted": 0
+      }
+    ],
+    "recursive_depths": 4,
+    "residual_left_projection": true,
+    "active_options": {
+      "disable": [],
+      "support_mode": null,
+      "initialization_order": "seeded"
+    }
+  },
+  "started_at": "2026-09-15T05:38:57+00:00",
+  "finished_at": "2026-09-15T05:39:00+00:00",
+  "protocol_sha256": "c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592",
+  "protocol_freeze_sha256": "b97a9a31e36cea7d58ee9559c7dd90ac7f97fa9b0359594844e781cec5ba8b48",
+  "problem_freeze_sha256": "fcb77412c24bf8b0b8e491b2ae4a84a9988b0ca985af195500ce5b597aa5b0a1",
+  "code_tree_sha256": "dedcd626d277dc42a011db144db16d6c02f56e1d139eb7d876e6b3ac4348ca54",
+  "batch_id": "l2-c253df79-dedcd626-73e8bd72",
+  "batch_plan_sha256": "73e8bd72d98908cf10763891e52f734bd0c84e33b18f65bdd6563dd8a33a58f9",
+  "batch_config_sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f",
+  "run_config_sha256": "2bc6fbcbb5125a5558611db43cec170c2f1979ebc5126bfd327d0ccd7545bb0f",
+  "tuple_sha256": "8049571da1180095fb51f735cf451de232ddc40d58d2bffec54e258ef91977e0",
+  "validation_level": "L2",
+  "parent_run_id": null,
+  "parent_batch_id": null,
+  "parent_tuple_sha256": null,
+  "variant": null,
+  "batch_artifacts": {
+    "plan": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/plan.json",
+      "size": 437688,
+      "sha256": "7be32c7ed4b1e18ec1a905b8891c1cd201a3193619cc550faca5d5ab65f75d51"
+    },
+    "config": {
+      "path": "05_results/batches/l2-c253df79-dedcd626-73e8bd72/config.json",
+      "size": 1102,
+      "sha256": "5f81fe952911a1a07028ca24592a0861e49813bc51551bb995a5015a00e0766f"
+    }
+  },
+  "input_manifest_sha256": "dfc1ed4ec5e939ea4e0613adf3414f979ed15b791c403fa203e38604b6920680",
+  "problem_input": {
+    "path": "01_problem/original/DFT类矩阵的整数分解逼近.docx",
+    "sha256": "c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841",
+    "data_class": "third_party_copy",
+    "provenance_status": "VERIFIED"
+  },
+  "data_class": "third_party_copy",
+  "target_generation": "deterministic formula from the practice-authorized third-party-copy problem statement",
+  "command": "04_code/scripts/run_tournament.py --level L2 --execute-full --shard-index 1 --shard-count 3 --resume",
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "third_party": [],
+      "standard_library_only": true
+    }
+  },
+  "artifacts": {
+    "factors": {
+      "path": "05_results/runs/20260915T053857910658Z__q2__q2-c1-sp2-recursive__s43__pc253df79__cdedcd626/factors.json",
+      "size": 13613,
+      "sha256": "b08f9d050d28d05d5db0d1f81e30cb72509990e0c68f1762c27ac15b078ec6c0"
+    },
+    "q5_certificate": null,
+    "stdout": {
+      "path": "05_results/runs/20260915T053857910658Z__q2__q2-c1-sp2-recursive__s43__pc253df79__cdedcd626/stdout.txt",
+      "size": 156,
+      "sha256": "e76a47e847d67032c92e8be1f2d5a106552ecd7aef8b99858c75aa295c39c655"
+    },
+    "stderr": {
+      "path": "05_results/runs/20260915T053857910658Z__q2__q2-c1-sp2-recursive__s43__pc253df79__cdedcd626/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
