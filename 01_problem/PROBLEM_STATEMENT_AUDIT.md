@@ -6,7 +6,7 @@
   及其提取稿 `01_problem/extracted/problem.md`。
 - 与 `01_problem/PROBLEM_BRIEF.md` 的关系：该简报是题意骨架；本文补充**可复算的数学核查结果**与其中若干条目的**状态更新**。不修改原始题面。
 - 复算工具：`03_model/checks/verify_row_bound.py`（纯标准库，退出码 0），结果 `03_model/checks/row_bound_results.json`。
-- 声明：本文所有"判定"仅针对提取稿与只读副本，不代表官方题面已核验（`00_admin/rules.json` 仍为 `BLOCKED`）。
+- 声明：本文所有数学“判定”针对提取稿与只读副本；D-010 已将其核验为 `practice` 权威题面，但不代表主办方服务器来源已证明，`00_admin/rules.json` 仍因 AI 规则缺口为 `BLOCKED`。
 
 ## A1 题面式 (5) 的 radix-8 近似例子（修订后的有限复算）
 
@@ -91,5 +91,6 @@
 | 原始 DOCX 完整性 | 未改动（本文件与全部脚本均在 `01_problem/` 之外的建模目录，且未触碰 `01_problem/original/`） |
 | 式 (5) 精确性 | 提取稿的印刷顺序在两种 `P` 读法下均非精确；式本身为近似号 |
 | `F_4⊗F_8` 与 `F_32` 区分 | `A5` 已数值确认 |
-| `β` 口径 / `P_q` / `L` / `q` 域 | `BLOCKED`（待主 Agent 裁决并落盘 `DECISIONS.md`） |
-| 官方题面与规则核验 | `BLOCKED`（`00_admin/rules.json`） |
+| `β` 口径 / `P_q` / `L` / `q` 域 | `PASS`（D-005） |
+| practice 题面来源 | `PASS`（D-010；不声称 official） |
+| 当届规则核验 | `BLOCKED`（`00_admin/rules.json` 的 AI policy） |

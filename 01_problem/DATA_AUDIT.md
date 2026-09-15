@@ -2,7 +2,7 @@
 
 ## 1. 审计结论
 
-本题没有提供观测型表格数据、训练集、测试集或参数附件。当前唯一正式候选输入是用户提供的题面 DOCX；计算对象需按题面公式确定性生成。由于该 DOCX 尚未由官方来源核验，当前输入状态是 `BLOCKED`，不能据此宣称题面或最终结果已正式冻结。
+本题没有提供观测型表格数据、训练集、测试集或参数附件。当前唯一正式输入是题面 DOCX；计算对象需按题面公式确定性生成。用户已在 D-010 中授权 `xihaisong-dev/MathModel` 固定镜像作为本仓库 `practice` 复现的权威题面，且镜像与当前只读副本逐字节一致，因此输入状态为 `PASS`。这不等同于主办方服务器来源证明，也不表示题面与规则已经机器冻结。
 
 本轮没有网络检索、没有修改原始 DOCX、没有生成数值矩阵、没有运行优化算法，也没有产生正式实验结果。
 
@@ -10,12 +10,12 @@
 
 | 路径 | 角色 | 字节数 | SHA-256 | 当前分类/状态 |
 | --- | --- | ---: | --- | --- |
-| `01_problem/original/DFT类矩阵的整数分解逼近.docx` | 原始题面候选 | 205337 | `c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841` | `third_party_copy / UNVERIFIED` |
+| `01_problem/original/DFT类矩阵的整数分解逼近.docx` | practice 权威题面 | 205337 | `c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841` | `third_party_copy / VERIFIED` |
 | `01_problem/extracted/problem.md` | DOCX 的 Pandoc 提取稿 | 12553 | `59441cbe18f2c27ae1f6e5cf8f000db397b0f939c9f838fff3dffe1912379dfe` | 派生文本，仅供检索与建模阅读 |
 | `01_problem/extracted/media/image1.png` | OFDM 流程示意图 | 129344 | `92ac638a4b482b34ae65101c88ff88206a71ad789f29ca21348abbf2913b11f7` | 派生媒体，965×623，不是计算数据 |
 | `01_problem/extracted/media/image2.png` | 信道估计流程示意图 | 20925 | `13abc2310eb382aec4ed9fc40949e4f5757e9f1752637b57d0607f8e66cc7989` | 派生媒体，1742×167，不是计算数据 |
 
-仓库内 DOCX 与用户所指微信临时路径中的同名文件 SHA-256 一致。`00_admin/input_manifest.json` 已记录原始题面候选的路径、来源、分类和哈希；提取稿与图片是可再生派生物，不提升来源权威性。
+仓库内 DOCX、用户所指微信临时文件与授权镜像中的 B 题文件 SHA-256 一致；镜像固定提交为 `cd5be91735ebf11d5ee52eb170e86a6d07131977`，Git blob 为 `ab1a4e6e2abc1dff678d0043b29a499cfbcbcb1c`。`00_admin/input_manifest.json` 已记录路径、授权、分类和哈希；提取稿与图片是可再生派生物，不改变 `third_party_copy` 的事实标签。
 
 ## 3. 逻辑输入模式
 

@@ -78,3 +78,11 @@
 - 固定版本：仓库提交 `cd5be91735ebf11d5ee52eb170e86a6d07131977`；B 题文件 Git blob 为 `ab1a4e6e2abc1dff678d0043b29a499cfbcb1c`。
 - 比对结果：镜像文件和本仓库 `01_problem/original/DFT类矩阵的整数分解逼近.docx` 均为 205337 字节，SHA-256 均为 `c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841`，逐字节完全一致。
 - 裁决：该证据确认当前工作副本就是用户归档中的同一版本，并与 D-006 的独立文本佐证形成双重交叉核验；但该 GitHub 目录没有 B 题原始 ZIP/官方 MD5，且不是主办方下载端点，因此仍标为 `third_party_copy/UNVERIFIED`，规则与问题冻结门禁继续失败关闭。
+
+## D-010 practice 权威题面授权
+
+- 时间：2026-09-15
+- 用户授权：明确确认“按练习复现口径接受该镜像作为权威题面”。
+- 裁决：`xihaisong-dev/MathModel` 固定提交 `cd5be91735ebf11d5ee52eb170e86a6d07131977` 中的 B 题 DOCX 作为本仓库 `practice` profile 的权威题面；当前只读副本与其逐字节一致，因此 `input_manifest.json` 置为 `PASS`、`provenance_status` 置为 `VERIFIED`。
+- 事实边界：`data_class` 继续保留 `third_party_copy`，不伪装为 `official`；本裁决只适用于练习复现，不构成主办方服务器来源或官方 ZIP/MD5 的证明。
+- 影响：解除题面输入来源阻塞；2023 生成式 AI 专项规则仍未核验，`rules.json` 和 `rules-problem` 门禁继续阻断，暂不创建 `problem` 冻结。

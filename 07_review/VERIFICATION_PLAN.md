@@ -2,7 +2,7 @@
 
 ## 1. 失败关闭原则
 
-本计划定义未来验收动作，不是验收报告。当前总状态为 `BLOCKED`：工作流仍处于 `INIT`；官方模板和提交要求已核验，但题面输入来源仍未验证，2023 生成式 AI 专项条款未找到，模型结果未冻结，论文尚未生成。任何强制项为 `FAIL`、`BLOCKED`、`NOT_RUN`、`UNKNOWN` 或阻断性 `WARN` 时，总状态必须为 `FAIL`，不得声称“验收通过”“提交就绪”。
+本计划定义未来验收动作，不是验收报告。当前总状态为 `BLOCKED`：工作流仍处于 `INIT`；D-010 已核验 practice 题面输入，官方模板和提交要求也已核验，但 2023 生成式 AI 专项条款未找到，模型结果未冻结，论文尚未生成。任何强制项为 `FAIL`、`BLOCKED`、`NOT_RUN`、`UNKNOWN` 或阻断性 `WARN` 时，总状态必须为 `FAIL`，不得声称“验收通过”“提交就绪”。
 
 验收只审查同一组已冻结输入和同一个最终 PDF。论文或上游结果发生实质修改后，必须重新冻结并重跑受影响检查；不得沿用旧 PASS。
 
@@ -14,7 +14,7 @@
 python -X utf8 <1start-mathmodel>/scripts/workflow_guard.py check --workspace . --gate model-results
 ```
 
-本轮重新执行的退出码为 1，状态为 `FAIL`。官方模板和提交要求不再是错误项；当前阻断项包括：`rules` 总状态与 AI policy 非 PASS、题面输入来源未核验、problem/tournament protocol/model results 冻结缺失，以及检索、协议、指标与对擂结果未通过或无正式记录。因此当前不运行论文编译、逐页检查或最终硬验收，也不创建伪造的 PASS 记录。
+本轮重新执行的退出码为 1，状态为 `FAIL`。practice 题面输入、官方模板和提交要求不再是错误项；当前阻断项包括：`rules` 总状态与 AI policy 非 PASS、problem/tournament protocol/model results 冻结缺失，以及协议、指标与对擂结果未通过或无正式记录。因此当前不运行论文编译、逐页检查或最终硬验收，也不创建伪造的 PASS 记录。
 
 ### 2.1 官方材料哈希与视觉复核
 

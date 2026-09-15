@@ -1,7 +1,7 @@
 # 行二稀疏 DFT 分解：可证明界与精确构造
 
 - 角色：M 建模 Agent（分支 `agent/modeling`）
-- 状态：建模层复算 `PASS`；正式题面、检索与对擂协议仍 `BLOCKED / NOT_RUN`
+- 状态：建模层复算与 practice 题面输入 `PASS`；当届 AI 规则及题面/对擂冻结仍 `BLOCKED / NOT_RUN`
 - 证据脚本：`03_model/checks/verify_row_bound.py`（Python 标准库）
 - 机器输出：`03_model/checks/row_bound_results.json`
 - 复算命令：`python -X utf8 03_model/checks/verify_row_bound.py`
@@ -118,8 +118,8 @@ README 的 `sqrt(N-M)/N` 是 `|β|=1` 的特例。`N=64,β=1` 时：
 | --- | --- |
 | 本脚本 12 项自检 | `PASS` |
 | 题面规则冻结 | `BLOCKED` |
-| 检索 | `NOT_RUN` |
-| 对擂协议 | `NOT_RUN` |
+| 检索清单 | `PASS` |
+| 对擂协议 | `BLOCKED / PROPOSED` |
 | 正式实验/结果冻结 | `NOT_RUN` |
 
 `PASS` 仅覆盖本文的数学/实现自检，不能替代任何正式门禁。

@@ -7,7 +7,6 @@
   "semantic_decision": "D-005",
   "blocked_by": [
     "00_admin/rules.json status is BLOCKED",
-    "00_admin/input_manifest.json status is BLOCKED because the official problem ZIP/hash is unavailable",
     "2023 competition-specific AI policy is not verified",
     "00_admin/freezes/problem.json is missing"
   ],

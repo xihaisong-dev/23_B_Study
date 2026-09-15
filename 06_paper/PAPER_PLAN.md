@@ -3,7 +3,7 @@
 ## 1. 文档状态与启动边界
 
 - 当前文档只定义论文结构、证据接口和写作顺序，不是论文正文，也不包含任何赛题结果。
-- 当前机器状态源 `00_admin/workflow.json` 为 `phase: INIT`；官方模板与提交要求已核验为 `PASS`，但 `00_admin/rules.json` 因 2023 年生成式 AI 专项条款未找到而仍为 `BLOCKED`，`00_admin/input_manifest.json` 也因题面原件来源未验证而为 `BLOCKED`。
+- 当前机器状态源 `00_admin/workflow.json` 为 `phase: INIT`；D-010 已使 practice 题面输入达到 `PASS`，官方模板与提交要求也为 `PASS`，但 `00_admin/rules.json` 因 2023 年生成式 AI 专项条款未找到而仍为 `BLOCKED`。
 - 已重新执行 `workflow_guard.py check --workspace . --gate model-results`，结果为 `FAIL`。在 `00_admin/freezes/model_results.json` 存在且该门禁返回 `PASS` 之前，不创建正式数值表、不撰写结果性摘要、不宣称任何模型优胜或论文完成。
 - 正式论文使用 `00_admin/workflow.json` 指定的中文 LaTeX 路线。由于官方只提供 Word 97—2003 `.doc` 模板，LaTeX 重建必须逐项复现并对照官方保护元素，不能把通用 LaTeX 模板称为 2023 官方模板。
 
@@ -135,7 +135,7 @@
 
 ## 8. 执行顺序与完成定义
 
-1. 保持当前官方模板与提交要求证据；继续等待题面来源核验，并记录 2023 生成式 AI 专项条款“未找到”的事实边界，未经新证据不得改写为 PASS。
+1. 保持当前 practice 题面、官方模板与提交要求证据；继续记录 2023 生成式 AI 专项条款“未找到”的事实边界，未经新证据不得把规则改写为 PASS。
 2. 等待检索、对擂协议、候选运行及 `model_results` 机器冻结通过。
 3. 依据官方模板建立最小可编译骨架，先写无结果章节。
 4. 从冻结结果生成数值宏、表格和 `numeric_claims.json`，再写五问结果、检验与讨论。
