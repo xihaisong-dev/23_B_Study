@@ -224,10 +224,13 @@ def _solve_row_support(support: Sequence[int], right: Matrix, grad: Sequence[com
     sol = _solve_small(gram, rhs)
     if allowed is None:
         return sol
-    projected = [quantize_complex(v, None) if False else _project(v, allowed) for v in sol]
-    if all(v == 0 for v in projected):
-        return sol          # lattice spacing exceeds the magnitude; keep the solve
-    return projected
+    # Constraint-2 hard rule: only lattice values may be published.  An earlier
+    # revision fell back to the raw continuous solve when the projection collapsed to
+    # zero ("lattice spacing exceeds the magnitude"), which silently violated the
+    # alphabet and produced 714 CONSTRAINT_FAIL runs in the first full tournament.
+    # Collapsing to zero is the correct behaviour: the caller rejects the update when
+    # it does not lower the objective, so the incumbent factor is kept unchanged.
+    return [_project(v, allowed) for v in sol]
 
 
 def _project(value: complex, allowed: Sequence[int]) -> complex:
