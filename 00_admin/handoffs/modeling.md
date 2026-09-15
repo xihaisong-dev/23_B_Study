@@ -1,5 +1,23 @@
 # 建模 Agent 交接
 
+## 当前交接：Q5 高斯整数格全局不可行性证书
+
+- 角色：M 建模 Agent
+- 状态：数学证书与机器复核 `PASS`；结论限定于冻结注册实例
+- 工作树/分支：`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/modeling`，`agent/modeling`
+- 证书提交：`dcdb1319ce7338ca0a07b6a1457758cdd26f2836`（本交接记录为其后一独立提交）
+- 输入版本/哈希：题面 DOCX `c71b8b1273f008d3d0dbee0cc91b351421ebcd2885945e3277488f692c064841`；冻结协议 `c253df797845cfff4f24cdcd7da579ed841e487c36bb678cc92a8ebd60457592`，与 `00_admin/freezes/tournament_protocol.json` 绑定值一致；语义依据为 D-005/D-007/D-012
+- 命令/run-id：`python -X utf8 03_model/checks/verify_q5_gaussian_integer_infeasibility.py`；`workflow_guard.py verify-freeze --stage problem`；`workflow_guard.py verify-freeze --stage tournament_protocol`；`git diff --check`；run-id `N/A`（建模证书，非正式实验）
+- 产物：
+  - `03_model/Q5_GAUSSIAN_INTEGER_INFEASIBILITY.md`，SHA-256 `5969af3c6b7759c719a8fbbaf8f5d394d54187cf9a0c7ba462cff00b015c4313`
+  - `03_model/checks/verify_q5_gaussian_integer_infeasibility.py`，纯标准库，SHA-256 `8ea7d6b55539426c44f13d5b5d43d27a3f19b388da5050984a65d5d6f1012143`
+  - `03_model/checks/q5_gaussian_integer_infeasibility.json`，SHA-256 `6350a9b7c73bfadcb08f22fac79d616b2c595ceef94b3511aef316a41da9ea18`
+- 证明结论：`P_q` 的实虚部均为整数，故任意有限因子乘积逐项属于高斯整数环 `Z[i]`，右置换只重排列，仍属于 `Z[i]`。单位化 DFT 每项模为 `1/sqrt(N)`，所以任一合法乘积满足 `RMSE >= d_N=min(1/sqrt(N),1-1/sqrt(N))`。冻结 `N=[2,4,8,16,32,64]` 的下界分别为约 `0.292893、0.5、0.353553、0.25、0.176777、0.125`，均严格大于 `0.1`；六个注册实例对任意 `q/K/候选/种子` 全局不可行。
+- 机器验证：脚本从 DOCX XML 核对约束 2、Q5 和阈值原文，核对协议冻结哈希/大小，枚举 `q=1..4` 字母表的加乘闭包，执行 2×2 矩阵乘积/右置换 sanity check，并对六个 DFT 的全部 5,460 个元素枚举邻近高斯整数；输出 `status=PASS`、`failed_checks=[]`、最弱界 `0.125`。两级 freeze verify 与 `git diff --check` 均 `PASS`。
+- 冻结边界：未修改 `01_problem/original`、`03_model/ANALYSIS_MODELING_REPORT.md`、`03_model/tournament_protocol.json` 或冻结清单；不替换协议冻结。证书属于 `modeling_certificate`、`formal_experiment=false`，不是 L1–L4 run。
+- 适用限制：题面无限族不能全部判为不可行；`N>=128` 时本界不超过 `0.1`，且零乘积已有 `RMSE=1/sqrt(N)<=0.1`。因此论文只能称“冻结六尺寸的全局不可行”。
+- 接口影响/下一步：主 Agent 应把 Q5 的正式赢家保持为 `null`，不得伪造可行 run。若要用此证书短路冻结协议要求的完整 Q5 搜索，或让当前门禁接受“经证明无可行赢家”，必须按正式变更流程更新运行/门禁规则并重走受影响冻结；本提交本身没有越权修改协议。接收人：主 Agent、计算 Agent、论文 Agent。
+
 ## 当前交接：下界证书审计（D-012 冻结后的只读复算）
 
 - 角色：M 建模 Agent
