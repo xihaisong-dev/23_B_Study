@@ -1,6 +1,33 @@
 # 建模 Agent 交接
 
-## 当前交接：D-005 后对擂准备稿（协议草案 + 检索清单 + 分析报告）
+## 当前交接：下界证书审计（D-012 冻结后的只读复算）
+
+- 角色：M 建模 Agent
+- 状态：审计 `PASS`；结论为否定性（记录哪些下界不可用）
+- 工作树/分支：`C:/Users/Lenovo/Desktop/华为杯-数模/23年B/worktrees/modeling`，`agent/modeling`
+- 基线：`main` = `a8ad6cf`（`workflow: adopt AI proxy and freeze tournament protocol`，D-012 已把题面与协议冻结、`phase=PROTOCOL_FROZEN`）
+- 前置裁决：D-005（`β=1`、单位化 DFT、`RMSE=‖F−P‖_F/N`）、D-007（`A1@…@AK`）、D-010/D-011（practice 题面与 AI 代理规则）、D-012（冻结）
+- 命令/run-id：`python -X utf8 03_model/checks/{verify_row_bound,verify_row_bound_audit,verify_structural_bounds,verify_row_relaxation_bounds}.py`，四者退出码均为 0；run-id `N/A`（建模证书，非正式实验）
+- 产物路径：
+  - `03_model/BOUND_AVAILABILITY_AUDIT.md`（本轮主报告）
+  - `03_model/checks/verify_row_bound_audit.py` + `row_bound_audit_results.json`：冻结清单哈希/大小/依赖与协议 `kbrefs` 行号的**只读**审计
+  - `03_model/checks/verify_structural_bounds.py` + `structural_bounds_results.json`：结构不等式核验与证伪
+  - `03_model/checks/verify_row_relaxation_bounds.py` + `row_relaxation_bounds.json`：下界可用性审计
+  - `03_model/checks/README.md`（更新文件清单与证据边界）
+- 验证：
+  - 冻结完整性（独立复算）：`00_admin/freezes/{problem,tournament_protocol}.json` 为 `PASS`，全部文件 SHA-256 与大小与磁盘一致，依赖链一致，冻结清单确实绑定 `03_model/tournament_protocol.json`；协议 `PASS/frozen=true`、5 问 × 3 候选、25 条 `kbrefs` 全部行号未越界；检索清单 `PASS`、7 条 KB 路径全部存在
+  - 冻结产物未被改动：`verify_row_bound.py`、`tournament_protocol.json`、`ANALYSIS_MODELING_REPORT.md`、`retrieval_manifest.json` 的哈希在冻结清单中仍为 `OK`
+  - 四个脚本退出码 0；`git diff --check` 与 pre-commit 边界检查通过
+- 关键结论：
+  1. 行支持传播成立；经典支持下界 `sqrt(N − min(N,2^K))/N`（`β=1`）是本项目**唯一**非平凡的严格下界，`2^K ≥ N` 时退化为 0。
+  2. **列支持传播被证伪**（`N=16, K=2` 实测列支持 12 > 曾猜的 cap 4）；计数式收紧与支持界同源，永不更强。
+  3. **系数幅值证书平凡**：`cap2 = 2·m_q ≥ 2√2 > 1/√N`，在所有注册实例上不激活（`certificate_a_active_cases = []`）。
+  4. 后果：q2 **没有任何下界**；q3/q4/q5 仅 `K ≤ 4`（`N=32`）与 `K ≤ 4`（`N=64`）被排除；`K ≥ log2(N)` 之后无证书，故论文的 q2–q5 结果只能是 `best_found`，问题 5 不得声称 `K*=5` 已证明。
+- 限制：本审计只做下界可用性判定，未运行任何候选搜索；不改变冻结协议；未写入 `05_results/`；`tournament`/`model-results` 门禁不受影响（仍为 `FAIL`，等待对擂）。
+- 接口影响：给计算 Agent 的可用剪枝是"`N=32` 的 q3/q4 与 `N=64` 的 q5 可跳过 `K ≤ 4`"；给论文 Agent 的措辞边界见报告第 6 节。
+- 下一步/接收人：主 Agent 审核并集成本提交；计算 Agent 在此边界内执行 L0–L4；论文 Agent 在结果冻结前不得引用任何 `best_found` 之外的措辞。
+
+## 历史交接：D-005 后对擂准备稿（协议草案 + 检索清单 + 分析报告）
 
 - 角色：M 建模 Agent
 - 状态：产物已提交；正式门禁仍 `BLOCKED`（协议 `PROPOSED`，未冻结）

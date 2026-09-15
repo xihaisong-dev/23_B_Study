@@ -1,0 +1,835 @@
+{
+  "artifact_class": "modeling_check",
+  "checker_gap": {
+    "available": true,
+    "max_col_support": 2,
+    "max_row_support": 16,
+    "n": 16,
+    "recommendation": "the tournament should also record column support and the product nnz for every accepted candidate, as a diagnostic (not as a hard constraint, since only rows are constrained by the frozen protocol text).",
+    "row_check_passes": false,
+    "row_violations": [
+      "row 0: 16 nonzeros > cap 2",
+      "row 1: 16 nonzeros > cap 2"
+    ],
+    "structural_note": "no product of K row-2-sparse factors has column support above the observed random range, so a candidate with this column profile cannot come from a legal factor chain, yet check_row_sparse accepts it because it validates rows only."
+  },
+  "companion": "verify_row_bound.py (frozen hash-bound; not modified)",
+  "f2_coefficient_caps": {
+    "N32": {
+      "q1": {
+        "K3": 22.627416997969526,
+        "K5": 181.01933598375624,
+        "K7": 362.0386719675125
+      },
+      "q3": {
+        "K3": 1448.1546878700497,
+        "K5": 185363.80004736639,
+        "K7": 5931641.601515725
+      }
+    },
+    "N64": {
+      "q1": {
+        "K3": 22.627416997969526,
+        "K5": 181.01933598375624,
+        "K7": 724.077343935025
+      },
+      "q3": {
+        "K3": 1448.1546878700497,
+        "K5": 185363.80004736639,
+        "K7": 11863283.20303145
+      }
+    },
+    "N8": {
+      "q1": {
+        "K3": 22.627416997969526,
+        "K5": 45.25483399593906,
+        "K7": 90.50966799187813
+      },
+      "q3": {
+        "K3": 1448.1546878700497,
+        "K5": 46340.950011841596,
+        "K7": 1482910.4003789313
+      }
+    }
+  },
+  "failed_checks": [],
+  "falsified": [
+    "F1_column_support_propagation",
+    "F2_coefficient_cap_usable",
+    "F3_counting_tightens_support_bound"
+  ],
+  "formal_experiment": false,
+  "instance_table": [
+    {
+      "Ns": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "certified_bound_available": true,
+      "per_N": {
+        "N16": {
+          "K_at_which_this_bound_becomes_vacuous": 4,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q16": {
+              "K3": 796131459065721.8,
+              "K5": 3.419358580004038e+24,
+              "K7": 7.343016637207173e+33
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 4
+        },
+        "N2": {
+          "K_at_which_this_bound_becomes_vacuous": 1,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q16": {
+              "K3": 199032864766430.44,
+              "K5": 4.274198225005048e+23,
+              "K7": 9.178770796508966e+32
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 1
+        },
+        "N32": {
+          "K_at_which_this_bound_becomes_vacuous": 5,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q16": {
+              "K3": 796131459065721.8,
+              "K5": 6.838717160008076e+24,
+              "K7": 1.4686033274414346e+34
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 5
+        },
+        "N4": {
+          "K_at_which_this_bound_becomes_vacuous": 2,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q16": {
+              "K3": 398065729532860.9,
+              "K5": 8.548396450010095e+23,
+              "K7": 1.8357541593017932e+33
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 2
+        },
+        "N64": {
+          "K_at_which_this_bound_becomes_vacuous": 6,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q16": {
+              "K3": 796131459065721.8,
+              "K5": 6.838717160008076e+24,
+              "K7": 2.937206654882869e+34
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 5
+        },
+        "N8": {
+          "K_at_which_this_bound_becomes_vacuous": 3,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q16": {
+              "K3": 796131459065721.8,
+              "K5": 1.709679290002019e+24,
+              "K7": 3.6715083186035864e+33
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 3
+        }
+      },
+      "problem": "q1",
+      "qs": [
+        16
+      ],
+      "row_constraint_applies": true
+    },
+    {
+      "Ns": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "certified_bound_available": false,
+      "per_N": {
+        "N16": {
+          "K_at_which_this_bound_becomes_vacuous": 4,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 92681.90002368319,
+              "K7": 2965820.8007578626
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N2": {
+          "K_at_which_this_bound_becomes_vacuous": 1,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 362.0386719675124,
+              "K5": 11585.237502960399,
+              "K7": 370727.6000947328
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N32": {
+          "K_at_which_this_bound_becomes_vacuous": 5,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 185363.80004736639,
+              "K7": 5931641.601515725
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N4": {
+          "K_at_which_this_bound_becomes_vacuous": 2,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 724.0773439350248,
+              "K5": 23170.475005920798,
+              "K7": 741455.2001894657
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N8": {
+          "K_at_which_this_bound_becomes_vacuous": 3,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 46340.950011841596,
+              "K7": 1482910.4003789313
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        }
+      },
+      "problem": "q2",
+      "qs": [
+        3
+      ],
+      "row_constraint_applies": false
+    },
+    {
+      "Ns": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "certified_bound_available": true,
+      "per_N": {
+        "N16": {
+          "K_at_which_this_bound_becomes_vacuous": 4,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 92681.90002368319,
+              "K7": 2965820.8007578626
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 4
+        },
+        "N2": {
+          "K_at_which_this_bound_becomes_vacuous": 1,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 362.0386719675124,
+              "K5": 11585.237502960399,
+              "K7": 370727.6000947328
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 1
+        },
+        "N32": {
+          "K_at_which_this_bound_becomes_vacuous": 5,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 185363.80004736639,
+              "K7": 5931641.601515725
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 5
+        },
+        "N4": {
+          "K_at_which_this_bound_becomes_vacuous": 2,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 724.0773439350248,
+              "K5": 23170.475005920798,
+              "K7": 741455.2001894657
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 2
+        },
+        "N8": {
+          "K_at_which_this_bound_becomes_vacuous": 3,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 46340.950011841596,
+              "K7": 1482910.4003789313
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 3
+        }
+      },
+      "problem": "q3",
+      "qs": [
+        3
+      ],
+      "row_constraint_applies": true
+    },
+    {
+      "Ns": [
+        32
+      ],
+      "certified_bound_available": true,
+      "per_N": {
+        "N32": {
+          "K_at_which_this_bound_becomes_vacuous": 5,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 185363.80004736639,
+              "K7": 5931641.601515725
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": 5
+        }
+      },
+      "problem": "q4",
+      "qs": [
+        3
+      ],
+      "row_constraint_applies": true
+    },
+    {
+      "Ns": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "certified_bound_available": false,
+      "per_N": {
+        "N16": {
+          "K_at_which_this_bound_becomes_vacuous": 4,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q1": {
+              "K3": 22.627416997969526,
+              "K5": 90.50966799187812,
+              "K7": 181.01933598375626
+            },
+            "q2": {
+              "K3": 181.0193359837562,
+              "K5": 2896.3093757400998,
+              "K7": 23170.4750059208
+            },
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 92681.90002368319,
+              "K7": 2965820.8007578626
+            },
+            "q4": {
+              "K3": 11585.237502960397,
+              "K5": 2965820.800757862,
+              "K7": 379625062.4970064
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N2": {
+          "K_at_which_this_bound_becomes_vacuous": 1,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q1": {
+              "K3": 5.6568542494923815,
+              "K5": 11.313708498984765,
+              "K7": 22.627416997969533
+            },
+            "q2": {
+              "K3": 45.25483399593905,
+              "K5": 362.03867196751247,
+              "K7": 2896.3093757401
+            },
+            "q3": {
+              "K3": 362.0386719675124,
+              "K5": 11585.237502960399,
+              "K7": 370727.6000947328
+            },
+            "q4": {
+              "K3": 2896.3093757400993,
+              "K5": 370727.60009473277,
+              "K7": 47453132.8121258
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N32": {
+          "K_at_which_this_bound_becomes_vacuous": 5,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q1": {
+              "K3": 22.627416997969526,
+              "K5": 181.01933598375624,
+              "K7": 362.0386719675125
+            },
+            "q2": {
+              "K3": 181.0193359837562,
+              "K5": 5792.6187514801995,
+              "K7": 46340.9500118416
+            },
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 185363.80004736639,
+              "K7": 5931641.601515725
+            },
+            "q4": {
+              "K3": 11585.237502960397,
+              "K5": 5931641.601515724,
+              "K7": 759250124.9940128
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N4": {
+          "K_at_which_this_bound_becomes_vacuous": 2,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q1": {
+              "K3": 11.313708498984763,
+              "K5": 22.62741699796953,
+              "K7": 45.254833995939066
+            },
+            "q2": {
+              "K3": 90.5096679918781,
+              "K5": 724.0773439350249,
+              "K7": 5792.6187514802
+            },
+            "q3": {
+              "K3": 724.0773439350248,
+              "K5": 23170.475005920798,
+              "K7": 741455.2001894657
+            },
+            "q4": {
+              "K3": 5792.618751480199,
+              "K5": 741455.2001894655,
+              "K7": 94906265.6242516
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N64": {
+          "K_at_which_this_bound_becomes_vacuous": 6,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q1": {
+              "K3": 22.627416997969526,
+              "K5": 181.01933598375624,
+              "K7": 724.077343935025
+            },
+            "q2": {
+              "K3": 181.0193359837562,
+              "K5": 5792.6187514801995,
+              "K7": 92681.9000236832
+            },
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 185363.80004736639,
+              "K7": 11863283.20303145
+            },
+            "q4": {
+              "K3": 11585.237502960397,
+              "K5": 5931641.601515724,
+              "K7": 1518500249.9880257
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        },
+        "N8": {
+          "K_at_which_this_bound_becomes_vacuous": 3,
+          "certified_bound_at_k_grid_max": null,
+          "coefficient_caps_vacuous": {
+            "q1": {
+              "K3": 22.627416997969526,
+              "K5": 45.25483399593906,
+              "K7": 90.50966799187813
+            },
+            "q2": {
+              "K3": 181.0193359837562,
+              "K5": 1448.1546878700499,
+              "K7": 11585.2375029604
+            },
+            "q3": {
+              "K3": 1448.1546878700497,
+              "K5": 46340.950011841596,
+              "K7": 1482910.4003789313
+            },
+            "q4": {
+              "K3": 11585.237502960397,
+              "K5": 1482910.400378931,
+              "K7": 189812531.2485032
+            }
+          },
+          "min_k_for_rmse_0.1_by_certified_bound": null
+        }
+      },
+      "problem": "q5",
+      "qs": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "row_constraint_applies": false
+    }
+  ],
+  "schema_version": "1.0",
+  "script": "verify_structural_bounds.py",
+  "status": "PASS",
+  "t1_propagation": [
+    {
+      "col_cap_conjecture": 2,
+      "col_conjecture_holds": false,
+      "col_violations": 12,
+      "k": 1,
+      "max_observed_col_support": 5,
+      "max_observed_row_support": 2,
+      "n": 8,
+      "row_bound_holds": true,
+      "row_cap": 2,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 4,
+      "col_conjecture_holds": false,
+      "col_violations": 9,
+      "k": 2,
+      "max_observed_col_support": 8,
+      "max_observed_row_support": 4,
+      "n": 8,
+      "row_bound_holds": true,
+      "row_cap": 4,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 8,
+      "col_conjecture_holds": true,
+      "col_violations": 0,
+      "k": 3,
+      "max_observed_col_support": 8,
+      "max_observed_row_support": 7,
+      "n": 8,
+      "row_bound_holds": true,
+      "row_cap": 8,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 8,
+      "col_conjecture_holds": true,
+      "col_violations": 0,
+      "k": 4,
+      "max_observed_col_support": 8,
+      "max_observed_row_support": 8,
+      "n": 8,
+      "row_bound_holds": true,
+      "row_cap": 8,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 2,
+      "col_conjecture_holds": false,
+      "col_violations": 11,
+      "k": 1,
+      "max_observed_col_support": 7,
+      "max_observed_row_support": 2,
+      "n": 16,
+      "row_bound_holds": true,
+      "row_cap": 2,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 4,
+      "col_conjecture_holds": false,
+      "col_violations": 12,
+      "k": 2,
+      "max_observed_col_support": 12,
+      "max_observed_row_support": 4,
+      "n": 16,
+      "row_bound_holds": true,
+      "row_cap": 4,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 8,
+      "col_conjecture_holds": false,
+      "col_violations": 12,
+      "k": 3,
+      "max_observed_col_support": 14,
+      "max_observed_row_support": 8,
+      "n": 16,
+      "row_bound_holds": true,
+      "row_cap": 8,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 16,
+      "col_conjecture_holds": true,
+      "col_violations": 0,
+      "k": 4,
+      "max_observed_col_support": 15,
+      "max_observed_row_support": 13,
+      "n": 16,
+      "row_bound_holds": true,
+      "row_cap": 16,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 2,
+      "col_conjecture_holds": false,
+      "col_violations": 12,
+      "k": 1,
+      "max_observed_col_support": 6,
+      "max_observed_row_support": 2,
+      "n": 32,
+      "row_bound_holds": true,
+      "row_cap": 2,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 4,
+      "col_conjecture_holds": false,
+      "col_violations": 12,
+      "k": 2,
+      "max_observed_col_support": 17,
+      "max_observed_row_support": 4,
+      "n": 32,
+      "row_bound_holds": true,
+      "row_cap": 4,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 8,
+      "col_conjecture_holds": false,
+      "col_violations": 12,
+      "k": 3,
+      "max_observed_col_support": 21,
+      "max_observed_row_support": 8,
+      "n": 32,
+      "row_bound_holds": true,
+      "row_cap": 8,
+      "row_violations": 0,
+      "trials": 12
+    },
+    {
+      "col_cap_conjecture": 16,
+      "col_conjecture_holds": false,
+      "col_violations": 11,
+      "k": 4,
+      "max_observed_col_support": 25,
+      "max_observed_row_support": 15,
+      "n": 32,
+      "row_bound_holds": true,
+      "row_cap": 16,
+      "row_violations": 0,
+      "trials": 12
+    }
+  ],
+  "t2_support_bounds": {
+    "N16": {
+      "K_at_which_bound_becomes_vacuous": 4,
+      "min_k_for_rmse_0.1": 4,
+      "per_K": {
+        "K1": {
+          "bound_beta1": 0.23385358667337133,
+          "support_cap": 2
+        },
+        "K2": {
+          "bound_beta1": 0.21650635094610965,
+          "support_cap": 4
+        },
+        "K3": {
+          "bound_beta1": 0.1767766952966369,
+          "support_cap": 8
+        },
+        "K4": {
+          "bound_beta1": 0.0,
+          "support_cap": 16
+        },
+        "K5": {
+          "bound_beta1": 0.0,
+          "support_cap": 16
+        },
+        "K6": {
+          "bound_beta1": 0.0,
+          "support_cap": 16
+        },
+        "K7": {
+          "bound_beta1": 0.0,
+          "support_cap": 16
+        },
+        "K8": {
+          "bound_beta1": 0.0,
+          "support_cap": 16
+        }
+      }
+    },
+    "N32": {
+      "K_at_which_bound_becomes_vacuous": 5,
+      "min_k_for_rmse_0.1": 5,
+      "per_K": {
+        "K1": {
+          "bound_beta1": 0.1711632992203644,
+          "support_cap": 2
+        },
+        "K2": {
+          "bound_beta1": 0.16535945694153692,
+          "support_cap": 4
+        },
+        "K3": {
+          "bound_beta1": 0.15309310892394862,
+          "support_cap": 8
+        },
+        "K4": {
+          "bound_beta1": 0.125,
+          "support_cap": 16
+        },
+        "K5": {
+          "bound_beta1": 0.0,
+          "support_cap": 32
+        },
+        "K6": {
+          "bound_beta1": 0.0,
+          "support_cap": 32
+        },
+        "K7": {
+          "bound_beta1": 0.0,
+          "support_cap": 32
+        },
+        "K8": {
+          "bound_beta1": 0.0,
+          "support_cap": 32
+        }
+      }
+    },
+    "N64": {
+      "K_at_which_bound_becomes_vacuous": 6,
+      "min_k_for_rmse_0.1": 5,
+      "per_K": {
+        "K1": {
+          "bound_beta1": 0.12303137303143455,
+          "support_cap": 2
+        },
+        "K2": {
+          "bound_beta1": 0.12103072956898178,
+          "support_cap": 4
+        },
+        "K3": {
+          "bound_beta1": 0.11692679333668567,
+          "support_cap": 8
+        },
+        "K4": {
+          "bound_beta1": 0.10825317547305482,
+          "support_cap": 16
+        },
+        "K5": {
+          "bound_beta1": 0.08838834764831845,
+          "support_cap": 32
+        },
+        "K6": {
+          "bound_beta1": 0.0,
+          "support_cap": 64
+        },
+        "K7": {
+          "bound_beta1": 0.0,
+          "support_cap": 64
+        },
+        "K8": {
+          "bound_beta1": 0.0,
+          "support_cap": 64
+        }
+      }
+    },
+    "N8": {
+      "K_at_which_bound_becomes_vacuous": 3,
+      "min_k_for_rmse_0.1": 3,
+      "per_K": {
+        "K1": {
+          "bound_beta1": 0.30618621784789724,
+          "support_cap": 2
+        },
+        "K2": {
+          "bound_beta1": 0.25,
+          "support_cap": 4
+        },
+        "K3": {
+          "bound_beta1": 0.0,
+          "support_cap": 8
+        },
+        "K4": {
+          "bound_beta1": 0.0,
+          "support_cap": 8
+        },
+        "K5": {
+          "bound_beta1": 0.0,
+          "support_cap": 8
+        },
+        "K6": {
+          "bound_beta1": 0.0,
+          "support_cap": 8
+        },
+        "K7": {
+          "bound_beta1": 0.0,
+          "support_cap": 8
+        },
+        "K8": {
+          "bound_beta1": 0.0,
+          "support_cap": 8
+        }
+      }
+    }
+  },
+  "verified": [
+    "T1_row_support_propagation",
+    "T2_zero_mass_support_bound"
+  ]
+}
